@@ -1,6 +1,7 @@
 """Read CTC-format sequences: images, TRA markers, man_track.txt (doc §3)."""
 
 import re
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -54,6 +55,9 @@ class Sequence:
     def markers(self) -> dict[int, Path]:
         return list_frames(self.tra_dir, "man_track")
 
+    def segs(self) -> dict[int, Path]:
+        return list_frames(self.seg_dir, "man_seg") if self.seg_dir.exists() else {}
+
     def tracks(self) -> dict[int, tuple[int, int, int]]:
         return read_man_track(self.tra_dir / "man_track.txt")
 
@@ -80,6 +84,26 @@ def read_man_track(path: Path) -> dict[int, tuple[int, int, int]]:
             raise ValueError(f"{path}:{n}: duplicate track {L}")
         tracks[L] = (B, E, P)
     return tracks
+
+
+def seg_tra_match(seg_path: Path, tra_path: Path, min_overlap: float = 0.5) -> dict:
+    """Match SEG instances to TRA IDs by overlap, checking one-to-one (doc §4).
+
+    A SEG instance matches a TRA ID when that ID covers > min_overlap of the TRA marker.
+    """
+    seg, tra = tifffile.imread(seg_path), tifffile.imread(tra_path)
+    fg = (seg > 0) & (tra > 0)
+    pairs, n = np.unique(np.stack([seg[fg], tra[fg]]), axis=1, return_counts=True)
+    tra_ids, tra_px = np.unique(tra[tra > 0], return_counts=True)
+    seg_ids = np.unique(seg[seg > 0])
+    tra_size = dict(zip(tra_ids.tolist(), tra_px.tolist()))
+    good = [(s, t) for (s, t), c in zip(pairs.T.tolist(), n.tolist()) if c > min_overlap * tra_size[t]]
+    s_count, t_count = Counter(s for s, _ in good), Counter(t for _, t in good)
+    one_to_one = sum(s_count[s] == 1 and t_count[t] == 1 for s, t in good)
+    return {"frame": frame_index(tra_path), "n_seg": len(seg_ids), "n_tra": len(tra_ids),
+            "one_to_one": one_to_one, "tra_unmatched": len(tra_ids) - len(t_count),
+            "seg_unmatched": len(seg_ids) - len(s_count),
+            "ambiguous": sum(v > 1 for v in s_count.values()) + sum(v > 1 for v in t_count.values())}
 
 
 def marker_centroids(path: Path) -> dict[int, tuple[float, float, int]]:

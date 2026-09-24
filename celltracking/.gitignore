@@ -1,2 +1,7 @@
 data/
 __pycache__/
+# regenerable, heavy pipeline outputs (python main.py index/build/overlays)
+outputs/index/
+outputs/benchmarks/
+outputs/audit/overlays/
+docs/*

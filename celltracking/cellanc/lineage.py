@@ -1,15 +1,22 @@
 """Ancestry / sibling targets from an audited track table (doc §8–9, §11)."""
 
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 Tracks = dict[int, tuple[int, int, int]]  # id -> (start, end, parent)
 
 
-def trace_to_anchor(track_id: int, a: int, tracks: Tracks, present_at_a: set[int]):
+def n_children(tracks: Tracks) -> Counter:
+    return Counter(p for (_, _, p) in tracks.values() if p)
+
+
+def trace_to_anchor(track_id: int, a: int, tracks: Tracks, present_at_a: set[int],
+                    kids: Counter | None = None):
     """Walk the parent chain of `track_id` back to the track alive at frame `a`.
 
     Returns (anchor_track_id | None, status, generation_depth). A root that starts
     after `a` is NOT concluded to be a new entry (doc §9): status says unresolved.
+    generation_depth counts only division links; with `kids` given, a single-child link
+    (CTC gap closing: same cell re-linked after missing frames) does not add a generation.
     """
     seen = set()
     depth = 0
@@ -27,12 +34,16 @@ def trace_to_anchor(track_id: int, a: int, tracks: Tracks, present_at_a: set[int
             return None, "broken_temporal_path", depth
         if parent == 0:
             return None, "unresolved_root_after_anchor", depth
+        if kids is None or kids[parent] >= 2:
+            depth += 1
         u = parent
-        depth += 1
 
 
 def hidden_intermediates(track_id: int, anchor: int, tracks: Tracks, kept: set[int]) -> int:
-    """Intermediate tracks strictly between target and anchor with no kept frame (doc §11)."""
+    """Intermediate tracks strictly between target and anchor with no kept frame (doc §11).
+
+    Counts every intermediate track, including single-child gap-closing segments.
+    """
     n = 0
     u = tracks[track_id][2]
     while u != anchor and u != 0:
@@ -48,8 +59,9 @@ def ancestry_targets(a: int, b: int, tracks: Tracks, present: dict[int, set[int]
     """One row per GT track present at frame b (GT IDs: evaluator-side only)."""
     kept = set(kept_frames or [a, b])
     rows = []
+    kids = n_children(tracks)
     for u in sorted(present.get(b, ())):
-        anc, status, depth = trace_to_anchor(u, a, tracks, present.get(a, set()))
+        anc, status, depth = trace_to_anchor(u, a, tracks, present.get(a, set()), kids)
         rows.append({
             "target_gt": u,
             "anchor_gt": anc,

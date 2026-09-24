@@ -1,0 +1,8 @@
+issue,track,parent,gap,n_children
+parent_child_gap,826,945.0,2.0,
+parent_child_gap,942,801.0,7.0,
+parent_child_gap,946,798.0,7.0,
+children_not_2,821,,,3.0
+children_not_2,945,,,1.0
+children_not_2,801,,,1.0
+children_not_2,798,,,1.0

@@ -3,10 +3,16 @@
 from collections import Counter
 from concurrent.futures import ProcessPoolExecutor
 
+import numpy as np
 import pandas as pd
 import tifffile
 
-from .ctc import Sequence, marker_centroids
+from .ctc import Sequence, marker_centroids, seg_tra_match
+
+ISSUES = ["marker_without_image", "shape_mismatch", "marker_dtype_not_uint", "start_after_end",
+          "parent_missing", "cycle", "child_overlaps_parent", "parent_child_gap",
+          "children_not_2", "marker_id_not_in_table", "marker_outside_span",
+          "missing_marker_in_span"]
 
 
 def _tif_meta(path):
@@ -15,27 +21,35 @@ def _tif_meta(path):
         return tuple(p.shape), str(p.dtype)
 
 
-def build_index(seq: Sequence, workers: int = 8):
-    """Return (frames, tracks, observations) DataFrames with GT track IDs.
+def _seg_match(args):
+    return seg_tra_match(*args)
 
-    observations keeps gt_track_id: it is the evaluator-side table. Model inputs must
-    be relabelled (see relabel_frame) before use (doc §3).
+
+def build_index(seq: Sequence, workers: int = 8):
+    """Return (frames, tracks, observations, seg_match) DataFrames with GT track IDs.
+
+    observations keeps gt_track_id: it is the evaluator-side table. Model inputs are
+    relabelled per frame in cellanc.benchmark before use (doc §3).
     """
-    images, markers = seq.images(), seq.markers()
+    images, markers, segs = seq.images(), seq.markers(), seq.segs()
     frame_ids = sorted(set(images) | set(markers))
+    seg_pairs = [(segs[t], markers[t]) for t in segs if t in markers]
     with ProcessPoolExecutor(workers) as ex:
         img_meta = dict(zip(images, ex.map(_tif_meta, images.values(), chunksize=16)))
         mk_meta = dict(zip(markers, ex.map(_tif_meta, markers.values(), chunksize=16)))
         cents = dict(zip(markers, ex.map(marker_centroids, markers.values(), chunksize=16)))
+        seg_match = pd.DataFrame(list(ex.map(_seg_match, seg_pairs, chunksize=8)))
 
     frames = pd.DataFrame([{
         "dataset": seq.dataset, "sequence_id": seq.seq, "frame_index": t,
         "image_path": str(images[t]) if t in images else None,
         "shape": img_meta[t][0] if t in img_meta else None,
         "dtype": img_meta[t][1] if t in img_meta else None,
+        "bytes": images[t].stat().st_size if t in images else 0,
         "marker_path": str(markers[t]) if t in markers else None,
         "marker_shape": mk_meta[t][0] if t in mk_meta else None,
         "marker_dtype": mk_meta[t][1] if t in mk_meta else None,
+        "mask_path": str(segs[t]) if t in segs else None,
     } for t in frame_ids])
 
     tracks = pd.DataFrame(
@@ -47,7 +61,44 @@ def build_index(seq: Sequence, workers: int = 8):
          for t, c in cents.items() for L, (cy, cx, n) in c.items()],
         columns=["dataset", "sequence_id", "frame_index", "gt_track_id",
                  "center_y", "center_x", "marker_pixels"])
-    return frames, tracks, observations
+    return frames, tracks, observations, seg_match
+
+
+def classify_track_ends(tracks: pd.DataFrame, obs: pd.DataFrame, shape, last_frame: int,
+                        border_px: float) -> pd.DataFrame:
+    """Why each track ends / starts (doc §6.8). Never infers death: unknown stays unknown."""
+    H, W = shape
+    kids = Counter(tracks.parent_id[tracks.parent_id != 0])
+    ordered = obs.sort_values("frame_index").groupby("gt_track_id")
+    last, first = ordered.last(), ordered.first()
+    first_frame = obs.frame_index.min()
+
+    def near(r):
+        return min(r.center_y, r.center_x, H - 1 - r.center_y, W - 1 - r.center_x) <= border_px
+
+    ends, starts = [], []
+    for r in tracks.itertuples():
+        if kids.get(r.gt_track_id, 0) > 0:
+            ends.append("division")
+        elif r.end_frame >= last_frame:
+            ends.append("video_end")
+        elif r.gt_track_id in last.index and near(last.loc[r.gt_track_id]):
+            ends.append("near_border")
+        else:
+            ends.append("unknown_end")
+        if r.parent_id != 0:
+            starts.append("child")
+        elif r.start_frame <= first_frame:
+            starts.append("root_at_start")
+        elif r.gt_track_id in first.index and near(first.loc[r.gt_track_id]):
+            starts.append("late_root_near_border")
+        else:
+            starts.append("late_root_interior")
+    out = tracks.copy()
+    out["end_reason"], out["start_reason"] = ends, starts
+    out["n_children"] = out.gt_track_id.map(kids).fillna(0).astype(int)
+    out["validity_status"] = np.where(out.n_children.isin([0, 2]), "ok", "review_children")
+    return out
 
 
 def audit(frames: pd.DataFrame, tracks: pd.DataFrame, obs: pd.DataFrame):
@@ -110,17 +161,19 @@ def audit(frames: pd.DataFrame, tracks: pd.DataFrame, obs: pd.DataFrame):
             flag("missing_marker_in_span", track=L, n=len(missing))
 
     iss = pd.DataFrame(issues) if issues else pd.DataFrame(columns=["issue"])
-    counts = iss.issue.value_counts().to_dict() if len(iss) else {}
+    counts = iss.issue.value_counts().to_dict()
     summary = {
         "dataset": frames.dataset.iat[0], "sequence_id": frames.sequence_id.iat[0],
         "n_frames": int(frames.image_path.notna().sum()),
         "n_marker_frames": len(marker_frames),
+        "n_mask_frames": int(frames.mask_path.notna().sum()),
         "shapes": sorted({str(s) for s in frames["shape"].dropna()}),
         "dtypes": sorted(frames.dtype.dropna().unique().tolist()),
+        "image_bytes": int(frames["bytes"].sum()),
         "n_observations": len(obs),
         "n_tracks": len(T),
         "n_root_tracks": sum(P == 0 for (_, _, P) in T.values()),
         "n_binary_divisions": sum(n == 2 for n in kids.values()),
-        **{f"issue_{k}": v for k, v in counts.items()},
+        **{f"issue_{k}": counts.get(k, 0) for k in ISSUES},
     }
     return summary, iss

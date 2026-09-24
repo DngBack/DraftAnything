@@ -1,0 +1,11 @@
+dataset,split,sib_gt,sib_pred,sib_tp,precision,recall
+hela,domain_adapt,139,105,50,0.476,0.36
+hela,domain_test,372,286,98,0.343,0.263
+hsc,domain_adapt,6,5,0,0.0,0.0
+hsc,domain_test,112,66,7,0.106,0.062
+musc,domain_adapt,19,16,3,0.188,0.158
+musc,domain_test,30,21,5,0.238,0.167
+one_in_a_million,test,3446,2379,79,0.033,0.023
+one_in_a_million,train,12679,8756,353,0.04,0.028
+one_in_a_million,validation,4031,2788,101,0.036,0.025
+sim_plus,sanity,68,52,30,0.577,0.441
