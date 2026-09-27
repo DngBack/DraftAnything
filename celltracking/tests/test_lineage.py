@@ -95,6 +95,43 @@ def test_lap_caps_children_at_two():
     assert sorted(chained_lap(_win(det)).values()) == [1, 1, 2]
 
 
+def test_lap_capacity_four_and_fallback_is_reported():
+    # 1 parent, 4 children: cap 2 is infeasible -> nearest + reported; cap 4 solves it
+    from cellanc.baselines import BASELINES
+    det = {0: np.array([[1, 0.0, 0.0], [2, 0.0, 50.0]]),
+           1: np.array([[i, 0.0, x] for i, x in enumerate([-2.0, -1.0, 1.0, 2.0, 49.0], 1)])}
+    det[1] = np.vstack([det[1], [[6, 0.0, 51.0]]])
+    win = _win(det)
+    assert BASELINES["chained_lap_c4"](win) == {1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2}
+    assert win["link_stats"] == (0, 1)
+    det[1] = np.vstack([det[1], [[7, 0.0, 3.0], [8, 0.0, 4.0]]])  # 8 children > 2 * 2 parents
+    win = _win(det)
+    chained_lap(win)
+    assert win["link_stats"] == (1, 1)
+    BASELINES["chained_lap_soft"](win)
+    assert win["link_stats"] == (0, 1)
+
+
+def test_set_f1_catches_swapped_families():
+    from cellanc.evaluate import score_window
+    tg = pd.DataFrame({"target_detection_id": [1, 2, 3, 4], "ancestor_detection_id": [10, 10, 20, 20],
+                       "target_status": "valid_anchor", "in_foi": True, "generation_depth": 1,
+                       "hidden_intermediates": 0})
+    sib = pd.DataFrame(columns=["det_1", "det_2"])
+    s = score_window({1: 20, 2: 20, 3: 10, 4: 10}, set(), tg, sib)
+    assert s["count_abs_err_sum"] == 0 and s["set_f1_sum"] == 0 and s["count_abs_err_gt_sum"] == 0
+    s = score_window({1: 10, 2: 10, 3: 20, 4: 10}, set(), tg, sib)
+    assert s["set_f1_sum"] == 2 * 2 / 5 + 2 * 1 / 3
+
+
+def test_matched_budget_schedules():
+    s = schedules_for(0, 132, 0)
+    for n in (3, 5, 9, 17):
+        assert len(s[f"u{n}"]) == n and all(len(s[f"r{n}_{j}"]) == n for j in range(5))
+        assert s[f"u{n}"][0] == 0 and s[f"u{n}"][-1] == 132
+    assert len({tuple(s[f"r5_{j}"]) for j in range(5)}) == 5
+
+
 def test_expansion_compensation_undoes_radial_growth():
     src = np.array([[1, 0.0, 0.0], [2, 10.0, 0.0], [3, 0.0, 10.0], [4, 10.0, 10.0]])
     dst = src.copy()
@@ -109,7 +146,7 @@ def test_built_inputs_have_no_gt_fields():
 
     import pytest
 
-    root = Path(__file__).parents[1] / "outputs/benchmarks/v0/inputs"
+    root = Path(__file__).parents[1] / "outputs/benchmarks/v1/inputs"
     if not root.exists():
         pytest.skip("benchmark not built")
     banned = {"gt_track_id", "parent_id", "generation_depth", "ancestor_detection_id"}
@@ -119,3 +156,27 @@ def test_built_inputs_have_no_gt_fields():
     for p in (root / "windows").glob("*.jsonl"):
         for line in p.read_text().splitlines():
             assert not banned & set(json.loads(line))
+
+
+def test_mass_transport_sends_extra_child_to_the_bigger_anchor():
+    # anchor 1 (area 2) is about to split, anchor 2 (area 1) is not. Child 3 at x=6 is nearer to
+    # anchor 2, but anchor 2's mass is used up by child 2 at x=11, so mass sends child 3 to 1.
+    from cellanc.transport import ot_ancestry
+    det = {0: np.array([[1, 0.0, 0.0], [2, 0.0, 10.0]]),
+           1: np.array([[1, 0.0, -1.0], [2, 0.0, 11.0], [3, 0.0, 6.0]])}
+    mass = {0: np.array([2.0, 1.0]), 1: np.ones(3)}
+    win = _win(det)
+    assert nearest_anchor(win)[3] == 2
+    assert ot_ancestry(win, mass, eps=0.05, tau=None, soft=True) == {1: 1, 2: 2, 3: 1}
+
+
+def test_anisotropic_cost_follows_the_long_axis():
+    # target 1 lies straight along y from anchor 2, but anchor 2 is a rod along x while anchor 1
+    # is a rod along y; making along-axis moves cheap hands target 1 to anchor 1.
+    from cellanc.transport import ot_ancestry
+    det = {0: np.array([[1, 0.0, 0.0], [2, 0.0, 10.0]]),
+           1: np.array([[1, 15.0, 10.0], [2, 6.0, 0.0], [3, -2.0, 15.0]])}
+    mass, axis = {0: np.ones(2), 1: np.ones(3)}, {0: np.array([[1.0, 0.0], [0.0, 1.0]])}
+    win = _win(det)
+    assert ot_ancestry(win, mass, 0.05, None, True)[1] == 2
+    assert ot_ancestry(win, mass, 0.05, None, True, axis, 8.0)[1] == 1

@@ -1,6 +1,6 @@
 # celltracking
 
-Dữ liệu và benchmark v0 cho bài toán suy luận tổ tiên–hậu duệ từ ảnh tế bào chụp thưa.
+Dữ liệu và benchmark v1 cho bài toán suy luận tổ tiên–hậu duệ từ ảnh tế bào chụp thưa.
 
 - Hướng dẫn dữ liệu (protocol): [docs/260924_cell_ancestry_data_guide.md](docs/260924_cell_ancestry_data_guide.md)
 - Báo cáo triển khai v0 (audit, quyết định thiết kế): [docs/260924_cell_ancestry_v0_report.md](docs/260924_cell_ancestry_v0_report.md)
@@ -10,9 +10,9 @@ Dữ liệu và benchmark v0 cho bài toán suy luận tổ tiên–hậu duệ 
 DS="one_in_a_million sim_plus hsc musc hela"
 python main.py fetch $DS                           # -> data/ (chỉ dữ liệu đầu vào)
 for d in $DS; do python main.py index $d; done     # -> outputs/index, outputs/audit
-python main.py build && python main.py baseline    # -> outputs/benchmarks/v0, outputs/results
+python main.py build && python main.py baseline    # -> outputs/benchmarks/v1, outputs/results
 python main.py stats && python main.py figures     # -> outputs/tables, outputs/figures
-python -m pytest tests
+PYTHONPATH=. python -m pytest tests
 ```
 
 Build lại PDF (cần pandoc + xelatex):
@@ -23,5 +23,7 @@ cd docs/output_report && pandoc 260924_cell_ancestry_baseline_study.md -o 260924
   -V sansfont="DejaVu Sans" -V monofont="DejaVu Sans Mono" -V geometry:margin=2cm -V fontsize=10pt \
   -V colorlinks=true --toc --no-highlight --columns=50
 ```
+
+Nếu máy không có font DejaVu hệ thống, trỏ tới bản đi kèm matplotlib, ví dụ `-V mainfont=DejaVuSerif -V mainfontoptions="Path=<site-packages>/matplotlib/mpl-data/fonts/ttf/,Extension=.ttf,BoldFont=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic"` (tương tự cho `sansfont`/`monofont` với `*-Oblique`).
 
 `data/` (≈30 GB) và phần nặng của `outputs/` (index, benchmarks, overlays) không nằm trong git; tái lập được bằng các lệnh trên.

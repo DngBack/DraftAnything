@@ -1,6 +1,6 @@
-"""Build benchmark v0: relabelled inputs, windows, evaluator labels (doc §3, §7–11).
+"""Build benchmark v1: relabelled inputs, windows, evaluator labels (doc §3, §7–11).
 
-Layout under <root> = outputs/benchmarks/v0:
+Layout under <root> = outputs/benchmarks/v1:
   inputs/detections/<alias>.parquet   frame_index, local_detection_id, center_y, center_x
   inputs/frames/<alias>.parquet       frame_index, timestamp_min, image_path (relative to data/)
   inputs/windows/<alias>.jsonl        one record per (window, schedule); no GT fields
@@ -59,16 +59,29 @@ def cell_cycle_frames(tracks: dict) -> np.ndarray:
                      if p and kids[p] >= 2 and kids[L] >= 2])
 
 
+BUDGETS = (3, 5, 9, 17)  # frames kept, a and b included, for matched-budget schedules
+N_RAND = 5  # random schedules per budget
+
+
 def schedules_for(a: int, b: int, rng_seed: int) -> dict[str, list[int]]:
-    """Experiment A schedules on a fixed (a, b): dense, power-of-2 strides, endpoints, random."""
+    """Experiment A schedules on a fixed (a, b), all keeping a and b.
+
+    s<k>      power-of-2 stride k (frame count varies with k)
+    ends      a and b only
+    u<n>      n frames evenly spaced                 } same budget n, so uniform vs random
+    r<n>_<j>  n frames, n-2 interior drawn at random } is compared at equal observations
+    """
     H = b - a
     out = {f"s{s}": schedule(a, b, s) for s in [2**k for k in range(12)] if s < H}
     out["ends"] = [a, b]
     rng = np.random.default_rng(rng_seed)
-    for k in (1, 3):
-        if H - 1 >= k:
-            interior = sorted(rng.choice(np.arange(a + 1, b), size=k, replace=False).tolist())
-            out[f"rand{k}"] = [a, *interior, b]
+    for n in BUDGETS:
+        if n - 2 > H - 1:
+            continue
+        out[f"u{n}"] = np.linspace(a, b, n).round().astype(int).tolist()
+        for j in range(N_RAND):
+            interior = sorted(rng.choice(np.arange(a + 1, b), size=n - 2, replace=False).tolist())
+            out[f"r{n}_{j}"] = [a, *interior, b]
     return out
 
 

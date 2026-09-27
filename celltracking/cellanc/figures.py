@@ -26,7 +26,7 @@ from .loader import Windows
 from .stats import BASELINE_STYLE, GRID, INK, MUTED, ORDER, SERIES, _sched_key, _style
 
 NAMES = {"one_in_a_million": "OIAM (C. glutamicum)", "sim_plus": "SIM+ (Fluo-N2DH-SIM+)",
-         "hsc": "HSC (BF-C2DL-HSC)", "musc": "MuSC (BF-C2DL-MuSC)", "hela": "HeLa (PhC-C2DL-HeLa)"}
+         "hsc": "HSC (BF-C2DL-HSC)", "musc": "MuSC (BF-C2DL-MuSC)", "hela": "HeLa (Fluo-N2DL-HeLa)"}
 SEQ_DIR = {"M0": ("one_in_a_million", "00"), "M4": ("one_in_a_million", "04"),
            "HeLa-02": ("hela", "02"), "MuSC-02": ("musc", "02"), "HSC-02": ("hsc", "02"),
            "SIM-02": ("sim_plus", "02"), "MuSC-01": ("musc", "01")}
@@ -265,7 +265,7 @@ def fig_quality(out, path):
 
 def _window(out, alias, a, b, sid="ends"):
     wid = f"{alias}_a{a:04d}_b{b:04d}_{sid}"
-    root = out / "benchmarks/v0"
+    root = out / "benchmarks/v1"
     tg = pd.read_parquet(root / "labels/targets" / f"{alias}.parquet")
     gm = pd.read_parquet(root / "labels/gt_mapping" / f"{alias}.parquet")
     to_gt = dict(zip(zip(gm.frame_index, gm.local_detection_id), gm.gt_track_id))
@@ -399,23 +399,24 @@ def fig_lineage(out, path, alias="M4", a=406, b=538):
 def fig_schedules(out, cfgs, path, alias="M4", a=406, b=538):
     """Which frames each Experiment-A schedule keeps, and what fraction of targets then has a
     division hidden between two kept frames."""
-    root = out / "benchmarks/v0"
+    root = out / "benchmarks/v1"
     W = [json.loads(l) for l in open(root / "inputs/windows" / f"{alias}.jsonl")]
     W = {w["schedule_id"]: w for w in W if w["anchor_frame"] == a and w["target_frame"] == b}
     tg = pd.read_parquet(root / "labels/targets" / f"{alias}.parquet")
-    order = sorted(W, key=_sched_key)
+    order = sorted((k for k in W if not (k.startswith("r") and not k.endswith("_0"))),
+                   key=_sched_key)  # one random seed per budget keeps the plot readable
     name, sid = SEQ_DIR[alias]
     s = Seq(out, name, sid)
     kids = defaultdict(int)
     for L, (_, _, p) in s.tracks.items():
         kids[p] += 1
     divs = [s.tracks[L][1] for L in s.tracks if kids[L] >= 2 and a <= s.tracks[L][1] < b]
-    fig, ax = plt.subplots(figsize=(13, 4.2))
+    fig, ax = plt.subplots(figsize=(13, 5.8))
     ax.hist(divs, bins=np.arange(a, b + 1, 2), bottom=-1.9, color=GRID,
             weights=np.full(len(divs), 1.6 / max(np.histogram(divs, np.arange(a, b + 1, 2))[0].max(), 1)))
     for i, sidk in enumerate(order):
         fr = W[sidk]["observed_frames"]
-        ax.plot(fr, [i] * len(fr), "|", color=SERIES[0] if sidk.startswith("s") else SERIES[1],
+        ax.plot(fr, [i] * len(fr), "|", color=SERIES[0] if sidk[0] in "su" else SERIES[1],
                 ms=10 if len(fr) < 40 else 6, mew=1.4)
         t = tg[(tg.window_id == W[sidk]["window_id"]) & (tg.target_status == "valid_anchor")]
         pct = 100 * (t.hidden_intermediates > 0).mean()
@@ -431,7 +432,7 @@ def fig_schedules(out, cfgs, path, alias="M4", a=406, b=538):
         ax.spines[sp].set_visible(False)
     ax.tick_params(colors=MUTED, labelsize=8)
     ax.set_title(f"Experiment A on one (a, b) = ({a}, {b}) of {alias}: every schedule keeps a "
-                 f"and b; blue = regular stride, orange = endpoints / random", fontsize=9,
+                 f"and b; blue = regular spacing, orange = endpoints / random", fontsize=9,
                  color=INK, loc="left")
     fig.tight_layout()
     _save(fig, path)
@@ -472,7 +473,7 @@ def fig_strata(out, cfgs, path):
     h = hid[hid.schedule_id.str.startswith("s")]
     ax.plot(h.schedule_id.str[1:].astype(int), h.pct_targets_with_hidden, color=SERIES[0],
             marker="o", lw=2)
-    for sidk in ["ends", "rand1", "rand3"]:
+    for sidk in ["ends", "u5", "r5_0"]:
         r = hid[hid.schedule_id == sidk]
         if len(r):
             ax.axhline(r.pct_targets_with_hidden.iat[0], color=SERIES[1], lw=1, ls=":")
@@ -535,7 +536,7 @@ def fig_baseline_schematic(path):
          "radius first")
     draw(axes[2], A2, B2, par2, near(A2, B2), "(c) nearest, crowded division:\nparent 1 gets 3 "
          "children")
-    draw(axes[3], A2, B2, par2, _lap(A2, B2), "(d) LAP: each parent takes ≤ 2,\nsecond child "
+    draw(axes[3], A2, B2, par2, _lap(A2, B2)[0], "(d) LAP: each parent takes ≤ 2,\nsecond child "
          "costs extra")
     fig.text(0.01, 0.0, "Synthetic. Open circles = cells at a; dots = cells at b; arrow = "
              "predicted ancestor; red = wrong. (a–b): 14 cells each divide once, the colony "
@@ -572,7 +573,7 @@ def fig_depth_acc(out, path):
 
 
 def fig_density(out, cfgs, path):
-    R = pd.read_parquet(out / "results/baselines_v0.parquet")
+    R = pd.read_parquet(out / "results/baselines_v1.parquet")
     H = max(cfgs["one_in_a_million"]["horizons_frames"])
     r = R[(R.dataset == "one_in_a_million") & (R.horizon_frames == H)
           & R.experiments.str.contains(f"A_h{H}") & (R.n_scored > 0)]
@@ -602,7 +603,7 @@ def fig_density(out, cfgs, path):
 def fig_qualitative(out, data, path, alias="M4", a=406, b=538):
     name, sid = SEQ_DIR[alias]
     s = Seq(out, name, sid)
-    ws = Windows(out / "benchmarks/v0", data)
+    ws = Windows(out / "benchmarks/v1", data)
     byid = {w["window_id"]: w for w in ws.windows if w["sequence_id"] == alias}
     _, tg, to_gt = _window(out, alias, a, b)
     anc, col = _lineage_colors(tg, to_gt, a, b)
@@ -664,7 +665,7 @@ def fig_expB_all(out, path):
 
 def _displacement_rows(out, data, alias):
     """Per target of every Experiment-B window: true displacement / NN spacing, correctness."""
-    root = out / "benchmarks/v0"
+    root = out / "benchmarks/v1"
     ws = Windows(root, data)
     ws.windows = [w for w in ws.windows if w["sequence_id"] == alias and "B" in w["experiments"]]
     tg = pd.read_parquet(root / "labels/targets" / f"{alias}.parquet")
@@ -717,7 +718,7 @@ def fig_displacement(out, data, path):
 
 
 def fig_siblings(out, data, path, alias="M4", b=538):
-    root = out / "benchmarks/v0"
+    root = out / "benchmarks/v1"
     name, sid = SEQ_DIR[alias]
     s = Seq(out, name, sid)
     ws = Windows(root, data)
@@ -797,7 +798,7 @@ def make_all(out: Path, data: Path, datasets: dict, only=None):
     """datasets: main.DATASETS (pixel size, time step); merged with benchmark config."""
     fd = out / "figures"
     fd.mkdir(parents=True, exist_ok=True)
-    cfgs = json.loads((out / "benchmarks/v0/config.json").read_text())
+    cfgs = json.loads((out / "benchmarks/v1/config.json").read_text())
     for k, v in datasets.items():
         cfgs[k] = {**v, **cfgs.get(k, {})}
     jobs = {

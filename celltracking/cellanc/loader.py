@@ -1,4 +1,4 @@
-"""Model-side loader for benchmark v0. Reads only inputs/; never labels/ (doc §10, §15)."""
+"""Model-side loader for benchmark v1. Reads only inputs/; never labels/ (doc §10, §15)."""
 
 import json
 from pathlib import Path

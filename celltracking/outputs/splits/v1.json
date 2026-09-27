@@ -1,0 +1,50 @@
+{
+  "note": "custom split on public training data; not an official CTC/source split",
+  "unit": "movie",
+  "seed": 0,
+  "splits": {
+    "one_in_a_million": {
+      "train": [
+        "M0",
+        "M1",
+        "M2"
+      ],
+      "validation": [
+        "M3"
+      ],
+      "test": [
+        "M4"
+      ]
+    },
+    "sim_plus": {
+      "sanity": [
+        "SIM-01",
+        "SIM-02"
+      ]
+    },
+    "hsc": {
+      "domain_adapt": [
+        "HSC-01"
+      ],
+      "domain_test": [
+        "HSC-02"
+      ]
+    },
+    "musc": {
+      "domain_adapt": [
+        "MuSC-01"
+      ],
+      "domain_test": [
+        "MuSC-02"
+      ]
+    },
+    "hela": {
+      "domain_adapt": [
+        "HeLa-01"
+      ],
+      "domain_test": [
+        "HeLa-02"
+      ]
+    }
+  }
+}

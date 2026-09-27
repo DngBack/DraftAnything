@@ -35,16 +35,24 @@ def _style(ax):
 
 
 def _sched_key(s):
-    return (0, int(s[1:])) if s.startswith("s") else (1, 0) if s == "ends" else (2, int(s[4:]))
+    """s<k> by stride, then ends, then u<n> / r<n>_<j> by budget n (uniform first)."""
+    if s.startswith("s"):
+        return (0, int(s[1:]), 0)
+    if s == "ends":
+        return (1, 0, 0)
+    if s.startswith("u"):
+        return (2, int(s[1:]), 0)
+    n, j = s[1:].split("_")
+    return (2, int(n), int(j) + 1)
 
 
 def load(out: Path):
-    b = out / "benchmarks/v0"
+    b = out / "benchmarks/v1"
     W = pd.DataFrame([json.loads(l) for f in sorted(glob.glob(str(b / "inputs/windows/*.jsonl")))
                       for l in open(f)])
     T = pd.concat(pd.read_parquet(f) for f in sorted(glob.glob(str(b / "labels/targets/*.parquet"))))
     S = pd.concat(pd.read_parquet(f) for f in sorted(glob.glob(str(b / "labels/siblings/*.parquet"))))
-    R = pd.read_parquet(out / "results/baselines_v0.parquet")
+    R = pd.read_parquet(out / "results/baselines_v1.parquet")
     cfg = json.loads((b / "config.json").read_text())
     R["acc"] = R.n_correct / R.n_scored.replace(0, np.nan)
     return W, T, S, R, cfg
@@ -128,11 +136,54 @@ def tables(root: Path):
 
     # 5c. descendant-count MAE per anchor (pooled within movie, macro over movies)
     cm = ra.groupby(["baseline", "horizon_frames", "schedule_id", "sequence_id"])[
-        ["count_abs_err_sum", "count_n_anchors"]].sum()
-    cm = (cm.count_abs_err_sum / cm.count_n_anchors).groupby(
-        ["baseline", "horizon_frames", "schedule_id"]).mean().rename("count_MAE").reset_index()
+        ["count_abs_err_sum", "count_n_anchors", "count_abs_err_gt_sum", "count_n_gt_anchors"]].sum()
+    cm = pd.DataFrame({"count_MAE": cm.count_abs_err_sum / cm.count_n_anchors,
+                       # on true-anchor set only: same anchors as the count prior (5e)
+                       "count_MAE_gt": cm.count_abs_err_gt_sum / cm.count_n_gt_anchors}).groupby(
+        ["baseline", "horizon_frames", "schedule_id"]).mean().reset_index()
     cm["_k"] = cm.schedule_id.map(_sched_key)
     res["expA_count"] = cm.sort_values(["baseline", "horizon_frames", "_k"]).drop(columns="_k")
+
+    # 5d. descendant-set F1 per anchor (same anchors and pooling as 5c)
+    sf = ra.groupby(["baseline", "horizon_frames", "schedule_id", "sequence_id"])[
+        ["set_f1_sum", "count_n_anchors"]].sum()
+    sf = (sf.set_f1_sum / sf.count_n_anchors).groupby(
+        ["baseline", "horizon_frames", "schedule_id"]).mean().rename("set_F1").reset_index()
+    sf["_k"] = sf.schedule_id.map(_sched_key)
+    res["expA_setf1"] = sf.sort_values(["baseline", "horizon_frames", "_k"]).drop(columns="_k")
+
+    # 5e. count prior that never looks at the data: every anchor with a resolved descendant gets
+    # the median family size of train windows at that horizon. Scored on GT anchors only, which
+    # favours the prior (methods also pay for anchors they wrongly give descendants).
+    wo = W[(W.dataset == "one_in_a_million") & (W.schedule_id == "ends")
+           & W.experiments.map(lambda e: any(x.startswith("A") for x in e))]
+    to = T[T.in_foi & (T.target_status == "valid_anchor")].merge(
+        wo[["window_id", "sequence_id", "split", "horizon_frames"]], on="window_id")
+    fam = to.groupby(["window_id", "sequence_id", "split", "horizon_frames",
+                      "ancestor_detection_id"]).size().rename("n").reset_index()
+    prior = fam[fam.split == "train"].groupby("horizon_frames").n.median().rename("prior_count")
+    fam = fam.join(prior, on="horizon_frames")
+    fam["err"] = (fam.n - fam.prior_count).abs()
+    res["count_prior"] = fam.groupby(["horizon_frames", "sequence_id"]).err.mean() \
+        .groupby("horizon_frames").mean().rename("count_MAE").to_frame().join(prior).reset_index()
+
+    # 5f. same observation budget n: evenly spaced u<n> vs random r<n>_<j> (mean, sd over seeds)
+    ab = acc[acc.schedule_id.str.match(r"^[ur]\d")].copy()
+    ab["n"] = ab.schedule_id.str.extract(r"^[ur](\d+)")[0].astype(int)
+    ab["kind"] = ab.schedule_id.str[0]
+    u = ab[ab.kind == "u"].set_index(["baseline", "horizon_frames", "n"])["macro_M0-M4"]
+    r = ab[ab.kind == "r"].groupby(["baseline", "horizon_frames", "n"])["macro_M0-M4"]
+    res["budget"] = pd.DataFrame({"uniform": u, "random_mean": r.mean(), "random_sd": r.std(),
+                                  "random_min": r.min(), "random_max": r.max(),
+                                  "n_seeds": r.size()}).reset_index()
+
+    # 5g. LAP capacity: accuracy per movie (select on M3, report M4) and fallback rate
+    fb = ra.groupby(["baseline", "horizon_frames", "schedule_id"])[
+        ["n_links_fallback", "n_links"]].sum()
+    cap = acc[acc.baseline.str.startswith("chained_lap")].join(
+        (fb.n_links_fallback / fb.n_links).rename("fallback_rate"),
+        on=["baseline", "horizon_frames", "schedule_id"])
+    res["capacity"] = cap
 
     # 6. experiment B (endpoints only, growing delta), per dataset, macro over sequences.
     # On an "ends" window every chained baseline is a single a -> b link.
@@ -140,9 +191,12 @@ def tables(root: Path):
     rb["cycles"] = rb.apply(lambda r: r.horizon_frames / cfg[r.dataset]["cell_cycle_median_frames"],
                             axis=1)
     keys = ["baseline", "dataset", "horizon_frames", "horizon_min", "cycles"]
-    ebb = rb.groupby(keys + ["sequence_id"]).agg(acc=("acc", "mean"), n=("n_scored", "sum")) \
-        .reset_index().groupby(keys).agg(acc=("acc", "mean"), n_scored=("n", "sum"),
-                                         n_seq=("sequence_id", "nunique")).reset_index()
+    ebb = rb.groupby(keys + ["sequence_id"]).agg(
+        acc=("acc", "mean"), n=("n_scored", "sum"), fb=("n_links_fallback", "sum"),
+        links=("n_links", "sum")).reset_index().groupby(keys).agg(
+        acc=("acc", "mean"), n_scored=("n", "sum"), n_seq=("sequence_id", "nunique"),
+        fb=("fb", "sum"), links=("links", "sum")).reset_index()
+    ebb["fallback_rate"] = ebb.pop("fb") / ebb.pop("links")
     res["expB_all"] = ebb
     eb = ebb[ebb.baseline == "nearest_anchor"].drop(columns="baseline")
     res["expB"] = eb

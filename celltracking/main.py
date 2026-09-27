@@ -5,7 +5,7 @@ Inputs (downloaded, immutable) live in data/; everything the pipeline produces g
   python main.py fetch one_in_a_million sim_plus   # data/downloads, data/raw, data/manifest.json
   python main.py index one_in_a_million            # outputs/index, outputs/audit
   python main.py overlays one_in_a_million 00      # outputs/audit/overlays
-  python main.py build                             # outputs/splits, outputs/benchmarks/v0
+  python main.py build                             # outputs/splits, outputs/benchmarks/v1
   python main.py baseline                          # outputs/results
   python main.py stats                             # outputs/tables, outputs/figures (expA/expB)
   python main.py figures                           # outputs/figures/fig*.png for the report
@@ -33,7 +33,7 @@ from cellanc.visual import division_sheet, end_sheet
 
 DATA = Path(__file__).parent / "data"
 OUT = Path(__file__).parent / "outputs"
-BENCH = OUT / "benchmarks" / "v0"
+BENCH = OUT / "benchmarks" / "v1"
 SEED = 0
 
 CTC = "https://data.celltrackingchallenge.net/training-datasets/"
@@ -204,7 +204,7 @@ def build(names, min_anchors: int):
     (OUT / "index").mkdir(parents=True, exist_ok=True)
     pd.DataFrame(seq_rows).to_csv(OUT / "index" / "sequences.csv", index=False)
     (OUT / "splits").mkdir(exist_ok=True)
-    (OUT / "splits" / "v0.json").write_text(json.dumps(
+    (OUT / "splits" / "v1.json").write_text(json.dumps(
         {"note": "custom split on public training data; not an official CTC/source split",
          "unit": "movie", "seed": SEED, "splits": splits}, indent=2))
     (BENCH / "config.json").write_text(json.dumps(horizons_cfg, indent=2))
@@ -222,13 +222,16 @@ def _run_seq(alias):
         win = ws.load(w)
         sibs = mutual_nearest_siblings(win)
         for bname, fn in BASELINES.items():
-            s = score_window(fn(win), sibs, tg_by[w["window_id"]], sb_by.get(w["window_id"], empty_sb))
+            pred = fn(win)
+            n_fb, n_links = win.pop("link_stats")
+            s = score_window(pred, sibs, tg_by[w["window_id"]], sb_by.get(w["window_id"], empty_sb))
             rows.append({"baseline": bname, **{k: w[k] for k in
                          ["window_id", "split", "dataset", "sequence_id", "anchor_frame",
                           "target_frame", "horizon_frames", "horizon_min", "schedule_id"]},
                          "experiments": ",".join(w["experiments"]),
                          "n_observed": len(w["observed_frames"]),
-                         "n_anchors": len(win["detections"][w["anchor_frame"]]), **s})
+                         "n_anchors": len(win["detections"][w["anchor_frame"]]),
+                         "n_links": n_links, "n_links_fallback": n_fb, **s})
     return pd.DataFrame(rows)
 
 
@@ -237,7 +240,7 @@ def baseline(workers: int):
     with ProcessPoolExecutor(workers) as ex:
         res = pd.concat(ex.map(_run_seq, aliases))
     (OUT / "results").mkdir(parents=True, exist_ok=True)
-    res.to_parquet(OUT / "results" / "baselines_v0.parquet", index=False)
+    res.to_parquet(OUT / "results" / "baselines_v1.parquet", index=False)
     print(len(res), "window-baseline rows")
 
 
