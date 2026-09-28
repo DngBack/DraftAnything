@@ -1,0 +1,10 @@
+{
+  "reviewer1_completed": 0,
+  "reviewer1_total": 200,
+  "reviewer2_completed": 0,
+  "human_audit_status": "pending",
+  "random_counts_completed": {},
+  "random_completed": 0,
+  "random_total": 100,
+  "overlap_completed": 0
+}

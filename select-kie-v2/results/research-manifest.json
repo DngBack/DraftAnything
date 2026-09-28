@@ -1,0 +1,38 @@
+{
+  "code_hashes_at_archive": {
+    "scripts/pilot.py": "013beb97544b53b02ca4c41a7aa22351f6a434845092fa6432a2c14813ecae3d",
+    "scripts/prepare_holdout.py": "d0e05aaad2d18f9874ba95146aec1c1d272032e374f25cd27107b42369ee000b",
+    "scripts/make_report.py": "896eb9044cef954bc07f833b52ab6f0b5edc5278e4005f2a3eb0ec8929a35498",
+    "scripts/vrdu_evaluate.py": "e3cdd87ae74f0fef267a49abd47cc2a6fdbee4bc240c16ce0556b14c2a8126b8",
+    "scripts/evidence.py": "99bd094da9fd179ee6e37b861feff3d7faaf3da6bc322e718a68db4a7fb77fde",
+    "scripts/holdout_evaluate.py": "32e68fe578a7b0c5a08a87eb41d2c103e20c3a494689a34864333662f2fffa20",
+    "scripts/vrdu_extract.py": "d66669c21f822a8c2225e1e2621e3d121d5461b2a611fe2e281761e2df5ce5a1",
+    "scripts/vrdu_label_sensitivity.py": "f89866bf09e6fa6b5f0a727f27d7e2c38a7fba831251488b11e9f561dae270c6",
+    "scripts/stage3_report.py": "515c7c1f206f9f6c7c10d2297896f9d0c513d0452d4f1f3c59696539c6dcd173",
+    "scripts/holdout_extract.py": "9dc7511d4a382b376f457cd20005a9ca757888c45c143e347f2697e6c70b8a5a",
+    "scripts/cord_stage2.py": "b8aabc7f608777ea72ed56e37f253e4fd7ad713c5ec4916629020572a2520a4d",
+    "scripts/stage2_report.py": "830462e91abe1394a004e9fc7f38444ec7c223e2639ee408c0aa716c8e78edff",
+    "docs/stage3-results.md": "6f5ff657fa76fb83efc58363239e50657b2b3d70587c13e4ea6e138f4432ae1b",
+    "docs/stage2-results.md": "80d923020bb9fd724cd35b25e1f9929f9f1ccef4db69167315bb29d73338ac72",
+    "docs/stage3-protocol.md": "3bc823b10ba3559119fc385fcb2f2c55e44fb20370983ec684cf61d99e901bc5",
+    "docs/stage2-protocol.md": "6841ca8b825d42c929acf8a7280083245b3a2ccd5fa764003dba13fcbb0db328",
+    "results/stage2/vrdu-predictions-metrics.json": "845d6f7e10ec9ece704f48a5e49f721e0b1383b8aa1265efd906f4b9e7b96f2b",
+    "results/stage2/vrdu-qwen35-predictions-manifest.json": "f5c61f847bd80885ee4fd65f9eadc39fb3bc818071f7ac5fecaed6426d877562",
+    "results/stage2/cord-metrics.json": "bb026954a9a698775d000712d2fd8163158189440c80fdf4e2b2b1d527309217",
+    "results/stage2/label-sensitivity.json": "93bac31605baa45c1750efde1adf6d6eb35083ba1eb09dbad9190d7a4d9ce485",
+    "results/stage2/vrdu-extraction-manifest.json": "78c9c56ab3180db99601eddabe9b0475c1bfa24eeed3d9e39310e2075b44725d",
+    "results/stage2/vrdu-qwen35-predictions-metrics.json": "61aa0fa713012c0980e8b4db9acf934dd84ebbcbbdb217ccfb3fb46f035d3eb2",
+    "results/stage3/metrics.json": "da0087138610a7e1941ba18d5a2b8e9c35c3c77a9872ae97ec657b1fb3d1b454",
+    "results/stage3/image-manifest.json": "e4b9a1c373b97c9351d6bd136001c3ec2e71f63a07e8c3552c726ad89ecd90d5",
+    "results/stage3/holdout-manifest.json": "27251d91768ee46a214526cd54f1181a7cf4389d1c6e8eb0e8f58aa6f2fc4108",
+    "results/stage3/ocr-manifest.json": "e4b9a1c373b97c9351d6bd136001c3ec2e71f63a07e8c3552c726ad89ecd90d5"
+  },
+  "checks": {
+    "stage2_unique_docs_per_model": 600,
+    "stage3_unique_docs": 100,
+    "stage3_records": 400,
+    "audit_decisions": 2400,
+    "exact_cross_stage_ocr_duplicates": 0
+  },
+  "notes": "Hashes describe archived files; inference manifests retain model/input provenance. Human audit pending."
+}

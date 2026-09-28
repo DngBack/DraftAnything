@@ -1,0 +1,32 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights:  46%|████▌     | 282/617 [00:00<00:00, 2799.16it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 3535.54it/s]
+ocr remaining 200
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+8/200 batch=7.09s mem=6.69GiB
+16/200 batch=5.22s mem=6.54GiB
+24/200 batch=4.95s mem=6.28GiB
+32/200 batch=6.17s mem=6.28GiB
+40/200 batch=5.54s mem=6.56GiB
+48/200 batch=5.20s mem=6.15GiB
+56/200 batch=6.03s mem=6.63GiB
+64/200 batch=5.58s mem=6.35GiB
+72/200 batch=5.49s mem=6.82GiB
+80/200 batch=5.74s mem=6.54GiB
+88/200 batch=5.24s mem=6.21GiB
+96/200 batch=5.40s mem=6.69GiB
+104/200 batch=6.20s mem=6.82GiB
+112/200 batch=5.91s mem=6.62GiB
+120/200 batch=5.31s mem=6.41GiB
+128/200 batch=5.83s mem=6.28GiB
+136/200 batch=5.27s mem=6.68GiB
+144/200 batch=5.39s mem=6.34GiB
+152/200 batch=4.85s mem=6.28GiB
+160/200 batch=5.93s mem=6.76GiB
+168/200 batch=5.02s mem=6.28GiB
+176/200 batch=5.54s mem=6.96GiB
+184/200 batch=5.20s mem=6.62GiB
+192/200 batch=4.84s mem=6.34GiB
+200/200 batch=6.06s mem=6.82GiB

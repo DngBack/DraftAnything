@@ -1,0 +1,80 @@
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   8%|▊         | 26/338 [00:00<00:01, 216.02it/s]Loading weights:  14%|█▍        | 48/338 [00:00<00:01, 166.59it/s]Loading weights:  20%|█▉        | 67/338 [00:00<00:01, 174.93it/s]Loading weights:  25%|██▌       | 85/338 [00:00<00:01, 154.81it/s]Loading weights:  41%|████      | 138/338 [00:00<00:00, 259.49it/s]Loading weights:  49%|████▉     | 166/338 [00:00<00:00, 248.06it/s]Loading weights:  57%|█████▋    | 194/338 [00:00<00:00, 255.16it/s]Loading weights:  65%|██████▌   | 221/338 [00:01<00:00, 190.69it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 296.13it/s]
+Model /home/bachdx2/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306 remaining 4
+4/4 batch=8.09s
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  72%|███████▏  | 245/338 [00:00<00:00, 2447.13it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 2721.92it/s]
+Model /home/bachdx2/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306 remaining 596
+8/596 batch=4.10s
+16/596 batch=3.76s
+24/596 batch=3.48s
+32/596 batch=3.40s
+40/596 batch=5.03s
+48/596 batch=3.35s
+56/596 batch=3.37s
+64/596 batch=3.13s
+72/596 batch=4.59s
+80/596 batch=3.54s
+88/596 batch=4.34s
+96/596 batch=3.46s
+104/596 batch=10.12s
+112/596 batch=3.28s
+120/596 batch=3.73s
+128/596 batch=3.61s
+136/596 batch=3.22s
+144/596 batch=3.25s
+152/596 batch=3.34s
+160/596 batch=3.08s
+168/596 batch=3.34s
+176/596 batch=3.44s
+184/596 batch=3.22s
+192/596 batch=3.07s
+200/596 batch=3.25s
+208/596 batch=3.55s
+216/596 batch=3.43s
+224/596 batch=3.62s
+232/596 batch=3.87s
+240/596 batch=3.44s
+248/596 batch=3.47s
+256/596 batch=3.78s
+264/596 batch=3.35s
+272/596 batch=3.39s
+280/596 batch=3.22s
+288/596 batch=3.63s
+296/596 batch=3.25s
+304/596 batch=3.61s
+312/596 batch=3.42s
+320/596 batch=3.62s
+328/596 batch=4.04s
+336/596 batch=3.67s
+344/596 batch=3.65s
+352/596 batch=3.42s
+360/596 batch=3.61s
+368/596 batch=6.31s
+376/596 batch=3.78s
+384/596 batch=3.68s
+392/596 batch=3.49s
+400/596 batch=3.44s
+408/596 batch=3.82s
+416/596 batch=3.67s
+424/596 batch=3.81s
+432/596 batch=3.80s
+440/596 batch=3.55s
+448/596 batch=3.29s
+456/596 batch=4.02s
+464/596 batch=3.21s
+472/596 batch=3.50s
+480/596 batch=3.56s
+488/596 batch=3.37s
+496/596 batch=4.14s
+504/596 batch=3.56s
+512/596 batch=3.68s
+520/596 batch=3.65s
+528/596 batch=3.72s
+536/596 batch=3.41s
+544/596 batch=4.17s
+552/596 batch=3.92s
+560/596 batch=3.74s
+568/596 batch=3.60s
+576/596 batch=3.66s
+584/596 batch=4.07s
+592/596 batch=3.44s
+596/596 batch=3.23s

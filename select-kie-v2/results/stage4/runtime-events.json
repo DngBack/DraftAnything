@@ -1,0 +1,21 @@
+{
+  "events": [
+    {
+      "event": "CUDA OOM",
+      "condition": "9B shard1 batch4",
+      "reason": "multi-page prefill exceeded A30 memory",
+      "recovery": "resume batch2 with default allocator; retain all pages at1280; completed outputs retained"
+    },
+    {
+      "event": "proactive batch reduction",
+      "condition": "9B shard0",
+      "recovery": "resume batch2 for remaining tasks after shard1 OOM"
+    },
+    {
+      "event": "CUDA driver allocation error at model loading",
+      "condition": "both shards with expandable_segments allocator",
+      "recovery": "restart batch2 using default allocator after confirming both GPUs free"
+    }
+  ],
+  "failed_attempt_latency_excluded_from_per_record_generation": true
+}

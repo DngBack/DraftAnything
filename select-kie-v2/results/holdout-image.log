@@ -1,0 +1,65 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights:  44%|████▍     | 274/617 [00:00<00:00, 2737.95it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 3507.52it/s]
+image remaining 4
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+2/4 batch=11.27s mem=5.05GiB
+4/4 batch=4.95s mem=5.05GiB
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights:  46%|████▌     | 282/617 [00:00<00:00, 2809.52it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 3680.54it/s]
+image remaining 196
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+4/196 batch=7.04s mem=6.73GiB
+8/196 batch=5.91s mem=6.69GiB
+12/196 batch=7.20s mem=6.68GiB
+16/196 batch=6.19s mem=6.68GiB
+20/196 batch=6.10s mem=6.62GiB
+24/196 batch=5.66s mem=5.96GiB
+28/196 batch=6.50s mem=5.97GiB
+32/196 batch=7.11s mem=6.74GiB
+36/196 batch=5.98s mem=5.96GiB
+40/196 batch=5.98s mem=5.97GiB
+44/196 batch=5.65s mem=5.96GiB
+48/196 batch=5.50s mem=5.96GiB
+52/196 batch=5.72s mem=5.96GiB
+56/196 batch=6.95s mem=6.74GiB
+60/196 batch=5.30s mem=5.97GiB
+64/196 batch=5.69s mem=5.97GiB
+68/196 batch=5.61s mem=5.96GiB
+72/196 batch=6.21s mem=6.69GiB
+76/196 batch=5.56s mem=5.95GiB
+80/196 batch=6.37s mem=6.69GiB
+84/196 batch=5.19s mem=5.97GiB
+88/196 batch=5.69s mem=5.96GiB
+92/196 batch=6.47s mem=6.62GiB
+96/196 batch=6.32s mem=5.95GiB
+100/196 batch=6.50s mem=6.80GiB
+104/196 batch=5.98s mem=6.75GiB
+108/196 batch=7.30s mem=6.80GiB
+112/196 batch=5.88s mem=6.02GiB
+116/196 batch=6.29s mem=6.80GiB
+120/196 batch=5.78s mem=6.02GiB
+124/196 batch=6.67s mem=5.97GiB
+128/196 batch=5.63s mem=5.97GiB
+132/196 batch=7.14s mem=6.80GiB
+136/196 batch=6.04s mem=5.97GiB
+140/196 batch=6.12s mem=6.03GiB
+144/196 batch=5.57s mem=5.92GiB
+148/196 batch=5.78s mem=6.02GiB
+152/196 batch=6.44s mem=6.76GiB
+156/196 batch=7.06s mem=6.76GiB
+160/196 batch=5.76s mem=5.97GiB
+164/196 batch=5.65s mem=6.02GiB
+168/196 batch=6.22s mem=6.75GiB
+172/196 batch=5.60s mem=6.02GiB
+176/196 batch=6.37s mem=6.75GiB
+180/196 batch=5.75s mem=6.02GiB
+184/196 batch=5.53s mem=5.97GiB
+188/196 batch=5.53s mem=6.02GiB
+192/196 batch=6.02s mem=6.68GiB
+196/196 batch=6.81s mem=6.75GiB

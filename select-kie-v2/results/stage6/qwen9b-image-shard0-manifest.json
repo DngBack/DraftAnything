@@ -1,0 +1,26 @@
+{
+  "shard": 0,
+  "model": "/home/bachdx2/hf_cache/hub/models--Qwen--Qwen3.5-9B/snapshots/c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "torch": "2.6.0+cu124",
+  "schemas": {
+    "baseline": {
+      "registration_num": "FARA registration number of the registrant",
+      "registrant_name": "name of the registrant",
+      "foreign_principle_name": "name of the foreign principal represented",
+      "file_date": "date of filing/signing this form, not the generic printed form revision date",
+      "signer_name": "name of the individual signing this form",
+      "signer_title": "title of the individual signing this form"
+    },
+    "clarified": {
+      "registration_num": "numeric registration identifier written beside Registration No./Registration Number. Copy the digits. Not FARA, an OMB number, phone number, or date",
+      "registrant_name": "name of the FARA-registered organization/entity. On a Short Form use the registrant FOR WHOM THE INDIVIDUAL IS ACTING, not the individual named at the top",
+      "foreign_principle_name": "name of the foreign principal represented by that registrant, not the individual or registrant organization",
+      "file_date": "date of signature in the EXECUTION/signature section. Do not use the received-by-registration-unit stamp or form revision/expiry date",
+      "signer_name": "printed name of the person signing the EXECUTION/signature section. Copy a printed name if shown there; do not guess from an illegible signature",
+      "signer_title": "explicitly printed title of the person signing the EXECUTION/signature section. Return null if no title is explicitly printed there"
+    }
+  },
+  "image_max_side": 1280,
+  "max_new_tokens": 320,
+  "script_sha256": "c37a29a14a375868e588ab59cec8772b3990964b178dbf2cd69703c8c5ca1ebe"
+}

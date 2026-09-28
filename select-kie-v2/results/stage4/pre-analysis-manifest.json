@@ -1,0 +1,16 @@
+{
+  "status": "before gold evaluation; inference in progress",
+  "sha256": {
+    "docs/stage4-protocol.md": "b6eef9ac05982089906902512826ca68fe36c5c0037a24cc6f843cd5e2e61bf9",
+    "results/stage4/holdout-manifest.json": "4e49c027d879cc00ca9654a88ab98a7b613725d4754e8062f62c55e262218563",
+    "scripts/stage4_extract.py": "72876f34f041154d5e990e944a76130d7b85998d6c78be1721da71ee0f627288",
+    "scripts/stage4_extract_shard.py": "965b886b084c32c8326dae0d1ad9a93c503eec00d01916cfe04e32ef28a1fbce",
+    "scripts/stage4_evaluate.py": "9ef7154a238a76b31ea8f991123a1098168502e1d5a1fd076c815537cb2d144e"
+  },
+  "batch_note": "9B began batch2, resumed batch4, then disjoint document-hash shards on two A30 GPUs; per-record timing retained",
+  "model_source": "https://huggingface.co/Qwen/Qwen3.5-9B",
+  "9b_snapshot": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "previous_evaluator_sha256": "49c872e0f344594bad94c0b760badc51620bbf19c0ceca2a6dd0775aa1f83f46",
+  "evaluator_amendment": "Before gold evaluation: normalize empty predictions to null consistently with stage3; disclose runtime failures in report.",
+  "captured_utc": "2026-09-28T12:13:26.496406+00:00"
+}

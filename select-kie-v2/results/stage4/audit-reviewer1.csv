@@ -1,0 +1,360 @@
+audit_id,doc,field,prediction,gold,human_type,notes
+A001,"20130131_Podesta Group, Inc._Dyer, James_Short-Form.pdf",registration_num,5926,"5926
+",,
+A002,"20130408_Karv Communications, Inc._Frank, Andrew D._Short-Form.pdf",file_date,04/08/2013,"4-5.13
+",,
+A003,"20160210_Squire Patton Boggs, LLP_Garrett, John C._Short-Form.pdf",registration_num,2165,"2165
+",,
+A004,"20160208_Ketchum Inc. NY_Mann, Nicole_Short-Form.pdf",registration_num,5758,"5758
+",,
+A005,"20091120_BGR Government Affairs, LLC_Hoy, Jessica_Short-Form.pdf",signer_title,"Senior Associate, BGR Government Affairs, LLC",,,
+A006,"20150303_DCI Group AZ, LLC_Olson, Grant A._Short-Form.pdf",signer_title,director,,,
+A007,"20100120_Squire Patton Boggs, LLP_Deschauer, John J._Short-Form.pdf",signer_title,,,,
+A008,"20110817_BLJ Worldwide LTD_Van Wagenen, Matthew_Short-Form.pdf",registration_num,5875,"5875
+",,
+A009,"20100325_Thomas Capitol Partners, Inc._Kim, Thomas S._Short-Form.pdf",file_date,2010 MAR 25,"March 25, 2010
+",,
+A010,"20080616_Brownstein Hyatt Farber Schreck, LLP_Flood, James G._Short-Form.pdf",registrant_name,James G. Flood,"Brownstein Hyatt Farber Schreck, LLP
+",,
+A011,"20110826_Raben Group, LLC_Goulart, Kimberly_Short-Form.pdf",file_date,11/28/2010,"11/28/2010
+",,
+A012,"20100506_JETRO, San Francisco_Lampe, Sean_Short-Form.pdf",registrant_name,Sean Lampe,"JETRO San Francisco
+",,
+A013,"20120215_Quebec Government Office_Hould, Jean-Francois_Short-Form.pdf",signer_name,HOULD JEAN-FRANÇOIS,"HOULD JEAN-FRANÇOIS
+",,
+A014,"20091127_Korea National Tourism Organization, New Jersey_Park, Younghee_Short-Form.pdf",signer_name,Park,"park
+",,
+A015,"20110411_BGR Government Affairs, LLC_Birnbaum, Jeffrey_Short-Form.pdf",registrant_name,Jeffrey Birnbaum,"BGR Government Affairs, LLC
+",,
+A016,"20171220_Ballard Partners_San Pedro, Katherine_Short-Form.pdf",signer_name,Katherine San Pedro,,,
+A017,"20160922_Squire Patton Boggs, LLP_Boyles, Bret K._Short-Form.pdf",registrant_name,Bret K. Boyles,"Squire Patton Boggs (US) LLP
+",,
+A018,"20090507_Ketchum Inc. NY_Reynolds, John Alan_Short-Form.pdf",signer_title,Internet Technology Manager,,,
+A019,"20140416_Ketchum Inc. NY_Jeavons, Kathleen Stone_Short-Form.pdf",registration_num,FARA,"5758
+",,
+A020,"20131211_Dickens _ Madson Canada Inc._Ben-Menashe, Ari_Short-Form.pdf",registration_num,6260,"6200
+",,
+A021,"20150220_Squire Patton Boggs, LLP_Savelieff, Ludmilla Lydia_Short-Form.pdf",registrant_name,Ludmilla Lydia Savelieff,"Squire Patton Boggs (US) LLP
+",,
+A022,"20150831_Quebec Government Office_Lauzon, Jean-Claude_Short-Form.pdf",signer_name,Jean-Claude Lauzon,"Jean-Claude Lauzon
+",,
+A023,"20141204_Commonwealth of Dominica Maritime Registry, Inc._Kumari, Jyotsna_Short-Form.pdf",signer_name,Dr Jyotsna Kumari,,,
+A024,"20100825_JETRO, New York_Sato, Tomoya_Short-Form.pdf",registration_num,1643,"1643
+",,
+A025,"20140321_Squire Patton Boggs, LLP_Goggins, Melanie C._Short-Form.pdf",foreign_principle_name,The Government of the Gabonese Republic,"The Government of the Gabonese Republic.
+",,
+A026,"20080616_Brownstein Hyatt Farber Schreck, LLP_Flood, James G._Short-Form.pdf",signer_name,James G. Flood,"Dans G.
+Joms G. Flood
+(Signature)
+",,
+A027,"20100105_Akin, Gump, Strauss, Hauer _ Feld, LLP_Spillman, Catherine Fairley_Short-Form.pdf",file_date,12/30/09,"30
+(Date of ",,
+A028,"20100610_Daniel J. Edelman, Inc._Suzuki, Eiko_Short-Form.pdf",foreign_principle_name,"Bombardier, Inc.","Bombardier, Inc.
+",,
+A029,"20180403_Singapore Economic Development Board_Yeo, Aaron_Short-Form.pdf",registration_num,2003,"2003
+",,
+A030,"20150220_Squire Patton Boggs, LLP_Savelieff, Ludmilla Lydia_Short-Form.pdf",signer_title,Attorney,,,
+A031,"20180503_VisitBritain_Nemeth, Erin_Short-Form.pdf",signer_name,Erin Nemeth,,,
+A032,"20120913_Daniel J. Edelman, Inc._Naple, Michael Anthony_Short-Form.pdf",signer_name,Michael Anthony Naple,"Michael Anthony Naple
+",,
+A033,"20180308_Akin, Gump, Strauss, Hauer _ Feld, LLP_Verhoff, Geoff_Short-Form.pdf",signer_title,Senior Adviser,,,
+A034,"20171220_Ballard Partners_San Pedro, Katherine_Short-Form.pdf",signer_name,Katherine San Pedro,,,
+A035,"20080725_Van Scoyoc Associates, Inc._Van Scoyoc, H. Stewart_Short-Form.pdf",signer_name,H. Stewart Van Scoyoc,,,
+A036,"20121119_Commonwealth of Dominica Maritime Registry, Inc._Hang, Sui Yan_Short-Form.pdf",signer_name,Sui Yan Hang,"Commonwealth of Dominica Maritime Registry
+",,
+A037,"20100120_Squire Patton Boggs, LLP_Deschauer, John J._Short-Form.pdf",signer_name,John J. Deschauer,,,
+A038,"20100105_Akin, Gump, Strauss, Hauer _ Feld, LLP_Spillman, Catherine Fairley_Short-Form.pdf",signer_name,C. T.,,,
+A039,"20150102_Mercury Public Affairs, LLC_Weber, John Vincent_Short-Form.pdf",registrant_name,John Vincent Weber,"Mercury
+",,
+A040,"20140416_Ketchum Inc. NY_Jeavons, Kathleen Stone_Short-Form.pdf",file_date,04/16/2014,"4-1-2014
+",,
+A041,"20170222_Squire Patton Boggs, LLP_Savelieff, Ludmilla Lydia_Short-Form.pdf",foreign_principle_name,The High Negotiations Committee of the Syrian Opposition,"By this registration: The High Negotiations Committee of the Syrian Opposition.
+By prior registrations: 1) The Center for Studies and Media Affairs at the Saudi Royal Court; and 2) The Government
+of Kosovo..
+",,
+A042,"20171127_MMGY Global, LLC_O_Neal, Leslie_Short-Form.pdf",registrant_name,"MMGY Global, LLC.","MMGY Global, LLC.
+",,
+A043,"20140610_Greenberg Traurig, LLP_Barron, Edward_Short-Form.pdf",foreign_principle_name,Kurdistan Regional Government,"Kurdistan Regional Government
+",,
+A044,"20140610_Greenberg Traurig, LLP_Barron, Edward_Short-Form.pdf",registrant_name,Edward Barron,"Greenberg Traurig, LLP
+",,
+A045,"20140610_Greenberg Traurig, LLP_Barron, Edward_Short-Form.pdf",registrant_name,Edward Barron,"Greenberg Traurig, LLP
+",,
+A046,"20160922_Squire Patton Boggs, LLP_Boyles, Bret K._Short-Form.pdf",signer_title,Senior Policy Advisor,,,
+A047,"20150303_DCI Group AZ, LLC_Olson, Grant A._Short-Form.pdf",registrant_name,Grant A.Olson,"DCI Group AZ, LLC
+",,
+A048,"20151030_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",foreign_principle_name,Japan External Trade Organization (JETRO),"Japan External Trade Organization (JETRO), Tokyo, Japan
+",,
+A049,"20160208_Ketchum Inc. NY_Mann, Nicole_Short-Form.pdf",file_date,1/26/16,"26
+",,
+A050,"20180227_Sonoran Policy Group, LLC_Nehring, Andrew Philip_Short-Form.pdf",foreign_principle_name,"Government of Kenya (Ministry of Foreign Affairs); Embassy of Iceland, Washington, DC; Mer Security & Communications Systems, Ltd; Venable LLP; Embassy of The Kingdom of Bahrain",,,
+A051,"20151030_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",registrant_name,Naoco Hunter,"JETRO San Francisco
+",,
+A052,"20180202_Quebec Government Office_Briand Fortin, Anne Catherine_Short-Form.pdf",registration_num,FARA,"01787
+",,
+A053,"20171010_MSLGROUP Americas, Inc._Beck, Emma_Short-Form.pdf",registration_num,5483,"5483
+",,
+A054,"20141006_Sorini, Samet _ Associates, LLC_Costello, Megan_Short-Form.pdf",registrant_name,Megan Costello,"Sorini Samet and Associates LLC
+",,
+A055,"20080603_Fratelli Group_Cox, Frances K._Short-Form.pdf",signer_name,,,,
+A056,"20130603_Squire Patton Boggs, LLP_Mirijanian, Peter_Short-Form.pdf",signer_name,Peter Mirjianian,"Peter Mirijanian
+",,
+A057,"20091120_BGR Government Affairs, LLC_Hoy, Jessica_Short-Form.pdf",registration_num,FARA,"5430
+",,
+A058,"20160427_DCI Group AZ, LLC_Stevens, Craig_Short-Form.pdf",registrant_name,"DCI Group AZ, LLC.","DCI Group AZ, LLC.
+",,
+A059,"20170404_Sonoran Policy Group, LLC_Daniels, Jacob G._Short-Form.pdf",registrant_name,Jacob G. Daniels,"Sonoran Policy Group, LLC
+",,
+A060,"20130131_Podesta Group, Inc._Dyer, James_Short-Form.pdf",foreign_principle_name,Embassy of the Republic of Azerbaijan,"By this filing: Embassy of the Republic of Azerbaijan.
+",,
+A061,"20160622_Raben Group, LLC_Soto, Eduardo_Short-Form.pdf",foreign_principle_name,Embassy of Mexico,"Embassy of Mexico
+",,
+A062,"20080616_Brownstein Hyatt Farber Schreck, LLP_Flood, James G._Short-Form.pdf",signer_name,James G. Flood,"Dans G.
+Joms G. Flood
+(Signature)
+",,
+A063,"20130603_Squire Patton Boggs, LLP_Mirijanian, Peter_Short-Form.pdf",registration_num,2165,"2165
+",,
+A064,"20130131_Podesta Group, Inc._Dyer, James_Short-Form.pdf",foreign_principle_name,Embassy of the Republic of Azerbaijan,"By this filing: Embassy of the Republic of Azerbaijan.
+",,
+A065,"20090507_Ketchum Inc. NY_Reynolds, John Alan_Short-Form.pdf",registrant_name,John Alan Reynolds,"Ketchum Inc.
+",,
+A066,"20090507_Ketchum Inc. NY_Reynolds, John Alan_Short-Form.pdf",signer_name,John Alan Reynolds,,,
+A067,"20080630_Hill and Knowlton Strategies, LLC_Gunst, Jennifer_Short-Form.pdf",file_date,2009-06-30,"626-08
+",,
+A068,"20100222_Daniel J. Edelman, Inc._Moeenziai, Ladan_Short-Form.pdf",signer_name,Ladan Moeenzad,,,
+A069,"20161031_MSLGROUP Americas, Inc._Phillips, Bruceanne_Short-Form.pdf",signer_title,,,,
+A070,"20141204_Commonwealth of Dominica Maritime Registry, Inc._Kumari, Jyotsna_Short-Form.pdf",registrant_name,Commonwealth of Dominica Maritime Registry,"Commonwealth of Dominica Maritime Registry
+",,
+A071,"20150319_Gallagher Group, LLC_Gallagher, James P._Short-Form.pdf",foreign_principle_name,Embassy of the State of Qatar,"Embassy of the State of Qatar
+",,
+A072,"20170426_Department of Culture Tourism - Abu Dhabi (New York Branch)_Carreiro, Paula_Short-Form.pdf",registration_num,6134,"6134
+",,
+A073,"20170522_Nelson Mullins Riley _ Scarborough, LLP_Cox, Christy_Short-Form.pdf",file_date,05/22/2017,"may 22,
+(Date of signature)
+",,
+A074,"20100525_Akin, Gump, Strauss, Hauer _ Feld, LLP_Lapp, Alixandria_Short-Form.pdf",registrant_name,Alixandra Lapp,"Akin Gump Strauss Hauer & Feld, LLP
+",,
+A075,"20110817_BLJ Worldwide LTD_Van Wagenen, Matthew_Short-Form.pdf",registrant_name,Matthew Van Wagenen,"Brown Lloyd James
+",,
+A076,"20160330_VisitBritain_Ruttle, Courtney_Short-Form.pdf",foreign_principle_name,VisitBritain,"VisitBritain
+",,
+A077,"20141006_Sorini, Samet _ Associates, LLC_Costello, Megan_Short-Form.pdf",signer_name,Megan Costello,"Megan Costello
+",,
+A078,"20110411_BGR Government Affairs, LLC_Turenne, William Joseph_Short-Form.pdf",signer_title,,,,
+A079,"20160208_Ketchum Inc. NY_Mann, Nicole_Short-Form.pdf",file_date,02/08/2016,"26
+",,
+A080,"20100105_Akin, Gump, Strauss, Hauer _ Feld, LLP_Spillman, Catherine Fairley_Short-Form.pdf",registration_num,3492,"3492
+",,
+A081,"20110411_BGR Government Affairs, LLC_Birnbaum, Jeffrey_Short-Form.pdf",signer_name,Jeffrey Birnbaum,,,
+A082,"20110411_BGR Government Affairs, LLC_Birnbaum, Jeffrey_Short-Form.pdf",foreign_principle_name,Republic of India,"BGR Gabara, Ltd. (for the Embassy of Kazakhstan, London, United Kingdom)
+",,
+A083,"20160516_Hogan Lovells US LLP_Stanton, John S._Short-Form.pdf",registration_num,2244,"2244
+",,
+A084,"20180503_VisitBritain_Nemeth, Erin_Short-Form.pdf",signer_name,J. M. D.,,,
+A085,"20120215_Quebec Government Office_Hould, Jean-Francois_Short-Form.pdf",registration_num,01787,"01787
+",,
+A086,"20170222_Squire Patton Boggs, LLP_Savelieff, Ludmilla Lydia_Short-Form.pdf",file_date,"February 22, 2017","February 22, 2017
+",,
+A087,"20170522_Nelson Mullins Riley _ Scarborough, LLP_Cox, Christy_Short-Form.pdf",registrant_name,Christy Cox,"Nelson Mullins Riley & Scarborough LLP
+",,
+A088,"20171115_Cornerstone Government Affairs_Hinch, Matthew_Short-Form.pdf",registrant_name,Matthew Hinch,"Cornerstone Government Affairs
+",,
+A089,"20160421_Arnold, Jim_Arnold, Jim_Short-Form.pdf",registrant_name,Jim Arnold,"Jim Arnold
+",,
+A090,"20121119_Commonwealth of Dominica Maritime Registry, Inc._Hang, Sui Yan_Short-Form.pdf",registrant_name,Commonwealth of Dominica Maritime Registry,,,
+A091,"20091120_BGR Government Affairs, LLC_Hoy, Jessica_Short-Form.pdf",signer_name,Jessica Hoy,,,
+A092,"20150303_DCI Group AZ, LLC_Olson, Grant A._Short-Form.pdf",registration_num,FARA,"6278
+",,
+A093,"20100610_Daniel J. Edelman, Inc._Suzuki, Eiko_Short-Form.pdf",registration_num,3634,"3634
+",,
+A094,"20080822_Ketchum Inc. NY_Cohen, Paul Douglas_Short-Form.pdf",registrant_name,Paul Douglas Cohen,"Ketchum Inc.
+",,
+A095,"20130131_Podesta Group, Inc._Dyer, James_Short-Form.pdf",foreign_principle_name,Embassy of the Republic of Azerbaijan,"By this filing: Embassy of the Republic of Azerbaijan.
+",,
+A096,"20080721_Gephardt Group Government Affairs, LLC_Messmer, Michael_Short-Form.pdf",signer_title,"Gephardt Group, LLC",,,
+A097,"20170729_StrateVarious LLC_Portale, Elizabeth M._Short-Form.pdf",registration_num,6449,"6449
+",,
+A098,"20080502_Daniel J. Edelman, Inc._Domingo, Roquena_Short-Form.pdf",signer_title,,,,
+A099,"20160330_VisitBritain_Ruttle, Courtney_Short-Form.pdf",signer_name,Helen Paone,"Helen Paone
+",,
+A100,"20100825_JETRO, New York_Sato, Tomoya_Short-Form.pdf",file_date,08/24/110,"08/24110
+",,
+A101,"20131203_Commonwealth of Dominica Maritime Registry, Inc._Xiaodong, Hu_Short-Form.pdf",signer_name,HU XIAODONG,,,
+A102,"20150516_Greenfield Law, LLC_Kress, William A._Short-Form.pdf",signer_name,William A. Kress,"W A. Kress
+",,
+A103,"20080630_Hill and Knowlton Strategies, LLC_Gunst, Jennifer_Short-Form.pdf",signer_title,Consultant,,,
+A104,"20110411_BGR Government Affairs, LLC_Birnbaum, Jeffrey_Short-Form.pdf",file_date,4/08/11,"11
+(Date of ",,
+A105,"20100319_Podesta Group, Inc._Northrup, Stephen James_Short-Form.pdf",signer_title,,,,
+A106,"20160429_MSLGROUP Americas, Inc._Shahbandar, Oubai_Short-Form.pdf",registrant_name,Qorvis MSL Group,"Qorvis MSLGroup
+",,
+A107,"20100610_Daniel J. Edelman, Inc._Suzuki, Eiko_Short-Form.pdf",signer_name,,,,
+A108,"20121119_Commonwealth of Dominica Maritime Registry, Inc._Radchenko, Alexander B._Short-Form.pdf",signer_name,Alexander B. Radchenko,"Chef
+A Radchenko
+(Signature)
+",,
+A109,"20150102_Mercury Public Affairs, LLC_Weber, John Vincent_Short-Form.pdf",registrant_name,John Vincent Weber,"Mercury
+",,
+A110,"20100901_Daniel J. Edelman, Inc._Gutman, Beata_Short-Form.pdf",foreign_principle_name,Edelman,"Grupo
+",,
+A111,"20080502_Daniel J. Edelman, Inc._Domingo, Roquena_Short-Form.pdf",registrant_name,ROQUENA R. DOMINGO,"DANIEL J. EDELMAN
+",,
+A112,"20140610_Greenberg Traurig, LLP_Barron, Edward_Short-Form.pdf",signer_title,,,,
+A113,"20130603_Squire Patton Boggs, LLP_Mirijanian, Peter_Short-Form.pdf",signer_name,Peter Mirjianian,"Peter Mirijanian
+",,
+A114,"20150220_Squire Patton Boggs, LLP_Savelieff, Ludmilla Lydia_Short-Form.pdf",registration_num,FARA,"2165
+",,
+A115,"20110826_Raben Group, LLC_Goulart, Kimberly_Short-Form.pdf",signer_name,Kimberly Goulart,,,
+A116,"20171220_Ballard Partners_San Pedro, Katherine_Short-Form.pdf",file_date,12/4/17,"12/14/17
+(Date of ",,
+A117,"20110826_Raben Group, LLC_Goulart, Kimberly_Short-Form.pdf",signer_title,,,,
+A118,"20121119_Commonwealth of Dominica Maritime Registry, Inc._Hang, Sui Yan_Short-Form.pdf",signer_title,null,,,
+A119,"20121129_Commonwealth of Dominica Maritime Registry, Inc._Glover, Robert C._Short-Form.pdf",registration_num,5334,"5334
+",,
+A120,"20100825_JETRO, New York_Sato, Tomoya_Short-Form.pdf",signer_name,Tomoya Sato,,,
+A121,"20120423_United Lao Council for Peace, Freedom and Reconstruction (ULCPFR)_Vang, Chong_Short-Form.pdf",registration_num,FARA,"6130
+",,
+A122,"20091120_BGR Government Affairs, LLC_Hoy, Jessica_Short-Form.pdf",foreign_principle_name,"Kurdistan Regional Government, Republic of India, State of Qatar","Kurdistan Regional Government
+Republic of India
+State of Qatar
+",,
+A123,"20130212_Squire Patton Boggs, LLP_Wisner, Graham G._Short-Form.pdf",file_date,"February 12, 2013","February 12, 2013
+",,
+A124,"20100325_Thomas Capitol Partners, Inc._Kim, Thomas S._Short-Form.pdf",signer_title,,,,
+A125,"20171010_MSLGROUP Americas, Inc._Beck, Emma_Short-Form.pdf",file_date,10/8/11/16,"10121116
+",,
+A126,"20171010_MSLGROUP Americas, Inc._Beck, Emma_Short-Form.pdf",signer_name,Emma Beck,,,
+A127,"20110411_BGR Government Affairs, LLC_Birnbaum, Jeffrey_Short-Form.pdf",registration_num,5430,"5430
+",,
+A128,"20150303_DCI Group AZ, LLC_Olson, Grant A._Short-Form.pdf",foreign_principle_name,"Kenichiro Sasea, Ambassador Extraordinary and Plenipotentiary of Japan to the United States of America","Kenichiro Sasae, Ambassador Extraordinary and Plenipotentiary of Japan to the United States of America.
+",,
+A129,"20100901_Daniel J. Edelman, Inc._Gutman, Beata_Short-Form.pdf",registrant_name,Beata Guetman,"Edeman
+",,
+A130,"20110411_BGR Government Affairs, LLC_Birnbaum, Jeffrey_Short-Form.pdf",registrant_name,Jeffrey Birnbaum,"BGR Government Affairs, LLC
+",,
+A131,"20120606_Daniel J. Edelman, Inc._Holloway, Michael_Short-Form.pdf",foreign_principle_name,UAE Ministry of Foreign Affairs,"UAE Ministry of Foreign Affairs
+",,
+A132,"20170729_StrateVarious LLC_Portale, Elizabeth M._Short-Form.pdf",file_date,"July 29, 2017","July 29, 2017
+",,
+A133,"20091120_BGR Government Affairs, LLC_Hoy, Jessica_Short-Form.pdf",registrant_name,Jessica Hoy,"Barbour, Griffith & Rogers, LLC d/b/a BGR
+Government Affairs, LLC
+",,
+A134,"20090507_Ketchum Inc. NY_Reynolds, John Alan_Short-Form.pdf",registrant_name,John Alan Reynolds,"Ketchum Inc.
+",,
+A135,"20131203_Commonwealth of Dominica Maritime Registry, Inc._Xiaodong, Hu_Short-Form.pdf",signer_title,,,,
+A136,"20130408_Karv Communications, Inc._Frank, Andrew D._Short-Form.pdf",registrant_name,Andrew D. Frank,"Karv Communications, Inc.
+",,
+A137,"20120215_Quebec Government Office_Hould, Jean-Francois_Short-Form.pdf",registrant_name,QUEBEC GOVERNMENT OFFICE,"QUEBEC GOVERNMENT OFFICE
+",,
+A138,"20180626_Daniel J. Edelman, Inc._Brown, Rebecca_Short-Form.pdf",file_date,06/26/2018,"6/25/18
+",,
+A139,"20080502_Daniel J. Edelman, Inc._Domingo, Roquena_Short-Form.pdf",signer_name,DANIEL J. EDELMAN,,,
+A140,"20100506_JETRO, San Francisco_Lampe, Sean_Short-Form.pdf",registrant_name,Sean Lampe,"JETRO San Francisco
+",,
+A141,"20121119_Commonwealth of Dominica Maritime Registry, Inc._Radchenko, Alexander B._Short-Form.pdf",foreign_principle_name,Commonwealth of Dominica,"Commonwealth of Dominica
+",,
+A142,"20180129_FTI Consulting (SC), Inc._Blakeslee, James A._Short-Form.pdf",file_date,01/29/2018,"December 11, 2017
+",,
+A143,"20150516_Greenfield Law, LLC_Kress, William A._Short-Form.pdf",registrant_name,William A. Kress,"Greenfield & Kress, P.A.
+",,
+A144,"20080502_Daniel J. Edelman, Inc._Domingo, Roquena_Short-Form.pdf",registrant_name,ROQUENA R. DOMINGO,"DANIEL J. EDELMAN
+",,
+A145,"20111101_Quebec Government Office_Rivard, Nathalie_Short-Form.pdf",registrant_name,QUEBEC GOVERNMENT OFFICE,"QUEBEC GOVERNMENT OFFICE
+",,
+A146,"20080721_Gephardt Group Government Affairs, LLC_Messmer, Michael_Short-Form.pdf",signer_title,,,,
+A147,"20100222_Daniel J. Edelman, Inc._Moeenziai, Ladan_Short-Form.pdf",signer_title,,,,
+A148,"20080630_Hill and Knowlton Strategies, LLC_Gunst, Jennifer_Short-Form.pdf",signer_name,Jennifer Gunst,,,
+A149,"20080825_Ketchum Inc. NY_Goldstein, Benjamin Jacob_Short-Form.pdf",signer_name,Benjamin J. Goldstein,,,
+A150,"20120521_General Delegation of the PLO to the US_Farsakh, Nizar H._Short-Form.pdf",registration_num,FARA,"5244
+",,
+A151,"20170127_S.G.R. LLC Government Relations and Lobbying_Lowman, Greg_Short-Form.pdf",signer_name,Greg Lowman,,,
+A152,"20141204_Commonwealth of Dominica Maritime Registry, Inc._Kumari, Jyotsna_Short-Form.pdf",signer_name,Shah,,,
+A153,"20161229_Crowell _ Moring International, Ltd._Beukman, Willem Danie_Short-Form.pdf",signer_title,,,,
+A154,"20100901_Daniel J. Edelman, Inc._Gutman, Beata_Short-Form.pdf",registration_num,36034,"3634
+",,
+A155,"20100525_Akin, Gump, Strauss, Hauer _ Feld, LLP_Lapp, Alixandria_Short-Form.pdf",file_date,5-13-2010,"5-3-2010
+",,
+A156,"20080630_Hill and Knowlton Strategies, LLC_Gunst, Jennifer_Short-Form.pdf",signer_title,,,,
+A157,"20141204_Commonwealth of Dominica Maritime Registry, Inc._Kumari, Jyotsna_Short-Form.pdf",registration_num,5334,"5334
+",,
+A158,"20100128_Squire Patton Boggs, LLP_Boggs, Thomas Hale Jr._Short-Form.pdf",registration_num,FARA,"2165
+",,
+A159,"20130603_Squire Patton Boggs, LLP_Mirijanian, Peter_Short-Form.pdf",foreign_principle_name,Government of Georgia,"By this filing: Government of Georgia
+",,
+A160,"20120913_Daniel J. Edelman, Inc._Naple, Michael Anthony_Short-Form.pdf",signer_name,Michael Anthony Naples,"Michael Anthony Naple
+",,
+A161,"20160427_DCI Group AZ, LLC_Stevens, Craig_Short-Form.pdf",foreign_principle_name,"Akin Gump Strauss Hauer and Feld, LLP","Moise Katumbi through Akin Gump Strauss Hauer and Feld, LLP
+",,
+A162,"20090507_Ketchum Inc. NY_Reynolds, John Alan_Short-Form.pdf",file_date,April 28 2009,"April
+287009
+",,
+A163,"20150407_Daschle Group, LLC_Rodriguez, Ilia_Short-Form.pdf",signer_title,,,,
+A164,"20100325_Thomas Capitol Partners, Inc._Kim, Thomas S._Short-Form.pdf",file_date,"March 25, 2010","March 25, 2010
+",,
+A165,"20080616_Brownstein Hyatt Farber Schreck, LLP_Flood, James G._Short-Form.pdf",registration_num,FARA,"5870
+",,
+A166,"20110218_Ketchum Inc. NY_Wiltz, Marie_Short-Form.pdf",foreign_principle_name,Saudi Arabian Government Investment Authority (SAGIA),"Saudi Arabian Government Investment Authority
+(SAGIA)
+",,
+A167,"20160922_Squire Patton Boggs, LLP_Boyles, Bret K._Short-Form.pdf",registrant_name,Bret K. Boyles,"Squire Patton Boggs (US) LLP
+",,
+A168,"20100519_Akin, Gump, Strauss, Hauer _ Feld, LLP_Lapp, Alixandria_Short-Form.pdf",signer_name,Alixandria Lapp,,,
+A169,"20170301_Mercury Public Affairs, LLC_Reid, Morris_Short-Form.pdf",registrant_name,Morris Reid,,,
+A170,"20080721_Gephardt Group Government Affairs, LLC_Messmer, Michael_Short-Form.pdf",registration_num,FARA,"5874
+",,
+A171,"20091127_Korea National Tourism Organization, New Jersey_Park, Younghee_Short-Form.pdf",file_date,11/22/2009,"11/22/2009
+",,
+A172,"20100610_Daniel J. Edelman, Inc._Suzuki, Eiko_Short-Form.pdf",registrant_name,Eiko Suzuki,"Edelman
+",,
+A173,"20120521_General Delegation of the PLO to the US_Farsakh, Nizar H._Short-Form.pdf",signer_title,,,,
+A174,"20171220_Ballard Partners_San Pedro, Katherine_Short-Form.pdf",signer_name,Katherine San Pedro,,,
+A175,"20120521_General Delegation of the PLO to the US_Farsakh, Nizar H._Short-Form.pdf",foreign_principle_name,PLO,"PLO
+",,
+A176,"20151030_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",registrant_name,Naoco Hunter,"JETRO San Francisco
+",,
+A177,"20170222_Squire Patton Boggs, LLP_Savelieff, Ludmilla Lydia_Short-Form.pdf",signer_title,,,,
+A178,"20150220_Squire Patton Boggs, LLP_Savelieff, Ludmilla Lydia_Short-Form.pdf",signer_name,Ludmilla Savelieff,"Ludmilla Savelieff
+",,
+A179,"20180629_MMGY Global, LLC_McDonough, Leslie_Short-Form.pdf",file_date,06/29/2018,"June 27, 2018
+",,
+A180,"20170127_S.G.R. LLC Government Relations and Lobbying_Lowman, Greg_Short-Form.pdf",registrant_name,Greg Lowman,S.G.R. LLC Government Relations & Lobbyin ,,
+A181,"20140321_Squire Patton Boggs, LLP_Goggins, Melanie C._Short-Form.pdf",file_date,"March 21, 2014","March 21, 2014
+",,
+A182,"20140812_Greenberg Traurig, LLP_Schwartz, Allison Shulman_Short-Form.pdf",foreign_principle_name,Republic of Turkey (through the Gephardt Group),"Republic of Turkey (through the Gephardt Group)
+",,
+A183,"20100319_Podesta Group, Inc._Northrup, Stephen James_Short-Form.pdf",signer_name,Stephen James Northrup,,,
+A184,"20131203_Commonwealth of Dominica Maritime Registry, Inc._Xiaodong, Hu_Short-Form.pdf",signer_name,,,,
+A185,"20120913_Daniel J. Edelman, Inc._Naple, Michael Anthony_Short-Form.pdf",registration_num,3634,"3634
+",,
+A186,"20180129_FTI Consulting (SC), Inc._Blakeslee, James A._Short-Form.pdf",registration_num,60484,"6484
+",,
+A187,"20080822_Ketchum Inc. NY_Cohen, Paul Douglas_Short-Form.pdf",registrant_name,Paul Douglas Cohen,"Ketchum Inc.
+",,
+A188,"20090710_Harbour Group, LLC_Alkhatib, Firas_Short-Form.pdf",foreign_principle_name,EXECUTIVE AFFAIRS AUTHORITY OF THE GOVERNMENT OF ARAB EMIRATES,"EXECUTIVE AFFAIRS AUTHORITY OF THE GOVERNMENT OF AB!
+EMBASSY OF THE UNITED ARAB EMIRATES
+UNIT
+1:22
+",,
+A189,"20170301_Mercury Public Affairs, LLC_Reid, Morris_Short-Form.pdf",foreign_principle_name,"Embassy of Japan, Libertas Foundation, Inc","Embassy of Japan. Libertas Foundation, Inc
+",,
+A190,"20090105_Van Scoyoc Associates, Inc._Shupp, Michael A._Short-Form.pdf",file_date,30 Dec 2005,"30 Dec 2008
+",,
+A191,"20160210_Squire Patton Boggs, LLP_Garrett, John C._Short-Form.pdf",signer_title,,,,
+A192,"20110817_BLJ Worldwide LTD_Van Wagenen, Matthew_Short-Form.pdf",foreign_principle_name,The Shafallah Center for Children with Special Needs,"The Shafallah Center for Children with Special Needs
+",,
+A193,"20170729_StrateVarious LLC_Portale, Elizabeth M._Short-Form.pdf",signer_name,Elizabeth Michelle Portale,"/ Elizabeth Michelle Portale
+",,
+A194,"20160922_Squire Patton Boggs, LLP_Boyles, Bret K._Short-Form.pdf",foreign_principle_name,The Center for Studies and Media Affairs at the Saudi Royal Court,"By this registration: The Center for Studies and Media Affairs at the Saudi Royal Court.
+",,
+A195,"20180626_Daniel J. Edelman, Inc._Brown, Rebecca_Short-Form.pdf",signer_title,null,,,
+A196,"20180403_Singapore Economic Development Board_Yeo, Aaron_Short-Form.pdf",registration_num,FARA,"2003
+",,
+A197,"20080725_Van Scoyoc Associates, Inc._Van Scoyoc, H. Stewart_Short-Form.pdf",foreign_principle_name,Forensic Science Service,"Utrok Atoll Local Government; Ricardo, UK, Forensic Science Service Ltd
+",,
+A198,"20131211_Dickens _ Madson Canada Inc._Ben-Menashe, Ari_Short-Form.pdf",registration_num,6260,"6200
+",,
+A199,"20090507_Ketchum Inc. NY_Reynolds, John Alan_Short-Form.pdf",registration_num,5758,"5758
+",,
+A200,"20100319_Podesta Group, Inc._Northrup, Stephen James_Short-Form.pdf",registrant_name,Stephen James Northrup,"Podesta Group, Inc.
+",,

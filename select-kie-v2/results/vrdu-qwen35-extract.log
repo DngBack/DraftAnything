@@ -1,0 +1,88 @@
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights:   8%|▊         | 49/617 [00:00<00:01, 423.83it/s]Loading weights:  15%|█▍        | 92/617 [00:00<00:01, 374.95it/s]Loading weights:  21%|██        | 130/617 [00:00<00:01, 371.52it/s]Loading weights:  27%|██▋       | 168/617 [00:00<00:01, 300.43it/s]Loading weights:  34%|███▍      | 211/617 [00:00<00:01, 329.34it/s]Loading weights:  40%|███▉      | 246/617 [00:00<00:01, 306.78it/s]Loading weights:  45%|████▌     | 278/617 [00:01<00:01, 210.35it/s]Loading weights:  51%|█████     | 314/617 [00:01<00:01, 239.69it/s]Loading weights:  56%|█████▌    | 343/617 [00:01<00:01, 231.14it/s]Loading weights:  60%|█████▉    | 369/617 [00:01<00:01, 220.73it/s]Loading weights:  64%|██████▎   | 393/617 [00:01<00:01, 218.39it/s]Loading weights:  68%|██████▊   | 422/617 [00:01<00:00, 234.29it/s]Loading weights: 100%|██████████| 617/617 [00:01<00:00, 365.39it/s]
+Model /home/bachdx2/hf_cache/hub/models--Qwen--Qwen3.5-2B/snapshots/15852e8c16360a2fea060d615a32b45270f8a8fc remaining 4
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+4/4 batch=5.53s
+Loading weights:   0%|          | 0/617 [00:00<?, ?it/s]Loading weights:  48%|████▊     | 296/617 [00:00<00:00, 2953.99it/s]Loading weights: 100%|██████████| 617/617 [00:00<00:00, 3701.92it/s]
+Model /home/bachdx2/hf_cache/hub/models--Qwen--Qwen3.5-2B/snapshots/15852e8c16360a2fea060d615a32b45270f8a8fc remaining 596
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `chunk_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+[transformers] `causal_conv1d_update` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+[transformers] `fused_recurrent_gated_delta_rule` is falling back to its reference PyTorch implementation because `flash-linear-attention` is not installed. This is correct but much slower; install `flash-linear-attention` for the optimized kernel.
+8/596 batch=5.32s
+16/596 batch=5.06s
+24/596 batch=4.56s
+32/596 batch=4.43s
+40/596 batch=5.37s
+48/596 batch=5.46s
+56/596 batch=4.37s
+64/596 batch=4.46s
+72/596 batch=4.85s
+80/596 batch=4.84s
+88/596 batch=4.70s
+96/596 batch=5.71s
+104/596 batch=4.98s
+112/596 batch=4.63s
+120/596 batch=5.08s
+128/596 batch=5.49s
+136/596 batch=4.75s
+144/596 batch=4.69s
+152/596 batch=5.09s
+160/596 batch=4.89s
+168/596 batch=5.08s
+176/596 batch=4.47s
+184/596 batch=4.78s
+192/596 batch=4.61s
+200/596 batch=4.95s
+208/596 batch=4.99s
+216/596 batch=5.07s
+224/596 batch=4.83s
+232/596 batch=5.57s
+240/596 batch=6.23s
+248/596 batch=5.16s
+256/596 batch=5.52s
+264/596 batch=5.11s
+272/596 batch=5.33s
+280/596 batch=5.06s
+288/596 batch=5.84s
+296/596 batch=5.32s
+304/596 batch=5.48s
+312/596 batch=5.32s
+320/596 batch=5.52s
+328/596 batch=6.72s
+336/596 batch=5.54s
+344/596 batch=5.49s
+352/596 batch=5.36s
+360/596 batch=5.30s
+368/596 batch=5.70s
+376/596 batch=5.20s
+384/596 batch=6.01s
+392/596 batch=5.14s
+400/596 batch=5.22s
+408/596 batch=6.25s
+416/596 batch=5.36s
+424/596 batch=6.38s
+432/596 batch=5.54s
+440/596 batch=5.34s
+448/596 batch=5.06s
+456/596 batch=5.21s
+464/596 batch=5.09s
+472/596 batch=5.59s
+480/596 batch=5.52s
+488/596 batch=5.32s
+496/596 batch=6.23s
+504/596 batch=5.50s
+512/596 batch=5.49s
+520/596 batch=5.33s
+528/596 batch=5.25s
+536/596 batch=6.17s
+544/596 batch=6.08s
+552/596 batch=6.03s
+560/596 batch=6.79s
+568/596 batch=5.72s
+576/596 batch=5.41s
+584/596 batch=5.63s
+592/596 batch=5.00s
+596/596 batch=4.56s

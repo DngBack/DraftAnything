@@ -1,0 +1,582 @@
+{
+  "Qwen3-VL-4B-Instruct": {
+    "measures": {
+      "fusion": {
+        "aurc": 0.013331899912392472,
+        "brier": 0.0512147324134675,
+        "cv_fold_aurc": [
+          0.009251398673802473,
+          0.013677752759345994,
+          0.022659187892734432,
+          0.009038350617820752,
+          0.015521013859112224
+        ],
+        "cv_mean_aurc": 0.014029540760563175,
+        "targets": {
+          "0.02": {
+            "coverage": 0.800251256281407,
+            "risk": 0.015698587127158554,
+            "accepted": 637,
+            "errors": 10,
+            "threshold": 0.8724140828148211
+          },
+          "0.05": {
+            "coverage": 0.9409547738693468,
+            "risk": 0.06141522029372497,
+            "accepted": 749,
+            "errors": 46,
+            "threshold": 0.5405517125385223
+          },
+          "0.1": {
+            "coverage": 1.0,
+            "risk": 0.10427135678391959,
+            "accepted": 796,
+            "errors": 83,
+            "threshold": 0.026199845468896872
+          }
+        }
+      },
+      "fusion+binding": {
+        "aurc": 0.012293550070683935,
+        "brier": 0.03513292870559802,
+        "cv_fold_aurc": [
+          0.00662749436257521,
+          0.009961122726212883,
+          0.013397139875880003,
+          0.006992223853541097,
+          0.010241476736356588
+        ],
+        "cv_mean_aurc": 0.009443891510913155,
+        "targets": {
+          "0.02": {
+            "coverage": 0.8580402010050251,
+            "risk": 0.01903367496339678,
+            "accepted": 683,
+            "errors": 13,
+            "threshold": 0.8429949271205318
+          },
+          "0.05": {
+            "coverage": 0.9359296482412061,
+            "risk": 0.04697986577181208,
+            "accepted": 745,
+            "errors": 35,
+            "threshold": 0.20985145404930458
+          },
+          "0.1": {
+            "coverage": 1.0,
+            "risk": 0.10427135678391959,
+            "accepted": 796,
+            "errors": 83,
+            "threshold": 0.005529963622230443
+          }
+        }
+      },
+      "fusion+evidence": {
+        "aurc": 0.011193122526503575,
+        "brier": 0.023223297149704118,
+        "cv_fold_aurc": [
+          0.005939775769387072,
+          0.008716393706592562,
+          0.011174757140542071,
+          0.0062589235583794065,
+          0.008812493399650942
+        ],
+        "cv_mean_aurc": 0.00818046871491041,
+        "targets": {
+          "0.02": {
+            "coverage": 0.907035175879397,
+            "risk": 0.024930747922437674,
+            "accepted": 722,
+            "errors": 18,
+            "threshold": 0.4132910211136589
+          },
+          "0.05": {
+            "coverage": 0.9472361809045227,
+            "risk": 0.054376657824933686,
+            "accepted": 754,
+            "errors": 41,
+            "threshold": 0.10204975486898167
+          },
+          "0.1": {
+            "coverage": 1.0,
+            "risk": 0.10427135678391959,
+            "accepted": 796,
+            "errors": 83,
+            "threshold": 0.0025842685554715705
+          }
+        }
+      },
+      "all": {
+        "aurc": 0.010857672916432772,
+        "brier": 0.019251625069958,
+        "cv_fold_aurc": [
+          0.005225733858555305,
+          0.007400346368125111,
+          0.010490809061087956,
+          0.0061855235240441874,
+          0.00961000591798215
+        ],
+        "cv_mean_aurc": 0.007782483745958943,
+        "targets": {
+          "0.02": {
+            "coverage": 0.9108040201005025,
+            "risk": 0.020689655172413793,
+            "accepted": 725,
+            "errors": 15,
+            "threshold": 0.40688694334627123
+          },
+          "0.05": {
+            "coverage": 0.9422110552763819,
+            "risk": 0.04933333333333333,
+            "accepted": 750,
+            "errors": 37,
+            "threshold": 0.11361697998714435
+          },
+          "0.1": {
+            "coverage": 0.9949748743718593,
+            "risk": 0.09974747474747475,
+            "accepted": 792,
+            "errors": 79,
+            "threshold": 0.005380234030948706
+          }
+        }
+      },
+      "evidence-no-geometry": {
+        "aurc": 0.00903110047111357,
+        "brier": 0.02957976286438782,
+        "cv_fold_aurc": [
+          0.006837279925441972,
+          0.008951489519281292,
+          0.014698345454293445,
+          0.007856683322409498,
+          0.01099896952177134
+        ],
+        "cv_mean_aurc": 0.00986855354863951,
+        "targets": {
+          "0.02": {
+            "coverage": 0.907035175879397,
+            "risk": 0.029085872576177285,
+            "accepted": 722,
+            "errors": 21,
+            "threshold": 0.5594976813735191
+          },
+          "0.05": {
+            "coverage": 0.9371859296482412,
+            "risk": 0.04691689008042895,
+            "accepted": 746,
+            "errors": 35,
+            "threshold": 0.20014589770322222
+          },
+          "0.1": {
+            "coverage": 1.0,
+            "risk": 0.10427135678391959,
+            "accepted": 796,
+            "errors": 83,
+            "threshold": 0.0011395313580655712
+          }
+        }
+      }
+    },
+    "contrasts": {
+      "fusion+evidence minus fusion": {
+        "coverage_diff_ci95": [
+          -0.012563209127397995,
+          0.061812317679444465
+        ],
+        "aurc_diff_ci95": [
+          -0.005413314132985068,
+          0.002237143931829698
+        ],
+        "risk_exceedance_given_nonempty": {
+          "fusion+evidence": 0.574,
+          "fusion": 0.739
+        },
+        "empty_acceptance_fraction": {
+          "fusion+evidence": 0.0,
+          "fusion": 0.0
+        }
+      },
+      "all minus fusion+binding": {
+        "coverage_diff_ci95": [
+          -0.01005025125628134,
+          0.023840146466334096
+        ],
+        "aurc_diff_ci95": [
+          -0.0048956047742955665,
+          0.0023132485727927993
+        ],
+        "risk_exceedance_given_nonempty": {
+          "all": 0.517,
+          "fusion+binding": 0.48
+        },
+        "empty_acceptance_fraction": {
+          "all": 0.0,
+          "fusion+binding": 0.0
+        }
+      },
+      "all minus fusion+evidence": {
+        "coverage_diff_ci95": [
+          -0.016312192735336094,
+          0.008805031446540879
+        ],
+        "aurc_diff_ci95": [
+          -0.0017352667745378918,
+          0.0009273204922000903
+        ],
+        "risk_exceedance_given_nonempty": {
+          "all": 0.517,
+          "fusion+evidence": 0.574
+        },
+        "empty_acceptance_fraction": {
+          "all": 0.0,
+          "fusion+evidence": 0.0
+        }
+      },
+      "fusion+evidence minus evidence-no-geometry": {
+        "coverage_diff_ci95": [
+          -0.011306532663316497,
+          0.020177181652591393
+        ],
+        "aurc_diff_ci95": [
+          -0.0006590580090144933,
+          0.006465037261967341
+        ],
+        "risk_exceedance_given_nonempty": {
+          "fusion+evidence": 0.574,
+          "evidence-no-geometry": 0.484
+        },
+        "empty_acceptance_fraction": {
+          "fusion+evidence": 0.0,
+          "evidence-no-geometry": 0.0
+        }
+      }
+    },
+    "sensitivity": {
+      "fusion": {
+        "coverage": 0.9778357235984355,
+        "risk": 0.050666666666666665,
+        "accepted": 750,
+        "errors": 38,
+        "threshold": 0.14050568435267144
+      },
+      "fusion+binding": {
+        "coverage": 0.9791395045632334,
+        "risk": 0.05193075898801598,
+        "accepted": 751,
+        "errors": 39,
+        "threshold": 0.03950362775128506
+      },
+      "fusion+evidence": {
+        "coverage": 0.9752281616688396,
+        "risk": 0.0481283422459893,
+        "accepted": 748,
+        "errors": 36,
+        "threshold": 0.05465555608901381
+      },
+      "all": {
+        "coverage": 0.9791395045632334,
+        "risk": 0.05193075898801598,
+        "accepted": 751,
+        "errors": 39,
+        "threshold": 0.03998271609231409
+      },
+      "evidence-no-geometry": {
+        "coverage": 0.9765319426336375,
+        "risk": 0.049399198931909215,
+        "accepted": 749,
+        "errors": 37,
+        "threshold": 0.10547986250476576
+      }
+    }
+  },
+  "Qwen2-VL-2B-Instruct": {
+    "measures": {
+      "fusion": {
+        "aurc": 0.04029649546549662,
+        "brier": 0.07587267967605825,
+        "cv_fold_aurc": [
+          0.04492102024129347,
+          0.04537210379074624,
+          0.04956978823277575,
+          0.04922789892483585,
+          0.05259837540165063
+        ],
+        "cv_mean_aurc": 0.04833783731826039,
+        "targets": {
+          "0.02": {
+            "coverage": 0.5364321608040201,
+            "risk": 0.0234192037470726,
+            "accepted": 427,
+            "errors": 10,
+            "threshold": 0.917505691305526
+          },
+          "0.05": {
+            "coverage": 0.7763819095477387,
+            "risk": 0.05825242718446602,
+            "accepted": 618,
+            "errors": 36,
+            "threshold": 0.7143865448368392
+          },
+          "0.1": {
+            "coverage": 0.878140703517588,
+            "risk": 0.10157367668097282,
+            "accepted": 699,
+            "errors": 71,
+            "threshold": 0.36296861125903807
+          }
+        }
+      },
+      "fusion+binding": {
+        "aurc": 0.038437437908977974,
+        "brier": 0.05597593489729504,
+        "cv_fold_aurc": [
+          0.03881819631620299,
+          0.0394531459931517,
+          0.04257150354165637,
+          0.04337566885718589,
+          0.04216750954056126
+        ],
+        "cv_mean_aurc": 0.04127720484975164,
+        "targets": {
+          "0.02": {
+            "coverage": 0.6005025125628141,
+            "risk": 0.01882845188284519,
+            "accepted": 478,
+            "errors": 9,
+            "threshold": 0.9165394040499292
+          },
+          "0.05": {
+            "coverage": 0.8140703517587939,
+            "risk": 0.04938271604938271,
+            "accepted": 648,
+            "errors": 32,
+            "threshold": 0.5878403501921139
+          },
+          "0.1": {
+            "coverage": 0.8680904522613065,
+            "risk": 0.085383502170767,
+            "accepted": 691,
+            "errors": 59,
+            "threshold": 0.20771178427366774
+          }
+        }
+      },
+      "fusion+evidence": {
+        "aurc": 0.027464288660528264,
+        "brier": 0.028916217453163594,
+        "cv_fold_aurc": [
+          0.030048669770368762,
+          0.0314100704325534,
+          0.030975314612621464,
+          0.03812738707588914,
+          0.03206484054550675
+        ],
+        "cv_mean_aurc": 0.032525256487387896,
+        "targets": {
+          "0.02": {
+            "coverage": 0.8027638190954773,
+            "risk": 0.023474178403755867,
+            "accepted": 639,
+            "errors": 15,
+            "threshold": 0.5487717334253108
+          },
+          "0.05": {
+            "coverage": 0.842964824120603,
+            "risk": 0.05216095380029806,
+            "accepted": 671,
+            "errors": 35,
+            "threshold": 0.15516635588902472
+          },
+          "0.1": {
+            "coverage": 0.8907035175879398,
+            "risk": 0.09732016925246827,
+            "accepted": 709,
+            "errors": 69,
+            "threshold": 0.07212851083801985
+          }
+        }
+      },
+      "all": {
+        "aurc": 0.029001971463062843,
+        "brier": 0.028889790686372874,
+        "cv_fold_aurc": [
+          0.029717263362273184,
+          0.031230212337360494,
+          0.03079841951397674,
+          0.03946232020181638,
+          0.03182693542883055
+        ],
+        "cv_mean_aurc": 0.03260703016885147,
+        "targets": {
+          "0.02": {
+            "coverage": 0.8090452261306532,
+            "risk": 0.024844720496894408,
+            "accepted": 644,
+            "errors": 16,
+            "threshold": 0.5314423489892316
+          },
+          "0.05": {
+            "coverage": 0.8417085427135679,
+            "risk": 0.04776119402985075,
+            "accepted": 670,
+            "errors": 32,
+            "threshold": 0.14199758316496702
+          },
+          "0.1": {
+            "coverage": 0.8881909547738693,
+            "risk": 0.09618104667609619,
+            "accepted": 707,
+            "errors": 68,
+            "threshold": 0.06160538112700222
+          }
+        }
+      },
+      "evidence-no-geometry": {
+        "aurc": 0.03211749998664275,
+        "brier": 0.05273725054914374,
+        "cv_fold_aurc": [
+          0.038048662259197764,
+          0.034447416813476926,
+          0.038498396583481434,
+          0.03761126985074604,
+          0.03977377830535819
+        ],
+        "cv_mean_aurc": 0.03767590476245207,
+        "targets": {
+          "0.02": {
+            "coverage": 0.7286432160804021,
+            "risk": 0.01896551724137931,
+            "accepted": 580,
+            "errors": 11,
+            "threshold": 0.84598278616306
+          },
+          "0.05": {
+            "coverage": 0.8253768844221105,
+            "risk": 0.0593607305936073,
+            "accepted": 657,
+            "errors": 39,
+            "threshold": 0.4495319589195071
+          },
+          "0.1": {
+            "coverage": 0.8932160804020101,
+            "risk": 0.10548523206751055,
+            "accepted": 711,
+            "errors": 75,
+            "threshold": 0.17500810282456608
+          }
+        }
+      }
+    },
+    "contrasts": {
+      "fusion+evidence minus fusion": {
+        "coverage_diff_ci95": [
+          0.019971105527638214,
+          0.1979357461940774
+        ],
+        "aurc_diff_ci95": [
+          -0.018943802962625274,
+          -0.007741682140245941
+        ],
+        "risk_exceedance_given_nonempty": {
+          "fusion+evidence": 0.549,
+          "fusion": 0.681
+        },
+        "empty_acceptance_fraction": {
+          "fusion+evidence": 0.0,
+          "fusion": 0.0
+        }
+      },
+      "all minus fusion+binding": {
+        "coverage_diff_ci95": [
+          0.0012562814070351536,
+          0.06409970965240248
+        ],
+        "aurc_diff_ci95": [
+          -0.016728542963811047,
+          -0.0034937887097065095
+        ],
+        "risk_exceedance_given_nonempty": {
+          "all": 0.351,
+          "fusion+binding": 0.498
+        },
+        "empty_acceptance_fraction": {
+          "all": 0.0,
+          "fusion+binding": 0.0
+        }
+      },
+      "all minus fusion+evidence": {
+        "coverage_diff_ci95": [
+          -0.026448362720402966,
+          0.012579012404353404
+        ],
+        "aurc_diff_ci95": [
+          -0.0016644221558627672,
+          0.00607637217029197
+        ],
+        "risk_exceedance_given_nonempty": {
+          "all": 0.351,
+          "fusion+evidence": 0.549
+        },
+        "empty_acceptance_fraction": {
+          "all": 0.0,
+          "fusion+evidence": 0.0
+        }
+      },
+      "fusion+evidence minus evidence-no-geometry": {
+        "coverage_diff_ci95": [
+          -0.010025377119083781,
+          0.06407035175879394
+        ],
+        "aurc_diff_ci95": [
+          -0.009520983420210835,
+          -0.0008622570587941177
+        ],
+        "risk_exceedance_given_nonempty": {
+          "fusion+evidence": 0.549,
+          "evidence-no-geometry": 0.674
+        },
+        "empty_acceptance_fraction": {
+          "fusion+evidence": 0.0,
+          "evidence-no-geometry": 0.0
+        }
+      }
+    },
+    "sensitivity": {
+      "fusion": {
+        "coverage": 0.8012987012987013,
+        "risk": 0.05186385737439222,
+        "accepted": 617,
+        "errors": 32,
+        "threshold": 0.6859035798011628
+      },
+      "fusion+binding": {
+        "coverage": 0.8441558441558441,
+        "risk": 0.04923076923076923,
+        "accepted": 650,
+        "errors": 32,
+        "threshold": 0.5515103251578156
+      },
+      "fusion+evidence": {
+        "coverage": 0.8766233766233766,
+        "risk": 0.05333333333333334,
+        "accepted": 675,
+        "errors": 36,
+        "threshold": 0.1394530015675039
+      },
+      "all": {
+        "coverage": 0.874025974025974,
+        "risk": 0.05200594353640416,
+        "accepted": 673,
+        "errors": 35,
+        "threshold": 0.11191610809709028
+      },
+      "evidence-no-geometry": {
+        "coverage": 0.8493506493506493,
+        "risk": 0.05504587155963303,
+        "accepted": 654,
+        "errors": 36,
+        "threshold": 0.4461619273294926
+      }
+    }
+  }
+}

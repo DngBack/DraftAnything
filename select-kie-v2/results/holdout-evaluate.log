@@ -1,0 +1,4 @@
+ocr-baseline 0.6183333333333333 0.6233333333333333 {'high_confidence_decisions': 97, 'high_confidence_errors': 18, 'on-page-wrong': 128, 'absent-on-page': 88, 'ungrounded-value': 7, 'miss': 5, 'absent-hallucination': 1}
+ocr-clarified 0.8366666666666667 0.8416666666666667 {'high_confidence_decisions': 157, 'on-page-wrong': 61, 'ungrounded-value': 1, 'high_confidence_errors': 21, 'absent-on-page': 27, 'miss': 9}
+image-baseline 0.29333333333333333 0.305 {'on-page-wrong': 287, 'absent-on-page': 108, 'ungrounded-value': 19, 'absent-hallucination': 9, 'high_confidence_decisions': 71, 'high_confidence_errors': 34, 'miss': 1}
+image-clarified 0.735 0.7433333333333333 {'high_confidence_decisions': 153, 'on-page-wrong': 79, 'ungrounded-value': 23, 'absent-on-page': 45, 'absent-hallucination': 12, 'high_confidence_errors': 3}

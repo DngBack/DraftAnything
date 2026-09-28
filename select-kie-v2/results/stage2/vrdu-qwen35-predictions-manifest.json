@@ -1,0 +1,11 @@
+{
+  "model_snapshot": "/home/bachdx2/hf_cache/hub/models--Qwen--Qwen3.5-2B/snapshots/15852e8c16360a2fea060d615a32b45270f8a8fc",
+  "torch": "2.6.0+cu124",
+  "max_new_tokens": 320,
+  "ocr_budget": 7600,
+  "input_sha256": {
+    "fara.jsonl.gz": "9dd5f711e34861bdf9a98e05415355b522439e8658fcef763ef8d9b6b50cdc49",
+    "split.json": "c9340ac785dd879f41439b81f4890b6717db6d7657eeb7f4e371db466c7de556"
+  },
+  "script_sha256": "d66669c21f822a8c2225e1e2621e3d121d5461b2a611fe2e281761e2df5ce5a1"
+}

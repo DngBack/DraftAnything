@@ -1,0 +1,17 @@
+{
+  "checkpoint_reconstruction_max_difference": {
+    "generic": 0.0,
+    "relation": 0.0
+  },
+  "source_partition_unique_docs": {
+    "development": 50,
+    "calibration": 50,
+    "train": 200,
+    "stage4-qwen2b": 100,
+    "test": 300,
+    "stage4-qwen9b": 100
+  },
+  "frozen_manifest_hashes": "verified",
+  "head_count": 10,
+  "human_audit": "0/200; pending"
+}

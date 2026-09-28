@@ -1,0 +1,247 @@
+{
+  "documents": 100,
+  "decisions_per_condition": 600,
+  "measures": {
+    "qwen2b-baseline": {
+      "accuracy": 0.2816666666666667,
+      "normalized_accuracy": 0.2916666666666667,
+      "present_accuracy": 0.31625835189309576,
+      "absent_accuracy": 0.17880794701986755,
+      "high_confidence_decisions": 65,
+      "high_confidence_errors": 31,
+      "missing_keys": 0,
+      "output_caps": 0,
+      "mean_generate_seconds": 1.6031594022572973,
+      "peak_memory_gib": 6.732703685760498,
+      "per_field_accuracy": {
+        "registration_num": 0.03,
+        "registrant_name": 0.12,
+        "foreign_principle_name": 0.54,
+        "file_date": 0.34,
+        "signer_name": 0.39,
+        "signer_title": 0.27
+      }
+    },
+    "qwen2b-length_control": {
+      "accuracy": 0.2683333333333333,
+      "normalized_accuracy": 0.27666666666666667,
+      "present_accuracy": 0.3363028953229399,
+      "absent_accuracy": 0.06622516556291391,
+      "high_confidence_decisions": 70,
+      "high_confidence_errors": 35,
+      "missing_keys": 0,
+      "output_caps": 0,
+      "mean_generate_seconds": 1.5941348937968725,
+      "peak_memory_gib": 6.798445701599121,
+      "per_field_accuracy": {
+        "registration_num": 0.09,
+        "registrant_name": 0.12,
+        "foreign_principle_name": 0.56,
+        "file_date": 0.36,
+        "signer_name": 0.38,
+        "signer_title": 0.1
+      }
+    },
+    "qwen2b-clarified": {
+      "accuracy": 0.7,
+      "normalized_accuracy": 0.7216666666666667,
+      "present_accuracy": 0.7193763919821826,
+      "absent_accuracy": 0.6423841059602649,
+      "high_confidence_decisions": 153,
+      "high_confidence_errors": 11,
+      "missing_keys": 0,
+      "output_caps": 0,
+      "mean_generate_seconds": 1.5338620809547137,
+      "peak_memory_gib": 6.798445701599121,
+      "per_field_accuracy": {
+        "registration_num": 0.98,
+        "registrant_name": 0.59,
+        "foreign_principle_name": 0.56,
+        "file_date": 0.71,
+        "signer_name": 0.41,
+        "signer_title": 0.95
+      }
+    },
+    "qwen9b-baseline": {
+      "accuracy": 0.5066666666666667,
+      "normalized_accuracy": 0.5266666666666666,
+      "present_accuracy": 0.5657015590200446,
+      "absent_accuracy": 0.33112582781456956,
+      "high_confidence_decisions": 251,
+      "high_confidence_errors": 71,
+      "missing_keys": 0,
+      "output_caps": 0,
+      "mean_generate_seconds": 3.0482142076687886,
+      "peak_memory_gib": 22.555688858032227,
+      "per_field_accuracy": {
+        "registration_num": 0.95,
+        "registrant_name": 0.06,
+        "foreign_principle_name": 0.71,
+        "file_date": 0.42,
+        "signer_name": 0.44,
+        "signer_title": 0.46
+      }
+    },
+    "qwen9b-length_control": {
+      "accuracy": 0.495,
+      "normalized_accuracy": 0.5166666666666667,
+      "present_accuracy": 0.576837416481069,
+      "absent_accuracy": 0.25165562913907286,
+      "high_confidence_decisions": 266,
+      "high_confidence_errors": 83,
+      "missing_keys": 0,
+      "output_caps": 0,
+      "mean_generate_seconds": 3.8789965928625314,
+      "peak_memory_gib": 22.55314826965332,
+      "per_field_accuracy": {
+        "registration_num": 0.95,
+        "registrant_name": 0.07,
+        "foreign_principle_name": 0.69,
+        "file_date": 0.48,
+        "signer_name": 0.44,
+        "signer_title": 0.34
+      }
+    },
+    "qwen9b-clarified": {
+      "accuracy": 0.76,
+      "normalized_accuracy": 0.795,
+      "present_accuracy": 0.7817371937639198,
+      "absent_accuracy": 0.695364238410596,
+      "high_confidence_decisions": 308,
+      "high_confidence_errors": 23,
+      "missing_keys": 0,
+      "output_caps": 0,
+      "mean_generate_seconds": 3.927690578158945,
+      "peak_memory_gib": 20.14878749847412,
+      "per_field_accuracy": {
+        "registration_num": 0.96,
+        "registrant_name": 0.72,
+        "foreign_principle_name": 0.65,
+        "file_date": 0.77,
+        "signer_name": 0.49,
+        "signer_title": 0.97
+      }
+    }
+  },
+  "contrasts": {
+    "qwen2b-clarified minus qwen2b-length_control": {
+      "official": {
+        "difference": 0.43166666666666664,
+        "ci95": [
+          0.4,
+          0.4667083333333331
+        ]
+      },
+      "normalized": {
+        "difference": 0.445,
+        "ci95": [
+          0.4116666666666667,
+          0.48
+        ]
+      }
+    },
+    "qwen9b-clarified minus qwen9b-length_control": {
+      "official": {
+        "difference": 0.265,
+        "ci95": [
+          0.23333333333333334,
+          0.295
+        ]
+      },
+      "normalized": {
+        "difference": 0.2783333333333333,
+        "ci95": [
+          0.245,
+          0.30833333333333335
+        ]
+      }
+    },
+    "qwen2b-length_control minus qwen2b-baseline": {
+      "official": {
+        "difference": -0.013333333333333334,
+        "ci95": [
+          -0.03333333333333333,
+          0.006666666666666667
+        ]
+      },
+      "normalized": {
+        "difference": -0.015,
+        "ci95": [
+          -0.035,
+          0.005
+        ]
+      }
+    },
+    "qwen9b-length_control minus qwen9b-baseline": {
+      "official": {
+        "difference": -0.011666666666666667,
+        "ci95": [
+          -0.025041666666666667,
+          0.0033333333333333335
+        ]
+      },
+      "normalized": {
+        "difference": -0.01,
+        "ci95": [
+          -0.025,
+          0.005
+        ]
+      }
+    },
+    "qwen9b-baseline minus qwen2b-baseline": {
+      "official": {
+        "difference": 0.225,
+        "ci95": [
+          0.19,
+          0.26166666666666666
+        ]
+      },
+      "normalized": {
+        "difference": 0.235,
+        "ci95": [
+          0.2,
+          0.27
+        ]
+      }
+    },
+    "qwen9b-length_control minus qwen2b-length_control": {
+      "official": {
+        "difference": 0.22666666666666666,
+        "ci95": [
+          0.19166666666666668,
+          0.265
+        ]
+      },
+      "normalized": {
+        "difference": 0.24,
+        "ci95": [
+          0.20333333333333334,
+          0.2783333333333333
+        ]
+      }
+    },
+    "qwen9b-clarified minus qwen2b-clarified": {
+      "official": {
+        "difference": 0.06,
+        "ci95": [
+          0.035,
+          0.085
+        ]
+      },
+      "normalized": {
+        "difference": 0.07333333333333333,
+        "ci95": [
+          0.045,
+          0.10166666666666667
+        ]
+      }
+    }
+  },
+  "human_audit_status": "pending",
+  "inputs_sha256": {
+    "qwen9b-image-predictions.jsonl": "6784f60e7f71eea5e75b1de3c66002f6082fedfe117374b4202cb8772e512653",
+    "qwen9b-image-shard0-predictions.jsonl": "65bc28fa186d80804d35ac1d8042763c3abc680dddb599ede6aacb3babcf57a3",
+    "qwen2b-image-predictions.jsonl": "ac1362dc7eaa9674a3e19cd43836e312970b49a87c98d4d05296e07a4fc54410",
+    "qwen9b-image-shard1-predictions.jsonl": "52a8ebb2e1feb8e2cc2df5aebb87471f22087e0363d8d264c66dc27de3299f81"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "status": "posthoc after observing ABSENT contribution; no fresh confirmation for this calibration variant",
+  "fit_data": "old stage2 calibration50 only; no stage6 labels used to select thresholds",
+  "criterion": "same empirical alpha5% independently per field; no formal risk certificate",
+  "measures": {
+    "generic": {
+      "coverage": 0.3416666666666667,
+      "accepted": 205,
+      "errors": 9,
+      "risk": 0.04390243902439024,
+      "thresholds": {
+        "file_date": 0.8496328592300415,
+        "foreign_principle_name": null,
+        "registrant_name": 0.9327149391174316,
+        "registration_num": 0.11744169890880585,
+        "signer_name": 0.9250620007514954,
+        "signer_title": null
+      },
+      "per_field": {
+        "file_date": {
+          "accepted": 82,
+          "errors": 3,
+          "risk": 0.036585365853658534
+        },
+        "foreign_principle_name": {
+          "accepted": 0,
+          "errors": 0,
+          "risk": null
+        },
+        "registrant_name": {
+          "accepted": 18,
+          "errors": 2,
+          "risk": 0.1111111111111111
+        },
+        "registration_num": {
+          "accepted": 100,
+          "errors": 4,
+          "risk": 0.04
+        },
+        "signer_name": {
+          "accepted": 5,
+          "errors": 0,
+          "risk": 0.0
+        },
+        "signer_title": {
+          "accepted": 0,
+          "errors": 0,
+          "risk": null
+        }
+      }
+    },
+    "relation": {
+      "coverage": 0.465,
+      "accepted": 279,
+      "errors": 10,
+      "risk": 0.035842293906810034,
+      "thresholds": {
+        "file_date": 0.8735825419425964,
+        "foreign_principle_name": null,
+        "registrant_name": 0.9101468324661255,
+        "registration_num": 0.20905666053295135,
+        "signer_name": 0.957485556602478,
+        "signer_title": 0.9565480947494507
+      },
+      "per_field": {
+        "file_date": {
+          "accepted": 82,
+          "errors": 3,
+          "risk": 0.036585365853658534
+        },
+        "foreign_principle_name": {
+          "accepted": 0,
+          "errors": 0,
+          "risk": null
+        },
+        "registrant_name": {
+          "accepted": 61,
+          "errors": 3,
+          "risk": 0.04918032786885246
+        },
+        "registration_num": {
+          "accepted": 100,
+          "errors": 4,
+          "risk": 0.04
+        },
+        "signer_name": {
+          "accepted": 5,
+          "errors": 0,
+          "risk": 0.0
+        },
+        "signer_title": {
+          "accepted": 31,
+          "errors": 0,
+          "risk": 0.0
+        }
+      }
+    },
+    "semantic-HGB": {
+      "coverage": 0.475,
+      "accepted": 285,
+      "errors": 12,
+      "risk": 0.042105263157894736,
+      "thresholds": {
+        "file_date": 0.9015341541885501,
+        "foreign_principle_name": 0.8050195095360146,
+        "registrant_name": 0.7015812348516293,
+        "registration_num": 0.047532844343440704,
+        "signer_name": null,
+        "signer_title": 0.9435514924957153
+      },
+      "per_field": {
+        "file_date": {
+          "accepted": 79,
+          "errors": 3,
+          "risk": 0.0379746835443038
+        },
+        "foreign_principle_name": {
+          "accepted": 6,
+          "errors": 1,
+          "risk": 0.16666666666666666
+        },
+        "registrant_name": {
+          "accepted": 71,
+          "errors": 3,
+          "risk": 0.04225352112676056
+        },
+        "registration_num": {
+          "accepted": 100,
+          "errors": 4,
+          "risk": 0.04
+        },
+        "signer_name": {
+          "accepted": 0,
+          "errors": 0,
+          "risk": null
+        },
+        "signer_title": {
+          "accepted": 29,
+          "errors": 1,
+          "risk": 0.034482758620689655
+        }
+      }
+    }
+  }
+}

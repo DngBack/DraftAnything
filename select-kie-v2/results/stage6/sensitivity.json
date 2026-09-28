@@ -1,0 +1,106 @@
+{
+  "normalized_secondary": {
+    "difference": -0.0030285600163416845,
+    "ci95": [
+      -0.00787747712278531,
+      0.0033210133145507035
+    ]
+  },
+  "present_only_posthoc": {
+    "decisions": 450,
+    "generic_aurc": 0.06715931519272798,
+    "relation_aurc": 0.06061088266930443,
+    "difference": -0.006548432523423554,
+    "ci95": [
+      -0.017568982605971242,
+      0.004011228567119118
+    ]
+  },
+  "per_field_secondary": {
+    "file_date": {
+      "generic": {
+        "accepted": 79,
+        "errors": 3,
+        "coverage": 0.79,
+        "risk": 0.0379746835443038
+      },
+      "relation": {
+        "accepted": 81,
+        "errors": 3,
+        "coverage": 0.81,
+        "risk": 0.037037037037037035
+      }
+    },
+    "foreign_principle_name": {
+      "generic": {
+        "accepted": 0,
+        "errors": 0,
+        "coverage": 0.0,
+        "risk": null
+      },
+      "relation": {
+        "accepted": 1,
+        "errors": 0,
+        "coverage": 0.01,
+        "risk": 0.0
+      }
+    },
+    "registrant_name": {
+      "generic": {
+        "accepted": 29,
+        "errors": 3,
+        "coverage": 0.29,
+        "risk": 0.10344827586206896
+      },
+      "relation": {
+        "accepted": 57,
+        "errors": 3,
+        "coverage": 0.57,
+        "risk": 0.05263157894736842
+      }
+    },
+    "registration_num": {
+      "generic": {
+        "accepted": 91,
+        "errors": 1,
+        "coverage": 0.91,
+        "risk": 0.01098901098901099
+      },
+      "relation": {
+        "accepted": 94,
+        "errors": 1,
+        "coverage": 0.94,
+        "risk": 0.010638297872340425
+      }
+    },
+    "signer_name": {
+      "generic": {
+        "accepted": 6,
+        "errors": 0,
+        "coverage": 0.06,
+        "risk": 0.0
+      },
+      "relation": {
+        "accepted": 12,
+        "errors": 1,
+        "coverage": 0.12,
+        "risk": 0.08333333333333333
+      }
+    },
+    "signer_title": {
+      "generic": {
+        "accepted": 0,
+        "errors": 0,
+        "coverage": 0.0,
+        "risk": null
+      },
+      "relation": {
+        "accepted": 93,
+        "errors": 1,
+        "coverage": 0.93,
+        "risk": 0.010752688172043012
+      }
+    }
+  },
+  "interpretation": "pooled alpha5% does not establish per-field risk control; coverage gain includes ABSENT decisions"
+}

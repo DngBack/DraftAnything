@@ -1,0 +1,379 @@
+{
+  "documents": 100,
+  "gold_present_decisions": 444,
+  "measures": {
+    "ocr-baseline": {
+      "decisions": 600,
+      "accuracy": 0.6183333333333333,
+      "normalized_accuracy": 0.6233333333333333,
+      "present_accuracy": 0.6846846846846847,
+      "absent_accuracy": 0.42948717948717946,
+      "stats": {
+        "high_confidence_decisions": 97,
+        "high_confidence_errors": 18,
+        "on-page-wrong": 128,
+        "absent-on-page": 88,
+        "ungrounded-value": 7,
+        "miss": 5,
+        "absent-hallucination": 1
+      },
+      "per_field": {
+        "registration_num": {
+          "decisions": 100,
+          "correct": 90,
+          "normalized_correct": 90
+        },
+        "registrant_name": {
+          "decisions": 100,
+          "correct": 52,
+          "normalized_correct": 52
+        },
+        "foreign_principle_name": {
+          "decisions": 100,
+          "correct": 54,
+          "normalized_correct": 56
+        },
+        "file_date": {
+          "decisions": 100,
+          "correct": 59,
+          "normalized_correct": 60
+        },
+        "signer_name": {
+          "decisions": 100,
+          "correct": 61,
+          "normalized_correct": 61
+        },
+        "signer_title": {
+          "decisions": 100,
+          "correct": 55,
+          "normalized_correct": 55
+        }
+      },
+      "mean_amortized_generate_seconds": 0.7075168947299244,
+      "max_peak_memory_gib": 6.8244194984436035,
+      "capped_outputs": 0,
+      "truncated_inputs": 0,
+      "frozen_selector_transfer": {
+        "HGB-fusion": {
+          "threshold_from_stage2": 0.9576172795037092,
+          "coverage": 0.16166666666666665,
+          "accepted": 97,
+          "official_errors": 2,
+          "normalized_errors": 2,
+          "official_risk": 0.020618556701030927,
+          "normalized_risk": 0.020618556701030927,
+          "mean_head_seconds_per_doc": 8.248544996604323e-05
+        },
+        "HGB-evidence": {
+          "threshold_from_stage2": 0.9935144467192044,
+          "coverage": 0.03666666666666667,
+          "accepted": 22,
+          "official_errors": 1,
+          "normalized_errors": 1,
+          "official_risk": 0.045454545454545456,
+          "normalized_risk": 0.045454545454545456,
+          "mean_head_seconds_per_doc": 5.232343100942671e-05
+        }
+      },
+      "mean_evidence_feature_seconds_per_doc": 0.012504925028188153
+    },
+    "ocr-clarified": {
+      "decisions": 600,
+      "accuracy": 0.8366666666666667,
+      "normalized_accuracy": 0.8416666666666667,
+      "present_accuracy": 0.8400900900900901,
+      "absent_accuracy": 0.8269230769230769,
+      "stats": {
+        "high_confidence_decisions": 157,
+        "on-page-wrong": 61,
+        "ungrounded-value": 1,
+        "high_confidence_errors": 21,
+        "absent-on-page": 27,
+        "miss": 9
+      },
+      "per_field": {
+        "registration_num": {
+          "decisions": 100,
+          "correct": 91,
+          "normalized_correct": 91
+        },
+        "registrant_name": {
+          "decisions": 100,
+          "correct": 91,
+          "normalized_correct": 91
+        },
+        "foreign_principle_name": {
+          "decisions": 100,
+          "correct": 58,
+          "normalized_correct": 60
+        },
+        "file_date": {
+          "decisions": 100,
+          "correct": 84,
+          "normalized_correct": 85
+        },
+        "signer_name": {
+          "decisions": 100,
+          "correct": 78,
+          "normalized_correct": 78
+        },
+        "signer_title": {
+          "decisions": 100,
+          "correct": 100,
+          "normalized_correct": 100
+        }
+      },
+      "mean_amortized_generate_seconds": 0.6824742443085415,
+      "max_peak_memory_gib": 6.955505847930908,
+      "capped_outputs": 0,
+      "truncated_inputs": 0,
+      "frozen_selector_transfer": {
+        "HGB-fusion": {
+          "threshold_from_stage2": 0.9576172795037092,
+          "coverage": 0.20833333333333334,
+          "accepted": 125,
+          "official_errors": 2,
+          "normalized_errors": 2,
+          "official_risk": 0.016,
+          "normalized_risk": 0.016,
+          "mean_head_seconds_per_doc": 4.6579570043832066e-05
+        },
+        "HGB-evidence": {
+          "threshold_from_stage2": 0.9935144467192044,
+          "coverage": 0.03333333333333333,
+          "accepted": 20,
+          "official_errors": 0,
+          "normalized_errors": 0,
+          "official_risk": 0.0,
+          "normalized_risk": 0.0,
+          "mean_head_seconds_per_doc": 5.017667077481747e-05
+        }
+      },
+      "mean_evidence_feature_seconds_per_doc": 0.012275597393745556
+    },
+    "image-baseline": {
+      "decisions": 600,
+      "accuracy": 0.29333333333333333,
+      "normalized_accuracy": 0.305,
+      "present_accuracy": 0.30855855855855857,
+      "absent_accuracy": 0.25,
+      "stats": {
+        "on-page-wrong": 287,
+        "absent-on-page": 108,
+        "ungrounded-value": 19,
+        "absent-hallucination": 9,
+        "high_confidence_decisions": 71,
+        "high_confidence_errors": 34,
+        "miss": 1
+      },
+      "per_field": {
+        "registration_num": {
+          "decisions": 100,
+          "correct": 3,
+          "normalized_correct": 3
+        },
+        "registrant_name": {
+          "decisions": 100,
+          "correct": 6,
+          "normalized_correct": 7
+        },
+        "foreign_principle_name": {
+          "decisions": 100,
+          "correct": 42,
+          "normalized_correct": 46
+        },
+        "file_date": {
+          "decisions": 100,
+          "correct": 36,
+          "normalized_correct": 36
+        },
+        "signer_name": {
+          "decisions": 100,
+          "correct": 50,
+          "normalized_correct": 52
+        },
+        "signer_title": {
+          "decisions": 100,
+          "correct": 39,
+          "normalized_correct": 39
+        }
+      },
+      "mean_amortized_generate_seconds": 1.6043295527936425,
+      "max_peak_memory_gib": 6.800710201263428,
+      "capped_outputs": 0,
+      "truncated_inputs": 0,
+      "frozen_selector_transfer": {
+        "HGB-fusion": {
+          "threshold_from_stage2": 0.9576172795037092,
+          "coverage": 0.03833333333333333,
+          "accepted": 23,
+          "official_errors": 18,
+          "normalized_errors": 18,
+          "official_risk": 0.782608695652174,
+          "normalized_risk": 0.782608695652174,
+          "mean_head_seconds_per_doc": 4.7705769538879395e-05
+        },
+        "HGB-evidence": {
+          "threshold_from_stage2": 0.9935144467192044,
+          "coverage": 0.0,
+          "accepted": 0,
+          "official_errors": 0,
+          "normalized_errors": 0,
+          "official_risk": null,
+          "normalized_risk": null,
+          "mean_head_seconds_per_doc": 5.118305096402764e-05
+        }
+      },
+      "mean_evidence_feature_seconds_per_doc": 0.012738493586657568
+    },
+    "image-clarified": {
+      "decisions": 600,
+      "accuracy": 0.735,
+      "normalized_accuracy": 0.7433333333333333,
+      "present_accuracy": 0.7702702702702703,
+      "absent_accuracy": 0.6346153846153846,
+      "stats": {
+        "high_confidence_decisions": 153,
+        "on-page-wrong": 79,
+        "ungrounded-value": 23,
+        "absent-on-page": 45,
+        "absent-hallucination": 12,
+        "high_confidence_errors": 3
+      },
+      "per_field": {
+        "registration_num": {
+          "decisions": 100,
+          "correct": 94,
+          "normalized_correct": 94
+        },
+        "registrant_name": {
+          "decisions": 100,
+          "correct": 67,
+          "normalized_correct": 68
+        },
+        "foreign_principle_name": {
+          "decisions": 100,
+          "correct": 53,
+          "normalized_correct": 56
+        },
+        "file_date": {
+          "decisions": 100,
+          "correct": 79,
+          "normalized_correct": 80
+        },
+        "signer_name": {
+          "decisions": 100,
+          "correct": 52,
+          "normalized_correct": 52
+        },
+        "signer_title": {
+          "decisions": 100,
+          "correct": 96,
+          "normalized_correct": 96
+        }
+      },
+      "mean_amortized_generate_seconds": 1.551302751840558,
+      "max_peak_memory_gib": 6.804250240325928,
+      "capped_outputs": 0,
+      "truncated_inputs": 0,
+      "frozen_selector_transfer": {
+        "HGB-fusion": {
+          "threshold_from_stage2": 0.9576172795037092,
+          "coverage": 0.19166666666666668,
+          "accepted": 115,
+          "official_errors": 0,
+          "normalized_errors": 0,
+          "official_risk": 0.0,
+          "normalized_risk": 0.0,
+          "mean_head_seconds_per_doc": 4.788367892615497e-05
+        },
+        "HGB-evidence": {
+          "threshold_from_stage2": 0.9935144467192044,
+          "coverage": 0.0,
+          "accepted": 0,
+          "official_errors": 0,
+          "normalized_errors": 0,
+          "official_risk": null,
+          "normalized_risk": null,
+          "mean_head_seconds_per_doc": 5.21436904091388e-05
+        }
+      },
+      "mean_evidence_feature_seconds_per_doc": 0.012394318814622239
+    }
+  },
+  "contrasts": {
+    "image-baseline minus ocr-baseline": {
+      "correct": {
+        "accuracy_difference": -0.325,
+        "ci95": [
+          -0.37,
+          -0.2783333333333333
+        ]
+      },
+      "normalized_correct": {
+        "accuracy_difference": -0.31833333333333336,
+        "ci95": [
+          -0.363375,
+          -0.27166666666666667
+        ]
+      }
+    },
+    "image-clarified minus ocr-clarified": {
+      "correct": {
+        "accuracy_difference": -0.10166666666666667,
+        "ci95": [
+          -0.12833333333333333,
+          -0.075
+        ]
+      },
+      "normalized_correct": {
+        "accuracy_difference": -0.09833333333333333,
+        "ci95": [
+          -0.125,
+          -0.07166666666666667
+        ]
+      }
+    },
+    "ocr-clarified minus ocr-baseline": {
+      "correct": {
+        "accuracy_difference": 0.21833333333333332,
+        "ci95": [
+          0.18333333333333332,
+          0.25333333333333335
+        ]
+      },
+      "normalized_correct": {
+        "accuracy_difference": 0.21833333333333332,
+        "ci95": [
+          0.18333333333333332,
+          0.25333333333333335
+        ]
+      }
+    },
+    "image-clarified minus image-baseline": {
+      "correct": {
+        "accuracy_difference": 0.44166666666666665,
+        "ci95": [
+          0.40329166666666666,
+          0.48
+        ]
+      },
+      "normalized_correct": {
+        "accuracy_difference": 0.43833333333333335,
+        "ci95": [
+          0.3983333333333333,
+          0.4766666666666667
+        ]
+      }
+    }
+  },
+  "bootstrap": 2000,
+  "seed": 20260928,
+  "model": "Qwen3.5-2B",
+  "limitations": "same dataset; document holdout, not registrant/person holdout; schema clarification is not architecture novelty",
+  "inputs_sha256": {
+    "holdout-manifest.json": "27251d91768ee46a214526cd54f1181a7cf4389d1c6e8eb0e8f58aa6f2fc4108",
+    "ocr-predictions.jsonl": "ccaf6f32312fbca34a48bf5857b9f9ba8f54367e1b825022572ee80959e74198",
+    "image-predictions.jsonl": "ae9eddd2e5f3168d493e0295cd0c00ab16a5193c84787e6330ba954eb6ce5404"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "status": "fresh100-document confirmation; heads/calibration frozen",
+  "documents": 100,
+  "decisions": 600,
+  "extractor_accuracy": 0.7883333333333333,
+  "normalized_extractor_accuracy": 0.805,
+  "high_confidence_decisions": 342,
+  "high_confidence_errors": 25,
+  "measures": {
+    "generic": {
+      "aurc": 0.06587926720744675,
+      "normalized_aurc": 0.05032024212487126,
+      "brier": 0.11870423701856463,
+      "coverage": 0.3416666666666667,
+      "risk": 0.03414634146341464,
+      "accepted": 205,
+      "errors": 7,
+      "normalized_errors": 3,
+      "threshold": 0.9217638969421387,
+      "accepted_present": 205,
+      "errors_present": 7,
+      "accepted_absent": 0,
+      "errors_absent": 0
+    },
+    "relation": {
+      "aurc": 0.05714880819290173,
+      "normalized_aurc": 0.047291682108529576,
+      "brier": 0.1077754530127971,
+      "coverage": 0.5633333333333334,
+      "risk": 0.026627218934911243,
+      "accepted": 338,
+      "errors": 9,
+      "normalized_errors": 4,
+      "threshold": 0.9283052682876587,
+      "accepted_present": 244,
+      "errors_present": 8,
+      "accepted_absent": 94,
+      "errors_absent": 1
+    }
+  },
+  "paired_bootstrap": {
+    "relation_minus_generic_aurc": -0.008730459014545014,
+    "aurc_ci95": [
+      -0.017149795622922976,
+      -0.0004942855156472374
+    ],
+    "coverage_difference": 0.22166666666666668,
+    "coverage_ci95": [
+      0.19999999999999996,
+      0.245
+    ],
+    "samples": 2000
+  },
+  "encoder_truncated_unique_texts": 0,
+  "encoder_seconds": 1.6031105240108445,
+  "output_caps": 0,
+  "missing_keys": 0,
+  "human_audit": "pending; no binding-specific claim",
+  "scalar_only_references": {
+    "HGB-fusion": {
+      "aurc": 0.08603794286903524,
+      "normalized_aurc": 0.07344157849863439,
+      "brier": 0.13493043091081144,
+      "coverage": 0.2783333333333333,
+      "risk": 0.041916167664670656,
+      "accepted": 167,
+      "errors": 7,
+      "threshold": 0.9576172795037092,
+      "sklearn": "1.9.1"
+    },
+    "HGB-evidence": {
+      "aurc": 0.06030060125160807,
+      "normalized_aurc": 0.04695261388642641,
+      "brier": 0.09437067315764057,
+      "coverage": 0.011666666666666667,
+      "risk": 0.0,
+      "accepted": 7,
+      "errors": 0,
+      "threshold": 0.9935144467192044,
+      "sklearn": "1.9.1"
+    }
+  }
+}

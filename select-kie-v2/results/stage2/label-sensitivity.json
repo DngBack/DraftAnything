@@ -1,0 +1,308 @@
+{
+  "vrdu-predictions": {
+    "post_hoc": true,
+    "rule": "case/punctuation-insensitive alphanumeric names/title; remove Date of signature label from gold date; fixed original scores and thresholds",
+    "official_error_rate": 0.7588888888888888,
+    "normalized_error_rate": 0.7461111111111111,
+    "changed_decisions": 23,
+    "changed_examples_first20": [
+      {
+        "doc": "20080626_DLA Piper US LLP_Woolley, Jessica S._Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "The Executive Office of Dubai; Government of Turkey; Borse Dubai Limited",
+        "gold": "THE EXECUTIVE OFFICE OF DUBAI; Government of Turkey; Borse Dubai Limited\n"
+      },
+      {
+        "doc": "20090408_Arab Information Center_Sherif, Walid Mahmoud Sayed Ahmed_Short-Form.pdf",
+        "field": "registrant_name",
+        "pred": "walid mahmoud sayed ahmed sherif",
+        "gold": "walid Mahmoud Sayed Ahmed Sherif\n"
+      },
+      {
+        "doc": "20090925_CMGRP, Inc._Kline, Laura_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Government of the Federal District (Mexico City), Temasek Holdings, Government of the Bahamas, Bahrain Economic Development Board",
+        "gold": "Government of the Federal District (Mexico City)\nTemasek Holdings\nGovernment of the Bahamas\nBahrain Economic Development Board\n"
+      },
+      {
+        "doc": "20090925_CMGRP, Inc._Kline, Laura_Short-Form.pdf",
+        "field": "file_date",
+        "pred": "September 24, 2009",
+        "gold": "September 24, 2009\n(Date of signature)\n"
+      },
+      {
+        "doc": "20100122_Gephardt Group Government Affairs, LLC_Goode, Catherine Ann_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Republic of Turkey, Government of Georgia",
+        "gold": "Republic of Turkey\nGovernment of Georgia\n"
+      },
+      {
+        "doc": "20101215_Venable, LLP_Moore, Powell_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "His Highness Sheikh Khalid Bin Saqr Al Qasimi, Hong Kong Trade Development Council",
+        "gold": "His Highness Sheikh Khalid Bin Saqr Al Qasimi\nHong Kong Trade Development Council\n"
+      },
+      {
+        "doc": "20110805_Squire Patton Boggs, LLP_Nardotti, Michael J. Jr._Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Republic of Croatia",
+        "gold": "Republic of Croatia.\n"
+      },
+      {
+        "doc": "20111103_Barbados Investment _ Development Corp. Barbados Tourism_Franklin, Andrea_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "BARBADOS TOURISM AUTHORITY",
+        "gold": "Barbados Tourism Authority\n"
+      },
+      {
+        "doc": "20111103_Barbados Investment _ Development Corp. Barbados Tourism_Franklin, Andrea_Short-Form.pdf",
+        "field": "file_date",
+        "pred": "10/20/2011",
+        "gold": "10/20/2011\n(Date of signature)\n"
+      },
+      {
+        "doc": "20121119_Commonwealth of Dominica Maritime Registry, Inc._Burton, William Arthur_Short-Form.pdf",
+        "field": "signer_name",
+        "pred": "William Arthur Burton",
+        "gold": "William Arthur BURTON\n"
+      },
+      {
+        "doc": "20130528_JETRO, New York_Horita, Noriyasu_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Japan External Trade Organization (JETRO), Tokyo, Japan",
+        "gold": "Japan External Trade Organization (JETRO), Tokyo, Japan:\n"
+      },
+      {
+        "doc": "20140416_Ketchum Inc. NY_Crimmins, Julie Sarah_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Republic of Ecuador",
+        "gold": "REPUBLIC OF ECUADOR\n"
+      },
+      {
+        "doc": "20150702_Greenberg Traurig, LLP_Yonkman, David_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Libya Institute of Advanced Studies (LIAS) (via Sanitas International), Kurdistan Regional Government (KRG)",
+        "gold": "Libya Institute of Advanced Studies (LIAS) (via Sanitas International)\nKurdistan Regional Government (KRG)\n"
+      },
+      {
+        "doc": "20150831_Ketchum Inc. NY_Brandon, Emily Keiko_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Republic of Honduras",
+        "gold": "REPUBLIC OF HONDURAS\n"
+      },
+      {
+        "doc": "20150925_DCI Group AZ, LLC_Horrell, Chad_Short-Form.pdf",
+        "field": "signer_name",
+        "pred": "Chad Horrell",
+        "gold": "/ Chad Horrell\n"
+      },
+      {
+        "doc": "20170130_Burson-Marsteller, LLC (Washington, DC)_Martinez, Natalie_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Consejo de Promocion Turistica De Mexico, S.A.",
+        "gold": "Consejo de Promocion Turistica De Mexico, S.A\n"
+      },
+      {
+        "doc": "20170130_Burson-Marsteller, LLC (Washington, DC)_Pruitt, David_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Consejo De Promocion Turistica De Mexico, S.A.",
+        "gold": "Consejo De Promocion Turistica De Mexico, S.A\n"
+      },
+      {
+        "doc": "20170130_Burson-Marsteller, LLC (Washington, DC)_Thompson, Randi_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Consejo De Promocion Turistica De Mexico, S.A.",
+        "gold": "Consejo De Promocion Turistica De Mexico, S.A\n"
+      },
+      {
+        "doc": "20170424_Singapore Tourism Board_Yang, Yawen_Short-Form.pdf",
+        "field": "signer_name",
+        "pred": "Yawen Yang",
+        "gold": "YAWEN YANG\n"
+      },
+      {
+        "doc": "20171017_Italian Government Travel Office, Chicago_Chillemi, Mina Amendola_Short-Form.pdf",
+        "field": "signer_name",
+        "pred": "Mina Amendola Chillemi",
+        "gold": "Mina Amendola Chillemi.\n"
+      }
+    ],
+    "scores": {
+      "LR-fusion": {
+        "official_aurc": 0.7479214419318584,
+        "normalized_aurc": 0.7414369925328923,
+        "accepted_at_original_threshold": 3,
+        "official_accepted_errors": 2,
+        "normalized_accepted_errors": 2
+      },
+      "HGB-fusion": {
+        "official_aurc": 0.7234414003356096,
+        "normalized_aurc": 0.71713649424023,
+        "accepted_at_original_threshold": 13,
+        "official_accepted_errors": 6,
+        "normalized_accepted_errors": 6
+      },
+      "HGB-evidence": {
+        "official_aurc": 0.5348436564144783,
+        "normalized_aurc": 0.5219492098037428,
+        "accepted_at_original_threshold": 66,
+        "official_accepted_errors": 10,
+        "normalized_accepted_errors": 9
+      },
+      "HGB-no-geometry": {
+        "official_aurc": 0.6906801390796957,
+        "normalized_aurc": 0.6834850603923496,
+        "accepted_at_original_threshold": 14,
+        "official_accepted_errors": 7,
+        "normalized_accepted_errors": 7
+      }
+    }
+  },
+  "vrdu-qwen35-predictions": {
+    "post_hoc": true,
+    "rule": "case/punctuation-insensitive alphanumeric names/title; remove Date of signature label from gold date; fixed original scores and thresholds",
+    "official_error_rate": 0.4538888888888889,
+    "normalized_error_rate": 0.4438888888888889,
+    "changed_decisions": 18,
+    "changed_examples_first20": [
+      {
+        "doc": "20090409_Daniel J. Edelman, Inc._Segall, Jules Peter_Short-Form.pdf",
+        "field": "file_date",
+        "pred": "april 92009",
+        "gold": "april 92009\n(Date of signature)\n"
+      },
+      {
+        "doc": "20090414_DLA Piper US LLP_Shimberg, Steven_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Government of Alberta",
+        "gold": "GOVERNMENT OF ALBERTA\n"
+      },
+      {
+        "doc": "20090722_BGR Government Affairs, LLC_Turenne, William Joseph_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Republic of India; Kurdistan Regional Government; State of Qatar; Embassy of Poland",
+        "gold": "Republic of India\nKurdistan Regional Government\nState of Qatar\nEmbassy of Poland\n"
+      },
+      {
+        "doc": "20100909_Gephardt Group Government Affairs, LLC_Messmer, Michael_Short-Form.pdf",
+        "field": "file_date",
+        "pred": "September 9, 2010",
+        "gold": "September\n9, 2010\n(Date of signature)\n"
+      },
+      {
+        "doc": "20110805_Squire Patton Boggs, LLP_Nardotti, Michael J. Jr._Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Republic of Croatia",
+        "gold": "Republic of Croatia.\n"
+      },
+      {
+        "doc": "20111028_Scottish Enterprise_Hamilton, Sharon Elizabeth_Short-Form.pdf",
+        "field": "registrant_name",
+        "pred": "Scottish Development International",
+        "gold": "Scottish Development International.\n"
+      },
+      {
+        "doc": "20140224_Ketchum Inc. NY_Kontesi, Amalia_Short-Form.pdf",
+        "field": "file_date",
+        "pred": "02/20/2014",
+        "gold": "02/20/2014\n(Date of signature"
+      },
+      {
+        "doc": "20150119_Rogich Communications Group_Rogich, Sigmund_Short-Form.pdf",
+        "field": "file_date",
+        "pred": "01/16/15",
+        "gold": "1/16/15\n(Date of signature)\n"
+      },
+      {
+        "doc": "20150119_United Lao Council for Peace, Freedom and Reconstruction (ULCPFR)_Vang, Victor_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Khamkeo Sanasery; Chuyoua",
+        "gold": "Khamkeo Sanasery; Chuyoua.\n"
+      },
+      {
+        "doc": "20150331_DLA Piper US LLP_Bernstein, Matthew_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Embassy of the United Arab Emirates; German State of Rheinland-Pfalz; Royal Embassy of Saudi Arabia",
+        "gold": "Embassy of the United Arab Emirates, German State of Rheinland-Pfalz, Royal Embassy of Saudi Arabia\n"
+      },
+      {
+        "doc": "20150416_Daschle Group, LLC_Daschle, Nathan_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Embassy of Japan, Taipei Economic and Cultural Representative Office",
+        "gold": "Embassy of Japan, Taipei Economic and Cultural Representative Office.\n"
+      },
+      {
+        "doc": "20150925_DCI Group AZ, LLC_Horrell, Chad_Short-Form.pdf",
+        "field": "signer_name",
+        "pred": "Chad Horrell",
+        "gold": "/ Chad Horrell\n"
+      },
+      {
+        "doc": "20161031_MSLGROUP Americas, Inc._Robichaud, Holly_Short-Form.pdf",
+        "field": "file_date",
+        "pred": "10/13/16",
+        "gold": "10/13/16\n(Date of signature"
+      },
+      {
+        "doc": "20170606_Sonoran Policy Group, LLC_Stryk, Robert Daniel_Short-Form.pdf",
+        "field": "signer_name",
+        "pred": "Robert D. Stryk",
+        "gold": "Robert D. Stryk.\n"
+      },
+      {
+        "doc": "20171017_Italian Government Travel Office, Chicago_Chillemi, Mina Amendola_Short-Form.pdf",
+        "field": "signer_name",
+        "pred": "Mina Amendola Chillemi",
+        "gold": "Mina Amendola Chillemi.\n"
+      },
+      {
+        "doc": "20171107_Hogan Lovells US LLP_Fridman, Adam Judah_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Royal Embassy of Saudi Arabia, the Government of the Commonwealth of The Bahamas, the Government of Japan, and Georgian Oil and Gas Corporation",
+        "gold": "Royal Embassy of Saudi Arabia, the Government of the Commonwealth of The Bahamas, the Government of Japan,\nand Georgian Oil and Gas Corporation.\n"
+      },
+      {
+        "doc": "20180112_RunSwitch PR, LLC_Carnahan, Kaylee_Short-Form.pdf",
+        "field": "file_date",
+        "pred": "January 11, 2018",
+        "gold": "January 11, 2018\n(Date of signature)\n"
+      },
+      {
+        "doc": "20180430_Myriad International Marketing, LLC_Morrow, Stephanie_Short-Form.pdf",
+        "field": "foreign_principle_name",
+        "pred": "Tourism Australia",
+        "gold": "Tourism Australia'\n"
+      }
+    ],
+    "scores": {
+      "LR-fusion": {
+        "official_aurc": 0.4003520812372797,
+        "normalized_aurc": 0.3884991821606409,
+        "accepted_at_original_threshold": 20,
+        "official_accepted_errors": 6,
+        "normalized_accepted_errors": 4
+      },
+      "HGB-fusion": {
+        "official_aurc": 0.2334856708148801,
+        "normalized_aurc": 0.2253534229309068,
+        "accepted_at_original_threshold": 253,
+        "official_accepted_errors": 3,
+        "normalized_accepted_errors": 2
+      },
+      "HGB-evidence": {
+        "official_aurc": 0.19918684542793472,
+        "normalized_aurc": 0.186270173385931,
+        "accepted_at_original_threshold": 52,
+        "official_accepted_errors": 2,
+        "normalized_accepted_errors": 0
+      },
+      "HGB-no-geometry": {
+        "official_aurc": 0.24430109424453,
+        "normalized_aurc": 0.23664308153712263,
+        "accepted_at_original_threshold": 256,
+        "official_accepted_errors": 6,
+        "normalized_accepted_errors": 4
+      }
+    }
+  }
+}

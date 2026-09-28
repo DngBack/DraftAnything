@@ -1,0 +1,6 @@
+.venv/
+.venv-gpu/
+.cache/
+data/
+__pycache__/
+results/rows.*.json

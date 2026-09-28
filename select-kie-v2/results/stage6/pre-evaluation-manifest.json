@@ -1,0 +1,11 @@
+{
+  "status": "before stage6 gold evaluation; inference in progress",
+  "sha256": {
+    "select-kie-v2/docs/stage6-protocol.md": "b3458b23de2be3e30f92c096670800c3618fb5ad78ab7a163fa71859b7650da0",
+    "select-kie-v2/scripts/stage6_evaluate.py": "23b591762d646596d7a91591368dc3467f52a7356c604598fa856bdbaff64d2e",
+    "select-kie-v2/scripts/stage6_extract.py": "c37a29a14a375868e588ab59cec8772b3990964b178dbf2cd69703c8c5ca1ebe",
+    "select-kie-v2/scripts/stage6_references.py": "733079c277b6a8ace334a7068809926a46155688b0768285825ed680c6af7c6e",
+    "select-kie-v2/results/stage6/holdout-manifest.json": "bf282882fb5cb510c8a907d04b5c5a58f3a449ef9fab624297a0eb1c68d95d06",
+    "select-kie-v2/results/stage6/frozen-head-manifest.json": "0a500e905d2a84e62a25848bfd8d34bbde53dd63726cd79cc00b4c6f323713cd"
+  }
+}

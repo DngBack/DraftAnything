@@ -1,0 +1,11 @@
+{
+  "model_snapshot": "/home/bachdx2/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "torch": "2.6.0+cu124",
+  "max_new_tokens": 320,
+  "ocr_budget": 7600,
+  "input_sha256": {
+    "fara.jsonl.gz": "9dd5f711e34861bdf9a98e05415355b522439e8658fcef763ef8d9b6b50cdc49",
+    "split.json": "c9340ac785dd879f41439b81f4890b6717db6d7657eeb7f4e371db466c7de556"
+  },
+  "script_sha256": "d66669c21f822a8c2225e1e2621e3d121d5461b2a611fe2e281761e2df5ce5a1"
+}

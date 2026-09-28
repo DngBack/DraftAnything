@@ -1,0 +1,72 @@
+{
+  "status": "post-confirmation diagnostic; chosen after stage6 neural comparison; not preregistered primary",
+  "information": "same four raw384d nodes, six raw cosine similarities, stage2 scalar features and field one-hot; no extra labels",
+  "config": {
+    "max_iter": 100,
+    "max_leaf_nodes": 7,
+    "min_samples_leaf": 40,
+    "l2_regularization": 1.0,
+    "random_state": 20260928,
+    "early_stopping": false
+  },
+  "measures": {
+    "test": {
+      "aurc": 0.22784730439036735,
+      "normalized_aurc": 0.2148754704490963,
+      "brier": 0.1897584238002175,
+      "coverage": 0.010555555555555556,
+      "risk": 0.0,
+      "accepted": 19,
+      "errors": 0,
+      "normalized_errors": 0,
+      "threshold": 0.989561659761705
+    },
+    "stage4-qwen2b": {
+      "aurc": 0.09110731393470767,
+      "normalized_aurc": 0.06566702287881329,
+      "brier": 0.12166572554140259,
+      "coverage": 0.03333333333333333,
+      "risk": 0.0,
+      "accepted": 20,
+      "errors": 0,
+      "normalized_errors": 0,
+      "threshold": 0.989561659761705
+    },
+    "stage4-qwen9b": {
+      "aurc": 0.061000328687435455,
+      "normalized_aurc": 0.03669159027677203,
+      "brier": 0.09681450344948163,
+      "coverage": 0.04833333333333333,
+      "risk": 0.0,
+      "accepted": 29,
+      "errors": 0,
+      "normalized_errors": 0,
+      "threshold": 0.989561659761705
+    },
+    "stage6": {
+      "aurc": 0.060853374656916065,
+      "normalized_aurc": 0.04722794537381197,
+      "brier": 0.09186454772021295,
+      "coverage": 0.07333333333333333,
+      "risk": 0.045454545454545456,
+      "accepted": 44,
+      "errors": 2,
+      "normalized_errors": 2,
+      "threshold": 0.989561659761705
+    }
+  },
+  "stage6_relation_minus_semantic_hgb_aurc": {
+    "difference": -0.0037045664640143333,
+    "ci95": [
+      -0.016518703845844387,
+      0.008534241521317466
+    ]
+  },
+  "stage6_normalized_difference": {
+    "difference": 6.373673471760793e-05,
+    "ci95": [
+      -0.011189072150321968,
+      0.011055987530746166
+    ]
+  }
+}

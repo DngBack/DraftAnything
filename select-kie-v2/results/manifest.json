@@ -1,0 +1,26 @@
+{
+  "outputs": {
+    "selective-kie/outputs/Qwen3-VL-4B-Instruct/test.jsonl": "0b3e932d7a10d3136657b7448418d22cace1c8e9be8e7a5e6ab1b4e65c7393ec",
+    "selective-kie/outputs/Qwen3-VL-4B-Instruct/train.jsonl": "9b7750b5627d573a17d9e9b35a8f4000b49caa7fbc4aae8bb1d8d2d16c1a1a8e",
+    "selective-kie/outputs/Qwen3-VL-4B-Instruct/validation.jsonl": "71435115e1c9ea625fa618da027ebe87f7d6ca59c4a105069ff1181c5ef20ee6",
+    "selective-kie/outputs/Qwen2-VL-2B-Instruct/test.jsonl": "e6f54193e466f0723763212e02bf4d1c81a0e589c3d8da79f31397830fb2df25",
+    "selective-kie/outputs/Qwen2-VL-2B-Instruct/train.shard0.jsonl": "c0482e1174138f5e9cb1356dd125c3086ed64ad92082dba1163c21b0c545b5d3",
+    "selective-kie/outputs/Qwen2-VL-2B-Instruct/train.shard1.jsonl": "38f358357172b6eafba536cc374bb89dad7fef444406715ddb4806c6ce3a8688",
+    "selective-kie/outputs/Qwen2-VL-2B-Instruct/validation.jsonl": "c34c15f8671cae64270f248ff1404c033e5e833d701564aed62e088207877d18"
+  },
+  "duplicates": {},
+  "bootstrap": 1000,
+  "seed": 20260928,
+  "dataset": "naver-clova-ix/cord-v2",
+  "dataset_revision": "7f0115a4b758a71d6473b8d085751692da2fef98",
+  "source_code_sha256": {
+    "select-kie-v2/scripts/pilot.py": "013beb97544b53b02ca4c41a7aa22351f6a434845092fa6432a2c14813ecae3d",
+    "selective-kie/common.py": "d781cae6395747ca93dc27a68e94b20a8bef7204c8ea3c03b0af771de4c43fda",
+    "selective-kie/analyze.py": "4030e9095ed91c45d2603630f1bbef1408ffc45da4741732bdf79d410460bbf9"
+  },
+  "annotation_sha256": {
+    "train": "a5d17610cab4ff16952317792a2131c7f5354f7586470cad20bab29b7f9726a5",
+    "validation": "be4256d3d65dd690f418068e336a041ea12d9ddb07117049c60659a0d13ae275",
+    "test": "c97eba72923232f5984461a6b580e44e43c8f02119a13d25e53dd9f12f27234f"
+  }
+}

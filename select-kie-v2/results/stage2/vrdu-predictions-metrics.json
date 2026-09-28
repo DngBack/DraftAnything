@@ -1,0 +1,352 @@
+{
+  "counts_docs": {
+    "train": 200,
+    "test": 300,
+    "development": 50,
+    "calibration": 50
+  },
+  "counts_decisions": {
+    "train": 1200,
+    "development": 300,
+    "calibration": 300,
+    "test": 1800
+  },
+  "excluded": {},
+  "accept_all_error": {
+    "train": 0.5408333333333334,
+    "development": 0.7766666666666666,
+    "calibration": 0.8,
+    "test": 0.7588888888888888
+  },
+  "taxonomy_test": {
+    "on-page-wrong": 688,
+    "ungrounded-value": 219,
+    "absent-on-page": 313,
+    "absent-hallucination": 138,
+    "miss": 8
+  },
+  "per_field_test": {
+    "registration_num": {
+      "decisions": 300,
+      "error_rate": 0.9666666666666667
+    },
+    "registrant_name": {
+      "decisions": 300,
+      "error_rate": 0.99
+    },
+    "foreign_principle_name": {
+      "decisions": 300,
+      "error_rate": 0.37333333333333335
+    },
+    "file_date": {
+      "decisions": 300,
+      "error_rate": 0.6366666666666667
+    },
+    "signer_name": {
+      "decisions": 300,
+      "error_rate": 0.59
+    },
+    "signer_title": {
+      "decisions": 300,
+      "error_rate": 0.9966666666666667
+    }
+  },
+  "measures": {
+    "LR-fusion": {
+      "aurc": 0.7479214419318584,
+      "brier": 0.3223807935250548,
+      "targets": {
+        "0.02": {
+          "coverage": 0.0016666666666666668,
+          "risk": 0.6666666666666666,
+          "accepted": 3,
+          "errors": 2,
+          "threshold": 0.9935654445386158
+        },
+        "0.05": {
+          "coverage": 0.0016666666666666668,
+          "risk": 0.6666666666666666,
+          "accepted": 3,
+          "errors": 2,
+          "threshold": 0.9935654445386158
+        },
+        "0.1": {
+          "coverage": 0.0016666666666666668,
+          "risk": 0.6666666666666666,
+          "accepted": 3,
+          "errors": 2,
+          "threshold": 0.9935654445386158
+        }
+      }
+    },
+    "HGB-fusion": {
+      "aurc": 0.7234414003356096,
+      "brier": 0.28214463628847664,
+      "targets": {
+        "0.02": {
+          "coverage": 0.007222222222222222,
+          "risk": 0.46153846153846156,
+          "accepted": 13,
+          "errors": 6,
+          "threshold": 0.9761843510781927
+        },
+        "0.05": {
+          "coverage": 0.007222222222222222,
+          "risk": 0.46153846153846156,
+          "accepted": 13,
+          "errors": 6,
+          "threshold": 0.9761843510781927
+        },
+        "0.1": {
+          "coverage": 0.007222222222222222,
+          "risk": 0.46153846153846156,
+          "accepted": 13,
+          "errors": 6,
+          "threshold": 0.9761843510781927
+        }
+      }
+    },
+    "HGB-evidence": {
+      "aurc": 0.5348436564144783,
+      "brier": 0.15802878104390886,
+      "targets": {
+        "0.02": {
+          "coverage": 0.03666666666666667,
+          "risk": 0.15151515151515152,
+          "accepted": 66,
+          "errors": 10,
+          "threshold": 0.9656244069785208
+        },
+        "0.05": {
+          "coverage": 0.03666666666666667,
+          "risk": 0.15151515151515152,
+          "accepted": 66,
+          "errors": 10,
+          "threshold": 0.9656244069785208
+        },
+        "0.1": {
+          "coverage": 0.03666666666666667,
+          "risk": 0.15151515151515152,
+          "accepted": 66,
+          "errors": 10,
+          "threshold": 0.9656244069785208
+        }
+      }
+    },
+    "HGB-no-geometry": {
+      "aurc": 0.6906801390796957,
+      "brier": 0.2656308778116409,
+      "targets": {
+        "0.02": {
+          "coverage": 0.0077777777777777776,
+          "risk": 0.5,
+          "accepted": 14,
+          "errors": 7,
+          "threshold": 0.9673869231242248
+        },
+        "0.05": {
+          "coverage": 0.0077777777777777776,
+          "risk": 0.5,
+          "accepted": 14,
+          "errors": 7,
+          "threshold": 0.9673869231242248
+        },
+        "0.1": {
+          "coverage": 0.0077777777777777776,
+          "risk": 0.5,
+          "accepted": 14,
+          "errors": 7,
+          "threshold": 0.9673869231242248
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "HGB-evidence minus HGB-fusion": {
+      "coverage_diff_ci95": [
+        0.02111111111111111,
+        0.08555555555555555
+      ],
+      "aurc_diff_ci95": [
+        -0.20728122678327757,
+        -0.17114497249640642
+      ],
+      "risk_exceedance_given_nonempty": {
+        "HGB-evidence": 0.996,
+        "HGB-fusion": 0.997709049255441
+      },
+      "empty_fraction": {
+        "HGB-evidence": 0.0,
+        "HGB-fusion": 0.127
+      }
+    },
+    "HGB-evidence minus HGB-no-geometry": {
+      "coverage_diff_ci95": [
+        0.02109722222222222,
+        0.08555555555555555
+      ],
+      "aurc_diff_ci95": [
+        -0.17318043188743837,
+        -0.14010103450665173
+      ],
+      "risk_exceedance_given_nonempty": {
+        "HGB-evidence": 0.996,
+        "HGB-no-geometry": 1.0
+      },
+      "empty_fraction": {
+        "HGB-evidence": 0.0,
+        "HGB-no-geometry": 0.127
+      }
+    }
+  },
+  "calibration_shift_secondary": {
+    "HGB-fusion": {
+      "train_docs": 150,
+      "source_calibration_docs": 50,
+      "target_calibration_docs": 50,
+      "aurc": 0.7213036612336075,
+      "source_calibration": {
+        "coverage": 0.3211111111111111,
+        "risk": 0.6626297577854672,
+        "accepted": 578,
+        "errors": 383,
+        "threshold": 0.7353218456840135
+      },
+      "target_calibration": {
+        "coverage": 0.0077777777777777776,
+        "risk": 0.5,
+        "accepted": 14,
+        "errors": 7,
+        "threshold": 0.9847970027692752
+      }
+    },
+    "HGB-evidence": {
+      "train_docs": 150,
+      "source_calibration_docs": 50,
+      "target_calibration_docs": 50,
+      "aurc": 0.5127156646746341,
+      "source_calibration": {
+        "coverage": 0.34055555555555556,
+        "risk": 0.4176182707993475,
+        "accepted": 613,
+        "errors": 256,
+        "threshold": 0.559010169245394
+      },
+      "target_calibration": {
+        "coverage": 0.043333333333333335,
+        "risk": 0.19230769230769232,
+        "accepted": 78,
+        "errors": 15,
+        "threshold": 0.9441765120628615
+      }
+    }
+  },
+  "max_input_tokens": 2249,
+  "truncated_inputs": 0,
+  "capped_outputs": 1,
+  "calibration_filenames": [
+    "20080530_MSLGROUP Americas, Inc._Pietras, Seth Thomas_Short-Form.pdf",
+    "20080725_Hill and Knowlton Strategies, LLC_Kenny, Colleen_Short-Form.pdf",
+    "20090424_BGR Government Affairs, LLC_Cochran, Alexander_Short-Form.pdf",
+    "20091006_Daniel J. Edelman, Inc._Myers, Richard B._Short-Form.pdf",
+    "20100218_Alsalih, Mark K._Alsalih, Mark K._Short-Form.pdf",
+    "20100730_CMGRP, Inc._Edmonds, Valerie_Short-Form.pdf",
+    "20110218_Ketchum Inc. NY_Scott, Alexandra_Short-Form.pdf",
+    "20110311_MSLGROUP Americas, Inc._Lauer, Matthew J._Short-Form.pdf",
+    "20110314_Daniel J. Edelman, Inc._Gibson, Mike_Short-Form.pdf",
+    "20110314_Daniel J. Edelman, Inc._Hayes, Christopher_Short-Form.pdf",
+    "20120608_Ketchum Inc. NY_Knox, Lauren Peterson_Short-Form.pdf",
+    "20120920_Commonwealth of Dominica Maritime Registry, Inc._Kapoor, Aditya_Short-Form.pdf",
+    "20120920_Commonwealth of Dominica Maritime Registry, Inc._Pama, Yadvinder Singh_Short-Form.pdf",
+    "20130307_Podesta Group, Inc._Antelo, Cristina_Short-Form.pdf",
+    "20130320_Podesta Group, Inc._Chang, Benjamin_Short-Form.pdf",
+    "20130418_Korea Economic Institute_Hamisevicz, Nicholas_Short-Form.pdf",
+    "20130605_JWI, LLC_Kurz, Jonathan L._Short-Form.pdf",
+    "20130617_Hill and Knowlton Strategies, LLC_Waltz, Natalie_Short-Form.pdf",
+    "20131029_Jewish Agency - American Section, Inc._Tal, Ittai_Short-Form.pdf",
+    "20140206_Holland _ Knight_Gold, Richard M._Short-Form.pdf",
+    "20140207_Commonwealth of Dominica Maritime Registry, Inc._Bagga, Karan_Short-Form.pdf",
+    "20140303_LB International Solutions, LLC_Borland, Lydia_Short-Form.pdf",
+    "20140306_VisitBritain_Harrison, Kelly_Short-Form.pdf",
+    "20140520_DLA Piper US LLP_Newcomb, Robert Richard_Short-Form.pdf",
+    "20140922_Ketchum Inc. NY_Adams, Danielle Jenee__Short-Form.pdf",
+    "20141002_Squire Patton Boggs, LLP_Wisner, Frank G_Short-Form.pdf",
+    "20141110_Adams Jones Law Firm, P.A._Hughes, Patrick B._Short-Form.pdf",
+    "20141120_Tourist Office for Flanders, Belgium - New York Office_Vreven, Line_Short-Form.pdf",
+    "20150312_Invest Northern Ireland_McClay, Christina_Short-Form.pdf",
+    "20150514_Squire Patton Boggs, LLP_Swanson, Stacy A._Short-Form.pdf",
+    "20150925_Levick Strategic Communications, LP_Wilson, Justin_Short-Form.pdf",
+    "20160527_KOTRA_Sohn, Soo Deuk_Short-Form.pdf",
+    "20160622_Husch Blackwell, LLP_McAllister, Singleton_Short-Form.pdf",
+    "20160731_Burson-Marsteller, LLC (Washington, DC)_Vega, Mayra_Short-Form.pdf",
+    "20161031_MSLGROUP Americas, Inc._Holt, Andrew S._Short-Form.pdf",
+    "20161031_MSLGROUP Americas, Inc._Skiles, M. David_Short-Form.pdf",
+    "20161229_Crowell _ Moring International, Ltd._Bacigalupo, Patricia Wu_Short-Form.pdf",
+    "20170206_Japan National Tourism Organization, Los Angeles _Hasegawa, Ryoko_Short-Form.pdf",
+    "20170428_Mer Security and Communication Systems Ltd._Thuemim, Moshe_Short-Form.pdf",
+    "20170515_Sonoran Policy Group, LLC_Rosenberg, John_Short-Form.pdf",
+    "20170911_Dowell Pham Harrison, LLP_Vu, Hung Khanh_Short-Form.pdf",
+    "20170920_DCI Group AZ, LLC_McCabe, Brian_Short-Form.pdf",
+    "20171206_Portland PR Inc._Schwark, Sebastian_Short-Form.pdf",
+    "20171212_Beckerman_Paul, Jordan_Short-Form.pdf",
+    "20180202_Quebec Government Office_Dionne, Martin_Short-Form.pdf",
+    "20180206_Greenberg Traurig, LLP_Forbes, Randy_Short-Form.pdf",
+    "20180418_BGR Government Affairs, LLC_Rubino, Mike_Short-Form.pdf",
+    "20180420_MSLGROUP Americas, Inc._Dykes Jr., Anthony Carl_Short-Form.pdf",
+    "20180430_Development Counsellors International_Meliti, Amalia_Short-Form.pdf",
+    "20180629_MMGY Global, LLC_Hughes, Stephanie_Short-Form.pdf"
+  ],
+  "development_filenames": [
+    "20080331_JETRO, New York_Yokota, Kunitoshi_Short-Form.pdf",
+    "20081223_Hill and Knowlton Strategies, LLC_Stewart, Hanna Ella_Short-Form.pdf",
+    "20090420_Podesta Group, Inc._Podesta, Anthony T._Short-Form.pdf",
+    "20090731_Hill and Knowlton Strategies, LLC_Cuneo, Andrew_Short-Form.pdf",
+    "20090925_Podesta Group, Inc._Lawrence, Jessica_Short-Form.pdf",
+    "20091202_MSLGROUP Americas, Inc._Moore, W. John_Short-Form.pdf",
+    "20100514_Hill and Knowlton Strategies, LLC_Kaiser, Christina_Short-Form.pdf",
+    "20100715_Hill and Knowlton Strategies, LLC_Goldberg, Judy_Short-Form.pdf",
+    "20100803_BLJ Worldwide LTD_Karr, Valerie_Short-Form.pdf",
+    "20100803_BLJ Worldwide LTD_Sirota, Alexandra_Short-Form.pdf",
+    "20110204_World Zionist Organization - American Section, Inc._Israeli, Hasia_Short-Form.pdf",
+    "20110311_MSLGROUP Americas, Inc._Silverman, Nicole_Short-Form.pdf",
+    "20110624_Squire Patton Boggs, LLP_Oresman, Matthew S._Short-Form.pdf",
+    "20110713_Squire Patton Boggs, LLP_Frideres, Taryn F._Short-Form.pdf",
+    "20110823_Akin, Gump, Strauss, Hauer _ Feld, LLP_Gilliland, John R._Short-Form.pdf",
+    "20120207_Daniel J. Edelman, Inc._Fiedler, Elizabeth_Short-Form.pdf",
+    "20120221_Akin, Gump, Strauss, Hauer _ Feld, LLP_Parven, Scott_Short-Form.pdf",
+    "20120327_Caribbean Tourism Organization, USA Inc. _Bramble, Sylma Brown_Short-Form.pdf",
+    "20120529_KOTRA_Choi, Myunglae_Short-Form.pdf",
+    "20120907_Korea National Tourism Organization, New Jersey_Hong, Junghee_Short-Form.pdf",
+    "20121128_KOTRA_Jeon, Misung_Short-Form.pdf",
+    "20130130_JETRO, Atlanta_Kimura, Keiichi_Short-Form.pdf",
+    "20130513_Commonwealth of Dominica Maritime Registry, Inc._Kaya, Yusuf_Short-Form.pdf",
+    "20130917_Daniel J. Edelman, Inc._Tyler, Dorothy M_Short-Form.pdf",
+    "20131121_Squire Patton Boggs, LLP_Garrett, John C._Short-Form.pdf",
+    "20131203_Commonwealth of Dominica Maritime Registry, Inc._Yibo, Zhou_Short-Form.pdf",
+    "20140210_Podesta Group, Inc._Kirsch, Steven_Short-Form.pdf",
+    "20140424_Squire Patton Boggs, LLP_Cutts, Matthew D._Short-Form.pdf",
+    "20140820_Malaysian Palm Oil Council (f-k-a American Palm Oil Council)_Husin, Norhaznita Binti_Short-Form.pdf",
+    "20151130_KOTRA_Kim, Myongsoo_Short-Form.pdf",
+    "20160316_Mercury Public Affairs, LLC_Cpin, John_Short-Form.pdf",
+    "20160531_Burson-Marsteller, LLC (Washington, DC)_Gaines, Jeremy_Short-Form.pdf",
+    "20161031_MSLGROUP Americas, Inc._Bilbray-Axelrod, Shannon_Short-Form.pdf",
+    "20161031_MSLGROUP Americas, Inc._Young, Paul_Short-Form.pdf",
+    "20161109_Kuykendall, Gregory J., PC_Kuykendall, Gregory_Short-Form.pdf",
+    "20170124_K_L Gates, LLP_Gordon, Barton J._Short-Form.pdf",
+    "20170727_Levick Strategic Communications, LP_Ricci, Andrew Samuel_Short-Form.pdf",
+    "20170907_McDermott Will _ Emery, LLP_Ryan, Stephen M._Short-Form.pdf",
+    "20170925_White _ Case LLP_Levin, Daniel_Short-Form.pdf",
+    "20171010_MSLGROUP Americas, Inc._Harper, Clinton L._Short-Form.pdf",
+    "20171121_KOTRA_Kim, Hansoo_Short-Form.pdf",
+    "20171129_Muttahida Quami Movement USA_Sattar, Muhammad Farooq_Short-Form.pdf",
+    "20180130_FTI Consulting (SC), Inc._LaMagna, Matthew_Short-Form.pdf",
+    "20180202_Quebec Government Office_Lepage, Annelise Melanie_Short-Form.pdf",
+    "20180227_Sonoran Policy Group, LLC_Bourge, Christian_Short-Form.pdf",
+    "20180323_MSLGROUP Americas, Inc._Shapiro, Jared_Short-Form.pdf",
+    "20180508_Southern Transitional Council (US), Ltd._Mused, Abdulsalam K._Short-Form.pdf",
+    "20180608_Polish Chamber of Commerce in the US_Olchawa, Maciej_Short-Form.pdf",
+    "20180615_Alcalde _ Fay_Alcalde, Hector_Short-Form.pdf",
+    "20180705_Luque PLLC_Luque, Anibal_Short-Form.pdf"
+  ],
+  "matcher_sha256": "ee49bf28b18096196ee700870062b8fc308cd4ace6fc7164cdcaddb93f3b830b"
+}

@@ -1,0 +1,26 @@
+Using the latest cached version of the dataset since naver-clova-ix/cord-v2 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/bachdx2/DraftAnything/select-kie-v2/.cache/huggingface/datasets/naver-clova-ix___cord-v2/default/0.0.0/7f0115a4b758a71d6473b8d085751692da2fef98 (last modified on Mon Sep 28 17:02:43 2026).
+Using the latest cached version of the dataset since naver-clova-ix/cord-v2 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/bachdx2/DraftAnything/select-kie-v2/.cache/huggingface/datasets/naver-clova-ix___cord-v2/default/0.0.0/7f0115a4b758a71d6473b8d085751692da2fef98 (last modified on Mon Sep 28 17:02:43 2026).
+Using the latest cached version of the dataset since naver-clova-ix/cord-v2 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at /home/bachdx2/DraftAnything/select-kie-v2/.cache/huggingface/datasets/naver-clova-ix___cord-v2/default/0.0.0/7f0115a4b758a71d6473b8d085751692da2fef98 (last modified on Mon Sep 28 17:02:43 2026).
+Exact cross-split image duplicates: 0
+Processing Qwen3-VL-4B-Instruct
+field-only 0.06350163498267292 {'coverage': 0.6256281407035176, 'risk': 0.060240963855421686, 'accepted': 498, 'errors': 30, 'threshold': 0.9336638623976049}
+fusion 0.026484476873007562 {'coverage': 0.8605527638190955, 'risk': 0.04671532846715328, 'accepted': 685, 'errors': 32, 'threshold': 0.7282728442444701}
+fusion+binding 0.01896834680573911 {'coverage': 0.9246231155778895, 'risk': 0.04755434782608696, 'accepted': 736, 'errors': 35, 'threshold': 0.5386840364897516}
+same-info-HGB 0.012293550070683935 {'coverage': 0.9359296482412061, 'risk': 0.04697986577181208, 'accepted': 745, 'errors': 35, 'threshold': 0.20985145404930458}
+fusion-HGB 0.013331899912392472 {'coverage': 0.9409547738693468, 'risk': 0.06141522029372497, 'accepted': 749, 'errors': 46, 'threshold': 0.5405517125385223}
+no-field 0.01868383430779135 {'coverage': 0.8806532663316583, 'risk': 0.042796005706134094, 'accepted': 701, 'errors': 30, 'threshold': 0.7973830711884209}
+no-key-competition 0.01884156184537596 {'coverage': 0.9208542713567839, 'risk': 0.047748976807639835, 'accepted': 733, 'errors': 35, 'threshold': 0.544721423933924}
+no-value-rival 0.019004575948470638 {'coverage': 0.9246231155778895, 'risk': 0.04891304347826087, 'accepted': 736, 'errors': 36, 'threshold': 0.5499389528389661}
+Processing Qwen2-VL-2B-Instruct
+field-only 0.12774954055908902 {'coverage': 0.12562814070351758, 'risk': 0.1, 'accepted': 100, 'errors': 10, 'threshold': 0.9120951732650179}
+fusion 0.056562620832007623 {'coverage': 0.7035175879396985, 'risk': 0.0625, 'accepted': 560, 'errors': 35, 'threshold': 0.7581090206046731}
+fusion+binding 0.04832783679014951 {'coverage': 0.7776381909547738, 'risk': 0.048465266558966075, 'accepted': 619, 'errors': 30, 'threshold': 0.731268066200226}
+same-info-HGB 0.038437437908977974 {'coverage': 0.8140703517587939, 'risk': 0.04938271604938271, 'accepted': 648, 'errors': 32, 'threshold': 0.5878403501921139}
+fusion-HGB 0.04029649546549662 {'coverage': 0.7763819095477387, 'risk': 0.05825242718446602, 'accepted': 618, 'errors': 36, 'threshold': 0.7143865448368392}
+no-field 0.05293243778499808 {'coverage': 0.7248743718592965, 'risk': 0.043327556325823226, 'accepted': 577, 'errors': 25, 'threshold': 0.810550311913393}
+no-key-competition 0.05529128408121313 {'coverage': 0.7537688442211056, 'risk': 0.04666666666666667, 'accepted': 600, 'errors': 28, 'threshold': 0.7589012293407674}
+no-value-rival 0.04370184155772822 {'coverage': 0.792713567839196, 'risk': 0.05388272583201268, 'accepted': 631, 'errors': 34, 'threshold': 0.6983995897159415}
+Saved /home/bachdx2/DraftAnything/select-kie-v2/results

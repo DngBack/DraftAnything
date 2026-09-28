@@ -1,0 +1,26 @@
+{
+  "heads_and_pipeline_sha256": {
+    "select-kie-v2/results/stage5/relation-20260930.pt": "90850eaa3d2f1184e928e585aee237302b0b248efa2f441c2f214eed9a0a5d13",
+    "select-kie-v2/results/stage5/relation-20260931.pt": "afa78d9140273213e00e8bca63d264c33ddeedee6345133c95d55fcc52f33c73",
+    "select-kie-v2/results/stage5/generic-20260932.pt": "c2df3ecabdae7369f54558196d8c7c7d8c3f62313f8cceeaec56c8e97d030f20",
+    "select-kie-v2/results/stage5/generic-20260928.pt": "9efaafad2b68557d5d495932aaa49d39a25baa7a81f5f08030a1152013eb2582",
+    "select-kie-v2/results/stage5/relation-20260929.pt": "b681fdab45abc076b77217be687ac747f2db5528ac7595cd56f5efc179b227c2",
+    "select-kie-v2/results/stage5/relation-20260932.pt": "97be0a374954e5eff0f8f1f8e21e2acc14ee91606be13d5b7134f30f7fa7cc3c",
+    "select-kie-v2/results/stage5/relation-20260928.pt": "ce89ab4a12dbaf46b6f01fe0c6401397afe8e7e0307431824af5f441db80d9df",
+    "select-kie-v2/results/stage5/generic-20260929.pt": "5b01de4dfb5cb3986d8e884f4930a95a28d03a0d0b2d078af8b07bc837d03c1f",
+    "select-kie-v2/results/stage5/generic-20260931.pt": "57929b143f7ab679afdf7d819e9bc15ef1e4334038d90cb80c182d6e65f1c242",
+    "select-kie-v2/results/stage5/generic-20260930.pt": "a12c9b4048bbca0724b116b57a59b01117b85982a62a3ca465b9e837822cf711",
+    "select-kie-v2/results/stage5/scalar-scaler.joblib": "92aa6517756f076c4f3af2ec60c2b926290980a4a781329c1a984d9d5f82b80e",
+    "select-kie-v2/results/stage5/metrics.json": "95a1544ac235eeb2469538ff60220966892408b6ba7b123ef7460d8983a41365",
+    "select-kie-v2/results/stage5/feature-manifest.json": "4d2866fca48376c65c03344f4c4c75f36733b8d1ac103a568801e118a7d26c88",
+    "select-kie-v2/scripts/relation_features.py": "ae6d6a3c61249e17cbe4653bf57d4f81ec907b1812cabf1a80c5c0013d473255",
+    "select-kie-v2/scripts/relation_train.py": "c6807439f60ad0517a2ef19bef68175d73c636c7b8c7cdc5cb436f15c7542b7f"
+  },
+  "thresholds": {
+    "generic": 0.9217638969421387,
+    "relation": 0.9283052682876587,
+    "HGB-fusion": 0.9576172795037092,
+    "HGB-evidence": 0.9935144467192044
+  },
+  "status": "locked before stage6 inference"
+}

@@ -1,0 +1,232 @@
+{
+  "status": "exploratory; stage4 already viewed before method design",
+  "parameter_counts": {
+    "relation": 37601,
+    "generic": 38353
+  },
+  "generic_width": 24,
+  "seeds": [
+    20260928,
+    20260929,
+    20260930,
+    20260931,
+    20260932
+  ],
+  "measures": {
+    "generic": {
+      "test": {
+        "aurc": 0.2282892637419037,
+        "normalized_aurc": 0.21575220236028853,
+        "brier": 0.18980767259220477,
+        "coverage": 0.11555555555555555,
+        "risk": 0.057692307692307696,
+        "accepted": 208,
+        "errors": 12,
+        "normalized_errors": 9,
+        "threshold": 0.9217638969421387,
+        "seed_aurcs": [
+          0.22491584293429012,
+          0.21229622628091377,
+          0.2899493831174911,
+          0.269840681783753,
+          0.21668223987144614
+        ]
+      },
+      "stage4-qwen2b": {
+        "aurc": 0.09057736676617992,
+        "normalized_aurc": 0.06629663458705516,
+        "brier": 0.1260657975612126,
+        "coverage": 0.29333333333333333,
+        "risk": 0.017045454545454544,
+        "accepted": 176,
+        "errors": 3,
+        "normalized_errors": 0,
+        "threshold": 0.9217638969421387,
+        "seed_aurcs": [
+          0.08819625311995999,
+          0.0810378297236006,
+          0.12966283474482726,
+          0.1143155731338355,
+          0.08341200657075001
+        ]
+      },
+      "stage4-qwen9b": {
+        "aurc": 0.06965819034825517,
+        "normalized_aurc": 0.04279663028860746,
+        "brier": 0.11827525609129465,
+        "coverage": 0.325,
+        "risk": 0.02564102564102564,
+        "accepted": 195,
+        "errors": 5,
+        "normalized_errors": 0,
+        "threshold": 0.9217638969421387,
+        "seed_aurcs": [
+          0.06647156721707458,
+          0.06030571072400332,
+          0.09596460443928659,
+          0.08255020799733977,
+          0.0642523979784784
+        ]
+      }
+    },
+    "relation": {
+      "test": {
+        "aurc": 0.2270943267572879,
+        "normalized_aurc": 0.2168744329871134,
+        "brier": 0.19597543462749847,
+        "coverage": 0.2127777777777778,
+        "risk": 0.06266318537859007,
+        "accepted": 383,
+        "errors": 24,
+        "normalized_errors": 19,
+        "threshold": 0.9283052682876587,
+        "seed_aurcs": [
+          0.23144361619875592,
+          0.22391264213402878,
+          0.23874142833632256,
+          0.22183498634395246,
+          0.23603175353404438
+        ]
+      },
+      "stage4-qwen2b": {
+        "aurc": 0.08593390980200473,
+        "normalized_aurc": 0.06421982421950255,
+        "brier": 0.11969303295917537,
+        "coverage": 0.41333333333333333,
+        "risk": 0.03225806451612903,
+        "accepted": 248,
+        "errors": 8,
+        "normalized_errors": 2,
+        "threshold": 0.9283052682876587,
+        "seed_aurcs": [
+          0.0877974155945128,
+          0.08494562277234813,
+          0.08872506103083898,
+          0.08662236514020501,
+          0.08795413870860579
+        ]
+      },
+      "stage4-qwen9b": {
+        "aurc": 0.05959993785090329,
+        "normalized_aurc": 0.03956521534419483,
+        "brier": 0.10851500553086424,
+        "coverage": 0.5283333333333333,
+        "risk": 0.022082018927444796,
+        "accepted": 317,
+        "errors": 7,
+        "normalized_errors": 0,
+        "threshold": 0.9283052682876587,
+        "seed_aurcs": [
+          0.06322131610863829,
+          0.05964293014888979,
+          0.06376219225284911,
+          0.062039274239895276,
+          0.06196560569649428
+        ]
+      }
+    },
+    "HGB-fusion": {
+      "test": {
+        "aurc": 0.2334856708148801,
+        "normalized_aurc": 0.2253534229309068,
+        "brier": 0.20910045282531148,
+        "coverage": 0.14055555555555554,
+        "risk": 0.011857707509881422,
+        "accepted": 253,
+        "errors": 3,
+        "normalized_errors": 2,
+        "threshold": 0.9576172795037092
+      },
+      "stage4-qwen2b": {
+        "aurc": 0.12129851988156834,
+        "normalized_aurc": 0.10413211776887013,
+        "brier": 0.16708755200900058,
+        "coverage": 0.19166666666666668,
+        "risk": 0.043478260869565216,
+        "accepted": 115,
+        "errors": 5,
+        "normalized_errors": 4,
+        "threshold": 0.9576172795037092
+      },
+      "stage4-qwen9b": {
+        "aurc": 0.08610342801616044,
+        "normalized_aurc": 0.06828479576354651,
+        "brier": 0.1445290730991007,
+        "coverage": 0.265,
+        "risk": 0.03773584905660377,
+        "accepted": 159,
+        "errors": 6,
+        "normalized_errors": 3,
+        "threshold": 0.9576172795037092
+      }
+    },
+    "HGB-evidence": {
+      "test": {
+        "aurc": 0.19918684542793472,
+        "normalized_aurc": 0.186270173385931,
+        "brier": 0.14857656328158006,
+        "coverage": 0.028888888888888888,
+        "risk": 0.038461538461538464,
+        "accepted": 52,
+        "errors": 2,
+        "normalized_errors": 0,
+        "threshold": 0.9935144467192044
+      },
+      "stage4-qwen2b": {
+        "aurc": 0.10432829584729422,
+        "normalized_aurc": 0.072093372422847,
+        "brier": 0.12717469082944935,
+        "coverage": 0.0,
+        "risk": null,
+        "accepted": 0,
+        "errors": 0,
+        "normalized_errors": 0,
+        "threshold": 0.9935144467192044
+      },
+      "stage4-qwen9b": {
+        "aurc": 0.07378995232541684,
+        "normalized_aurc": 0.041472250392573504,
+        "brier": 0.10469612380780072,
+        "coverage": 0.005,
+        "risk": 0.3333333333333333,
+        "accepted": 3,
+        "errors": 1,
+        "normalized_errors": 0,
+        "threshold": 0.9935144467192044
+      }
+    }
+  },
+  "contrasts": {
+    "test": {
+      "relation_minus_generic_aurc": -0.0011949369846157853,
+      "ci95": [
+        -0.006821669381791608,
+        0.004158637162562212
+      ]
+    },
+    "stage4-qwen2b": {
+      "relation_minus_generic_aurc": -0.004643456964175188,
+      "ci95": [
+        -0.008596284343960106,
+        -0.001754562345165965
+      ]
+    },
+    "stage4-qwen9b": {
+      "relation_minus_generic_aurc": -0.010058252497351879,
+      "ci95": [
+        -0.016117268718107806,
+        -0.005270068845726542
+      ]
+    }
+  },
+  "threshold_calibration": "stage2 target-template50; empirical alpha5%; no risk guarantee",
+  "feature_sha256": "9428cb6e8587c1733f8707fb30a0913509423869a8bafe322d2edddeaf29f59e",
+  "script_sha256": "4a9201b9778729f1dccdcb4f19bd2296519a21d34dbfe0871f6d6e92dfed2e0c",
+  "frozen_hgb_reference_validation": {
+    "scoring_environment": "sklearn1.9.1 original CPU env",
+    "max_score_difference_against_initial_run": {
+      "HGB-fusion": 0.0,
+      "HGB-evidence": 0.0
+    }
+  }
+}

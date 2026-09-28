@@ -1,0 +1,9 @@
+# Stage4: PDF spot checks by the AI agent
+
+These are targeted qualitative inspections, not an independent human audit and not a binding prevalence estimate. Reviewer CSVs remain blank.
+
+1. `20100325_Thomas Capitol Partners, Inc._Kim, Thomas S._Short-Form.pdf`: 9B-clarified emits `registrant_name = Thomas S. Kim`. Page1 item1 shows the individual Thomas S. Kim; item8 explicitly shows the primary registrant Thomas Capitol Partners, Inc. This supports a real role-binding error despite the clarified schema. Both PDF pages inspected. Render: `results/stage4/spotcheck-0-page0.png`.
+2. `20170301_Mercury Public Affairs, LLC_Reid, Morris_Short-Form.pdf`: primary registrant item8 is blank, while item1 and the page2 signature show Morris Reid.9B emits that individual's name as registrant. This is a value present in a competing role filling an absent target, not evidence the primary registrant is printed. Both pages inspected.
+3. `20080616_Brownstein Hyatt Farber Schreck, LLP_Flood, James G._Short-Form.pdf`: signature visually reads James G. Flood, matching the model, while gold contains `Dans G. / Joms G. Flood / (Signature)` OCR-like text. This is a strong gold/transcription concern requiring independent review, not automatically a binding error.
+
+The23 high-confidence official errors include six resolved by the predefined normalization, three literal quoted`"null"` outputs on absent signer_title fields, and foreign-principal gold strings containing prefixes, multiple entities or address lines. These overlap with annotation/scope ambiguity and must not be counted as23 real binding errors. Preserve strict primary scoring; do not silently correct gold after inspecting test errors. A span can be one annotation string while containing multiple entities, which conflicts with the original atomic single-value assumption.

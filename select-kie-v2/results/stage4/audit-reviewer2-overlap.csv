@@ -1,0 +1,36 @@
+audit_id,doc,field,prediction,gold,human_type,notes
+A001,"20130131_Podesta Group, Inc._Dyer, James_Short-Form.pdf",registration_num,5926,"5926
+",,
+A002,"20130408_Karv Communications, Inc._Frank, Andrew D._Short-Form.pdf",file_date,04/08/2013,"4-5.13
+",,
+A003,"20160210_Squire Patton Boggs, LLP_Garrett, John C._Short-Form.pdf",registration_num,2165,"2165
+",,
+A004,"20160208_Ketchum Inc. NY_Mann, Nicole_Short-Form.pdf",registration_num,5758,"5758
+",,
+A005,"20091120_BGR Government Affairs, LLC_Hoy, Jessica_Short-Form.pdf",signer_title,"Senior Associate, BGR Government Affairs, LLC",,,
+A006,"20150303_DCI Group AZ, LLC_Olson, Grant A._Short-Form.pdf",signer_title,director,,,
+A007,"20100120_Squire Patton Boggs, LLP_Deschauer, John J._Short-Form.pdf",signer_title,,,,
+A008,"20110817_BLJ Worldwide LTD_Van Wagenen, Matthew_Short-Form.pdf",registration_num,5875,"5875
+",,
+A009,"20100325_Thomas Capitol Partners, Inc._Kim, Thomas S._Short-Form.pdf",file_date,2010 MAR 25,"March 25, 2010
+",,
+A010,"20080616_Brownstein Hyatt Farber Schreck, LLP_Flood, James G._Short-Form.pdf",registrant_name,James G. Flood,"Brownstein Hyatt Farber Schreck, LLP
+",,
+A011,"20110826_Raben Group, LLC_Goulart, Kimberly_Short-Form.pdf",file_date,11/28/2010,"11/28/2010
+",,
+A012,"20100506_JETRO, San Francisco_Lampe, Sean_Short-Form.pdf",registrant_name,Sean Lampe,"JETRO San Francisco
+",,
+A013,"20120215_Quebec Government Office_Hould, Jean-Francois_Short-Form.pdf",signer_name,HOULD JEAN-FRANÇOIS,"HOULD JEAN-FRANÇOIS
+",,
+A014,"20091127_Korea National Tourism Organization, New Jersey_Park, Younghee_Short-Form.pdf",signer_name,Park,"park
+",,
+A015,"20110411_BGR Government Affairs, LLC_Birnbaum, Jeffrey_Short-Form.pdf",registrant_name,Jeffrey Birnbaum,"BGR Government Affairs, LLC
+",,
+A016,"20171220_Ballard Partners_San Pedro, Katherine_Short-Form.pdf",signer_name,Katherine San Pedro,,,
+A017,"20160922_Squire Patton Boggs, LLP_Boyles, Bret K._Short-Form.pdf",registrant_name,Bret K. Boyles,"Squire Patton Boggs (US) LLP
+",,
+A018,"20090507_Ketchum Inc. NY_Reynolds, John Alan_Short-Form.pdf",signer_title,Internet Technology Manager,,,
+A019,"20140416_Ketchum Inc. NY_Jeavons, Kathleen Stone_Short-Form.pdf",registration_num,FARA,"5758
+",,
+A020,"20131211_Dickens _ Madson Canada Inc._Ben-Menashe, Ari_Short-Form.pdf",registration_num,6260,"6200
+",,
