@@ -1,0 +1,473 @@
+{
+  "maps": {
+    "generic": {
+      "raw": {
+        "variant": "raw",
+        "threshold": 0.744470477104187
+      },
+      "platt": {
+        "variant": "platt",
+        "mean": [
+          1.3154665045440197
+        ],
+        "scale": [
+          1.635026487391685
+        ],
+        "coef": [
+          1.5281989574432373
+        ],
+        "intercept": 1.777592420578003,
+        "threshold": 0.824558521821646
+      },
+      "field-null": {
+        "variant": "field-null",
+        "mean": [
+          1.3154665045440197,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16333333333333333,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0033333333333333335,
+          0.16
+        ],
+        "scale": [
+          1.6350264873916849,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.36966952208094633,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.057638721552635226,
+          0.3666060555964669
+        ],
+        "coef": [
+          2.248138160510877,
+          0.3100176165300386,
+          -0.24595018247300024,
+          0.8897915272334858,
+          -0.28277633130672347,
+          -0.14989170027537882,
+          -0.5211909297084224,
+          0.7942959911230904,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.15474166927357647,
+          0.7766044861921769
+        ],
+        "intercept": 2.1589010590985778,
+        "threshold": 0.7419536891845306
+      },
+      "raw-field": {
+        "variant": "raw",
+        "field_thresholds": {
+          "registration_num": 0.5807749629020691,
+          "registrant_name": 0.9225997924804688,
+          "foreign_principle_name": 0.3650880455970764,
+          "file_date": 0.8865421414375305,
+          "signer_name": 0.9292467832565308,
+          "signer_title": 0.6103374361991882
+        }
+      }
+    },
+    "relation": {
+      "raw": {
+        "variant": "raw",
+        "threshold": 0.734785258769989
+      },
+      "platt": {
+        "variant": "platt",
+        "mean": [
+          1.9168459453061224
+        ],
+        "scale": [
+          2.14517348525328
+        ],
+        "coef": [
+          1.7591438293457031
+        ],
+        "intercept": 1.9596667289733887,
+        "threshold": 0.7726652082967616
+      },
+      "field-null": {
+        "variant": "field-null",
+        "mean": [
+          1.9168459453061224,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16333333333333333,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0033333333333333335,
+          0.16
+        ],
+        "scale": [
+          2.14517348525328,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.36966952208094633,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.057638721552635226,
+          0.3666060555964669
+        ],
+        "coef": [
+          2.3202484786693636,
+          0.28090141690514825,
+          -0.26976095854802856,
+          0.6592139405659448,
+          -0.3532958528129218,
+          -0.03757745187766626,
+          -0.27948109423247686,
+          0.5867053584927191,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.15443464780461857,
+          0.5673274367360142
+        ],
+        "intercept": 2.38703315617012,
+        "threshold": 0.7101475721358033
+      },
+      "raw-field": {
+        "variant": "raw",
+        "field_thresholds": {
+          "registration_num": 0.38929226994514465,
+          "registrant_name": 0.9579769968986511,
+          "foreign_principle_name": 0.42175525426864624,
+          "file_date": 0.8488856554031372,
+          "signer_name": 0.9557397961616516,
+          "signer_title": 0.33497101068496704
+        }
+      }
+    },
+    "semantic-HGB": {
+      "raw": {
+        "variant": "raw",
+        "threshold": 0.7356559034832342
+      },
+      "platt": {
+        "variant": "platt",
+        "mean": [
+          1.8841088410515405
+        ],
+        "scale": [
+          2.1039163626571553
+        ],
+        "coef": [
+          2.06342461655331
+        ],
+        "intercept": 2.193827898180669,
+        "threshold": 0.794095762846967
+      },
+      "field-null": {
+        "variant": "field-null",
+        "mean": [
+          1.8841088410515405,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16333333333333333,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0033333333333333335,
+          0.16
+        ],
+        "scale": [
+          2.1039163626571553,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.36966952208094633,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.057638721552635226,
+          0.3666060555964669
+        ],
+        "coef": [
+          2.3495058850825954,
+          0.6527577660160814,
+          0.21098791062776226,
+          0.5798420740442665,
+          -0.26464935000241857,
+          -0.3268589121716553,
+          -0.852079488514036,
+          0.9499811547555082,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.19933841662042925,
+          0.9265789879585392
+        ],
+        "intercept": 2.6032206634175323,
+        "threshold": 0.7560648722856947
+      },
+      "raw-field": {
+        "variant": "raw",
+        "field_thresholds": {
+          "registration_num": 0.20522464478348315,
+          "registrant_name": 0.9244847362548276,
+          "foreign_principle_name": 0.9423662363620275,
+          "file_date": 0.884475697402304,
+          "signer_name": 0.9805141496014625,
+          "signer_title": 0.5686267203261922
+        }
+      }
+    },
+    "semantic-HGB-dev": {
+      "raw": {
+        "variant": "raw",
+        "threshold": 0.7272385309570554
+      },
+      "platt": {
+        "variant": "platt",
+        "mean": [
+          1.541050299761934
+        ],
+        "scale": [
+          1.5113009079371116
+        ],
+        "coef": [
+          2.0748971339799827
+        ],
+        "intercept": 2.1996362479237606,
+        "threshold": 0.8069418509811344
+      },
+      "field-null": {
+        "variant": "field-null",
+        "mean": [
+          1.5410502997619342,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16333333333333333,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0033333333333333335,
+          0.16
+        ],
+        "scale": [
+          1.511300907937112,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.37267799624996545,
+          0.36966952208094633,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.057638721552635226,
+          0.3666060555964669
+        ],
+        "coef": [
+          2.377054665494908,
+          0.6901422567315486,
+          0.23717162585059,
+          0.567060324203689,
+          -0.40625947896999265,
+          -0.3095581194240399,
+          -0.7785566083917959,
+          0.8626741618533426,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.2308384627044448,
+          0.8335899164328788
+        ],
+        "intercept": 2.5909903712119937,
+        "threshold": 0.8312789303872619
+      },
+      "raw-field": {
+        "variant": "raw",
+        "field_thresholds": {
+          "registration_num": 0.24575853098536096,
+          "registrant_name": 0.9628218557100122,
+          "foreign_principle_name": 0.7272385309570554,
+          "file_date": 0.8755517985514143,
+          "signer_name": 0.9591054252470419,
+          "signer_title": 0.6090101521874032
+        }
+      }
+    }
+  },
+  "calibration_fit_docs": [
+    "20120913_Daniel J. Edelman, Inc._Naple, Michael Anthony_Short-Form.pdf",
+    "20120521_General Delegation of the PLO to the US_Farsakh, Nizar H._Short-Form.pdf",
+    "20130408_Karv Communications, Inc._Frank, Andrew D._Short-Form.pdf",
+    "20180626_Daniel J. Edelman, Inc._Brown, Rebecca_Short-Form.pdf",
+    "20130917_Daniel J. Edelman, Inc._Lau, Timothy C_Short-Form.pdf",
+    "20091127_Korea National Tourism Organization, New Jersey_Park, Younghee_Short-Form.pdf",
+    "20180703_BerlinRosen Ltd._Blenner, Michael_Short-Form.pdf",
+    "20161229_Crowell _ Moring International, Ltd._Beukman, Willem Danie_Short-Form.pdf",
+    "20150831_Quebec Government Office_Lauzon, Jean-Claude_Short-Form.pdf",
+    "20180308_Akin, Gump, Strauss, Hauer _ Feld, LLP_Verhoff, Geoff_Short-Form.pdf",
+    "20080502_Daniel J. Edelman, Inc._Domingo, Roquena_Short-Form.pdf",
+    "20141204_Commonwealth of Dominica Maritime Registry, Inc._Kumari, Jyotsna_Short-Form.pdf",
+    "20110826_Raben Group, LLC_Goulart, Kimberly_Short-Form.pdf",
+    "20160427_DCI Group AZ, LLC_Stevens, Craig_Short-Form.pdf",
+    "20100506_JETRO, San Francisco_Lampe, Sean_Short-Form.pdf",
+    "20160330_VisitBritain_Ruttle, Courtney_Short-Form.pdf",
+    "20171127_MMGY Global, LLC_O_Neal, Leslie_Short-Form.pdf",
+    "20130212_Squire Patton Boggs, LLP_Wisner, Graham G._Short-Form.pdf",
+    "20130603_Squire Patton Boggs, LLP_Mirijanian, Peter_Short-Form.pdf",
+    "20080725_Van Scoyoc Associates, Inc._Van Scoyoc, H. Stewart_Short-Form.pdf",
+    "20110218_Ketchum Inc. NY_Wiltz, Marie_Short-Form.pdf",
+    "20150723_Korea Economic Institute_Leipziger, Danny_Short-Form.pdf",
+    "20111101_Quebec Government Office_Rivard, Nathalie_Short-Form.pdf",
+    "20171030_JETRO, Houston_Uchida, Kaori_Short-Form.pdf",
+    "20140625_Levick Strategic Communications, LP_Smith, Erin Christy_Short-Form.pdf",
+    "20170907_Taiwan Trade Center New York Inc._Lung Cheng, Pao_Short-Form.pdf",
+    "20080603_Fratelli Group_Cox, Frances K._Short-Form.pdf",
+    "20160922_Squire Patton Boggs, LLP_Boyles, Bret K._Short-Form.pdf",
+    "20100120_Squire Patton Boggs, LLP_Deschauer, John J._Short-Form.pdf",
+    "20150403_Glover Park Group, LLC_Hughes, John_Short-Form.pdf",
+    "20150220_Squire Patton Boggs, LLP_Savelieff, Ludmilla Lydia_Short-Form.pdf",
+    "20090105_Van Scoyoc Associates, Inc._Shupp, Michael A._Short-Form.pdf",
+    "20150102_Mercury Public Affairs, LLC_Weber, John Vincent_Short-Form.pdf",
+    "20080822_Ketchum Inc. NY_Cohen, Paul Douglas_Short-Form.pdf",
+    "20150407_Daschle Group, LLC_Rodriguez, Ilia_Short-Form.pdf",
+    "20120215_Quebec Government Office_Hould, Jean-Francois_Short-Form.pdf",
+    "20180202_Quebec Government Office_Briand Fortin, Anne Catherine_Short-Form.pdf",
+    "20110411_BGR Government Affairs, LLC_Birnbaum, Jeffrey_Short-Form.pdf",
+    "20180629_MMGY Global, LLC_McDonough, Leslie_Short-Form.pdf",
+    "20140610_Greenberg Traurig, LLP_Barron, Edward_Short-Form.pdf",
+    "20140321_Squire Patton Boggs, LLP_Goggins, Melanie C._Short-Form.pdf",
+    "20080616_Brownstein Hyatt Farber Schreck, LLP_Flood, James G._Short-Form.pdf",
+    "20100105_Akin, Gump, Strauss, Hauer _ Feld, LLP_Spillman, Catherine Fairley_Short-Form.pdf",
+    "20131211_Dickens _ Madson Canada Inc._Ben-Menashe, Ari_Short-Form.pdf",
+    "20110411_BGR Government Affairs, LLC_Turenne, William Joseph_Short-Form.pdf",
+    "20141006_Sorini, Samet _ Associates, LLC_Costello, Megan_Short-Form.pdf",
+    "20160429_MSLGROUP Americas, Inc._Shahbandar, Oubai_Short-Form.pdf",
+    "20100222_Daniel J. Edelman, Inc._Moeenziai, Ladan_Short-Form.pdf",
+    "20160208_Ketchum Inc. NY_Mann, Nicole_Short-Form.pdf",
+    "20170601_Squire Patton Boggs, LLP_Norman, W. Caffey_Short-Form.pdf"
+  ],
+  "threshold_docs": [
+    "20121119_Commonwealth of Dominica Maritime Registry, Inc._Hang, Sui Yan_Short-Form.pdf",
+    "20171220_Ballard Partners_San Pedro, Katherine_Short-Form.pdf",
+    "20091120_BGR Government Affairs, LLC_Hoy, Jessica_Short-Form.pdf",
+    "20151030_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",
+    "20130131_Podesta Group, Inc._Dyer, James_Short-Form.pdf",
+    "20170509_Burson-Marsteller, LLC (Washington, DC)_Christman, Rita Elizabeth_Short-Form.pdf",
+    "20160107_Daschle Group, LLC_Daschle, Thomas_Short-Form.pdf",
+    "20171115_Cornerstone Government Affairs_Hinch, Matthew_Short-Form.pdf",
+    "20180403_Singapore Economic Development Board_Yeo, Aaron_Short-Form.pdf",
+    "20140812_Greenberg Traurig, LLP_Schwartz, Allison Shulman_Short-Form.pdf",
+    "20110817_BLJ Worldwide LTD_Van Wagenen, Matthew_Short-Form.pdf",
+    "20170404_Sonoran Policy Group, LLC_Daniels, Jacob G._Short-Form.pdf",
+    "20080825_Ketchum Inc. NY_Goldstein, Benjamin Jacob_Short-Form.pdf",
+    "20100525_Akin, Gump, Strauss, Hauer _ Feld, LLP_Lapp, Alixandria_Short-Form.pdf",
+    "20170127_S.G.R. LLC Government Relations and Lobbying_Lowman, Greg_Short-Form.pdf",
+    "20170426_Department of Culture Tourism - Abu Dhabi (New York Branch)_Carreiro, Paula_Short-Form.pdf",
+    "20131203_Commonwealth of Dominica Maritime Registry, Inc._Xiaodong, Hu_Short-Form.pdf",
+    "20100901_Daniel J. Edelman, Inc._Gutman, Beata_Short-Form.pdf",
+    "20170301_Mercury Public Affairs, LLC_Reid, Morris_Short-Form.pdf",
+    "20160210_Squire Patton Boggs, LLP_Garrett, John C._Short-Form.pdf",
+    "20121129_Commonwealth of Dominica Maritime Registry, Inc._Glover, Robert C._Short-Form.pdf",
+    "20120423_United Lao Council for Peace, Freedom and Reconstruction (ULCPFR)_Vang, Chong_Short-Form.pdf",
+    "20100319_Podesta Group, Inc._Northrup, Stephen James_Short-Form.pdf",
+    "20170522_Nelson Mullins Riley _ Scarborough, LLP_Cox, Christy_Short-Form.pdf",
+    "20150516_Greenfield Law, LLC_Kress, William A._Short-Form.pdf",
+    "20160622_Raben Group, LLC_Soto, Eduardo_Short-Form.pdf",
+    "20120606_Daniel J. Edelman, Inc._Holloway, Michael_Short-Form.pdf",
+    "20150303_DCI Group AZ, LLC_Olson, Grant A._Short-Form.pdf",
+    "20100128_Squire Patton Boggs, LLP_Boggs, Thomas Hale Jr._Short-Form.pdf",
+    "20161031_MSLGROUP Americas, Inc._Phillips, Bruceanne_Short-Form.pdf",
+    "20140416_Ketchum Inc. NY_Jeavons, Kathleen Stone_Short-Form.pdf",
+    "20090507_Ketchum Inc. NY_Reynolds, John Alan_Short-Form.pdf",
+    "20160516_Hogan Lovells US LLP_Stanton, John S._Short-Form.pdf",
+    "20100825_JETRO, New York_Sato, Tomoya_Short-Form.pdf",
+    "20080630_Hill and Knowlton Strategies, LLC_Gunst, Jennifer_Short-Form.pdf",
+    "20100519_Akin, Gump, Strauss, Hauer _ Feld, LLP_Lapp, Alixandria_Short-Form.pdf",
+    "20100610_Daniel J. Edelman, Inc._Suzuki, Eiko_Short-Form.pdf",
+    "20121119_Commonwealth of Dominica Maritime Registry, Inc._Radchenko, Alexander B._Short-Form.pdf",
+    "20171010_MSLGROUP Americas, Inc._Beck, Emma_Short-Form.pdf",
+    "20180129_FTI Consulting (SC), Inc._Blakeslee, James A._Short-Form.pdf",
+    "20090710_Harbour Group, LLC_Alkhatib, Firas_Short-Form.pdf",
+    "20160421_Arnold, Jim_Arnold, Jim_Short-Form.pdf",
+    "20100325_Thomas Capitol Partners, Inc._Kim, Thomas S._Short-Form.pdf",
+    "20150319_Gallagher Group, LLC_Gallagher, James P._Short-Form.pdf",
+    "20170729_StrateVarious LLC_Portale, Elizabeth M._Short-Form.pdf",
+    "20080721_Gephardt Group Government Affairs, LLC_Messmer, Michael_Short-Form.pdf",
+    "20180227_Sonoran Policy Group, LLC_Nehring, Andrew Philip_Short-Form.pdf",
+    "20170222_Squire Patton Boggs, LLP_Savelieff, Ludmilla Lydia_Short-Form.pdf",
+    "20180503_VisitBritain_Nemeth, Erin_Short-Form.pdf",
+    "20151208_Ketchum Inc. NY_Pelofsky, Jeremy L._Short-Form.pdf"
+  ],
+  "HGB_dev_iterations": 42,
+  "field_order": [
+    "registration_num",
+    "registrant_name",
+    "foreign_principle_name",
+    "file_date",
+    "signer_name",
+    "signer_title"
+  ],
+  "isnull_feature": "model predicted JSON null; no gold-presence input",
+  "frozen_files": {
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/relation-20260930.pt": "90850eaa3d2f1184e928e585aee237302b0b248efa2f441c2f214eed9a0a5d13",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/relation-20260931.pt": "afa78d9140273213e00e8bca63d264c33ddeedee6345133c95d55fcc52f33c73",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/generic-20260932.pt": "c2df3ecabdae7369f54558196d8c7c7d8c3f62313f8cceeaec56c8e97d030f20",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/generic-20260928.pt": "9efaafad2b68557d5d495932aaa49d39a25baa7a81f5f08030a1152013eb2582",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/relation-20260929.pt": "b681fdab45abc076b77217be687ac747f2db5528ac7595cd56f5efc179b227c2",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/relation-20260932.pt": "97be0a374954e5eff0f8f1f8e21e2acc14ee91606be13d5b7134f30f7fa7cc3c",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/relation-20260928.pt": "ce89ab4a12dbaf46b6f01fe0c6401397afe8e7e0307431824af5f441db80d9df",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/generic-20260929.pt": "5b01de4dfb5cb3986d8e884f4930a95a28d03a0d0b2d078af8b07bc837d03c1f",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/generic-20260931.pt": "57929b143f7ab679afdf7d819e9bc15ef1e4334038d90cb80c182d6e65f1c242",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/generic-20260930.pt": "a12c9b4048bbca0724b116b57a59b01117b85982a62a3ca465b9e837822cf711",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/scalar-scaler.joblib": "92aa6517756f076c4f3af2ec60c2b926290980a4a781329c1a984d9d5f82b80e",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage5/semantic-hgb.joblib": "c66411bd27fbf65dbc134237b1cd87dfb489b0785537a0e452660e1bfb6204c0",
+    "/home/bachdx2/DraftAnything/select-kie-v2/results/stage7/semantic-hgb-dev.joblib": "2cc696cbe23b7f3519d75947ba2d6231fd4569d965a61e9e8dc64a1c3407bd3f",
+    "/home/bachdx2/DraftAnything/select-kie-v2/scripts/relation_features.py": "ae6d6a3c61249e17cbe4653bf57d4f81ec907b1812cabf1a80c5c0013d473255",
+    "/home/bachdx2/DraftAnything/select-kie-v2/scripts/relation_train.py": "c6807439f60ad0517a2ef19bef68175d73c636c7b8c7cdc5cb436f15c7542b7f",
+    "/home/bachdx2/DraftAnything/select-kie-v2/scripts/stage7_calibrate.py": "280b5e91400e3e7299be723aeaf3139737550e2984603aa5f0e58b88903afa05"
+  },
+  "protocol_sha256": "c09bce1187846d7e865a55093d266691679ea791f3dface685b7eca80fff19be"
+}

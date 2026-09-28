@@ -1,6 +1,14 @@
 # Tiến độ nghiên cứu hướng CVPR — 28/09/2026
 
-**Đã có kết quả mới tốt hơn về ranking và một phép xác nhận trên tài liệu mới. Chưa có cơ sở gọi công trình hiện tại đạt chất lượng 9/10.** Tham vọng đó cần một đóng góp khác biệt, đánh giá công bằng và audit đáng tin, không chỉ một bảng số đẹp. CFP yêu cầu original research; hạn nộp CVPR 2027 là 16/11/2026 AoE. [CFP chính thức](https://cvpr.thecvf.com/Conferences/2027/CallForPapers)
+**Stage7 không xác nhận ưu thế của relation head so với HGB được dừng bằng development set. Chưa có cơ sở gọi công trình hiện tại đạt chất lượng 9/10.** Tham vọng đó cần một đóng góp khác biệt, đánh giá công bằng và audit đáng tin, không chỉ một bảng số đẹp. CFP yêu cầu original research; hạn nộp CVPR 2027 là 16/11/2026 AoE. [CFP chính thức](https://cvpr.thecvf.com/Conferences/2027/CallForPapers)
+
+## Cập nhật stage7: đối chứng mạnh hơn làm mất ưu thế
+
+Trên 89 Short-Form cuối chưa dùng trước đây, co-primary PRESENT-only AURC relation trừ HGB-dev là +0.00533 official (CI97.5% [−0.00373,+0.01528]) và +0.00722 normalized ([−0.00132,+0.01691]). Cả hai gate đã đăng ký đều không đạt. HGB-dev có risk 3.18% ở coverage 72.19% trên PRESENT decisions; relation risk 5.67% ở 71.94%. Đây là kết quả bất lợi cho claim kiến trúc; [báo cáo Stage7](stage7-results.md) ghi đầy đủ protocol, số liệu và giới hạn.
+
+Trong lượt khảo sát kế tiếp, corpus DeepForm/AdBuy và official Google Research evaluator đã được lấy về, nhưng phần audit schema đã duyệt annotation toàn corpus để đếm cấu trúc/in ví dụ. Vì thế official test split hiện không được xem là blind; không dùng nó làm xác nhận CVPR. Cần một nguồn hoặc holdout mới chưa mở nhãn.
+
+Hướng nguồn tiếp theo là DocILE: official KILE và LIR yêu cầu định vị trường và gắn các trường vào line item, gần trực tiếp với giả thuyết relation hơn. Corpus cần xin quyền truy cập/token từ maintainer, hiện chưa có trong workspace. [Kế hoạch Stage8](stage8-plan.md) khóa các nguyên tắc trước khi có dữ liệu; chưa có kết quả DocILE và không giả định quyền truy cập đã được cấp.
 
 ## Cập nhật stage4–6: learned head và xác nhận mới
 
@@ -12,7 +20,7 @@ Stage6 giữ nguyên head/calibration trên100 tài liệu mới: relation AURC0
 
 **Giới hạn quyết định:**94/133 accept tăng thêm là ABSENT; normalized/present-only AURC CI chứa0. HGB nhận cùng embedding chưa bị vượt rõ ràng (ΔCI chứa0), và threshold theo field làm coverage HGB47.50% gần relation46.50%. Prototype có ích nhưng chưa đủ claim novelty hoặc9/10CVPR. Cần audit/ontology và nguồn/model family khác.
 
-[Stage4](stage4-results.md), [Stage5 pilot](stage5-results.md), [Stage6 confirmation và đối chứng](stage6-results.md), [audit viewer](../results/stage4/audit-viewer.html), [risk–coverage figure](../results/stage6/risk-coverage.png).
+[Stage4](stage4-results.md), [Stage5 pilot](stage5-results.md), [Stage6 confirmation và đối chứng](stage6-results.md), [Stage7](stage7-results.md), [audit viewer](../results/stage4/audit-viewer.html), [risk–coverage figure](../results/stage6/risk-coverage.png).
 
 ## Những gì đã thực hiện trong lượt nghiên cứu tiếp
 

@@ -1,0 +1,9 @@
+{
+  "records": 89,
+  "parts": {
+    "qwen9b-image-seed.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qwen9b-image-shard0-predictions.jsonl": "6a5999724dd6957ad314827b9ad583b70534bc3cb923f1ec4db293a86e5428ce",
+    "qwen9b-image-shard1-predictions.jsonl": "e60bfb328490768cfde06d294e072c29ef0d9ba0f477e9b5bdcbb832dbe6650a"
+  },
+  "merged_sha256": "474ad50ba0a77c2952d431e313b18b0c521efb915a4409aad03e281694f59802"
+}

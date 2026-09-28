@@ -1,0 +1,12 @@
+{
+  "documents": 89,
+  "decisions": 534,
+  "extractor_accuracy": 0.7865168539325843,
+  "normalized_extractor_accuracy": 0.799625468164794,
+  "high_confidence_decisions": 279,
+  "high_confidence_errors": 11,
+  "output_caps": 0,
+  "missing_keys": 0,
+  "truncated_unique_encoder_texts": 0,
+  "frozen_files": "verified"
+}

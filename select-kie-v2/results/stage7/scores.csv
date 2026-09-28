@@ -1,0 +1,959 @@
+doc,field,prediction,gold,correct,normalized_correct,high_confidence,gold_present,generic_score,relation_score
+"20170412_CGCN Group_O_Connor, Patrick Michael_Short-Form.pdf",registration_num,6396,"6396
+",1,1,1,1,0.9490764737129211,0.9830336570739746
+"20170412_CGCN Group_O_Connor, Patrick Michael_Short-Form.pdf",registrant_name,CGCN Group,"CGCN Group
+",1,1,0,1,0.8975986242294312,0.9612003564834595
+"20170412_CGCN Group_O_Connor, Patrick Michael_Short-Form.pdf",foreign_principle_name,Embassy of Japan,"Embassy of Japan
+",1,1,1,1,0.2428288757801056,0.3281315863132477
+"20170412_CGCN Group_O_Connor, Patrick Michael_Short-Form.pdf",file_date,"April 12, 2017","April 12, 2017
+",1,1,0,1,0.9255678057670593,0.9720727205276489
+"20170412_CGCN Group_O_Connor, Patrick Michael_Short-Form.pdf",signer_name,Patrick O'Connor,"Patrick O'Connor
+",1,1,0,1,0.9068890810012817,0.9035431742668152
+"20170412_CGCN Group_O_Connor, Patrick Michael_Short-Form.pdf",signer_title,,,1,1,1,0,0.8689240217208862,0.9567373991012573
+"20110729_Quebec Government Office_Abensour, Michael_Short-Form.pdf",registration_num,1787,"1787
+",1,1,1,1,0.907261073589325,0.9743248224258423
+"20110729_Quebec Government Office_Abensour, Michael_Short-Form.pdf",registrant_name,QUEBEC GOVERNMENT HOUSE,"QUEBEC GOVERNMENT HOUSE
+",1,1,0,1,0.928037166595459,0.9775161743164062
+"20110729_Quebec Government Office_Abensour, Michael_Short-Form.pdf",foreign_principle_name,Quebec Government,"Dept. of National Affairs; Dept. of Economic Affairs; Dept. of Communications ;
+Dept. of Regional & Education Affairs; Dept. of Cultural Affairs; Dept. of Immigration%3B
+Dept. of Tourism
+:
+",0,0,1,1,0.3588152229785919,0.48726049065589905
+"20110729_Quebec Government Office_Abensour, Michael_Short-Form.pdf",file_date,07/29/2011,"5/8/01
+",0,0,0,1,0.4770364761352539,0.34091681241989136
+"20110729_Quebec Government Office_Abensour, Michael_Short-Form.pdf",signer_name,Michael Abensour,,0,0,0,0,0.25530603528022766,0.2623865008354187
+"20110729_Quebec Government Office_Abensour, Michael_Short-Form.pdf",signer_title,,,1,1,0,0,0.8771563768386841,0.9513710141181946
+"20101208_Squire Patton Boggs, LLP_Brand, Joseph L._Short-Form.pdf",registration_num,2165,"2165
+",1,1,1,1,0.9389858245849609,0.9884089231491089
+"20101208_Squire Patton Boggs, LLP_Brand, Joseph L._Short-Form.pdf",registrant_name,Joseph L. Brand,"Patton Boggs LLP
+",0,0,0,1,0.5003219842910767,0.5159200429916382
+"20101208_Squire Patton Boggs, LLP_Brand, Joseph L._Short-Form.pdf",foreign_principle_name,The Embassy of the Republic of Azerbaijan,"By this filing: The Embassy of the Republic of Azerbaijan. By prior filings: 1) The Government of the Republic of Cameroon; 2) The
+Government of Cyprus; and 3) The Embassy of Sri Lanka.
+",0,0,0,1,0.3362956643104553,0.3920949101448059
+"20101208_Squire Patton Boggs, LLP_Brand, Joseph L._Short-Form.pdf",file_date,11-29-10,"11-29-10
+",1,1,0,1,0.9354110956192017,0.9711116552352905
+"20101208_Squire Patton Boggs, LLP_Brand, Joseph L._Short-Form.pdf",signer_name,Joseph L. Brand,,0,0,0,0,0.21777603030204773,0.16019217669963837
+"20101208_Squire Patton Boggs, LLP_Brand, Joseph L._Short-Form.pdf",signer_title,,,1,1,0,0,0.8727463483810425,0.9516247510910034
+"20171121_KOTRA_Mun, Jae Sung_Short-Form.pdf",registration_num,1619,"1619
+",1,1,1,1,0.941733717918396,0.9858562350273132
+"20171121_KOTRA_Mun, Jae Sung_Short-Form.pdf",registrant_name,KOTRA,"KOTRA
+",1,1,0,1,0.9153133630752563,0.9228215217590332
+"20171121_KOTRA_Mun, Jae Sung_Short-Form.pdf",foreign_principle_name,,,1,1,0,0,0.8174799680709839,0.933885395526886
+"20171121_KOTRA_Mun, Jae Sung_Short-Form.pdf",file_date,"11월 20, 2017","1120, 2017
+",1,1,0,1,0.923836350440979,0.9658383131027222
+"20171121_KOTRA_Mun, Jae Sung_Short-Form.pdf",signer_name,Jaesung Mun,"Jaesung Mun
+",1,1,0,1,0.6801818013191223,0.6729598045349121
+"20171121_KOTRA_Mun, Jae Sung_Short-Form.pdf",signer_title,,,1,1,1,0,0.8695493936538696,0.9569470286369324
+"20150413_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",registration_num,5926,"5926
+",1,1,1,1,0.9533025622367859,0.9897729158401489
+"20150413_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",registrant_name,Mark Tavlarides,"Podesta Group, Inc.
+",0,0,0,1,0.5194398164749146,0.4497207701206207
+"20150413_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",foreign_principle_name,Union of the Republic of Myanmar,"By this filing: Union of the Republic of Myanmar.
+By previous filings: (1) Republic of India; (2) Republic of South Sudan; (3) Republic of Iraq; (4) Hong Kong Trade Development
+Council; (5) Embassy of the Republic of Azerbaijan.
+",0,0,0,1,0.1940240114927292,0.20548439025878906
+"20150413_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",file_date,04/17/2015,"9-12-2015
+(Date ",0,0,0,1,0.43348392844200134,0.3268461525440216
+"20150413_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",signer_name,Mark Tavlarides,,0,0,0,0,0.3589443564414978,0.19583392143249512
+"20150413_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",signer_title,,,1,1,1,0,0.8837375640869141,0.9581519961357117
+"20130131_Podesta Group, Inc._Podesta, Anthony T._Short-Form.pdf",registration_num,5926,"5926
+",1,1,1,1,0.9487053751945496,0.988278865814209
+"20130131_Podesta Group, Inc._Podesta, Anthony T._Short-Form.pdf",registrant_name,"Podesta Group, Inc.","Podesta Group, Inc.
+",1,1,1,1,0.9394903182983398,0.9669978022575378
+"20130131_Podesta Group, Inc._Podesta, Anthony T._Short-Form.pdf",foreign_principle_name,,"By this filing: Embassy of the Republic of Azerbaijan. By prior filings: (1) National Security Council of Georgia; (2) Embassy of
+Japan; (3) Hong Kong Trade Development Council; (4) Republic of Albania; (5) Republic of India; (6) Republic of Kosova; (7)
+Republic of Cyprus:
+",0,0,0,1,0.6083036065101624,0.6611407995223999
+"20130131_Podesta Group, Inc._Podesta, Anthony T._Short-Form.pdf",file_date,01/31/2013,"1
+",0,0,0,1,0.929735541343689,0.9669709205627441
+"20130131_Podesta Group, Inc._Podesta, Anthony T._Short-Form.pdf",signer_name,,,1,1,0,0,0.7232176065444946,0.8176809549331665
+"20130131_Podesta Group, Inc._Podesta, Anthony T._Short-Form.pdf",signer_title,,,1,1,1,0,0.8853527903556824,0.9592393636703491
+"20180129_FTI Consulting (SC), Inc._DeRosa, Benjamin_Short-Form.pdf",registration_num,6484,"6484
+",1,1,0,1,0.9074207544326782,0.9549205899238586
+"20180129_FTI Consulting (SC), Inc._DeRosa, Benjamin_Short-Form.pdf",registrant_name,FTI Consulting,"FTI Consulting
+",1,1,1,1,0.9357360601425171,0.9781889915466309
+"20180129_FTI Consulting (SC), Inc._DeRosa, Benjamin_Short-Form.pdf",foreign_principle_name,Ministry of Economy Mexico,"Ministry of Economy Mexico
+",1,1,1,1,0.27663910388946533,0.3300026059150696
+"20180129_FTI Consulting (SC), Inc._DeRosa, Benjamin_Short-Form.pdf",file_date,"December 11, 2017","December 11, 2017
+",1,1,0,1,0.9286437034606934,0.9831317663192749
+"20180129_FTI Consulting (SC), Inc._DeRosa, Benjamin_Short-Form.pdf",signer_name,Benjamin DeRosa,"Benjamin DeRosa
+",1,1,1,1,0.9188783764839172,0.8985522985458374
+"20180129_FTI Consulting (SC), Inc._DeRosa, Benjamin_Short-Form.pdf",signer_title,,,1,1,1,0,0.8696751594543457,0.9567981958389282
+"20130312_Podesta Group, Inc._Ramirez, Oscar_Short-Form.pdf",registration_num,5926,"5926
+",1,1,1,1,0.9546809196472168,0.990612804889679
+"20130312_Podesta Group, Inc._Ramirez, Oscar_Short-Form.pdf",registrant_name,"Podesta Group, Inc.","Podesta Group, Inc.
+",1,1,0,1,0.9365695714950562,0.9622516632080078
+"20130312_Podesta Group, Inc._Ramirez, Oscar_Short-Form.pdf",foreign_principle_name,Embassy of the Republic of Azerbaijan,"By this filing: Embassy of the Republic of Azerbaijan.
+By previous filings: Republic of India.
+",0,0,0,1,0.1614837348461151,0.17810925841331482
+"20130312_Podesta Group, Inc._Ramirez, Oscar_Short-Form.pdf",file_date,3/11/13,"3/11/13
+",1,1,0,1,0.9436746835708618,0.9804773330688477
+"20130312_Podesta Group, Inc._Ramirez, Oscar_Short-Form.pdf",signer_name,,"O.TB
+(Signature)
+",0,0,0,1,0.4974275529384613,0.4124051034450531
+"20130312_Podesta Group, Inc._Ramirez, Oscar_Short-Form.pdf",signer_title,,,1,1,1,0,0.8841180801391602,0.9589570760726929
+"20130620_Fratelli Group_L_Esperance, Nicole_Short-Form.pdf",registration_num,5867,"5867
+",1,1,1,1,0.9416650533676147,0.9844992756843567
+"20130620_Fratelli Group_L_Esperance, Nicole_Short-Form.pdf",registrant_name,The Fratelli Group,"The Fratelli Group
+",1,1,0,1,0.9070340991020203,0.9273098707199097
+"20130620_Fratelli Group_L_Esperance, Nicole_Short-Form.pdf",foreign_principle_name,The Government of Colombia,"The Government of Colombia
+",1,1,1,1,0.47365111112594604,0.5663022398948669
+"20130620_Fratelli Group_L_Esperance, Nicole_Short-Form.pdf",file_date,"June 19, 2013","June 19, 2013
+",1,1,1,1,0.9325920343399048,0.9845542907714844
+"20130620_Fratelli Group_L_Esperance, Nicole_Short-Form.pdf",signer_name,Nicole L'Esperance,"Nicole L'Esperance
+",1,1,1,1,0.9017144441604614,0.8949921727180481
+"20130620_Fratelli Group_L_Esperance, Nicole_Short-Form.pdf",signer_title,,,1,1,1,0,0.8715729713439941,0.9569651484489441
+"20140416_Ketchum Inc. NY_Saharko, Juliet Christina Johnson_Short-Form.pdf",registration_num,5758,"5758
+",1,1,1,1,0.9380342364311218,0.9790388345718384
+"20140416_Ketchum Inc. NY_Saharko, Juliet Christina Johnson_Short-Form.pdf",registrant_name,KETCHUM INC,"KETCHUM INC
+",1,1,1,1,0.9347509145736694,0.9719602465629578
+"20140416_Ketchum Inc. NY_Saharko, Juliet Christina Johnson_Short-Form.pdf",foreign_principle_name,RUSSIAN FEDERATION; GAZPROM; REPUBLIC OF ECUADOR,"RUSSIAN FEDERATION; GAZPROM; REPUBLIC OF ECUADOR
+",1,1,0,1,0.30400657653808594,0.25858813524246216
+"20140416_Ketchum Inc. NY_Saharko, Juliet Christina Johnson_Short-Form.pdf",file_date,04/16/2014,"4-1-14
+",0,0,0,1,0.6321760416030884,0.6655734777450562
+"20140416_Ketchum Inc. NY_Saharko, Juliet Christina Johnson_Short-Form.pdf",signer_name,JULIET C. JOHNSON SAHARKO,"Julet C
+C. Sako
+(Signature)
+",0,0,0,1,0.20796802639961243,0.11634528636932373
+"20140416_Ketchum Inc. NY_Saharko, Juliet Christina Johnson_Short-Form.pdf",signer_title,,,1,1,0,0,0.8636678457260132,0.9510698318481445
+"20110815_Ketchum Inc. NY_Caccavale, Anthony Michael_Short-Form.pdf",registration_num,5758,"5758
+",1,1,1,1,0.9317849278450012,0.9776474833488464
+"20110815_Ketchum Inc. NY_Caccavale, Anthony Michael_Short-Form.pdf",registrant_name,Ketchum,"Ketchum.
+",0,1,0,1,0.8958021998405457,0.9359180331230164
+"20110815_Ketchum Inc. NY_Caccavale, Anthony Michael_Short-Form.pdf",foreign_principle_name,The Russian Federation,"The Russian Federation
+",1,1,1,1,0.47653722763061523,0.449594646692276
+"20110815_Ketchum Inc. NY_Caccavale, Anthony Michael_Short-Form.pdf",file_date,2/24/11,"2/24/11
+",1,1,0,1,0.9410091638565063,0.9819208979606628
+"20110815_Ketchum Inc. NY_Caccavale, Anthony Michael_Short-Form.pdf",signer_name,Anthony M. Caccavale,,0,0,0,0,0.30687227845191956,0.19489793479442596
+"20110815_Ketchum Inc. NY_Caccavale, Anthony Michael_Short-Form.pdf",signer_title,,,1,1,1,0,0.8768569827079773,0.953805148601532
+"20110818_JETRO, New York_Kishimoto, Kentaro_Short-Form.pdf",registration_num,1643,"1643
+",1,1,1,1,0.9375629425048828,0.9894779920578003
+"20110818_JETRO, New York_Kishimoto, Kentaro_Short-Form.pdf",registrant_name,"JETRO, New York","JETRO, New York
+",1,1,0,1,0.8901685476303101,0.9264287948608398
+"20110818_JETRO, New York_Kishimoto, Kentaro_Short-Form.pdf",foreign_principle_name,"Japan External Trade Organization, (JETRO), Tokyo, Japan","Japan External Trae Organization, (JETRO), Tokyo, Japan
+",0,0,0,1,0.15046578645706177,0.15633606910705566
+"20110818_JETRO, New York_Kishimoto, Kentaro_Short-Form.pdf",file_date,08/18/2011,"08/18/2011
+",1,1,1,1,0.9412582516670227,0.9706031084060669
+"20110818_JETRO, New York_Kishimoto, Kentaro_Short-Form.pdf",signer_name,Kentaro Kishimoto,"Kentar
+Kishimoto
+",0,0,0,1,0.42781639099121094,0.5152581334114075
+"20110818_JETRO, New York_Kishimoto, Kentaro_Short-Form.pdf",signer_title,,,1,1,1,0,0.8749456405639648,0.9570269584655762
+"20131220_Glover Park Group, LLC_Grant, Megan_Short-Form.pdf",registration_num,5666,"5666
+",1,1,1,1,0.9455322027206421,0.9866033792495728
+"20131220_Glover Park Group, LLC_Grant, Megan_Short-Form.pdf",registrant_name,"Glover Park Group, LLC","Glover Park Group, LLC
+",1,1,0,1,0.8736104965209961,0.9198268055915833
+"20131220_Glover Park Group, LLC_Grant, Megan_Short-Form.pdf",foreign_principle_name,Government of the Arab Republic of Egypt,"Government of the Arab Republic of Egypt
+",1,1,1,1,0.30429917573928833,0.38085559010505676
+"20131220_Glover Park Group, LLC_Grant, Megan_Short-Form.pdf",file_date,"December 20, 2013","December 20, 2013
+",1,1,1,1,0.9017547369003296,0.9071415662765503
+"20131220_Glover Park Group, LLC_Grant, Megan_Short-Form.pdf",signer_name,Megan Grant,"Megan Grant
+",1,1,1,1,0.9326885938644409,0.9565450549125671
+"20131220_Glover Park Group, LLC_Grant, Megan_Short-Form.pdf",signer_title,,,1,1,1,0,0.8742228746414185,0.9569815397262573
+"20120305_Bermuda Tourism Authority_Dempsey, Amanda Jane_Short-Form.pdf",registration_num,430,"430
+",1,1,1,1,0.9341198801994324,0.9802793264389038
+"20120305_Bermuda Tourism Authority_Dempsey, Amanda Jane_Short-Form.pdf",registrant_name,Bermuda Department of Tourism,"Bermuda Department of Tourism
+",1,1,0,1,0.8736673593521118,0.9317919611930847
+"20120305_Bermuda Tourism Authority_Dempsey, Amanda Jane_Short-Form.pdf",foreign_principle_name,,,1,1,0,0,0.8110039830207825,0.928872287273407
+"20120305_Bermuda Tourism Authority_Dempsey, Amanda Jane_Short-Form.pdf",file_date,"March 05, 2012","March 05, 2012
+",1,1,1,1,0.9320772886276245,0.9835084080696106
+"20120305_Bermuda Tourism Authority_Dempsey, Amanda Jane_Short-Form.pdf",signer_name,Amanda Jane Dempsey,"Amanda Jane Dempsey
+",1,1,1,1,0.8885228037834167,0.8827966451644897
+"20120305_Bermuda Tourism Authority_Dempsey, Amanda Jane_Short-Form.pdf",signer_title,,,1,1,1,0,0.8698650598526001,0.9571678042411804
+"20180315_Miller _ Chevalier Chartered_Mojica, Richard A._Short-Form.pdf",registration_num,0533,"6533
+",0,0,0,1,0.5776522755622864,0.34656986594200134
+"20180315_Miller _ Chevalier Chartered_Mojica, Richard A._Short-Form.pdf",registrant_name,Miller & Chevalier Chartered,"Miller & Chevalier Chartered
+",1,1,0,1,0.8862190246582031,0.9307864308357239
+"20180315_Miller _ Chevalier Chartered_Mojica, Richard A._Short-Form.pdf",foreign_principle_name,Government of the Kingdom of Bahrain,"Government of the Kingdom of Bahrain
+",1,1,1,1,0.4171985685825348,0.4504021108150482
+"20180315_Miller _ Chevalier Chartered_Mojica, Richard A._Short-Form.pdf",file_date,"March 14, 2018","March 14, 2018
+",1,1,1,1,0.9383792877197266,0.9722360372543335
+"20180315_Miller _ Chevalier Chartered_Mojica, Richard A._Short-Form.pdf",signer_name,null,,0,0,0,0,0.16760215163230896,0.08742721378803253
+"20180315_Miller _ Chevalier Chartered_Mojica, Richard A._Short-Form.pdf",signer_title,null,,0,0,1,0,0.6090198159217834,0.34537890553474426
+"20121203_Saudi Refining, Inc._Amudi, N.M._Short-Form.pdf",registration_num,4184,"4184
+",1,1,1,1,0.941339373588562,0.9760605692863464
+"20121203_Saudi Refining, Inc._Amudi, N.M._Short-Form.pdf",registrant_name,N. M. Amudi,"Saudi Refining, Inc.
+",0,0,0,1,0.5655822157859802,0.5390525460243225
+"20121203_Saudi Refining, Inc._Amudi, N.M._Short-Form.pdf",foreign_principle_name,Saudi Arabian Oil Company,"Saudi Arabian Oil Company
+The Government of the Kingdom of Saudi Arabia
+",0,0,0,1,0.3390306830406189,0.500001847743988
+"20121203_Saudi Refining, Inc._Amudi, N.M._Short-Form.pdf",file_date,11/29/2012,"11/29/2012
+(Signature)
+",0,0,0,1,0.9324981570243835,0.9808377027511597
+"20121203_Saudi Refining, Inc._Amudi, N.M._Short-Form.pdf",signer_name,N. M. Amudi,,0,0,0,0,0.17393803596496582,0.10633379220962524
+"20121203_Saudi Refining, Inc._Amudi, N.M._Short-Form.pdf",signer_title,,,1,1,1,0,0.8852609395980835,0.9591280817985535
+"20110525_KOTRA_Lee, Seunghee_Short-Form.pdf",registration_num,1619,"1619
+",1,1,1,1,0.9443917274475098,0.9886393547058105
+"20110525_KOTRA_Lee, Seunghee_Short-Form.pdf",registrant_name,KOREA TRADE PROMOTION CENTER,"KOREA TRADE PROMOTION CENTER
+",1,1,0,1,0.7726327776908875,0.8693124055862427
+"20110525_KOTRA_Lee, Seunghee_Short-Form.pdf",foreign_principle_name,,,1,1,0,0,0.811612606048584,0.9310030937194824
+"20110525_KOTRA_Lee, Seunghee_Short-Form.pdf",file_date,"25, 2011","5 25, 2011
+",0,0,0,1,0.9325678944587708,0.9524251222610474
+"20110525_KOTRA_Lee, Seunghee_Short-Form.pdf",signer_name,SEUNGHEE LEE,"SEUNGHEE LEE
+",1,1,1,1,0.8825770616531372,0.901748776435852
+"20110525_KOTRA_Lee, Seunghee_Short-Form.pdf",signer_title,,,1,1,1,0,0.8673793077468872,0.9563109278678894
+"20110729_MSLGROUP Americas, Inc._Nagey, Stefan_Short-Form.pdf",registration_num,5483,"5483
+",1,1,1,1,0.9408685564994812,0.9849144220352173
+"20110729_MSLGROUP Americas, Inc._Nagey, Stefan_Short-Form.pdf",registrant_name,"Qorvis Communications, LLC","Qorvis Communications, LLC
+",1,1,0,1,0.8549574017524719,0.8678412437438965
+"20110729_MSLGROUP Americas, Inc._Nagey, Stefan_Short-Form.pdf",foreign_principle_name,"Marca País, Imagen de Mexico","Marca Páis, Imagen de Mexico
+",0,0,0,1,0.33065053820610046,0.33181142807006836
+"20110729_MSLGROUP Americas, Inc._Nagey, Stefan_Short-Form.pdf",file_date,07/16/11,"81
+",0,0,0,1,0.3747923672199249,0.3356676995754242
+"20110729_MSLGROUP Americas, Inc._Nagey, Stefan_Short-Form.pdf",signer_name,Stefan Nagey,"SP
+",0,0,0,1,0.2399551421403885,0.20054510235786438
+"20110729_MSLGROUP Americas, Inc._Nagey, Stefan_Short-Form.pdf",signer_title,,,1,1,0,0,0.8599828481674194,0.9506591558456421
+"20180307_BerlinRosen Ltd._Ermanni, Kayla_Short-Form.pdf",registration_num,6531,"653)
+",0,0,0,1,0.6481197476387024,0.4772500991821289
+"20180307_BerlinRosen Ltd._Ermanni, Kayla_Short-Form.pdf",registrant_name,Berlin Rosen Ltd,"Berlin Rosen Ltd
+",1,1,1,1,0.9229610562324524,0.9630077481269836
+"20180307_BerlinRosen Ltd._Ermanni, Kayla_Short-Form.pdf",foreign_principle_name,Cambodia National Rescue Movement (CNRM),"Cambodia National Rescue Movement (CNRM)
+",1,1,0,1,0.16028742492198944,0.1538359820842743
+"20180307_BerlinRosen Ltd._Ermanni, Kayla_Short-Form.pdf",file_date,"February 26, 2018","February 26, 2018
+",1,1,1,1,0.9319685697555542,0.9841622114181519
+"20180307_BerlinRosen Ltd._Ermanni, Kayla_Short-Form.pdf",signer_name,Kayla Ermanni,"Kayla Ermanni
+",1,1,0,1,0.8460480570793152,0.7964195013046265
+"20180307_BerlinRosen Ltd._Ermanni, Kayla_Short-Form.pdf",signer_title,,,1,1,1,0,0.8710122108459473,0.9568039774894714
+"20150409_Legislative Strategies, Inc._Smith, Larry E._Short-Form.pdf",registration_num,6287,"6287
+",1,1,1,1,0.935438334941864,0.9730003476142883
+"20150409_Legislative Strategies, Inc._Smith, Larry E._Short-Form.pdf",registrant_name,"Legislative Strategies, Inc.","Legislative Strategies, Inc.
+",1,1,1,1,0.938410758972168,0.9724022150039673
+"20150409_Legislative Strategies, Inc._Smith, Larry E._Short-Form.pdf",foreign_principle_name,Hong Kong Trade Development Council,"Hong Kong Trade Development Council
+",1,1,1,1,0.20992574095726013,0.24229753017425537
+"20150409_Legislative Strategies, Inc._Smith, Larry E._Short-Form.pdf",file_date,"April 09, 2015","April 09, 2015
+",1,1,1,1,0.9348336458206177,0.9840207099914551
+"20150409_Legislative Strategies, Inc._Smith, Larry E._Short-Form.pdf",signer_name,Larry E. Smith,"Larry E. Smith
+",1,1,1,1,0.9105097055435181,0.936933696269989
+"20150409_Legislative Strategies, Inc._Smith, Larry E._Short-Form.pdf",signer_title,,,1,1,1,0,0.8675378561019897,0.9559684991836548
+"20180307_Dentons Canada LLP_Doer, Gary_Short-Form.pdf",registration_num,6532,"6532
+",1,1,0,1,0.9327998161315918,0.9706026911735535
+"20180307_Dentons Canada LLP_Doer, Gary_Short-Form.pdf",registrant_name,Gary Doer,"Dentons Canada LLP
+",0,0,0,1,0.7329108119010925,0.6547496914863586
+"20180307_Dentons Canada LLP_Doer, Gary_Short-Form.pdf",foreign_principle_name,Alberta Ministry of Economic Development and Trade,"Alberta Ministry of Economic Development and Trade
+",1,1,1,1,0.535094678401947,0.6045204401016235
+"20180307_Dentons Canada LLP_Doer, Gary_Short-Form.pdf",file_date,03/07/2018,"Marrin. 7, 2015
+",0,0,0,1,0.38770025968551636,0.3397601842880249
+"20180307_Dentons Canada LLP_Doer, Gary_Short-Form.pdf",signer_name,Gary Doer,,0,0,0,0,0.06296882778406143,0.04726264625787735
+"20180307_Dentons Canada LLP_Doer, Gary_Short-Form.pdf",signer_title,,,1,1,0,0,0.8038232922554016,0.8974210023880005
+"20131031_Development Counsellors International_Kazi, Naureen_Short-Form.pdf",registration_num,4777,"4777
+",1,1,1,1,0.9388400316238403,0.9836511611938477
+"20131031_Development Counsellors International_Kazi, Naureen_Short-Form.pdf",registrant_name,Development Counsellors International,"Development Counsellors International
+",1,1,0,1,0.8691354990005493,0.9228997230529785
+"20131031_Development Counsellors International_Kazi, Naureen_Short-Form.pdf",foreign_principle_name,"Ecuador, PromPeru","Ecuador, PromPeru
+",1,1,0,1,0.32016757130622864,0.36377009749412537
+"20131031_Development Counsellors International_Kazi, Naureen_Short-Form.pdf",file_date,09/30/2013,"09/30/2013
+",1,1,0,1,0.9447795152664185,0.9863532781600952
+"20131031_Development Counsellors International_Kazi, Naureen_Short-Form.pdf",signer_name,Naureen,,0,0,0,0,0.41040048003196716,0.4298914968967438
+"20131031_Development Counsellors International_Kazi, Naureen_Short-Form.pdf",signer_title,,,1,1,1,0,0.8686506152153015,0.9563008546829224
+"20180220_Pillsbury Winthrop Shaw Pittman, LLP_Merrifield, Jeffrey S._Short-Form.pdf",registration_num,5198,"5198
+",1,1,1,1,0.9393722414970398,0.9870983362197876
+"20180220_Pillsbury Winthrop Shaw Pittman, LLP_Merrifield, Jeffrey S._Short-Form.pdf",registrant_name,Pillsbury Winthrop Shaw Pittman LLP,"Pillsbury Winthrop Shaw Pittman LLP
+",1,1,1,1,0.928658127784729,0.9542539715766907
+"20180220_Pillsbury Winthrop Shaw Pittman, LLP_Merrifield, Jeffrey S._Short-Form.pdf",foreign_principle_name,"Ministry of Energy, Industry, and Mineral Resources of the Kingdom of Saudi Arabia","Ministry of Energy, Industry, and Mineral Resources of the Kingdom of Saudi Arabia
+",1,1,1,1,0.1918768733739853,0.2059013843536377
+"20180220_Pillsbury Winthrop Shaw Pittman, LLP_Merrifield, Jeffrey S._Short-Form.pdf",file_date,"February 19, 2018","February 19, 2018
+",1,1,1,1,0.9335778951644897,0.9858812093734741
+"20180220_Pillsbury Winthrop Shaw Pittman, LLP_Merrifield, Jeffrey S._Short-Form.pdf",signer_name,Jeffrey S. Merrifield,"Jeffrey S..Merrifield
+",0,1,1,1,0.9240493774414062,0.9405557513237
+"20180220_Pillsbury Winthrop Shaw Pittman, LLP_Merrifield, Jeffrey S._Short-Form.pdf",signer_title,,,1,1,1,0,0.8705175518989563,0.9566872715950012
+"20180629_MMGY Global, LLC_Harbaugh, Allison_Short-Form.pdf",registration_num,6492,"6492
+",1,1,1,1,0.9376311302185059,0.9794296026229858
+"20180629_MMGY Global, LLC_Harbaugh, Allison_Short-Form.pdf",registrant_name,"MMGY Global, LLC","MMGY Global, LLC
+",1,1,0,1,0.9080101847648621,0.9538047909736633
+"20180629_MMGY Global, LLC_Harbaugh, Allison_Short-Form.pdf",foreign_principle_name,Costa Rica Tourism Board,"Costa Rica Tourism Board
+",1,1,1,1,0.23325403034687042,0.3025357723236084
+"20180629_MMGY Global, LLC_Harbaugh, Allison_Short-Form.pdf",file_date,"June 28, 2018","June 28, 2018
+",1,1,1,1,0.931858241558075,0.9857883453369141
+"20180629_MMGY Global, LLC_Harbaugh, Allison_Short-Form.pdf",signer_name,Allison Harbaugh,"Allison Harbaugh
+",1,1,1,1,0.8894765973091125,0.8473488092422485
+"20180629_MMGY Global, LLC_Harbaugh, Allison_Short-Form.pdf",signer_title,,,1,1,1,0,0.8681402206420898,0.9568602442741394
+"20160204_JETRO, New York_Arce, Asuka_Short-Form.pdf",registration_num,1643,"1643
+",1,1,1,1,0.9393928647041321,0.9818240404129028
+"20160204_JETRO, New York_Arce, Asuka_Short-Form.pdf",registrant_name,JETRO New York,"JETRO New York
+",1,1,1,1,0.9156765937805176,0.9593995213508606
+"20160204_JETRO, New York_Arce, Asuka_Short-Form.pdf",foreign_principle_name,"Japan External Trade Organization, (JETRO), Tokyo, Japan","Japan External Trade Organization, (JETRO), Tokyo, Japan
+",1,1,0,1,0.13924027979373932,0.1723143309354782
+"20160204_JETRO, New York_Arce, Asuka_Short-Form.pdf",file_date,2/14/2016,"2/4/2016
+",0,0,0,1,0.30196505784988403,0.27620968222618103
+"20160204_JETRO, New York_Arce, Asuka_Short-Form.pdf",signer_name,Ms. Asuka Arce,,0,0,0,0,0.1493331342935562,0.11012629419565201
+"20160204_JETRO, New York_Arce, Asuka_Short-Form.pdf",signer_title,,,1,1,0,0,0.8448341488838196,0.9355459213256836
+"20110316_Glover Park Group, LLC_Mitchell, Grant Leslie_Short-Form.pdf",registration_num,5666,"5666
+",1,1,1,1,0.9283789396286011,0.979594886302948
+"20110316_Glover Park Group, LLC_Mitchell, Grant Leslie_Short-Form.pdf",registrant_name,Grant Leslie Mitchell,"Glover Park Group, LLC
+",0,0,0,1,0.4842354655265808,0.5909316539764404
+"20110316_Glover Park Group, LLC_Mitchell, Grant Leslie_Short-Form.pdf",foreign_principle_name,Embassy of the Republic of Korea in the USA,"Embassy of the Republic of Korea in the USA
+",1,1,1,1,0.244219109416008,0.2777958810329437
+"20110316_Glover Park Group, LLC_Mitchell, Grant Leslie_Short-Form.pdf",file_date,3/14/2011,"3/14/2011
+",1,1,1,1,0.9467170834541321,0.9834683537483215
+"20110316_Glover Park Group, LLC_Mitchell, Grant Leslie_Short-Form.pdf",signer_name,Grant Leslie Mitchell,,0,0,0,0,0.08587156981229782,0.06922370195388794
+"20110316_Glover Park Group, LLC_Mitchell, Grant Leslie_Short-Form.pdf",signer_title,,,1,1,0,0,0.8754061460494995,0.9528511166572571
+"20170608_Fleishman-Hillard, Inc._Hancock, Katy_Short-Form.pdf",registration_num,5801,"5801
+",1,1,1,1,0.9392638206481934,0.9779165387153625
+"20170608_Fleishman-Hillard, Inc._Hancock, Katy_Short-Form.pdf",registrant_name,Fleishman-Hillard Inc.,"Fleishman-Hillard Inc.
+",1,1,0,1,0.8790944814682007,0.870318591594696
+"20170608_Fleishman-Hillard, Inc._Hancock, Katy_Short-Form.pdf",foreign_principle_name,Secretariat for Social Communications of the Federative Republic of Brazil,"Secretariat for Social Communications of the Federative Republic of Brazil
+",1,1,1,1,0.43087249994277954,0.438088983297348
+"20170608_Fleishman-Hillard, Inc._Hancock, Katy_Short-Form.pdf",file_date,06/08/2017,"6/8/2017
+",1,1,0,1,0.8433834314346313,0.9106586575508118
+"20170608_Fleishman-Hillard, Inc._Hancock, Katy_Short-Form.pdf",signer_name,Katy Hancock,,0,0,0,0,0.19320884346961975,0.10073504596948624
+"20170608_Fleishman-Hillard, Inc._Hancock, Katy_Short-Form.pdf",signer_title,,,1,1,1,0,0.8685626983642578,0.9559947848320007
+"20131203_Deutsche Telekom, Inc._Calascione, Joseph Salvatore_Short-Form.pdf",registration_num,,,1,1,0,0,0.09422211349010468,0.055334627628326416
+"20131203_Deutsche Telekom, Inc._Calascione, Joseph Salvatore_Short-Form.pdf",registrant_name,"Deutsche Telekom, Inc.","Deutsche Telekom, Inc.
+",1,1,0,1,0.7879563570022583,0.7596431374549866
+"20131203_Deutsche Telekom, Inc._Calascione, Joseph Salvatore_Short-Form.pdf",foreign_principle_name,"Deutsche Telekom, Inc.","Deutsche Telekom, Inc.
+",1,1,0,1,0.21240286529064178,0.2170702964067459
+"20131203_Deutsche Telekom, Inc._Calascione, Joseph Salvatore_Short-Form.pdf",file_date,"May 29, 2013","May 29, 2013
+",1,1,1,1,0.9309390187263489,0.9775704145431519
+"20131203_Deutsche Telekom, Inc._Calascione, Joseph Salvatore_Short-Form.pdf",signer_name,Joseph Salvatore Calascione,"Joseph Salvatore Calascione
+",1,1,1,1,0.9298715591430664,0.9395475387573242
+"20131203_Deutsche Telekom, Inc._Calascione, Joseph Salvatore_Short-Form.pdf",signer_title,,,1,1,0,0,0.8713163137435913,0.9560580253601074
+"20130315_Daniel J. Edelman, Inc._Suiters, Tyler_Short-Form.pdf",registration_num,3634,"3634
+",1,1,1,1,0.953106701374054,0.9911994934082031
+"20130315_Daniel J. Edelman, Inc._Suiters, Tyler_Short-Form.pdf",registrant_name,"Daniel J. Edelman, Inc.","Daniel J. Edelman, Inc.
+",1,1,1,1,0.9361327886581421,0.9721356630325317
+"20130315_Daniel J. Edelman, Inc._Suiters, Tyler_Short-Form.pdf",foreign_principle_name,Permanent Mission of the Kingdom of Saudi Arabia,"Permanent Mission of the Kingdom of Saudi Arabia
+",1,1,1,1,0.21762537956237793,0.2518579065799713
+"20130315_Daniel J. Edelman, Inc._Suiters, Tyler_Short-Form.pdf",file_date,"February 15, 2013","February 15, 2013
+",1,1,1,1,0.940142810344696,0.981564998626709
+"20130315_Daniel J. Edelman, Inc._Suiters, Tyler_Short-Form.pdf",signer_name,Tyler Suiters,"Tyler Suiters
+",1,1,1,1,0.872584342956543,0.8260906338691711
+"20130315_Daniel J. Edelman, Inc._Suiters, Tyler_Short-Form.pdf",signer_title,,,1,1,1,0,0.8722040057182312,0.9567066431045532
+"20160626_DLA Piper US LLP_Boyd, Thomas_Short-Form.pdf",registration_num,3712,"3712
+",1,1,1,1,0.944037139415741,0.9859974980354309
+"20160626_DLA Piper US LLP_Boyd, Thomas_Short-Form.pdf",registrant_name,DLA Piper LLP (US),"DLA Piper LLP (US)
+",1,1,0,1,0.9260290265083313,0.9581993222236633
+"20160626_DLA Piper US LLP_Boyd, Thomas_Short-Form.pdf",foreign_principle_name,"Kingdom of Saudi Arabia Ministry of Foreign Affairs, Government of the Democratic Republic of Timor-Leste","Kingdom of Saudi Arabia Ministry of Foreign Affairs, Government of the Democratic Republic of Timor-Leste
+",1,1,0,1,0.2674404978752136,0.26815682649612427
+"20160626_DLA Piper US LLP_Boyd, Thomas_Short-Form.pdf",file_date,"June 23, 2016","June 23, 2016
+",1,1,0,1,0.924967885017395,0.9671942591667175
+"20160626_DLA Piper US LLP_Boyd, Thomas_Short-Form.pdf",signer_name,Thomas Boyd,"Thomas Boyd
+",1,1,1,1,0.943834662437439,0.9460616111755371
+"20160626_DLA Piper US LLP_Boyd, Thomas_Short-Form.pdf",signer_title,,,1,1,1,0,0.8879958391189575,0.9587810635566711
+"20160614_McGuireWoods Consulting, LLC_Baynard, Tracy_Short-Form.pdf",registration_num,6295,"6295
+",1,1,1,1,0.9453700184822083,0.9902517199516296
+"20160614_McGuireWoods Consulting, LLC_Baynard, Tracy_Short-Form.pdf",registrant_name,"McGuireWoods Consulting, LLC","McGuireWoods Consulting, LLC
+",1,1,1,1,0.9237288236618042,0.9731844663619995
+"20160614_McGuireWoods Consulting, LLC_Baynard, Tracy_Short-Form.pdf",foreign_principle_name,Embassy of Japan,"Embassy of Japan
+",1,1,1,1,0.3090326189994812,0.38974112272262573
+"20160614_McGuireWoods Consulting, LLC_Baynard, Tracy_Short-Form.pdf",file_date,"June 14, 2016","June 14, 2016
+",1,1,1,1,0.9121307134628296,0.9260494112968445
+"20160614_McGuireWoods Consulting, LLC_Baynard, Tracy_Short-Form.pdf",signer_name,Tracy Baynard,"Tracy Baynard
+",1,1,1,1,0.9345518350601196,0.9321282505989075
+"20160614_McGuireWoods Consulting, LLC_Baynard, Tracy_Short-Form.pdf",signer_title,,,1,1,1,0,0.8720626831054688,0.9568425416946411
+"20140922_Ketchum Inc. NY_Ghuman, Shawn Singh_Short-Form.pdf",registration_num,5758,"5758
+",1,1,1,1,0.9425143003463745,0.9841558337211609
+"20140922_Ketchum Inc. NY_Ghuman, Shawn Singh_Short-Form.pdf",registrant_name,Ketchum Inc,"Ketchum Inc
+",1,1,0,1,0.880082905292511,0.9289953112602234
+"20140922_Ketchum Inc. NY_Ghuman, Shawn Singh_Short-Form.pdf",foreign_principle_name,Russian Federation,"Russian Federation
+",1,1,1,1,0.27995729446411133,0.2542976140975952
+"20140922_Ketchum Inc. NY_Ghuman, Shawn Singh_Short-Form.pdf",file_date,7/11/14,"7/1/14
+",0,0,0,1,0.4946379065513611,0.46603813767433167
+"20140922_Ketchum Inc. NY_Ghuman, Shawn Singh_Short-Form.pdf",signer_name,Shawn Singh Ghuman,,0,0,0,0,0.694155216217041,0.6039695143699646
+"20140922_Ketchum Inc. NY_Ghuman, Shawn Singh_Short-Form.pdf",signer_title,,,1,1,1,0,0.8670071363449097,0.9555784463882446
+"20110407_JETRO, New York_Hoshino, Kaori_Short-Form.pdf",registration_num,1643,"1643
+",1,1,1,1,0.9421818852424622,0.9866288900375366
+"20110407_JETRO, New York_Hoshino, Kaori_Short-Form.pdf",registrant_name,"JETRO, New York","JETRO, New York
+",1,1,0,1,0.8572050333023071,0.933978259563446
+"20110407_JETRO, New York_Hoshino, Kaori_Short-Form.pdf",foreign_principle_name,"Japan External Trade Organization (JETRO), Tokyo, Japan","Japan External Trade Organization (JETRO), Tokyo, Japan
+",1,1,0,1,0.25428393483161926,0.2976410984992981
+"20110407_JETRO, New York_Hoshino, Kaori_Short-Form.pdf",file_date,April 5 2011,"April 5.2011
+",1,1,0,1,0.9392825961112976,0.9644613265991211
+"20110407_JETRO, New York_Hoshino, Kaori_Short-Form.pdf",signer_name,Ms. Kaori Hoshino,,0,0,0,0,0.06669218838214874,0.0650835782289505
+"20110407_JETRO, New York_Hoshino, Kaori_Short-Form.pdf",signer_title,,,1,1,0,0,0.8751696348190308,0.9526492953300476
+"20180215_Hamilton Place Strategies, LLC_Allen, Sophie Elizabeth_Short-Form.pdf",registration_num,6526,"6526
+",1,1,1,1,0.9396543502807617,0.9796706438064575
+"20180215_Hamilton Place Strategies, LLC_Allen, Sophie Elizabeth_Short-Form.pdf",registrant_name,"Hamilton Place Strategies, LLC","Hamilton Place Strategies, LLC
+",1,1,1,1,0.9078842401504517,0.9578814506530762
+"20180215_Hamilton Place Strategies, LLC_Allen, Sophie Elizabeth_Short-Form.pdf",foreign_principle_name,Embassy of Australia,"Embassy of Australia
+",1,1,1,1,0.33458539843559265,0.3991893529891968
+"20180215_Hamilton Place Strategies, LLC_Allen, Sophie Elizabeth_Short-Form.pdf",file_date,2/15/2018,2/15/2018 ,1,1,0,1,0.9275423288345337,0.9876832962036133
+"20180215_Hamilton Place Strategies, LLC_Allen, Sophie Elizabeth_Short-Form.pdf",signer_name,Sophie Elizabeth Allen,,0,0,0,0,0.08485373109579086,0.05943538621068001
+"20180215_Hamilton Place Strategies, LLC_Allen, Sophie Elizabeth_Short-Form.pdf",signer_title,,,1,1,0,0,0.8608072400093079,0.9500758051872253
+"20101101_MSLGROUP Americas, Inc._Levine, Solomon A._Short-Form.pdf",registration_num,5483,"5483
+",1,1,1,1,0.9415521621704102,0.9833828806877136
+"20101101_MSLGROUP Americas, Inc._Levine, Solomon A._Short-Form.pdf",registrant_name,Solomon Levine,"Qorvis Communications LLC
+",0,0,0,1,0.7790809869766235,0.7822039723396301
+"20101101_MSLGROUP Americas, Inc._Levine, Solomon A._Short-Form.pdf",foreign_principle_name,"Bahrain, Kuwait (pre existing: KRG, KSA, Cyprus, Krull, Finmeccanica, Sri Lanka)","Bahrain, Kuwait (pre existing: KRG, KSA, Cyprus, Krull, Finmeccanica, Sri Lanka)
+",1,1,0,1,0.07866160571575165,0.08756617456674576
+"20101101_MSLGROUP Americas, Inc._Levine, Solomon A._Short-Form.pdf",file_date,,,1,1,0,0,0.21400225162506104,0.26776713132858276
+"20101101_MSLGROUP Americas, Inc._Levine, Solomon A._Short-Form.pdf",signer_name,,,1,1,1,0,0.7704588174819946,0.8529187440872192
+"20101101_MSLGROUP Americas, Inc._Levine, Solomon A._Short-Form.pdf",signer_title,,,1,1,1,0,0.8752004504203796,0.9539638757705688
+"20080730_Akin, Gump, Strauss, Hauer _ Feld, LLP_Jankowsky, Joel_Short-Form.pdf",registration_num,3492,"3492
+",1,1,1,1,0.9260708689689636,0.9795221090316772
+"20080730_Akin, Gump, Strauss, Hauer _ Feld, LLP_Jankowsky, Joel_Short-Form.pdf",registrant_name,"Akin Gump Strauss Hauer & Feld, LLP","Akin Gump Strauss Hauer & Feld, LLP
+",1,1,0,1,0.9032429456710815,0.9117807149887085
+"20080730_Akin, Gump, Strauss, Hauer _ Feld, LLP_Jankowsky, Joel_Short-Form.pdf",foreign_principle_name,Embassy of the United Arab Emirates,"Embassy of the United Arab Emirates
+",1,1,1,1,0.3408195674419403,0.39296260476112366
+"20080730_Akin, Gump, Strauss, Hauer _ Feld, LLP_Jankowsky, Joel_Short-Form.pdf",file_date,"July 25, 2008","25,2008
+",0,0,0,1,0.23726730048656464,0.20556680858135223
+"20080730_Akin, Gump, Strauss, Hauer _ Feld, LLP_Jankowsky, Joel_Short-Form.pdf",signer_name,Joel Jankowsky,,0,0,1,0,0.2912374436855316,0.20172353088855743
+"20080730_Akin, Gump, Strauss, Hauer _ Feld, LLP_Jankowsky, Joel_Short-Form.pdf",signer_title,,,1,1,1,0,0.8760957717895508,0.953683078289032
+"20180430_Myriad International Marketing, LLC_Averay-Cuesta, Julie_Short-Form.pdf",registration_num,6549,"6549
+",1,1,1,1,0.9376229047775269,0.9644983410835266
+"20180430_Myriad International Marketing, LLC_Averay-Cuesta, Julie_Short-Form.pdf",registrant_name,"Myriad International Marketing, LLC","Myriad International Marketing, LLC
+",1,1,0,1,0.8127095103263855,0.8096750378608704
+"20180430_Myriad International Marketing, LLC_Averay-Cuesta, Julie_Short-Form.pdf",foreign_principle_name,,,1,1,0,0,0.7595348358154297,0.8720159530639648
+"20180430_Myriad International Marketing, LLC_Averay-Cuesta, Julie_Short-Form.pdf",file_date,"April 30, 2018","April 30, 2018
+",1,1,0,1,0.9204903841018677,0.973173975944519
+"20180430_Myriad International Marketing, LLC_Averay-Cuesta, Julie_Short-Form.pdf",signer_name,Julie Averay-Cuesta,"Julie Averay-Cuesta
+",1,1,1,1,0.9263779520988464,0.9332792162895203
+"20180430_Myriad International Marketing, LLC_Averay-Cuesta, Julie_Short-Form.pdf",signer_title,,,1,1,1,0,0.8785386085510254,0.9585334658622742
+"20170414_Barnes _ Thornburg, LLP_Burkhardt, Craig S._Short-Form.pdf",registration_num,6417,"6417
+",1,1,1,1,0.9485235214233398,0.9819566607475281
+"20170414_Barnes _ Thornburg, LLP_Burkhardt, Craig S._Short-Form.pdf",registrant_name,Barnes & Thornburg LLP,"Barnes & Thornburg LLP
+",1,1,0,1,0.8862075805664062,0.9075013995170593
+"20170414_Barnes _ Thornburg, LLP_Burkhardt, Craig S._Short-Form.pdf",foreign_principle_name,Republic of Guatemala,"Democratic Party of Albania
+",0,0,0,1,0.10443522036075592,0.11391353607177734
+"20170414_Barnes _ Thornburg, LLP_Burkhardt, Craig S._Short-Form.pdf",file_date,04/14/2017,"Apil 14, 2017
+",0,0,0,1,0.42034226655960083,0.3878149092197418
+"20170414_Barnes _ Thornburg, LLP_Burkhardt, Craig S._Short-Form.pdf",signer_name,Craig S. Burkhardt,,0,0,0,0,0.20632989704608917,0.107652448117733
+"20170414_Barnes _ Thornburg, LLP_Burkhardt, Craig S._Short-Form.pdf",signer_title,,,1,1,0,0,0.8819838762283325,0.9577798843383789
+"20180705_JETRO, New York_Wakabayashi, Kengo_Short-Form.pdf",registration_num,1643,"1643
+",1,1,1,1,0.9425415992736816,0.9883508682250977
+"20180705_JETRO, New York_Wakabayashi, Kengo_Short-Form.pdf",registrant_name,JETRO New York,"JETRO New York
+",1,1,0,1,0.8970187902450562,0.9467071294784546
+"20180705_JETRO, New York_Wakabayashi, Kengo_Short-Form.pdf",foreign_principle_name,"Japan External Trade Organization, (JETRO), Tokyo, Japan","Japan External Trade Organization, (JETRO), Tokyo, Japan
+",1,1,0,1,0.12356419861316681,0.15560117363929749
+"20180705_JETRO, New York_Wakabayashi, Kengo_Short-Form.pdf",file_date,07/05/2018,"07/05/2018
+",1,1,1,1,0.947588324546814,0.9820064306259155
+"20180705_JETRO, New York_Wakabayashi, Kengo_Short-Form.pdf",signer_name,若林 健吾,,0,0,0,0,0.1780831515789032,0.10321102291345596
+"20180705_JETRO, New York_Wakabayashi, Kengo_Short-Form.pdf",signer_title,,,1,1,1,0,0.868539035320282,0.952191948890686
+"20100924_Ketchum Inc. NY_Weinheimer, Timothy Mark_Short-Form.pdf",registration_num,5758,"5758
+",1,1,1,1,0.9429594278335571,0.9823514223098755
+"20100924_Ketchum Inc. NY_Weinheimer, Timothy Mark_Short-Form.pdf",registrant_name,"Ketchum, Inc.","Ketchum, Inc.
+",1,1,1,1,0.9167946577072144,0.9601831436157227
+"20100924_Ketchum Inc. NY_Weinheimer, Timothy Mark_Short-Form.pdf",foreign_principle_name,The Russian Federation Gazprom Export,"The Russian Federation
+Gazprom Export
+",1,1,0,1,0.14482298493385315,0.13521698117256165
+"20100924_Ketchum Inc. NY_Weinheimer, Timothy Mark_Short-Form.pdf",file_date,"August 31, 2010","August 31, 2010
+",1,1,0,1,0.9257156252861023,0.9688509106636047
+"20100924_Ketchum Inc. NY_Weinheimer, Timothy Mark_Short-Form.pdf",signer_name,Timothy Mark Weinheimer,,0,0,0,0,0.0990009531378746,0.06718696653842926
+"20100924_Ketchum Inc. NY_Weinheimer, Timothy Mark_Short-Form.pdf",signer_title,,,1,1,0,0,0.8319860696792603,0.9131917953491211
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Kaludov, Krasimir Dimitrov_Short-Form.pdf",registration_num,5334,"5334
+",1,1,1,1,0.9436195492744446,0.9870607256889343
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Kaludov, Krasimir Dimitrov_Short-Form.pdf",registrant_name,Commonwealth of Dominica Maritime Registry,"Commonwealth of Dominica Maritime Registry
+",1,1,1,1,0.8958266377449036,0.9437105059623718
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Kaludov, Krasimir Dimitrov_Short-Form.pdf",foreign_principle_name,Commonwealth of Dominica,"Commonwealth of Dominica
+",1,1,1,1,0.21103283762931824,0.24293439090251923
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Kaludov, Krasimir Dimitrov_Short-Form.pdf",file_date,"October 26, 2012","October 26, 2012
+",1,1,1,1,0.9447124600410461,0.9836279153823853
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Kaludov, Krasimir Dimitrov_Short-Form.pdf",signer_name,Krasimir K. Kaludov,"Krasimir K. Kaludov
+",1,1,1,1,0.8817679286003113,0.8638784289360046
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Kaludov, Krasimir Dimitrov_Short-Form.pdf",signer_title,,,1,1,1,0,0.8678779602050781,0.9559823274612427
+"20171121_KOTRA_Lee, Ji Hyung_Short-Form.pdf",registration_num,1619,"1619
+",1,1,1,1,0.9430700540542603,0.9898604154586792
+"20171121_KOTRA_Lee, Ji Hyung_Short-Form.pdf",registrant_name,KOTRA,"KOTRA
+",1,1,1,1,0.9125542640686035,0.9316846132278442
+"20171121_KOTRA_Lee, Ji Hyung_Short-Form.pdf",foreign_principle_name,,,1,1,0,0,0.8148282766342163,0.9323169589042664
+"20171121_KOTRA_Lee, Ji Hyung_Short-Form.pdf",file_date,"11 월 20, 2017","11 20, 2017
+",1,1,0,1,0.9209114909172058,0.9547189474105835
+"20171121_KOTRA_Lee, Ji Hyung_Short-Form.pdf",signer_name,Jihyung Lee,"Jihyung Lee
+",1,1,0,1,0.8681491017341614,0.8513090014457703
+"20171121_KOTRA_Lee, Ji Hyung_Short-Form.pdf",signer_title,,,1,1,1,0,0.8691672086715698,0.9569128155708313
+"20130513_Commonwealth of Dominica Maritime Registry, Inc._Orutu, Lucky_Short-Form.pdf",registration_num,5334,"5334
+",1,1,1,1,0.948428750038147,0.9880186915397644
+"20130513_Commonwealth of Dominica Maritime Registry, Inc._Orutu, Lucky_Short-Form.pdf",registrant_name,Orutu Lucky,"Commonwealth of Dominica Maritime Registry
+",0,0,0,1,0.267181396484375,0.22075653076171875
+"20130513_Commonwealth of Dominica Maritime Registry, Inc._Orutu, Lucky_Short-Form.pdf",foreign_principle_name,Commonwealth of Dominica,"Commonwealth of Dominica
+",1,1,1,1,0.2088097780942917,0.23805086314678192
+"20130513_Commonwealth of Dominica Maritime Registry, Inc._Orutu, Lucky_Short-Form.pdf",file_date,12/11/12,"12/11/12
+",1,1,0,1,0.9442775845527649,0.9880667924880981
+"20130513_Commonwealth of Dominica Maritime Registry, Inc._Orutu, Lucky_Short-Form.pdf",signer_name,Lucky,,0,0,0,0,0.11249701678752899,0.06784737855195999
+"20130513_Commonwealth of Dominica Maritime Registry, Inc._Orutu, Lucky_Short-Form.pdf",signer_title,,,1,1,1,0,0.8689957857131958,0.9523933529853821
+"20120130_CMGRP, Inc._Doran, Seagren_Short-Form.pdf",registration_num,3911,"3911
+",1,1,1,1,0.9449226260185242,0.9894107580184937
+"20120130_CMGRP, Inc._Doran, Seagren_Short-Form.pdf",registrant_name,"CMGRP, Inc. d/b/a Weber Shandwick","CMGRP, Inc. d/b/a Weber Shandwick
+",1,1,0,1,0.9375162124633789,0.967965304851532
+"20120130_CMGRP, Inc._Doran, Seagren_Short-Form.pdf",foreign_principle_name,Government of the Federal District (Mexico City),"Government of the Federal District (Mexico City)
+",1,1,1,1,0.2591344714164734,0.27755028009414673
+"20120130_CMGRP, Inc._Doran, Seagren_Short-Form.pdf",file_date,"January 27, 2012","January 27, 2012
+",1,1,0,1,0.9291477203369141,0.9840617179870605
+"20120130_CMGRP, Inc._Doran, Seagren_Short-Form.pdf",signer_name,Seagren Doran,"Seagren Doran
+",1,1,1,1,0.9288271069526672,0.9620298147201538
+"20120130_CMGRP, Inc._Doran, Seagren_Short-Form.pdf",signer_title,,,1,1,1,0,0.8679705858230591,0.9562840461730957
+"20120514_Quebec Government Office_Boyer, Joane_Short-Form.pdf",registration_num,01787,"01787
+",1,1,1,1,0.9351204633712769,0.9703179597854614
+"20120514_Quebec Government Office_Boyer, Joane_Short-Form.pdf",registrant_name,QUEBEC GOVERNMENT OFFICE,"QUEBEC GOVERNMENT OFFICE
+",1,1,1,1,0.9340200424194336,0.975139319896698
+"20120514_Quebec Government Office_Boyer, Joane_Short-Form.pdf",foreign_principle_name,Quebec Government (Ministry of International Relations); National Affairs; Governmental Relations and Academic Affairs; Communication and Public Affairs; Investissement Quebec; Economic Affairs and Cultural Affairs,"Quebec Government (Ministry of International Relations); National Affairs; Governmental Relations and Academic Affairs;
+Communication and Public Affairs; Investissement Quebec; Economic Affairs and Cultural Affairs
+",1,1,0,1,0.09766263514757156,0.08363975584506989
+"20120514_Quebec Government Office_Boyer, Joane_Short-Form.pdf",file_date,"Mai 14, 2012","Mai 14, 2012
+",1,1,0,1,0.826507568359375,0.6854574084281921
+"20120514_Quebec Government Office_Boyer, Joane_Short-Form.pdf",signer_name,BOYER JOANE,"BOYER JOANE
+",1,1,1,1,0.8426861763000488,0.6708000898361206
+"20120514_Quebec Government Office_Boyer, Joane_Short-Form.pdf",signer_title,,,1,1,1,0,0.8702206611633301,0.9567103385925293
+"20090317_DLA Piper US LLP_Phillips, Steven R._Short-Form.pdf",registration_num,3712,"3712
+",1,1,1,1,0.9377720952033997,0.9846200942993164
+"20090317_DLA Piper US LLP_Phillips, Steven R._Short-Form.pdf",registrant_name,Steven R. Phillips,"DLA Piper US LLP
+",0,0,0,1,0.8386176824569702,0.8716058731079102
+"20090317_DLA Piper US LLP_Phillips, Steven R._Short-Form.pdf",foreign_principle_name,Embassy of the United Arab Emirates; Government of the German State of Rheinland-Pfalz,"UNITED ARAB EMIRATES; GERMAN STATE OF RHEINLAND-PFALZ
+",0,0,0,1,0.0842008888721466,0.09666398912668228
+"20090317_DLA Piper US LLP_Phillips, Steven R._Short-Form.pdf",file_date,3.11.09,"3.11.09
+",1,1,0,1,0.9259799718856812,0.9103180170059204
+"20090317_DLA Piper US LLP_Phillips, Steven R._Short-Form.pdf",signer_name,Steven R. Phillips,,0,0,0,0,0.18128056824207306,0.13085272908210754
+"20090317_DLA Piper US LLP_Phillips, Steven R._Short-Form.pdf",signer_title,,,1,1,0,0,0.8776808977127075,0.9489186406135559
+"20161213_Mercury Public Affairs, LLC_Dilemani, Jake_Short-Form.pdf",registration_num,6170,"6170
+",1,1,1,1,0.9389382600784302,0.9770002365112305
+"20161213_Mercury Public Affairs, LLC_Dilemani, Jake_Short-Form.pdf",registrant_name,Mecury,"Mecury
+",1,1,0,1,0.8580225706100464,0.9188593029975891
+"20161213_Mercury Public Affairs, LLC_Dilemani, Jake_Short-Form.pdf",foreign_principle_name,Globee,"Globee
+",1,1,0,1,0.16172413527965546,0.14655283093452454
+"20161213_Mercury Public Affairs, LLC_Dilemani, Jake_Short-Form.pdf",file_date,"December 13, 2016","December 13, 2016
+",1,1,1,1,0.9410730600357056,0.9815109968185425
+"20161213_Mercury Public Affairs, LLC_Dilemani, Jake_Short-Form.pdf",signer_name,Adina Taluto,"Adina Taluto
+",1,1,1,1,0.9112478494644165,0.9015037417411804
+"20161213_Mercury Public Affairs, LLC_Dilemani, Jake_Short-Form.pdf",signer_title,,,1,1,1,0,0.868759274482727,0.9563788175582886
+"20110729_Podesta Group, Inc._Brathwaite, Paul_Short-Form.pdf",registration_num,5926,"5926
+",1,1,1,1,0.9514424204826355,0.9878073930740356
+"20110729_Podesta Group, Inc._Brathwaite, Paul_Short-Form.pdf",registrant_name,"podesta Group, Inc.","Podesta Group, Inc.
+",0,1,0,1,0.8967719078063965,0.8906596302986145
+"20110729_Podesta Group, Inc._Brathwaite, Paul_Short-Form.pdf",foreign_principle_name,Republic of Albania; National Security Council of Georgia; Embassy of Japan. By prior filings: Government of the Arab Republic of Egypt.,"By this filing: Republic of Albania; National Security Council of Georgia; Embassy of Japan.-
+By prior filings: Government of the Arab Republic of Egypt.
+",0,0,0,1,0.05386509746313095,0.06089916080236435
+"20110729_Podesta Group, Inc._Brathwaite, Paul_Short-Form.pdf",file_date,"July 29, 2011","July 29, 2011
+(Date of signature",0,1,0,1,0.9343917965888977,0.9501672983169556
+"20110729_Podesta Group, Inc._Brathwaite, Paul_Short-Form.pdf",signer_name,Paul A. Brathwaite,,0,0,0,0,0.47168445587158203,0.33854684233665466
+"20110729_Podesta Group, Inc._Brathwaite, Paul_Short-Form.pdf",signer_title,,,1,1,1,0,0.9015088081359863,0.9585576057434082
+"20151110_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",registration_num,1813,"1813
+",1,1,1,1,0.9308565258979797,0.9875772595405579
+"20151110_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",registrant_name,JETRO San Francisco,"JETRO San Francisco
+",1,1,0,1,0.7713796496391296,0.8601229786872864
+"20151110_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",foreign_principle_name,"Japan External Trade Organization (JETRO), Tokyo, Japan","Japan External Trade Organization (JETRO), Tokyo, Japan
+",1,1,0,1,0.1399381458759308,0.17054383456707
+"20151110_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",file_date,"November 06, 2015","November 06, 2015
+",1,1,1,1,0.9400192499160767,0.9810916185379028
+"20151110_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",signer_name,Naoco Hunter,"Naoco Hunter
+",1,1,1,1,0.8787468671798706,0.9084776639938354
+"20151110_JETRO, San Francisco_Hunter, Naoco_Short-Form.pdf",signer_title,,,1,1,1,0,0.8687359690666199,0.9561201333999634
+"20170724_Ketchum Inc. NY_Kloeffler, Dan_Short-Form.pdf",registration_num,5758,"5758
+",1,1,1,1,0.9450566172599792,0.9868606328964233
+"20170724_Ketchum Inc. NY_Kloeffler, Dan_Short-Form.pdf",registrant_name,Ketchum,"Ketchum
+",1,1,0,1,0.847445011138916,0.9127122759819031
+"20170724_Ketchum Inc. NY_Kloeffler, Dan_Short-Form.pdf",foreign_principle_name,"Economic Development Board, Singapore","Economic Development Board, Singapore
+",1,1,1,1,0.24379363656044006,0.30434519052505493
+"20170724_Ketchum Inc. NY_Kloeffler, Dan_Short-Form.pdf",file_date,07/24/2017,,0,0,0,0,0.7058660984039307,0.759942889213562
+"20170724_Ketchum Inc. NY_Kloeffler, Dan_Short-Form.pdf",signer_name,Dan Kloeffler,"Dan Kloeffler
+",1,1,0,1,0.8081256151199341,0.8141066431999207
+"20170724_Ketchum Inc. NY_Kloeffler, Dan_Short-Form.pdf",signer_title,,,1,1,0,0,0.8710600137710571,0.9561128616333008
+"20121001_BGR Government Affairs, LLC_Mantz, Jonathan_Short-Form.pdf",registration_num,5430,"5430
+",1,1,1,1,0.9432119131088257,0.986981213092804
+"20121001_BGR Government Affairs, LLC_Mantz, Jonathan_Short-Form.pdf",registrant_name,"BGR Government Affairs, LLC","BGR Government Affairs, LLC
+",1,1,1,1,0.9369834661483765,0.9777131080627441
+"20121001_BGR Government Affairs, LLC_Mantz, Jonathan_Short-Form.pdf",foreign_principle_name,"Royal Thai Embassy, Washington D.C., Thaksin Shinawatra, Kurdistan Regional Government (formerly known as the Kurdish Democratic Party)","Royal Thai Embassy, Washington D.C., Thaksin Shinawatra, Kurdistan Regional Government (formerly known as the Kurdish
+Democratic Party)
+",1,1,0,1,0.06675463914871216,0.0651123896241188
+"20121001_BGR Government Affairs, LLC_Mantz, Jonathan_Short-Form.pdf",file_date,"October 01, 2012","October 01, 2012
+",1,1,0,1,0.9361560940742493,0.9719040989875793
+"20121001_BGR Government Affairs, LLC_Mantz, Jonathan_Short-Form.pdf",signer_name,Jonathan Mantz,"Jonathan Mantz
+",1,1,1,1,0.9066841006278992,0.9011659622192383
+"20121001_BGR Government Affairs, LLC_Mantz, Jonathan_Short-Form.pdf",signer_title,,,1,1,1,0,0.8811792135238647,0.9581546783447266
+"20180523_Greenberg Traurig, LLP_Wynn, Albert R._Short-Form.pdf",registration_num,5712,"5712
+",1,1,1,1,0.9365764856338501,0.9836757779121399
+"20180523_Greenberg Traurig, LLP_Wynn, Albert R._Short-Form.pdf",registrant_name,"Greenberg Traurig, LLP","Greenberg Traurig, LLP
+",1,1,1,1,0.9452829360961914,0.9644412994384766
+"20180523_Greenberg Traurig, LLP_Wynn, Albert R._Short-Form.pdf",foreign_principle_name,"Government of the Democratic Republic of Timor-Leste, Republic of Turkey, Ministry of Justice of the Republic of Kazakhstan",,0,0,0,0,0.06557578593492508,0.0694795772433281
+"20180523_Greenberg Traurig, LLP_Wynn, Albert R._Short-Form.pdf",file_date,"May 23, 2018","May 23, 2018
+",1,1,0,1,0.9290353059768677,0.9783583879470825
+"20180523_Greenberg Traurig, LLP_Wynn, Albert R._Short-Form.pdf",signer_name,Albert R. Wynn,"Albert R. Wynn
+",1,1,1,1,0.890455424785614,0.9015216827392578
+"20180523_Greenberg Traurig, LLP_Wynn, Albert R._Short-Form.pdf",signer_title,,,1,1,0,0,0.8847408294677734,0.9498389363288879
+"20170424_JETRO, San Francisco_Wood, Miki_Short-Form.pdf",registration_num,1813,"1813
+",1,1,1,1,0.9225682020187378,0.9823229908943176
+"20170424_JETRO, San Francisco_Wood, Miki_Short-Form.pdf",registrant_name,Miki Wood,,0,0,1,0,0.6555668115615845,0.6316478848457336
+"20170424_JETRO, San Francisco_Wood, Miki_Short-Form.pdf",foreign_principle_name,Japan External Trade Organization (JETRO),"Japan External Trade Organization (JETRO), Tokyo, Japan
+",0,0,0,1,0.17868034541606903,0.2149888277053833
+"20170424_JETRO, San Francisco_Wood, Miki_Short-Form.pdf",file_date,"April 24, 2017","April 24, 2017
+",1,1,1,1,0.9382165670394897,0.9810640215873718
+"20170424_JETRO, San Francisco_Wood, Miki_Short-Form.pdf",signer_name,Miki Wood,"Miki Wood
+",1,1,1,1,0.8017494082450867,0.7497051358222961
+"20170424_JETRO, San Francisco_Wood, Miki_Short-Form.pdf",signer_title,,,1,1,1,0,0.8669532537460327,0.9559966921806335
+"20140625_Levick Strategic Communications, LP_Genser, Jared Matthew_Short-Form.pdf",registration_num,6228,"6228
+",1,1,0,1,0.9257810711860657,0.9649394154548645
+"20140625_Levick Strategic Communications, LP_Genser, Jared Matthew_Short-Form.pdf",registrant_name,JARED MATTHEW GENSER,"LEVICK STRATEGIC COMMUNICATIONS, LLC
+",0,0,0,1,0.6716660857200623,0.6696073412895203
+"20140625_Levick Strategic Communications, LP_Genser, Jared Matthew_Short-Form.pdf",foreign_principle_name,NAN BIZCOM LTD,"NAN BIZCOM LTD
+",1,1,1,1,0.22835493087768555,0.25823506712913513
+"20140625_Levick Strategic Communications, LP_Genser, Jared Matthew_Short-Form.pdf",file_date,"June 25, 2014","June 25, 2014
+",1,1,0,1,0.9407798647880554,0.9804153442382812
+"20140625_Levick Strategic Communications, LP_Genser, Jared Matthew_Short-Form.pdf",signer_name,JARED M. GENSER,"JARED M. GENSER
+",1,1,1,1,0.8954480290412903,0.8872011303901672
+"20140625_Levick Strategic Communications, LP_Genser, Jared Matthew_Short-Form.pdf",signer_title,,,1,1,1,0,0.8695847392082214,0.9562503695487976
+"20180703_Mercury Public Affairs, LLC_Chabria, Jai_Short-Form.pdf",registration_num,6170,"6170
+",1,1,1,1,0.9433027505874634,0.9848124384880066
+"20180703_Mercury Public Affairs, LLC_Chabria, Jai_Short-Form.pdf",registrant_name,Mercury Public Affairs LLC,"Mercury Public Affairs LLC
+",1,1,0,1,0.9362087249755859,0.9757593274116516
+"20180703_Mercury Public Affairs, LLC_Chabria, Jai_Short-Form.pdf",foreign_principle_name,"Turkey-US Business Council (""TAIK"")","Turkey-US Business Council (""TAIK"")
+",1,1,0,1,0.30330681800842285,0.3556516170501709
+"20180703_Mercury Public Affairs, LLC_Chabria, Jai_Short-Form.pdf",file_date,July 3 2018,"July 3 2018
+",1,1,1,1,0.9315582513809204,0.9839099645614624
+"20180703_Mercury Public Affairs, LLC_Chabria, Jai_Short-Form.pdf",signer_name,Jai Chabria,"Jai Chabria
+",1,1,1,1,0.9026546478271484,0.8782777786254883
+"20180703_Mercury Public Affairs, LLC_Chabria, Jai_Short-Form.pdf",signer_title,,,1,1,1,0,0.8734315633773804,0.9571212530136108
+"20161031_MSLGROUP Americas, Inc._Yowell, Kevin G._Short-Form.pdf",registration_num,5483,"5483
+",1,1,1,1,0.940616250038147,0.9857332110404968
+"20161031_MSLGROUP Americas, Inc._Yowell, Kevin G._Short-Form.pdf",registrant_name,MSLGROUPAmericas Inc d/b/a QorvisMSLGROUP,"MSLGROUPAmericas Inc d/b/a QorvisMSLGROUP
+",1,1,0,1,0.8393128514289856,0.8777812123298645
+"20161031_MSLGROUP Americas, Inc._Yowell, Kevin G._Short-Form.pdf",foreign_principle_name,Kingdom of Saudi Arabia,"Kingdom of Saudi Arabia
+",1,1,1,1,0.24637630581855774,0.26614388823509216
+"20161031_MSLGROUP Americas, Inc._Yowell, Kevin G._Short-Form.pdf",file_date,"October 14, 2016","October 14, 2016
+",1,1,0,1,0.9260091781616211,0.9805027842521667
+"20161031_MSLGROUP Americas, Inc._Yowell, Kevin G._Short-Form.pdf",signer_name,Kevin G. Yowell,"Kevin G. Yowell
+",1,1,1,1,0.9017522931098938,0.9344169497489929
+"20161031_MSLGROUP Americas, Inc._Yowell, Kevin G._Short-Form.pdf",signer_title,,,1,1,1,0,0.8695834279060364,0.9562493562698364
+"20081002_Ketchum Inc. NY_Kotova, Anna_Short-Form.pdf",registration_num,5758,"5758
+",1,1,0,1,0.9253713488578796,0.9770444631576538
+"20081002_Ketchum Inc. NY_Kotova, Anna_Short-Form.pdf",registrant_name,Anna Kotova,"Ketchum
+",0,0,0,1,0.3037276566028595,0.23570303618907928
+"20081002_Ketchum Inc. NY_Kotova, Anna_Short-Form.pdf",foreign_principle_name,Government of the Russian Federation Gazprom,"Government of The Russian Federation
+Gazprom
+",0,1,0,1,0.13709664344787598,0.13439437747001648
+"20081002_Ketchum Inc. NY_Kotova, Anna_Short-Form.pdf",file_date,06/06/08,"06/06/08
+",1,1,0,1,0.937718391418457,0.9829385876655579
+"20081002_Ketchum Inc. NY_Kotova, Anna_Short-Form.pdf",signer_name,Anna Kotova,"Ava Katora
+",0,0,1,1,0.31140953302383423,0.28080716729164124
+"20081002_Ketchum Inc. NY_Kotova, Anna_Short-Form.pdf",signer_title,,,1,1,1,0,0.8792628049850464,0.9602288007736206
+"20120914_Arnold _ Porter Kaye Scholer, LLP_Herrera, Raul R._Short-Form.pdf",registration_num,1750,"1750
+",1,1,1,1,0.943751335144043,0.9884611964225769
+"20120914_Arnold _ Porter Kaye Scholer, LLP_Herrera, Raul R._Short-Form.pdf",registrant_name,Arnold & Porter LLP,"Arnold & Porter LLP
+",1,1,1,1,0.943310558795929,0.9761800765991211
+"20120914_Arnold _ Porter Kaye Scholer, LLP_Herrera, Raul R._Short-Form.pdf",foreign_principle_name,Instituto Guatemalteco de Turismo – INGUAT (Guatemalan Institute of Tourism),"Instituto Guatelmalteco de Turismo -- INGUAT (Guatemalan Institute of Tourism)
+",0,0,0,1,0.10296730697154999,0.11155238002538681
+"20120914_Arnold _ Porter Kaye Scholer, LLP_Herrera, Raul R._Short-Form.pdf",file_date,09/14/2012,"12
+",0,0,0,1,0.5106161832809448,0.5818402171134949
+"20120914_Arnold _ Porter Kaye Scholer, LLP_Herrera, Raul R._Short-Form.pdf",signer_name,Raul R. Herrera,,0,0,0,0,0.4125804007053375,0.53960782289505
+"20120914_Arnold _ Porter Kaye Scholer, LLP_Herrera, Raul R._Short-Form.pdf",signer_title,,,1,1,0,0,0.7661000490188599,0.8381890058517456
+"20110729_MSLGROUP Americas, Inc._Antwerpen, Julie Van_Short-Form.pdf",registration_num,5483,"5483
+",1,1,1,1,0.9359920620918274,0.9803525805473328
+"20110729_MSLGROUP Americas, Inc._Antwerpen, Julie Van_Short-Form.pdf",registrant_name,"Qorvis Communications, LLC","Qorvis Communications, LLC
+",1,1,0,1,0.8218350410461426,0.8424112200737
+"20110729_MSLGROUP Americas, Inc._Antwerpen, Julie Van_Short-Form.pdf",foreign_principle_name,"Marca Pais, Imagen de Mexico","Marca Pais, Imagen de Mexico
+",1,1,0,1,0.22904840111732483,0.28631120920181274
+"20110729_MSLGROUP Americas, Inc._Antwerpen, Julie Van_Short-Form.pdf",file_date,7/18/11,"7/18/11
+",1,1,0,1,0.9466286897659302,0.9852280616760254
+"20110729_MSLGROUP Americas, Inc._Antwerpen, Julie Van_Short-Form.pdf",signer_name,Julie Van Antwerpen,,0,0,0,0,0.16965889930725098,0.08609078079462051
+"20110729_MSLGROUP Americas, Inc._Antwerpen, Julie Van_Short-Form.pdf",signer_title,,,1,1,1,0,0.8691854476928711,0.9564443826675415
+"20090929_Squire Patton Boggs, LLP_Cowan, Mark_Short-Form.pdf",registration_num,2165,"2165
+",1,1,1,1,0.9331701397895813,0.9819551706314087
+"20090929_Squire Patton Boggs, LLP_Cowan, Mark_Short-Form.pdf",registrant_name,Patton Boggs LLP,"Patton Boggs LLP
+",1,1,0,1,0.8917310833930969,0.9299267530441284
+"20090929_Squire Patton Boggs, LLP_Cowan, Mark_Short-Form.pdf",foreign_principle_name,The Embassy of Ecuador,"By this filing: the Embassy of Ecuador; by a previous filing: The Embassy of the People's Republic of China.
+",0,0,0,1,0.24440184235572815,0.27280205488204956
+"20090929_Squire Patton Boggs, LLP_Cowan, Mark_Short-Form.pdf",file_date,"September 16, 2009","September
+16, 2009
+(Date of signature)
+",0,1,0,1,0.3203742504119873,0.30657416582107544
+"20090929_Squire Patton Boggs, LLP_Cowan, Mark_Short-Form.pdf",signer_name,Mark Cowan,,0,0,0,0,0.16662004590034485,0.10097912698984146
+"20090929_Squire Patton Boggs, LLP_Cowan, Mark_Short-Form.pdf",signer_title,,,1,1,0,0,0.8304009437561035,0.9076130986213684
+"20110721_Ketchum Inc. NY_Ducey, Bradley_Short-Form.pdf",registration_num,5758,"5758
+",1,1,1,1,0.9424747228622437,0.9841922521591187
+"20110721_Ketchum Inc. NY_Ducey, Bradley_Short-Form.pdf",registrant_name,"Ketchum, Inc","Ketchum, Inc
+",1,1,0,1,0.9016245007514954,0.9439138174057007
+"20110721_Ketchum Inc. NY_Ducey, Bradley_Short-Form.pdf",foreign_principle_name,Gazprom and Russian Federation,"Gazprom and Russian Federation
+",1,1,1,1,0.26405224204063416,0.3025302290916443
+"20110721_Ketchum Inc. NY_Ducey, Bradley_Short-Form.pdf",file_date,7/11/11,"7/11
+",0,0,0,1,0.35178786516189575,0.3194730877876282
+"20110721_Ketchum Inc. NY_Ducey, Bradley_Short-Form.pdf",signer_name,Bradley Ducey,,0,0,0,0,0.3000045418739319,0.22712823748588562
+"20110721_Ketchum Inc. NY_Ducey, Bradley_Short-Form.pdf",signer_title,,,1,1,0,0,0.8538299798965454,0.9454221725463867
+"20080902_Glover Park Group, LLC_Lockhart, Joe_Short-Form.pdf",registration_num,5666,"5666
+",1,1,1,1,0.9452635049819946,0.987202525138855
+"20080902_Glover Park Group, LLC_Lockhart, Joe_Short-Form.pdf",registrant_name,Joe Lockhart,"The Glover Park Group
+",0,0,1,1,0.7731788754463196,0.8201115727424622
+"20080902_Glover Park Group, LLC_Lockhart, Joe_Short-Form.pdf",foreign_principle_name,Government of Georgia,"Government of Georgia
+Taipei Economic and Cultural Representative Office (TECRO)
+",0,0,0,1,0.4184958338737488,0.4645642340183258
+"20080902_Glover Park Group, LLC_Lockhart, Joe_Short-Form.pdf",file_date,8-25-08,"8-25-08
+",1,1,0,1,0.920215904712677,0.9205614328384399
+"20080902_Glover Park Group, LLC_Lockhart, Joe_Short-Form.pdf",signer_name,Joe Lockhart,,0,0,0,0,0.2432972490787506,0.14003780484199524
+"20080902_Glover Park Group, LLC_Lockhart, Joe_Short-Form.pdf",signer_title,,,1,1,1,0,0.881515383720398,0.9542748332023621
+"20150108_Daniel J. Edelman, Inc._Zenatti, Ana Paula_Short-Form.pdf",registration_num,3634,"3634
+",1,1,1,1,0.9398862719535828,0.9820764660835266
+"20150108_Daniel J. Edelman, Inc._Zenatti, Ana Paula_Short-Form.pdf",registrant_name,"Daniel J Edelman, Inc.","Daniel J Edelman, Inc.
+",1,1,0,1,0.9150193333625793,0.9521576166152954
+"20150108_Daniel J. Edelman, Inc._Zenatti, Ana Paula_Short-Form.pdf",foreign_principle_name,100 Lives Limited,"100 Lives Limited
+",1,1,1,1,0.3278542757034302,0.33755502104759216
+"20150108_Daniel J. Edelman, Inc._Zenatti, Ana Paula_Short-Form.pdf",file_date,12/11/14,"12/11/14
+",1,1,0,1,0.931805431842804,0.974479079246521
+"20150108_Daniel J. Edelman, Inc._Zenatti, Ana Paula_Short-Form.pdf",signer_name,Ana Paula Zenatti,,0,0,0,0,0.12482549995183945,0.08417517691850662
+"20150108_Daniel J. Edelman, Inc._Zenatti, Ana Paula_Short-Form.pdf",signer_title,,,1,1,1,0,0.8654665946960449,0.9566407203674316
+"20150316_Daschle Group, LLC_Daschle, Nathan_Short-Form.pdf",registration_num,6280,"6280
+",1,1,1,1,0.9421321749687195,0.9786409139633179
+"20150316_Daschle Group, LLC_Daschle, Nathan_Short-Form.pdf",registrant_name,"The Daschle Group, LLC","The Daschle Group, LLC
+",1,1,1,1,0.948055624961853,0.9842928647994995
+"20150316_Daschle Group, LLC_Daschle, Nathan_Short-Form.pdf",foreign_principle_name,Taipei Economic and Cultural Representative Office (TECRO),"Taipei Economic and Cultural Representative Office (TECRO)
+",1,1,1,1,0.2546400725841522,0.30201420187950134
+"20150316_Daschle Group, LLC_Daschle, Nathan_Short-Form.pdf",file_date,03/16/2015,,0,0,0,0,0.8127668499946594,0.8090211749076843
+"20150316_Daschle Group, LLC_Daschle, Nathan_Short-Form.pdf",signer_name,Nathan Daschle,"Nathan Daschle
+",1,1,1,1,0.9179536700248718,0.9184937477111816
+"20150316_Daschle Group, LLC_Daschle, Nathan_Short-Form.pdf",signer_title,,,1,1,1,0,0.8745611906051636,0.9572299122810364
+"20160731_Burson-Marsteller, LLC (Washington, DC)_Naru, Stephen_Short-Form.pdf",registration_num,6227,"6227
+",1,1,1,1,0.9408355951309204,0.9850924611091614
+"20160731_Burson-Marsteller, LLC (Washington, DC)_Naru, Stephen_Short-Form.pdf",registrant_name,"Burson-Marsteller, DC","Burson-Marsteller, DC
+",1,1,0,1,0.7960489988327026,0.8925462961196899
+"20160731_Burson-Marsteller, LLC (Washington, DC)_Naru, Stephen_Short-Form.pdf",foreign_principle_name,"Consejo De Promocion Turistica De Mexico, S.A","Consejo De Promocion Turistica De Mexico, S.A
+",1,1,1,1,0.21813897788524628,0.2443668395280838
+"20160731_Burson-Marsteller, LLC (Washington, DC)_Naru, Stephen_Short-Form.pdf",file_date,"July 25, 2016","July 25, 2016
+",1,1,0,1,0.9345122575759888,0.98310786485672
+"20160731_Burson-Marsteller, LLC (Washington, DC)_Naru, Stephen_Short-Form.pdf",signer_name,Stephen R. Naru,"Stephen R. Naru
+",1,1,1,1,0.9017049074172974,0.925623893737793
+"20160731_Burson-Marsteller, LLC (Washington, DC)_Naru, Stephen_Short-Form.pdf",signer_title,,,1,1,1,0,0.8679628372192383,0.9560443758964539
+"20150630_Hogan Lovells US LLP_Kyle, Robert D._Short-Form.pdf",registration_num,2244,"2244
+",1,1,1,1,0.9420989155769348,0.9901710748672485
+"20150630_Hogan Lovells US LLP_Kyle, Robert D._Short-Form.pdf",registrant_name,Hogan Lovells US LLP,"Hogan Lovells US LLP
+",1,1,1,1,0.9246532320976257,0.9598526954650879
+"20150630_Hogan Lovells US LLP_Kyle, Robert D._Short-Form.pdf",foreign_principle_name,Government of the Commonwealth of The Bahamas; Yayasan Diaspora Indonesia Global,"Government of the Commonwealth of The Bahamas; Yayasan Diaspora Indonesia Global
+",1,1,1,1,0.35809287428855896,0.3636402487754822
+"20150630_Hogan Lovells US LLP_Kyle, Robert D._Short-Form.pdf",file_date,"June 30, 2015","June 30, 2015
+",1,1,0,1,0.930984616279602,0.9831212759017944
+"20150630_Hogan Lovells US LLP_Kyle, Robert D._Short-Form.pdf",signer_name,Robert D. Kyle,"Robert D. Kyle
+",1,1,1,1,0.9401540756225586,0.9569188356399536
+"20150630_Hogan Lovells US LLP_Kyle, Robert D._Short-Form.pdf",signer_title,,,1,1,0,0,0.8688867688179016,0.954507052898407
+"20150707_Korea Economic Institute_Gibson, Jenna R._Short-Form.pdf",registration_num,3327,"3327
+",1,1,1,1,0.9380499720573425,0.988254725933075
+"20150707_Korea Economic Institute_Gibson, Jenna R._Short-Form.pdf",registrant_name,"KOREA ECONOMIC INSTITUTE OF AMERICA, INC","KOREA ECONOMIC INSTITUTE OF AMERICA, INC
+",1,1,1,1,0.9025503993034363,0.9581290483474731
+"20150707_Korea Economic Institute_Gibson, Jenna R._Short-Form.pdf",foreign_principle_name,KOREA INSTITUTE FOR INTERNATIONAL ECONOMIC POLICY (KIEP),"KOREA INSTITUTE FOR INTERNATIONAL ECONOMIC POLICY (KIEP)
+",1,1,1,1,0.2698879837989807,0.25697803497314453
+"20150707_Korea Economic Institute_Gibson, Jenna R._Short-Form.pdf",file_date,07/06/15,"07/06/215
+",0,0,0,1,0.5030274391174316,0.5173918008804321
+"20150707_Korea Economic Institute_Gibson, Jenna R._Short-Form.pdf",signer_name,Jenna Gibson,,0,0,0,0,0.19703398644924164,0.11846834421157837
+"20150707_Korea Economic Institute_Gibson, Jenna R._Short-Form.pdf",signer_title,,,1,1,0,0,0.8663419485092163,0.9545522928237915
+"20171016_Husch Blackwell, LLP_Gilster, Kyle_Short-Form.pdf",registration_num,6362,"6362
+",1,1,1,1,0.9459501504898071,0.9841678738594055
+"20171016_Husch Blackwell, LLP_Gilster, Kyle_Short-Form.pdf",registrant_name,Husch Blackwell LLP,"Hüsch Blackwell LLP
+",0,0,0,1,0.746078372001648,0.7894338369369507
+"20171016_Husch Blackwell, LLP_Gilster, Kyle_Short-Form.pdf",foreign_principle_name,The Embassy of the Kingdom of Morocco,"The Embassy of the Kingdom of Morocco
+China National Forest Products Industry Association (CNFPIA)
+",0,0,1,1,0.23581402003765106,0.25049713253974915
+"20171016_Husch Blackwell, LLP_Gilster, Kyle_Short-Form.pdf",file_date,10/16/2017,"10/16/2017
+",1,1,1,1,0.9377566576004028,0.9880574941635132
+"20171016_Husch Blackwell, LLP_Gilster, Kyle_Short-Form.pdf",signer_name,Kyle Gilster,"Keg sister
+",0,0,0,1,0.0992901623249054,0.0559656135737896
+"20171016_Husch Blackwell, LLP_Gilster, Kyle_Short-Form.pdf",signer_title,,,1,1,0,0,0.8554702997207642,0.9461697340011597
+"20131107_United Lao Council for Peace, Freedom and Reconstruction (ULCPFR)_Vang, Chong_Short-Form.pdf",registration_num,6130,"6130
+",1,1,1,1,0.9427558779716492,0.9859722256660461
+"20131107_United Lao Council for Peace, Freedom and Reconstruction (ULCPFR)_Vang, Chong_Short-Form.pdf",registrant_name,Chong Vang,"-ULCPER
+",0,0,0,1,0.8382965326309204,0.8902053833007812
+"20131107_United Lao Council for Peace, Freedom and Reconstruction (ULCPFR)_Vang, Chong_Short-Form.pdf",foreign_principle_name,Khamkeo Sanasery and Chuyoua,"Khamkeo Sanasery and Chuyoua;
+",0,1,0,1,0.17145946621894836,0.18979154527187347
+"20131107_United Lao Council for Peace, Freedom and Reconstruction (ULCPFR)_Vang, Chong_Short-Form.pdf",file_date,10-9-12,"10-9-12
+",1,1,0,1,0.9202396273612976,0.9632269740104675
+"20131107_United Lao Council for Peace, Freedom and Reconstruction (ULCPFR)_Vang, Chong_Short-Form.pdf",signer_name,,,1,1,0,0,0.48774486780166626,0.4991287589073181
+"20131107_United Lao Council for Peace, Freedom and Reconstruction (ULCPFR)_Vang, Chong_Short-Form.pdf",signer_title,,,1,1,1,0,0.8752026557922363,0.9554632902145386
+"20080310_Quebec Government Office_Le, Annie_Short-Form.pdf",registration_num,1787,"1787
+",1,1,1,1,0.9301795959472656,0.9885021448135376
+"20080310_Quebec Government Office_Le, Annie_Short-Form.pdf",registrant_name,"Annie, Le","Quebec Government House
+",0,0,0,1,0.7286332845687866,0.7572425603866577
+"20080310_Quebec Government Office_Le, Annie_Short-Form.pdf",foreign_principle_name,Quebec Government House,"Dept. of International Affairs, Dept. of Industry, Commerce & Technology, Dept. of Tourism, Dept. of Agriculture, Fisheries & Food, Dept.
+of Communications & Public Affairs, Dept. of Governmental Relations and Academic Affairs, Dept. of Cultural Services
+",0,0,0,1,0.2120509147644043,0.22313472628593445
+"20080310_Quebec Government Office_Le, Annie_Short-Form.pdf",file_date,01/07/2008,"01/07/2008
+",1,1,1,1,0.9489371180534363,0.983315110206604
+"20080310_Quebec Government Office_Le, Annie_Short-Form.pdf",signer_name,,,1,1,0,0,0.6377940773963928,0.6988396644592285
+"20080310_Quebec Government Office_Le, Annie_Short-Form.pdf",signer_title,,,1,1,1,0,0.8787153363227844,0.9602702856063843
+"20150218_Quebec Government Office_Fallecker, Stephane_Short-Form.pdf",registration_num,01787,"01787
+",1,1,1,1,0.9334796667098999,0.971738338470459
+"20150218_Quebec Government Office_Fallecker, Stephane_Short-Form.pdf",registrant_name,Quebec Government Office,"Quebec Government Office
+",1,1,0,1,0.9237688183784485,0.969468891620636
+"20150218_Quebec Government Office_Fallecker, Stephane_Short-Form.pdf",foreign_principle_name,Quebec Government (Ministry of International Relations); National Affairs; Governmental Relations and Academic Affairs; Communication and Public Affairs; Investissement Quebec; Economic Affairs and Cultural Affairs,"Quebec Government (Ministry of International Relations); National Affairs; Governmental Relations and Academic Affairs;
+Communication and Public Affairs; Investissement Quebec; Economic Affairs and Cultural Affairs
+",1,1,0,1,0.06882442533969879,0.06668200343847275
+"20150218_Quebec Government Office_Fallecker, Stephane_Short-Form.pdf",file_date,"Février 17, 2015","Février 17, 2015
+",1,1,0,1,0.8636805415153503,0.87031090259552
+"20150218_Quebec Government Office_Fallecker, Stephane_Short-Form.pdf",signer_name,Stephane Fallecker,"Stephane Fallecker
+",1,1,0,1,0.6046081781387329,0.5644826292991638
+"20150218_Quebec Government Office_Fallecker, Stephane_Short-Form.pdf",signer_title,,,1,1,1,0,0.8681309819221497,0.9561673402786255
+"20161031_MSLGROUP Americas, Inc._Gutting, Cylee L._Short-Form.pdf",registration_num,5483,"5483
+",1,1,1,1,0.9405199885368347,0.9845305681228638
+"20161031_MSLGROUP Americas, Inc._Gutting, Cylee L._Short-Form.pdf",registrant_name,Cylee L. Gutting,MSLGROUP Americas Inc d/b/a QorvisMSLG ,0,0,0,1,0.32720375061035156,0.24760207533836365
+"20161031_MSLGROUP Americas, Inc._Gutting, Cylee L._Short-Form.pdf",foreign_principle_name,Kingdom of Saudi Arabia,"Kingdom of Saudi Arabia
+",1,1,1,1,0.25867360830307007,0.2823392450809479
+"20161031_MSLGROUP Americas, Inc._Gutting, Cylee L._Short-Form.pdf",file_date,10/27/16,"10/27/16
+",1,1,0,1,0.949765682220459,0.9893480539321899
+"20161031_MSLGROUP Americas, Inc._Gutting, Cylee L._Short-Form.pdf",signer_name,Cylee L. Gutting,,0,0,0,0,0.13503172993659973,0.07965779304504395
+"20161031_MSLGROUP Americas, Inc._Gutting, Cylee L._Short-Form.pdf",signer_title,,,1,1,0,0,0.8671868443489075,0.9552383422851562
+"20170509_Burson-Marsteller, LLC (Washington, DC)_Chang, Ben_Short-Form.pdf",registration_num,6227,"6227
+",1,1,0,1,0.9117105603218079,0.9699493646621704
+"20170509_Burson-Marsteller, LLC (Washington, DC)_Chang, Ben_Short-Form.pdf",registrant_name,Burson-Marsteller,"Burson-Marsteller
+",1,1,0,1,0.7859256863594055,0.8410770297050476
+"20170509_Burson-Marsteller, LLC (Washington, DC)_Chang, Ben_Short-Form.pdf",foreign_principle_name,Embassy of the Republic of Turkey,"Embassy of the Republic of Turkey
+",1,1,1,1,0.20665764808654785,0.23172564804553986
+"20170509_Burson-Marsteller, LLC (Washington, DC)_Chang, Ben_Short-Form.pdf",file_date,"May 02, 2017","May 02, 2017
+",1,1,0,1,0.9337556958198547,0.9691891670227051
+"20170509_Burson-Marsteller, LLC (Washington, DC)_Chang, Ben_Short-Form.pdf",signer_name,Ben Chang,"Ben Chang
+",1,1,1,1,0.8808668851852417,0.8734575510025024
+"20170509_Burson-Marsteller, LLC (Washington, DC)_Chang, Ben_Short-Form.pdf",signer_title,,,1,1,1,0,0.8695341348648071,0.9564550518989563
+"20170505_Crowell _ Moring International, Ltd._Zhang, Yizhi Jing Jing_Short-Form.pdf",registration_num,3988,"3988
+",1,1,1,1,0.9376510381698608,0.9851013422012329
+"20170505_Crowell _ Moring International, Ltd._Zhang, Yizhi Jing Jing_Short-Form.pdf",registrant_name,"Crowell & Moring International, LLC","Crowell & Moring International, LLC
+",1,1,1,1,0.9246853590011597,0.9682532548904419
+"20170505_Crowell _ Moring International, Ltd._Zhang, Yizhi Jing Jing_Short-Form.pdf",foreign_principle_name,"Bureau of Foreign Trade, Ministry of Economic Affairs, Government of the Republic of China","Bureau of Foreign Trade, Ministry of Economic Affairs, Government of the Republic of China
+",1,1,1,1,0.284278929233551,0.30989477038383484
+"20170505_Crowell _ Moring International, Ltd._Zhang, Yizhi Jing Jing_Short-Form.pdf",file_date,"May 05, 2017","May 05, 2017
+",1,1,0,1,0.9324260950088501,0.9792331457138062
+"20170505_Crowell _ Moring International, Ltd._Zhang, Yizhi Jing Jing_Short-Form.pdf",signer_name,Yizhi Jing Jing Zhang,"Yizhi Jing Jing Zhang
+",1,1,1,1,0.874830424785614,0.8958337903022766
+"20170505_Crowell _ Moring International, Ltd._Zhang, Yizhi Jing Jing_Short-Form.pdf",signer_title,,,1,1,1,0,0.8703012466430664,0.9565283060073853
+"20100730_CMGRP, Inc._Phares, Meredith_Short-Form.pdf",registration_num,3911,"3911
+",1,1,1,1,0.9331464767456055,0.9835077524185181
+"20100730_CMGRP, Inc._Phares, Meredith_Short-Form.pdf",registrant_name,Meredith Phares,"CMGRP, Inc. d/b/a Weber Shandwick
+",0,0,0,1,0.7039710879325867,0.7023652791976929
+"20100730_CMGRP, Inc._Phares, Meredith_Short-Form.pdf",foreign_principle_name,Canadian Tourism Commission,"Canadian Tourism Commission
+",1,1,1,1,0.450472354888916,0.555538535118103
+"20100730_CMGRP, Inc._Phares, Meredith_Short-Form.pdf",file_date,7/27/10,"7
+",0,0,0,1,0.39241108298301697,0.3910016417503357
+"20100730_CMGRP, Inc._Phares, Meredith_Short-Form.pdf",signer_name,Meredith Phares,,0,0,0,0,0.14719673991203308,0.10014481842517853
+"20100730_CMGRP, Inc._Phares, Meredith_Short-Form.pdf",signer_title,,,1,1,1,0,0.8759279251098633,0.9528660774230957
+"20150123_Ketchum Inc. NY_Winer, Rachel_Short-Form.pdf",registration_num,5758,"5758
+",1,1,1,1,0.938287615776062,0.9799197316169739
+"20150123_Ketchum Inc. NY_Winer, Rachel_Short-Form.pdf",registrant_name,Ketchum Inc.,"Ketchum Inc.
+",1,1,0,1,0.9282734990119934,0.9656062126159668
+"20150123_Ketchum Inc. NY_Winer, Rachel_Short-Form.pdf",foreign_principle_name,Olives From Spain,"Olives From Spain
+",1,1,1,1,0.24853062629699707,0.30389395356178284
+"20150123_Ketchum Inc. NY_Winer, Rachel_Short-Form.pdf",file_date,"December 18, 2014","December 18, 2014
+",1,1,0,1,0.9265958666801453,0.9633439183235168
+"20150123_Ketchum Inc. NY_Winer, Rachel_Short-Form.pdf",signer_name,Rachel Winer,"Rachel Winer
+",1,1,1,1,0.8742046356201172,0.8152369260787964
+"20150123_Ketchum Inc. NY_Winer, Rachel_Short-Form.pdf",signer_title,,,1,1,1,0,0.8687012791633606,0.9560950398445129
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Ali, Waleed Yehia Mohamed_Short-Form.pdf",registration_num,5334,"5334
+",1,1,1,1,0.9456539154052734,0.987998366355896
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Ali, Waleed Yehia Mohamed_Short-Form.pdf",registrant_name,Waleed Yehia Mohamed Ali,"Commonwealth of Dominica Maritime Registry
+",0,0,0,1,0.7138024568557739,0.667759120464325
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Ali, Waleed Yehia Mohamed_Short-Form.pdf",foreign_principle_name,Commonwealth of Dominica,"Commonwealth of Dominica
+",1,1,1,1,0.2104102075099945,0.2417791336774826
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Ali, Waleed Yehia Mohamed_Short-Form.pdf",file_date,"26th SEPTEMBER, 2012","26th SEPTEMBER, 2012
+",1,1,0,1,0.939426600933075,0.977142333984375
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Ali, Waleed Yehia Mohamed_Short-Form.pdf",signer_name,Waleed Yehia Mohamed Ali,,0,0,0,0,0.14622977375984192,0.2051365077495575
+"20121119_Commonwealth of Dominica Maritime Registry, Inc._Ali, Waleed Yehia Mohamed_Short-Form.pdf",signer_title,,,1,1,1,0,0.8670746684074402,0.9558638334274292
+"20170210_JETRO, Los Angeles_Hojo, Takashi_Short-Form.pdf",registration_num,1833,"1833
+",1,1,1,1,0.9342995882034302,0.9849111437797546
+"20170210_JETRO, Los Angeles_Hojo, Takashi_Short-Form.pdf",registrant_name,JETRO Los Angeles,"JETRO Los Angeles
+",1,1,0,1,0.8484724760055542,0.8736904859542847
+"20170210_JETRO, Los Angeles_Hojo, Takashi_Short-Form.pdf",foreign_principle_name,Japan External Trade Organization (JETRO),"Japan External Trade Organization (JETRO)
+",1,1,0,1,0.17358282208442688,0.2136438637971878
+"20170210_JETRO, Los Angeles_Hojo, Takashi_Short-Form.pdf",file_date,"January 30, 2017","January 30, 2017
+",1,1,0,1,0.9321326017379761,0.9720007181167603
+"20170210_JETRO, Los Angeles_Hojo, Takashi_Short-Form.pdf",signer_name,Takashi Hojo,"Takashi Hojo
+",1,1,1,1,0.878614068031311,0.905250072479248
+"20170210_JETRO, Los Angeles_Hojo, Takashi_Short-Form.pdf",signer_title,,,1,1,0,0,0.8663896322250366,0.9531439542770386
+"20150426_Raben Group, LLC_Raben, Robert_Short-Form.pdf",registration_num,5932,"5932
+",1,1,1,1,0.9472771883010864,0.9872159957885742
+"20150426_Raben Group, LLC_Raben, Robert_Short-Form.pdf",registrant_name,"The Raben Group, LLC","The Raben Group, LLC
+",1,1,1,1,0.9127968549728394,0.948558509349823
+"20150426_Raben Group, LLC_Raben, Robert_Short-Form.pdf",foreign_principle_name,Embassy of Mexico,"Embassy of Mexico
+",1,1,1,1,0.21842297911643982,0.2632450461387634
+"20150426_Raben Group, LLC_Raben, Robert_Short-Form.pdf",file_date,"April 26, 2015","April 26, 2015
+",1,1,1,1,0.9306623339653015,0.980915904045105
+"20150426_Raben Group, LLC_Raben, Robert_Short-Form.pdf",signer_name,Robert Raben,"Robert Raben
+",1,1,1,1,0.9120151400566101,0.9090882539749146
+"20150426_Raben Group, LLC_Raben, Robert_Short-Form.pdf",signer_title,,,1,1,1,0,0.8693785667419434,0.9565833806991577
+"20170903_Stonington Strategies, LLC_Muzin, Nicolas D._Short-Form.pdf",registration_num,6458,"6458
+",1,1,1,1,0.9280893206596375,0.9708423614501953
+"20170903_Stonington Strategies, LLC_Muzin, Nicolas D._Short-Form.pdf",registrant_name,Stonington Strategies LLC,"Stonington Strategies LLC
+",1,1,1,1,0.9217107892036438,0.9583771824836731
+"20170903_Stonington Strategies, LLC_Muzin, Nicolas D._Short-Form.pdf",foreign_principle_name,Embassy of the State of Qatar,"Embassy of the State of Qatar
+",1,1,1,1,0.1986304372549057,0.23134830594062805
+"20170903_Stonington Strategies, LLC_Muzin, Nicolas D._Short-Form.pdf",file_date,"September 3, 2017","September 3, 2017
+",1,1,0,1,0.9294430613517761,0.9866201281547546
+"20170903_Stonington Strategies, LLC_Muzin, Nicolas D._Short-Form.pdf",signer_name,Nicolas D. Muzin,"Nicolas D. Muzin
+",1,1,0,1,0.893822968006134,0.8923077583312988
+"20170903_Stonington Strategies, LLC_Muzin, Nicolas D._Short-Form.pdf",signer_title,,,1,1,1,0,0.8685106039047241,0.9569793939590454
+"20160706_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",registration_num,5926,"5926
+",1,1,1,1,0.9499775767326355,0.9877766370773315
+"20160706_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",registrant_name,"Podesta Group, Inc.","Podesta Group, Inc.
+",1,1,1,1,0.9418200254440308,0.9688035249710083
+"20160706_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",foreign_principle_name,Democratic Party of Moldova,"By this filing: (1) Democratic Party of Moldova
+By previous filing: (1) Embassy of the Republic of Azerbaijan; (2) Hong Kong Trade Development Council; (3) Republic of India;
+(4) Center for Studies and Media Affairs at the Saudi Royal Court; (5) Embassy of Japan
+",0,0,0,1,0.2757532298564911,0.2626829743385315
+"20160706_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",file_date,07/06/2016,"July
+6, 2016
+",1,1,0,1,0.7289913892745972,0.825064480304718
+"20160706_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",signer_name,Mark Tavlarides,,0,0,0,0,0.2746427655220032,0.1673436164855957
+"20160706_Podesta Group, Inc._Tavlarides, Mark_Short-Form.pdf",signer_title,,,1,1,0,0,0.865746021270752,0.9466621279716492
+"20180605_Nelson Mullins Riley _ Scarborough, LLP_Crowe, Robert B._Short-Form.pdf",registration_num,5928,"5928
+",1,1,1,1,0.9458545446395874,0.9879378080368042
+"20180605_Nelson Mullins Riley _ Scarborough, LLP_Crowe, Robert B._Short-Form.pdf",registrant_name,Nelson Mullins Riley & Scarborough LLP,"Nelson Mullins Riley & Scarborough LLP
+",1,1,0,1,0.9023225903511047,0.9180270433425903
+"20180605_Nelson Mullins Riley _ Scarborough, LLP_Crowe, Robert B._Short-Form.pdf",foreign_principle_name,State of Qatar,"State of Qatar
+Province of New Brunswick
+Province of Saskatchewan
+",0,0,0,1,0.2233855426311493,0.23077459633350372
+"20180605_Nelson Mullins Riley _ Scarborough, LLP_Crowe, Robert B._Short-Form.pdf",file_date,06/05/2018,"June
+-5,2018
+(Date of signature)
+",0,0,0,1,0.6365746855735779,0.6005277633666992
+"20180605_Nelson Mullins Riley _ Scarborough, LLP_Crowe, Robert B._Short-Form.pdf",signer_name,null,,0,0,0,0,0.18673758208751678,0.09131040424108505
+"20180605_Nelson Mullins Riley _ Scarborough, LLP_Crowe, Robert B._Short-Form.pdf",signer_title,null,,0,0,1,0,0.6185644865036011,0.34961217641830444
+"20141217_Hogan Lovells US LLP_McConnell, Mark S._Short-Form.pdf",registration_num,2244,"2244
+",1,1,1,1,0.9460705518722534,0.9865304827690125
+"20141217_Hogan Lovells US LLP_McConnell, Mark S._Short-Form.pdf",registrant_name,Hogan Lovells US LLP,"Hogan Lovells US LLP
+",1,1,1,1,0.9303408861160278,0.96202152967453
+"20141217_Hogan Lovells US LLP_McConnell, Mark S._Short-Form.pdf",foreign_principle_name,Embassy of the Bolivarian Republic of Venezuela; Government of Ontario,"Embassy of the Bolivarian Republic of Venezuela; Government of Ontario
+",1,1,0,1,0.41519251465797424,0.4072931706905365
+"20141217_Hogan Lovells US LLP_McConnell, Mark S._Short-Form.pdf",file_date,"December 17, 2014","December 17, 2014
+",1,1,1,1,0.9400865435600281,0.9796724319458008
+"20141217_Hogan Lovells US LLP_McConnell, Mark S._Short-Form.pdf",signer_name,Mark S. McConnell,"Mark S. McConnell
+",1,1,1,1,0.9143277406692505,0.8328577280044556
+"20141217_Hogan Lovells US LLP_McConnell, Mark S._Short-Form.pdf",signer_title,,,1,1,0,0,0.856031060218811,0.943670928478241
+"20111209_Akin, Gump, Strauss, Hauer _ Feld, LLP_Johnson IV, Charles W._Short-Form.pdf",registration_num,3492,"3492
+",1,1,1,1,0.9358381032943726,0.9857568740844727
+"20111209_Akin, Gump, Strauss, Hauer _ Feld, LLP_Johnson IV, Charles W._Short-Form.pdf",registrant_name,"Akin Gump Strauss Hauer & Feld, LLP","Charles W. Johnson IV
+",0,0,1,1,0.9332574009895325,0.9540236592292786
+"20111209_Akin, Gump, Strauss, Hauer _ Feld, LLP_Johnson IV, Charles W._Short-Form.pdf",foreign_principle_name,Embassy of Japan,,0,0,1,0,0.1856275498867035,0.23526707291603088
+"20111209_Akin, Gump, Strauss, Hauer _ Feld, LLP_Johnson IV, Charles W._Short-Form.pdf",file_date,"December 08, 2011","December 08, 2011
+",1,1,0,1,0.9308107495307922,0.9656133651733398
+"20111209_Akin, Gump, Strauss, Hauer _ Feld, LLP_Johnson IV, Charles W._Short-Form.pdf",signer_name,Charles W. Johnson,"Charles W. Johnson
+",1,1,1,1,0.9126026034355164,0.9036114811897278
+"20111209_Akin, Gump, Strauss, Hauer _ Feld, LLP_Johnson IV, Charles W._Short-Form.pdf",signer_title,,,1,1,1,0,0.8714876174926758,0.9569039344787598
+"20100625_Daniel J. Edelman, Inc._Charleston, Monica_Short-Form.pdf",registration_num,3634,"3634
+",1,1,1,1,0.9298563003540039,0.9689655303955078
+"20100625_Daniel J. Edelman, Inc._Charleston, Monica_Short-Form.pdf",registrant_name,Monica Charleston,"Edelman
+",0,0,0,1,0.5367461442947388,0.5793977379798889
+"20100625_Daniel J. Edelman, Inc._Charleston, Monica_Short-Form.pdf",foreign_principle_name,Suzlon Energy Ltd.,"Suzlon Energy Ltd.
+",1,1,0,1,0.4863942265510559,0.503121018409729
+"20100625_Daniel J. Edelman, Inc._Charleston, Monica_Short-Form.pdf",file_date,6/8/10,"6/8/10
+",1,1,0,1,0.9322134852409363,0.9718340635299683
+"20100625_Daniel J. Edelman, Inc._Charleston, Monica_Short-Form.pdf",signer_name,Monica Charleston,,0,0,0,0,0.17741982638835907,0.11303023993968964
+"20100625_Daniel J. Edelman, Inc._Charleston, Monica_Short-Form.pdf",signer_title,,,1,1,1,0,0.8745393753051758,0.9534178972244263
+"20110325_Fleishman-Hillard, Inc._Whiting, Jr, David Smythe_Short-Form.pdf",registration_num,5801,"5801
+",1,1,1,1,0.9263529777526855,0.9761432409286499
+"20110325_Fleishman-Hillard, Inc._Whiting, Jr, David Smythe_Short-Form.pdf",registrant_name,David Smythe Whiting Jr.,"Fleishman-Hillard Inc.
+",0,0,0,1,0.39474210143089294,0.3725960850715637
+"20110325_Fleishman-Hillard, Inc._Whiting, Jr, David Smythe_Short-Form.pdf",foreign_principle_name,Levant Suez Consulting Corporation Corporation on behalf of Sheikh Fahad Salem Al Ali Al Sabah and the Fahad Al Salem Center for Dialogue Among Civilizations and Defense of Liberty.,"Levant Suez Consulting Corporation Corporation on behalf of Sheikh Fahad Salem Al Ali Al Sabah and the Fahad Al Salem Center for
+Dialogue Among Civilizations and Defense of Liberty.
+",1,1,0,1,0.09551574289798737,0.08329929411411285
+"20110325_Fleishman-Hillard, Inc._Whiting, Jr, David Smythe_Short-Form.pdf",file_date,3/25/11,"3/25/11
+",1,1,0,1,0.9433776140213013,0.984387218952179
+"20110325_Fleishman-Hillard, Inc._Whiting, Jr, David Smythe_Short-Form.pdf",signer_name,David Smythe Whiting Jr.,,0,0,0,0,0.10876771062612534,0.07012879103422165
+"20110325_Fleishman-Hillard, Inc._Whiting, Jr, David Smythe_Short-Form.pdf",signer_title,,,1,1,0,0,0.8753271102905273,0.9525171518325806
+"20180710_LGND, LLC_Herndon, Phillip_Short-Form.pdf",registration_num,6570,"6570
+",1,1,1,1,0.9153812527656555,0.969672679901123
+"20180710_LGND, LLC_Herndon, Phillip_Short-Form.pdf",registrant_name,"LGND, LLC","LGND, LLC
+",1,1,1,1,0.9238506555557251,0.9695340991020203
+"20180710_LGND, LLC_Herndon, Phillip_Short-Form.pdf",foreign_principle_name,Canadian Ambassador (Canadian Embassy to the United States in Washington D.C.),"Canadian Ambassador (Canadian Embassy to the United States in Washington D.C.)
+",1,1,0,1,0.261347234249115,0.29548993706703186
+"20180710_LGND, LLC_Herndon, Phillip_Short-Form.pdf",file_date,"July 01, 2018","July 01, 2018
+",1,1,0,1,0.935882568359375,0.9764792323112488
+"20180710_LGND, LLC_Herndon, Phillip_Short-Form.pdf",signer_name,Phillip Herndon,,0,0,0,0,0.30342212319374084,0.22977522015571594
+"20180710_LGND, LLC_Herndon, Phillip_Short-Form.pdf",signer_title,,,1,1,1,0,0.8702520132064819,0.9564948081970215
+"20180105_Hill and Knowlton Strategies, LLC_Bensaid, Noelle_Short-Form.pdf",registration_num,3301,"3301
+",1,1,1,1,0.9175246953964233,0.9765521883964539
+"20180105_Hill and Knowlton Strategies, LLC_Bensaid, Noelle_Short-Form.pdf",registrant_name,Hill+Knowlton Strategies,"Hill+Knowlton Strategies
+",1,1,1,1,0.8926035761833191,0.9433503150939941
+"20180105_Hill and Knowlton Strategies, LLC_Bensaid, Noelle_Short-Form.pdf",foreign_principle_name,Misk Foundation,"Misk Foundation
+",1,1,1,1,0.24810636043548584,0.22928369045257568
+"20180105_Hill and Knowlton Strategies, LLC_Bensaid, Noelle_Short-Form.pdf",file_date,"October 25, 2017","October 25, 2017
+",1,1,0,1,0.9311321377754211,0.9768525958061218
+"20180105_Hill and Knowlton Strategies, LLC_Bensaid, Noelle_Short-Form.pdf",signer_name,Noelle Salha Bensaid,"Noelle Salha Bensaid
+",1,1,1,1,0.9043954014778137,0.877926230430603
+"20180105_Hill and Knowlton Strategies, LLC_Bensaid, Noelle_Short-Form.pdf",signer_title,,,1,1,1,0,0.8678585290908813,0.9562023878097534
+"20150129_Tourism Authority of Thailand, New York_Waraphaskul, Srimala_Short-Form.pdf",registration_num,1897,"1897
+",1,1,1,1,0.9343749284744263,0.980147659778595
+"20150129_Tourism Authority of Thailand, New York_Waraphaskul, Srimala_Short-Form.pdf",registrant_name,TOURISM AUTHORITY OF THAILAND,"TOURISM AUTHORITY OF THAILAND
+",1,1,1,1,0.9207166433334351,0.9629391431808472
+"20150129_Tourism Authority of Thailand, New York_Waraphaskul, Srimala_Short-Form.pdf",foreign_principle_name,,,1,1,0,0,0.7104164361953735,0.8344732522964478
+"20150129_Tourism Authority of Thailand, New York_Waraphaskul, Srimala_Short-Form.pdf",file_date,"January 29, 2015","January 29, 2015
+",1,1,1,1,0.9303075671195984,0.9830737113952637
+"20150129_Tourism Authority of Thailand, New York_Waraphaskul, Srimala_Short-Form.pdf",signer_name,SRIMALA WARAPHASKUL,"SRIMALA WARAPHASKUL
+",1,1,1,1,0.9074212908744812,0.9419962763786316
+"20150129_Tourism Authority of Thailand, New York_Waraphaskul, Srimala_Short-Form.pdf",signer_title,,,1,1,1,0,0.8678251504898071,0.9564105868339539

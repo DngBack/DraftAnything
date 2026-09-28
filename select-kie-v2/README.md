@@ -118,3 +118,22 @@ select-kie-v2/.venv/bin/python select-kie-v2/scripts/latest_report.py
 ```
 
 The encoder uses [official MiniLM mean-pooling instructions](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2). All confidence features use annotation OCR; its production cost/quality is unmeasured. Inference `batch_seconds` includes generation and token log-probability extraction, and excludes PDF rendering/model loading. Encoder-related timers cover their surrounding processing blocks and are not end-to-end latency. Scalar clipping/standardization fit train only. Fresh confirmation is document-independent, while the target template was already present in development/calibration; registrants/persons may recur.
+
+## Stage 7: final FARA confirmation
+
+The registered co-primary comparison is relation head vs semantic HGB early-stopped on development labels. Its gate **failed** on both present-only AURC measures. Read [the result](docs/stage7-results.md) and [frozen protocol](docs/stage7-protocol.md); do not describe Stage6's MLP comparison as architecture superiority.
+
+```bash
+select-kie-v2/.venv-gpu/bin/python select-kie-v2/scripts/verify_stage7_inputs.py
+CUDA_VISIBLE_DEVICES=0 select-kie-v2/.venv-gpu/bin/python select-kie-v2/scripts/stage7_extract.py --model "$KIE_MODEL_9B" --tag qwen9b --modality image --batch-size 1 --shard 0
+CUDA_VISIBLE_DEVICES=1 select-kie-v2/.venv-gpu/bin/python select-kie-v2/scripts/stage7_extract.py --model "$KIE_MODEL_9B" --tag qwen9b --modality image --batch-size 1 --shard 1
+select-kie-v2/.venv-gpu/bin/python select-kie-v2/scripts/stage7_merge.py
+select-kie-v2/.venv-gpu/bin/python select-kie-v2/scripts/stage7_features.py
+select-kie-v2/.venv/bin/python select-kie-v2/scripts/stage7_evaluate.py
+```
+
+Calibration artifacts are frozen and hash-verified in `results/stage7/calibration/`; do not rerun calibration on the confirmation. The 100-image Stage4 calibration source was previously examined during method development, so it is not independent. The final89 documents exhaust the remaining FARA Short-Form holdout.
+
+DeepForm/AdBuy schema reconnaissance is documented in [Stage7 results](docs/stage7-results.md). The official unknown-template split and evaluator are preserved locally, but annotation values from across that corpus were traversed during reconnaissance. Do not run that split as a blind confirmation. Google Research source files are in `external/vrdu/`; source URLs and licenses are recorded alongside them.
+
+For the next independent dataset, see the [Stage8 DocILE plan](docs/stage8-plan.md). The maintainers require an access request/token; no data-dependent run is possible until access is granted.
