@@ -1,0 +1,145 @@
+Loading weights:   0%|          | 0/713 [00:00<?, ?it/s]Loading weights:  47%|████▋     | 333/713 [00:00<00:00, 3322.11it/s]Loading weights: 100%|██████████| 713/713 [00:00<00:00, 5138.12it/s]
+Traceback (most recent call last):
+  File "/home/jovyan/scratch/home-migrate/bachdx2/DraftAnything/selective-kie/run_vlm.py", line 30, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(MODEL, dtype=torch.bfloat16).cuda().eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3788, in cuda
+    return super().cuda(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1097, in cuda
+    return self._apply(lambda t: t.cuda(device))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 965, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1097, in <lambda>
+    return self._apply(lambda t: t.cuda(device))
+                                 ^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 48.00 MiB. GPU 0 has a total capacity of 139.80 GiB of which 21.94 MiB is free. Process 476452 has 11.69 GiB memory in use. Process 475865 has 123.51 GiB memory in use. Including non-PyTorch memory, this process has 4.55 GiB memory in use. Of the allocated memory 4.01 GiB is allocated by PyTorch, and 36.65 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Loading weights:   0%|          | 0/713 [00:00<?, ?it/s]Loading weights:  54%|█████▍    | 388/713 [00:00<00:00, 3870.40it/s]Loading weights: 100%|██████████| 713/713 [00:00<00:00, 4264.10it/s]
+Traceback (most recent call last):
+  File "/home/jovyan/scratch/home-migrate/bachdx2/DraftAnything/selective-kie/run_vlm.py", line 30, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(MODEL, dtype=torch.bfloat16).cuda().eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3788, in cuda
+    return super().cuda(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1097, in cuda
+    return self._apply(lambda t: t.cuda(device))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 934, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 965, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/home/jovyan/.conda/envs/cr-vllm/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1097, in <lambda>
+    return self._apply(lambda t: t.cuda(device))
+                                 ^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 48.00 MiB. GPU 0 has a total capacity of 139.80 GiB of which 11.50 MiB is free. Process 476452 has 134.06 GiB memory in use. Including non-PyTorch memory, this process has 5.69 GiB memory in use. Of the allocated memory 5.15 GiB is allocated by PyTorch, and 36.58 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Loading weights:   0%|          | 0/713 [00:00<?, ?it/s]Loading weights:  70%|███████   | 502/713 [00:00<00:00, 5000.23it/s]Loading weights: 100%|██████████| 713/713 [00:00<00:00, 5394.43it/s]
+train 8/752 79s
+train 16/752 145s
+train 24/752 233s
+train 32/752 275s
+train 40/752 303s
+train 48/752 330s
+train 56/752 374s
+train 64/752 410s
+train 72/752 434s
+train 80/752 480s
+train 88/752 517s
+train 96/752 556s
+train 104/752 595s
+train 112/752 630s
+train 120/752 664s
+train 128/752 694s
+train 136/752 749s
+train 144/752 787s
+train 152/752 835s
+train 160/752 882s
+train 168/752 920s
+train 176/752 968s
+train 184/752 1011s
+train 192/752 1062s
+train 200/752 1102s
+train 208/752 1141s
+train 216/752 1174s
+train 224/752 1227s
+train 232/752 1270s
+train 240/752 1299s
+train 248/752 1348s
+train 256/752 1402s
+train 264/752 1430s
+train 272/752 1470s
+train 280/752 1521s
+train 288/752 1559s
+train 296/752 1606s
+train 304/752 1652s
+train 312/752 1690s
+train 320/752 1750s
+train 328/752 1788s
+train 336/752 1817s
+train 344/752 1856s
+train 352/752 1917s
+train 360/752 1940s
+train 368/752 1971s
+train 376/752 2013s
+train 384/752 2079s
+train 392/752 2119s
+train 400/752 2157s
+train 408/752 2198s
+train 416/752 2231s
+train 424/752 2264s
+train 432/752 2309s
+train 440/752 2346s
+train 448/752 2385s
+train 456/752 2418s
+train 464/752 2457s
+train 472/752 2488s
+train 480/752 2532s
+train 488/752 2568s
+train 496/752 2608s
+train 504/752 2657s
+train 512/752 2685s
+train 520/752 2732s
+train 528/752 2765s
+train 536/752 2789s
+train 544/752 2831s
+train 552/752 2874s
+train 560/752 2919s
+train 568/752 2969s
+train 576/752 3012s
+train 584/752 3052s
+train 592/752 3087s
+train 600/752 3115s
+train 608/752 3157s
+train 616/752 3193s
+train 624/752 3222s
+train 632/752 3265s
+train 640/752 3307s
+train 648/752 3342s
+train 656/752 3396s
+train 664/752 3443s
+train 672/752 3476s
+train 680/752 3520s
+train 688/752 3550s
+train 696/752 3591s
+train 704/752 3629s
+train 712/752 3671s
+train 720/752 3700s
+train 728/752 3729s
+train 736/752 3778s
+train 744/752 3819s
+train 752/752 3856s

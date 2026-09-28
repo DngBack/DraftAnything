@@ -1,0 +1,54 @@
+secondary (qty field, val+test): err_rate 0.68 {'absent_halluc': 80, 'binding_absent': 54, 'transcription': 2}
+train: docs=800 decisions=6375 err_rate=0.096
+validation: docs=100 decisions=799 err_rate=0.099
+test: docs=100 decisions=796 err_rate=0.104
+
+== E0 error taxonomy (all splits, frozen extractor, primary fields) ==
+all errors: {'miss': 96, 'binding_absent': 482, 'binding': 62, 'transcription': 98, 'absent_halluc': 35} n = 773 (0.097 of decisions)
+high-confidence errors (mean token prob > 0.99): {'binding_absent': 425, 'binding': 50, 'transcription': 69, 'miss': 59, 'absent_halluc': 19} n = 622
+binding(+absent) errors by field: {'discount': 73, 'tax': 43, 'subtotal': 317, 'service': 51, 'total': 34, 'card': 10, 'cash': 15, 'change': 1}
+(etype, value-on-page) counts: {('miss', 0): 96, ('binding_absent', 1): 482, ('binding', 1): 62, ('transcription', 0): 95, ('absent_halluc', 0): 34, ('transcription', 1): 3, ('absent_halluc', 1): 1}
+
+== E0 oracle ceiling on test (in-sample curve; errors of one type pushed to reject) ==
+lp_mean                  oracle[binding*      ] n= 57 @0.10:+  1.0pp @0.05:+ 61.6pp @0.02:+ 88.2pp
+lp_mean                  oracle[binding       ] n=  6 @0.10:+  1.0pp @0.05:+  0.4pp @0.02:+  0.0pp
+lp_mean                  oracle[binding_absent] n= 51 @0.10:+  1.0pp @0.05:+ 60.9pp @0.02:+ 77.6pp
+lp_mean                  oracle[absent_halluc ] n=  4 @0.10:+  1.0pp @0.05:+  0.0pp @0.02:+  0.0pp
+lp_mean                  oracle[transcription ] n= 14 @0.10:+  1.0pp @0.05:+  0.4pp @0.02:+  0.0pp
+lp_mean                  oracle[miss          ] n=  8 @0.10:+  1.0pp @0.05:+  0.0pp @0.02:+  0.0pp
+LR fusion (OCR/layout)   oracle[binding*      ] n= 57 @0.10:+  0.0pp @0.05:+  6.7pp @0.02:+ 21.2pp
+LR fusion (OCR/layout)   oracle[binding       ] n=  6 @0.10:+  0.0pp @0.05:+  0.8pp @0.02:+  2.9pp
+LR fusion (OCR/layout)   oracle[binding_absent] n= 51 @0.10:+  0.0pp @0.05:+  6.7pp @0.02:+ 20.7pp
+LR fusion (OCR/layout)   oracle[absent_halluc ] n=  4 @0.10:+  0.0pp @0.05:+  0.0pp @0.02:+  0.0pp
+LR fusion (OCR/layout)   oracle[transcription ] n= 14 @0.10:+  0.0pp @0.05:+  0.0pp @0.02:+  0.0pp
+LR fusion (OCR/layout)   oracle[miss          ] n=  8 @0.10:+  0.0pp @0.05:+  1.0pp @0.02:+ 10.3pp
+
+== E1/H2: threshold from validation, applied to test (cov/risk), plus in-sample test cov ==
+lp_mean                  AURC=0.0624  @0.10 0.991/0.104 (oracle-thr 0.985)  @0.05 0.000/nan (oracle-thr 0.327)  @0.02 0.000/nan (oracle-thr 0.000)
+lp_min                   AURC=0.0575  @0.10 0.997/0.105 (oracle-thr 0.987)  @0.05 0.000/nan (oracle-thr 0.303)  @0.02 0.000/nan (oracle-thr 0.000)
+bind_lp (training-free)  AURC=0.0648  @0.10 1.000/0.104 (oracle-thr 0.965)  @0.05 0.293/0.039 (oracle-thr 0.337)  @0.02 0.019/0.000 (oracle-thr 0.087)
+LR extractor-only        AURC=0.0299  @0.10 1.000/0.104 (oracle-thr 0.994)  @0.05 0.861/0.057 (oracle-thr 0.845)  @0.02 0.597/0.017 (oracle-thr 0.598)
+LR fusion (OCR/layout)   AURC=0.0265  @0.10 1.000/0.104 (oracle-thr 0.995)  @0.05 0.861/0.047 (oracle-thr 0.876)  @0.02 0.761/0.025 (oracle-thr 0.701)
+LR binding-only          AURC=0.0266  @0.10 0.996/0.101 (oracle-thr 0.995)  @0.05 0.887/0.042 (oracle-thr 0.918)  @0.02 0.711/0.027 (oracle-thr 0.648)
+LR fusion+binding        AURC=0.0190  @0.10 1.000/0.104 (oracle-thr 0.995)  @0.05 0.925/0.048 (oracle-thr 0.927)  @0.02 0.768/0.021 (oracle-thr 0.755)
+
+== primary contrast: LR fusion+binding vs LR fusion (paired doc bootstrap, 95% CI) ==
+target 0.10: cov 1.000 vs 1.000  diff +0.0pp CI[+0.0,+0.0]  realised risk 0.104 vs 0.104
+target 0.05: cov 0.925 vs 0.861  diff +6.4pp CI[+4.8,+7.9]  realised risk 0.048 vs 0.047
+target 0.02: cov 0.768 vs 0.761  diff +0.6pp CI[-1.9,+3.0]  realised risk 0.021 vs 0.025
+AURC 0.0190 vs 0.0265  diff CI[-0.0162,-0.0007]
+
+== sensitivity: without ambiguous subtotal=total decisions (test drops 29) ==
+target 0.10: fusion+binding 1.000/0.072  fusion 1.000/0.072
+target 0.05: fusion+binding 0.986/0.058  fusion 0.983/0.056
+target 0.02: fusion+binding 0.797/0.021  fusion 0.790/0.025
+AURC 0.0157 vs 0.0225  diff CI[-0.0160,+0.0003]
+
+== errors auto-accepted on test at validation threshold for target 0.05 ==
+lp_mean                  accepted=   0 errors=  0 {}
+lp_min                   accepted=   0 errors=  0 {}
+bind_lp (training-free)  accepted= 233 errors=  9 {'binding_absent': 9}
+LR extractor-only        accepted= 685 errors= 39 {'transcription': 11, 'binding_absent': 14, 'miss': 8, 'binding': 6}
+LR fusion (OCR/layout)   accepted= 685 errors= 32 {'binding_absent': 18, 'miss': 8, 'binding': 6}
+LR binding-only          accepted= 706 errors= 30 {'binding_absent': 19, 'miss': 8, 'binding': 3}
+LR fusion+binding        accepted= 736 errors= 35 {'binding_absent': 23, 'miss': 8, 'binding': 4}

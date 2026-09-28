@@ -1,0 +1,14 @@
+Loading weights:   0%|          | 0/713 [00:00<?, ?it/s]Loading weights: 100%|██████████| 713/713 [00:00<00:00, 7584.31it/s]
+validation 8/100 31s
+validation 16/100 73s
+validation 24/100 108s
+validation 32/100 144s
+validation 40/100 181s
+validation 48/100 217s
+validation 56/100 248s
+validation 64/100 291s
+validation 72/100 335s
+validation 80/100 383s
+validation 88/100 415s
+validation 96/100 449s
+validation 100/100 466s

@@ -1,0 +1,52 @@
+Loading weights:   0%|          | 0/729 [00:00<?, ?it/s]Loading weights:  68%|██████▊   | 499/729 [00:00<00:00, 4981.15it/s]Loading weights: 100%|██████████| 729/729 [00:00<00:00, 5363.69it/s]
+train 8/400 66s
+train 16/400 109s
+train 24/400 139s
+train 32/400 173s
+train 40/400 224s
+train 48/400 253s
+train 56/400 306s
+train 64/400 338s
+train 72/400 386s
+train 80/400 425s
+train 88/400 460s
+train 96/400 520s
+train 104/400 579s
+train 112/400 629s
+train 120/400 676s
+train 128/400 723s
+train 136/400 767s
+train 144/400 813s
+train 152/400 891s
+train 160/400 929s
+train 168/400 979s
+train 176/400 1037s
+train 184/400 1094s
+train 192/400 1126s
+train 200/400 1182s
+train 208/400 1222s
+train 216/400 1294s
+train 224/400 1339s
+train 232/400 1386s
+train 240/400 1433s
+train 248/400 1480s
+train 256/400 1518s
+train 264/400 1559s
+train 272/400 1587s
+train 280/400 1628s
+train 288/400 1672s
+train 296/400 1702s
+Loading weights:   0%|          | 0/729 [00:00<?, ?it/s]Loading weights: 100%|██████████| 729/729 [00:00<00:00, 8328.17it/s]
+train 8/104 109s
+train 16/104 222s
+train 24/104 300s
+train 32/104 378s
+train 40/104 450s
+train 48/104 523s
+train 56/104 615s
+train 64/104 721s
+train 72/104 814s
+train 80/104 879s
+train 88/104 942s
+train 96/104 1032s
+train 104/104 1117s
