@@ -5,8 +5,16 @@ Shape/density features are looked up via labels/gt_mapping (oracle, evaluator-si
 shortcut experiments/decide.py and pyuat_run.py use for their go/no-go features -- not something
 a real detector-based pipeline could do yet (see docs v1 report, limits).
 
+--dataset defaults to one_in_a_million (what every checkpoint is trained on). Passing another
+dataset (sim_plus/hsc/musc/hela) evaluates the SAME checkpoint zero-shot / transfer (doc S13):
+those datasets only have sparse gold SEG, not a full mask, so shape.parquet doesn't exist for
+them and axis/log-size features fall back to frame_features' own fillna defaults -- oracle-location
+mode, not oracle-mask.
+
   uv run python experiments/eval_embed.py --tag v0 --seqs M3 --schedules ends s16 s32
     -> outputs/results/embed_h132_<tag>.parquet
+  uv run python experiments/eval_embed.py --tag v3 --dataset sim_plus --seqs SIM-01 SIM-02 ...
+    -> outputs/results/embed_h132_v3_sim_plus<suffix>.parquet
 """
 
 import argparse
@@ -23,23 +31,28 @@ from cellanc.transport import log_plan_from_cost  # noqa: E402
 from scipy.special import logsumexp  # noqa: E402
 from cellanc.evaluate import score_window  # noqa: E402
 from cellanc.loader import Windows  # noqa: E402
-from experiments.train_embed import IDX, frame_features  # noqa: E402
+from experiments.train_embed import frame_features  # noqa: E402
+from main import DATASETS  # noqa: E402
 
 ROOT = Path(__file__).parents[1]
 OUT = ROOT / "outputs"
 BENCH = OUT / "benchmarks" / "v1"
-SEQ_DIR = {f"M{i}": f"0{i}" for i in range(5)}
 _state: dict = {}
 
 
-def _load(alias: str):
+def _load(dataset: str, alias: str):
     if alias not in _state:
-        obs = pd.read_parquet(IDX / SEQ_DIR[alias] / "observations.parquet",
+        idx_dir = {v: k for k, v in DATASETS[dataset]["aliases"].items()}[alias]
+        idx = OUT / "index" / dataset / idx_dir
+        obs = pd.read_parquet(idx / "observations.parquet",
                               columns=["frame_index", "gt_track_id", "center_y", "center_x"])
-        shp = pd.read_parquet(IDX / SEQ_DIR[alias] / "shape.parquet")
+        shape_path = idx / "shape.parquet"
+        if shape_path.exists():
+            m = obs.merge(pd.read_parquet(shape_path), on=["frame_index", "gt_track_id"], how="left")
+        else:  # no full mask for this dataset (CTC gold SEG is sparse) -> oracle-location only,
+            m = obs.assign(axis_y=np.nan, axis_x=np.nan, major_sd=np.nan, minor_sd=np.nan)
         gm = pd.read_parquet(BENCH / "labels/gt_mapping" / f"{alias}.parquet")
-        m = gm.merge(obs, on=["frame_index", "gt_track_id"]).merge(
-            shp, on=["frame_index", "gt_track_id"], how="left")
+        m = gm.merge(m, on=["frame_index", "gt_track_id"])
         tg = pd.read_parquet(BENCH / "labels/targets" / f"{alias}.parquet")
         _state[alias] = (m, dict(list(tg.groupby("window_id"))))
     return _state[alias]
@@ -149,6 +162,7 @@ def embed_chain(w: dict, model, dev, m_by_frame: dict, time_step_min: float,
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tag", default="v0")
+    ap.add_argument("--dataset", default="one_in_a_million", choices=DATASETS)
     ap.add_argument("--seqs", nargs="+", default=["M3"])
     ap.add_argument("--H", type=int, default=132)
     ap.add_argument("--schedules", nargs="+", default=["ends", "s16", "s32"])
@@ -175,9 +189,10 @@ def main():
          and f"A_h{args.H}" in w["experiments"]]
     print(len(ws), "windows", flush=True)
 
+    dataset_tag = "" if args.dataset == "one_in_a_million" else f"_{args.dataset}"
     rows = []
     for w in ws:
-        m, tg_by = _load(w["sequence_id"])
+        m, tg_by = _load(args.dataset, w["sequence_id"])
         m_by_frame = dict(list(m[m.frame_index.isin(w["observed_frames"])].groupby("frame_index")))
         time_step_min = w["horizon_min"] / w["horizon_frames"]  # minutes per frame, any schedule
         pred = embed_chain(w, model, dev, m_by_frame, time_step_min, args.decode, args.cap, args.temp,
@@ -191,13 +206,13 @@ def main():
         suffix = (f"_lap{cap_tag}" if cap_tag else
                  f"_soft_t{args.temp:g}" if args.decode == "soft" else
                  "_dp" if args.decode == "dp" else ot_tag)
-        method = f"embed_{args.tag}" + suffix
+        method = f"embed_{args.tag}" + dataset_tag + suffix
         rows.append({"method": method, "window_id": w["window_id"],
                     "sequence_id": w["sequence_id"], "schedule_id": w["schedule_id"],
                     "horizon_frames": w["horizon_frames"],
                     **{k: s[k] for k in ["n_scored", "n_correct", "set_f1_sum", "count_n_anchors"]}})
     R = pd.DataFrame(rows)
-    out = OUT / "results" / f"embed_h{args.H}_{args.tag}{suffix}.parquet"
+    out = OUT / "results" / f"embed_h{args.H}_{args.tag}{dataset_tag}{suffix}.parquet"
     R.to_parquet(out, index=False)
     R["acc"] = R.n_correct / R.n_scored
     print(R.groupby(["schedule_id", "sequence_id"]).acc.mean().round(3))
