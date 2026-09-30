@@ -45,6 +45,27 @@ def log_plan(src, dst, m_src, m_dst, eps, tau, axis=None, aniso=1.0, iters=1000,
     return lu[:, None] + lK + lv[None, :]
 
 
+def log_plan_from_cost(cost: np.ndarray, m_src: np.ndarray, m_dst: np.ndarray, eps: float,
+                       tau, iters: int = 1000, tol: float = 1e-4) -> np.ndarray:
+    """Same semi-relaxed Sinkhorn as log_plan, but for an arbitrary precomputed (n_src, n_dst)
+    cost matrix (e.g. a learned embedding cost) instead of one derived from raw positions --
+    the mass-conservation/capacity machinery is cost-agnostic."""
+    lK = -cost / eps
+    la = np.log(m_src * (m_dst.sum() / m_src.sum()))
+    lb = np.log(m_dst)
+    f = 1.0 if tau is None else tau / (tau + eps)
+    lu = np.zeros(len(m_src))
+    for _ in range(iters):
+        lv = lb - logsumexp(lu[:, None] + lK, axis=0)
+        lu_new = f * (la - logsumexp(lK + lv[None, :], axis=1))
+        if np.abs(lu_new - lu).max() < tol:
+            lu = lu_new
+            break
+        lu = lu_new
+    lv = lb - logsumexp(lu[:, None] + lK, axis=0)
+    return lu[:, None] + lK + lv[None, :]
+
+
 def ot_ancestry(win: dict, mass: dict, eps: float, tau, soft: bool, axis: dict | None = None,
                 aniso: float = 1.0) -> dict[int, int]:
     """{target id at b: anchor id at a}. mass[t], axis[t] align with win['detections'][t] rows."""

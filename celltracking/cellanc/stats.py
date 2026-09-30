@@ -22,6 +22,15 @@ BASELINE_STYLE = {
     "chained_nearest": (SERIES[1], "-"), "chained_nearest_rc": (SERIES[1], "--"),
     "chained_lap": (SERIES[2], "-"), "chained_lap_rc": (SERIES[2], "--"),
 }
+# go/no-go comparison (M3 only, see _load_go_no_go): geometric baseline, best OT config,
+# PyUAT with full feature set (with/without nearest-neighbour fallback on track starts)
+GO_NO_GO_STYLE = {
+    "chained_lap_rc": (SERIES[2], "--"), "chained_lap_c4": (SERIES[2], "-"),
+    "ot_area_e0.1_t3_soft": (SERIES[3], "-"),
+    "pyuat_FO+G+O+DD": (SERIES[4], "-"), "pyuat_FO+G+O+DD_nn": (SERIES[4], "--"),
+    "embed_v3_lap2": (SERIES[0], "--"),
+    "embed_v3_ot_e0.5_tinf": (INK, "-"),
+}
 
 
 def _style(ax):
@@ -56,6 +65,75 @@ def load(out: Path):
     cfg = json.loads((b / "config.json").read_text())
     R["acc"] = R.n_correct / R.n_scored.replace(0, np.nan)
     return W, T, S, R, cfg
+
+
+def _load_go_no_go(root: Path) -> pd.DataFrame:
+    """Method-comparison for the go/no-go decision (experiments/decide.py, pyuat_run.py):
+    geometric baselines and OT (transport.py) vs PyUAT, an existing tracker that uses shape
+    and motion/division likelihoods instead of position alone. H = 132 min.
+
+    Macro over movies (mean of per-window accuracy within a movie, then mean over movies),
+    matching expA_acc elsewhere in this module. The geometric baselines, OT and embed methods
+    only have M3+M4 evaluated; PyUAT's main configs (FO, FO+G+O+DD, +_nn) now cover all of
+    M0-M4 since the M0-M2 batch (pyuat_h132_M012.parquet) finished, but its feature ablations
+    (FO+DD, FO+G, FO+O) and the s64 config have only run on M3 -- n_movies says which is which,
+    do not compare a 1-movie ablation number to a 5-movie one at face value.
+
+    embed_v3_ot_e0.5_tinf: the learned cost decoded by balanced entropic OT (transport.py's
+    semi-relaxed Sinkhorn, tau=None) instead of per-hop capacitated LAP -- beats lap2/lap4 at
+    every schedule (not just a different trade-off), and beats PyUAT outright at s32. lap decode
+    only enforces capacity one hop at a time with a hand-picked cap; balanced OT enforces it via
+    a genuine mass-conservation constraint (every target's mass must be fully explained by
+    sources, weighted by cell area) with no free cap parameter to tune per schedule.
+    """
+    cols = ["method", "window_id", "sequence_id", "schedule_id", "n_scored", "n_correct",
+           "set_f1_sum", "count_n_anchors"]
+    files = ["decide_h132.parquet", "pyuat_h132_M3.parquet", "pyuat_h132_M3abl.parquet",
+            "pyuat_h132_M3s64.parquet", "pyuat_h132_full.parquet", "pyuat_h132_M012.parquet",
+            "embed_h132_v0.parquet", "embed_h132_v0_lap2.parquet", "embed_h132_v0_lap4.parquet",
+            "embed_h132_v0_lapsoft.parquet", "embed_h132_v1.parquet", "embed_h132_v1_lap2.parquet",
+            "embed_h132_v1_lap4.parquet", "embed_h132_v1_lapsoft.parquet", "embed_h132_v2.parquet",
+            "embed_h132_v2_lap2.parquet", "embed_h132_v2_lap4.parquet", "embed_h132_v2_lapsoft.parquet",
+            "embed_h132_v3.parquet", "embed_h132_v3_lap2.parquet", "embed_h132_v3_lap4.parquet",
+            "embed_h132_v3_lapsoft.parquet", "embed_h132_v3_ot_e0.5_tinf.parquet",
+            "embed_h132_v3_ot_e0.5_t0.1.parquet", "embed_h132_v3_ot_e0.5_t1.parquet"]
+    R = pd.concat([pd.read_parquet(root / "results" / f)[cols]
+                  for f in files if (root / "results" / f).exists()])
+    R = R[R.sequence_id.isin(["M0", "M1", "M2", "M3", "M4"])]
+    R["acc"] = R.n_correct / R.n_scored.replace(0, np.nan)
+    R["f1"] = R.set_f1_sum / R.count_n_anchors.replace(0, np.nan)
+    per_movie = R.groupby(["method", "schedule_id", "sequence_id"]).agg(
+        acc=("acc", "mean"), f1=("f1", "mean"), n_windows=("window_id", "nunique"))
+    g = per_movie.groupby(["method", "schedule_id"])
+    gng = pd.DataFrame({"acc": g.acc.mean(), "set_F1": g.f1.mean(),
+                        "n_movies": g.size(), "n_windows": g.n_windows.sum()}).reset_index()
+    gng["_k"] = gng.schedule_id.map(_sched_key)
+    return gng.sort_values(["method", "_k"]).drop(columns="_k")
+
+
+def _fig_go_no_go(gng: pd.DataFrame, path: Path):
+    fig, ax = plt.subplots(figsize=(6, 3.8))
+    _style(ax)
+    strides = {"ends": 132, "s32": 32, "s16": 16, "s64": 64}
+    for m, (col, ls) in GO_NO_GO_STYLE.items():
+        d = gng[gng.method == m].assign(stride=lambda d: d.schedule_id.map(strides))
+        d = d.dropna(subset=["stride"]).sort_values("stride")
+        if len(d):
+            ax.plot(d.stride, d.acc, color=col, ls=ls, lw=1.8, marker="o", ms=4,
+                    label=m.replace("chained_", "").replace("ot_area_e0.1_t3_soft", "ot_area"))
+    ax.set_xscale("log", base=2)
+    ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:g}"))
+    ax.set_ylim(0, 1.02)
+    ax.set_xlabel("stride between kept frames (min); rightmost = endpoints only", fontsize=8,
+                  color=MUTED)
+    ax.set_ylabel("ancestor accuracy", fontsize=8, color=MUTED)
+    ax.legend(frameon=False, fontsize=7, loc="upper right")
+    ax.set_title("Movie macro, horizon 132 min: geometric baselines vs OT vs PyUAT (go/no-go)\n"
+                 "baselines/OT/embed = M3+M4; PyUAT main configs = M0-M4", fontsize=9, color=INK,
+                 loc="left")
+    fig.tight_layout()
+    fig.savefig(path, dpi=140)
+    plt.close(fig)
 
 
 def tables(root: Path):
@@ -218,11 +296,18 @@ def tables(root: Path):
         acc=("acc", "mean"), windows=("window_id", "nunique"), n=("n_scored", "sum")).reset_index()
     res["domain"] = dom
 
+    # 9. go/no-go: does an existing tracker with shape/motion features beat pure geometry?
+    if any((root / "results" / f).exists() for f in
+          ["decide_h132.parquet", "pyuat_h132_M3.parquet"]):
+        res["go_no_go"] = _load_go_no_go(root)
+
     for k, v in res.items():
         v.to_csv(out / f"{k}.csv", index=False)
 
     _fig_expA(res["expA_acc"], cfg, fig_dir / "expA_oiam_accuracy.png")
     _fig_expB(eb, fig_dir / "expB_endpoints_accuracy.png")
+    if "go_no_go" in res:
+        _fig_go_no_go(res["go_no_go"], fig_dir / "fig_go_no_go.png")
     return res
 
 
