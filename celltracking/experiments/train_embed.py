@@ -33,8 +33,7 @@ from main import DATASETS  # noqa: E402
 ROOT = Path(__file__).parents[1]
 OUT = ROOT / "outputs"
 GAPS = [1, 2, 4, 8, 16, 32, 64, 132]  # frames; OIAM default (1 min/frame, so also minutes)
-DROP_VEL_PROB = 0.3  # randomly hide velocity even when available, so the model doesn't rely on
-# it being there -- the anchor frame of every real window never has one (no earlier observation)
+DROP_VEL_PROB = 0.3  # used only by the legacy oracle-velocity diagnostic
 
 
 def load_seq(dataset: str, alias: str):
@@ -55,12 +54,13 @@ def load_seq(dataset: str, alias: str):
 
 
 def frame_features(g: pd.DataFrame, g_prev: pd.DataFrame | None = None,
-                   dt_prev: float | None = None) -> tuple[np.ndarray, np.ndarray]:
+                   dt_prev: float | None = None, *,
+                   oracle_velocity: bool = False) -> tuple[np.ndarray, np.ndarray]:
     """(gt_track_id per row, feature matrix) -- see cellanc.embed.N_FEATURES for the layout.
 
-    g_prev/dt_prev: the previous *observed* frame and the gap to it (same track id lookup, not
-    lineage) -- gives velocity for cells that were already present then; 0+flag for new cells or
-    when g_prev is None (e.g. the first frame of a window).
+    Velocity obtained by matching gt_track_id across frames reveals temporal identity. It is
+    zero by default. oracle_velocity=True exists solely to reproduce earlier diagnostic runs;
+    it must never be used to support a benchmark or paper claim.
     """
     pos = g[["center_y", "center_x"]].to_numpy()
     c = pos.mean(0)
@@ -75,7 +75,7 @@ def frame_features(g: pd.DataFrame, g_prev: pd.DataFrame | None = None,
     logsz = np.log(g[["major_sd", "minor_sd"]].fillna(1.0).to_numpy() + 1e-3)
     vel = np.zeros((len(g), 2), dtype=np.float32)
     has_v = np.zeros(len(g), dtype=np.float32)
-    if g_prev is not None and dt_prev:
+    if oracle_velocity and g_prev is not None and dt_prev:
         prev_pos = dict(zip(g_prev.gt_track_id, g_prev[["center_y", "center_x"]].to_numpy()))
         for i, tid in enumerate(g.gt_track_id.to_numpy()):
             if tid in prev_pos:
@@ -86,13 +86,16 @@ def frame_features(g: pd.DataFrame, g_prev: pd.DataFrame | None = None,
     return g.gt_track_id.to_numpy(), feat.astype(np.float32)
 
 
-def build_example(t: int, b: int, by_t: dict, tracks: dict, rng: np.random.Generator | None = None):
+def build_example(t: int, b: int, by_t: dict, tracks: dict, rng: np.random.Generator | None = None,
+                  oracle_velocity: bool = False):
     H = b - t
-    g_a_prev = by_t.get(t - H)
+    g_a_prev = by_t.get(t - H) if oracle_velocity else None
     if g_a_prev is not None and rng is not None and rng.random() < DROP_VEL_PROB:
         g_a_prev = None
-    ids_a, feat_a = frame_features(by_t[t], g_a_prev, H)
-    ids_b, feat_b = frame_features(by_t[b], by_t[t], H)
+    ids_a, feat_a = frame_features(by_t[t], g_a_prev, H,
+                                   oracle_velocity=oracle_velocity)
+    ids_b, feat_b = frame_features(by_t[b], by_t[t] if oracle_velocity else None, H,
+                                   oracle_velocity=oracle_velocity)
     present_a = set(int(i) for i in ids_a)
     idx_a = {int(i): k for k, i in enumerate(ids_a)}
     labels, keep = [], []
@@ -119,6 +122,8 @@ def main():
     ap.add_argument("--t-stride", type=int, default=10)
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--tag", default="v0")
+    ap.add_argument("--oracle-velocity", action="store_true",
+                    help="reproduce legacy GT-ID velocity experiments; diagnostic only")
     ap.add_argument("--dataset", default="one_in_a_million", choices=DATASETS)
     ap.add_argument("--split", default=None, help="which DATASETS[dataset]['splits'] value to "
                     "train on; defaults to 'train' for one_in_a_million, else 'domain_adapt'")
@@ -145,7 +150,7 @@ def main():
         for k in order:
             a, t, b = all_pairs[k]
             by_t, tracks = seqs[a]
-            ex = build_example(t, b, by_t, tracks, rng)
+            ex = build_example(t, b, by_t, tracks, rng, args.oracle_velocity)
             if ex is None:
                 continue
             feat_a, feat_b, labels = ex
@@ -169,6 +174,11 @@ def main():
 
     out = OUT / "results" / f"embed_{args.tag}.pt"
     torch.save(model.state_dict(), out)
+    out.with_suffix(".json").write_text(json.dumps({
+        "dataset": args.dataset, "train_aliases": train_aliases,
+        "oracle_velocity": args.oracle_velocity, "epochs": args.epochs,
+        "t_stride": args.t_stride, "gaps_frames": gaps,
+    }, indent=2))
     print("saved", out)
 
 

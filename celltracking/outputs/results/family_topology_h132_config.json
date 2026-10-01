@@ -1,0 +1,12 @@
+{
+  "base_config": {
+    "beta": 2.0,
+    "threshold": 0.3,
+    "temperature": 4.0,
+    "capacity": 4,
+    "extra_child_penalty": 1.0
+  },
+  "selected_gamma": 8,
+  "anchor_k": 6,
+  "selection": "M3 only; both macro accuracy and set F1 must improve"
+}

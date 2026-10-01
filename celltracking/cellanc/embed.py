@@ -36,11 +36,9 @@ from scipy.optimize import linear_sum_assignment
 from torch import nn
 
 N_FEATURES = 11  # y_norm, x_norm, axis_y, axis_x, log_major_sd, log_minor_sd, log_local_spacing,
-# vy_norm, vx_norm, has_velocity, log_nearest_dist -- velocity is (this cell's displacement since
-# the previous *observed* frame) / that gap, using the same track id; 0 + flag=0 when the track
-# wasn't present then (window's first frame, or a division happened since). This is the one signal
-# PyUAT's motion likelihood has that a single-frame embedding does not (diag: PyUAT's 8-hop chain
-# at s16 beats this model's single-hop match, see experiments/train_embed.py's build_example).
+# vy_norm, vx_norm, has_velocity, log_nearest_dist. Velocity channels are zero in clean runs:
+# prior experiments filled them by matching GT track IDs across frames, leaking temporal identity.
+# Legacy diagnostic reproduction requires an explicit --oracle-velocity flag.
 # log_nearest_dist (distance to the single closest neighbour, separate from log_local_spacing's
 # k=5 average) flags a just-divided pair: two daughters sit much closer to each other than the
 # general local density would predict -- PyUAT's division likelihood uses the same kind of cue.

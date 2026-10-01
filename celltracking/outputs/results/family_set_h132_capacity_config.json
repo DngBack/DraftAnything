@@ -1,0 +1,7 @@
+{
+  "beta": 4.0,
+  "threshold": 0.5,
+  "temperature": 8.0,
+  "capacity": 4,
+  "extra_child_penalty": 0.0
+}

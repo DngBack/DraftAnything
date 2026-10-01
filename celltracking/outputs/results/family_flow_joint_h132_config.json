@@ -1,0 +1,15 @@
+{
+  "base_config": {
+    "beta": 2.0,
+    "threshold": 0.3,
+    "temperature": 4.0,
+    "capacity": 4,
+    "extra_child_penalty": 1.0
+  },
+  "selected_flow": {
+    "bandwidth": 2,
+    "strength": 0.5
+  },
+  "selection": "M3 only; simultaneous macro accuracy and set-F1 improvement",
+  "M4_status": "descriptive development movie, previously viewed in other pilots"
+}

@@ -5,3 +5,4 @@ outputs/index/
 outputs/benchmarks/
 outputs/audit/overlays/
 docs/*
+!docs/260930_cvpr2028_research_angles.md

@@ -61,14 +61,16 @@ def _load(dataset: str, alias: str):
 @torch.no_grad()
 def embed_chain(w: dict, model, dev, m_by_frame: dict, time_step_min: float,
                 decode: str = "nearest", cap: int | None = 2, temp: float = 1.0,
-                eps: float = 1.0, tau: float | None = None, ot_hard: bool = False) -> dict[int, int]:
+                eps: float = 1.0, tau: float | None = None, ot_hard: bool = False,
+                oracle_velocity: bool = False) -> dict[int, int]:
     frames = w["observed_frames"]
     e_cache = {}
     g_prev, t_prev = None, None
     for t in frames:
         g = m_by_frame[t]
         dt_prev = (t - t_prev) if t_prev is not None else None
-        ids, feat = frame_features(g, g_prev, dt_prev)
+        ids, feat = frame_features(g, g_prev if oracle_velocity else None, dt_prev,
+                                   oracle_velocity=oracle_velocity)
         n_in = model.phi[0].in_features
         if feat.shape[1] != n_in:  # older checkpoint predating a later feature addition
             feat = feat[:, :n_in]
@@ -174,6 +176,8 @@ def main():
                     "--decode ot; omit for balanced OT")
     ap.add_argument("--ot-hard", action="store_true", help="commit to argmax parent at every "
                     "link for --decode ot, instead of multiplying soft conditionals through")
+    ap.add_argument("--oracle-velocity", action="store_true",
+                    help="reproduce legacy GT-ID velocity experiments; diagnostic only")
     args = ap.parse_args()
     args.cap = None if args.cap == "soft" else int(args.cap)
 
@@ -196,7 +200,7 @@ def main():
         m_by_frame = dict(list(m[m.frame_index.isin(w["observed_frames"])].groupby("frame_index")))
         time_step_min = w["horizon_min"] / w["horizon_frames"]  # minutes per frame, any schedule
         pred = embed_chain(w, model, dev, m_by_frame, time_step_min, args.decode, args.cap, args.temp,
-                          args.eps, args.tau, args.ot_hard)
+                          args.eps, args.tau, args.ot_hard, args.oracle_velocity)
         s = score_window(pred, set(), tg_by[w["window_id"]], pd.DataFrame(columns=["det_1", "det_2"]))
         cap_tag = ("soft" if args.cap is None else str(args.cap)) if args.decode == "lap" else ""
         tau_str = "inf" if args.tau is None else f"{args.tau:g}"
@@ -206,6 +210,7 @@ def main():
         suffix = (f"_lap{cap_tag}" if cap_tag else
                  f"_soft_t{args.temp:g}" if args.decode == "soft" else
                  "_dp" if args.decode == "dp" else ot_tag)
+        suffix += "_oracle_velocity" if args.oracle_velocity else "_clean_features"
         method = f"embed_{args.tag}" + dataset_tag + suffix
         rows.append({"method": method, "window_id": w["window_id"],
                     "sequence_id": w["sequence_id"], "schedule_id": w["schedule_id"],
