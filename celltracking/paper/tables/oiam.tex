@@ -1,0 +1,33 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{All windows} & \multicolumn{3}{c}{Dense ($N_a{>}200$)} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Method & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+Nearest ancestor & .497 & .361 & .263 & .157 & .083 & .058 \\
+Radial expansion & .547 & .458 & .342 & .249 & .154 & .056 \\
+Darcy flow prior (ours) & .627 & .466 & .368 & .305 & .161 & .088 \\
+Optical flow (RAFT~\cite{teed2020raft}) & .636 & .367 & .244 & .347 & .094 & .041 \\
+Unbalanced OT~\cite{schiebinger2019optimal} & .555 & .473 & .353 & .257 & .159 & .056 \\
+Non-rigid CPD~\cite{myronenko2010cpd} & .597 & .466 & .359 & .294 & .162 & .060 \\
+Family-centre regression (GBDT) & .731 & .610 & .446 & .449 & .297 & .201 \\
+Trackastra~\cite{gallusser2024trackastra}, argmax & .681 & .176 & .162 & .395 & .073 & .057 \\
+Trackastra, fine-tuned$^\dagger$ & .892 & .716 & .488 & .788 & .507 & .230 \\
+\ours, rot.\ aug. & .741 & .604 & .451 & .459 & .294 & .178 \\
+\ours, no rot. & .853 & .653 & .447 & .717 & .443 & .247 \\
+Direct matcher (\ours, fixed centre) & .856 & .684 & .456 & .706 & .429 & .207 \\
+\ours, full & .957 & .780 & .473 & .907 & .598 & .267 \\
+\ours, ensemble + decoder & \textbf{.977} & \textbf{.863} & \textbf{.517} & \textbf{.946} & \textbf{.703} & \textbf{.300} \\
+\ours, ensemble + decoder, no annotation & .963 & .822 & .487 & .919 & .634 & .260 \\
+\midrule
+\textcolor{gray}{Oracle family partition} & .984 & .929 & .784 & .963 & .817 & .465 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{In-domain results on OIAM M3/M4} (trained on M0--M2). Accuracy at gaps of 33/66/132 minutes. Trackastra receives images and ground-truth masks of both snapshots. $^\dagger$Fine-tuned on M0/M1 lineage, one model per gap or one over five gaps, whichever is better on M2 (per gap at 33/66, over gaps at 132 minutes; checkpoint and decoding also chosen on M2). M3/M4 were inspected during development (leave-one-movie-out: supplement). Direct matcher: the same network with the family centre frozen at its initial position. Rot.\ aug./no rot.: 30k steps, radial initialisation, with/without rotation augmentation; full: see text. Direct matcher and full: mean of 3 seeds (std $\le$0.016); ensemble rows average the seeds' probabilities; no annotation: both networks trained on self-labelled lineage of the unannotated M0--M2; oracle: ensemble; other learned rows: one seed.}
+\label{tab:oiam}
+\end{table}

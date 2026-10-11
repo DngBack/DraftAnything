@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{All windows} & \multicolumn{3}{c}{Dense ($N_a{>}200$)} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Coupling, alignment & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+Exact capacity, none & .545 & .506 & .360 & .217 & .215 & .079 \\
+Exact capacity, radial & .549 & .476 & .352 & .251 & .158 & .056 \\
+Exact capacity, darcy & .560 & .492 & .372 & .285 & .197 & .093 \\
+Entropic unbalanced, none & .561 & .445 & .337 & .225 & .112 & .073 \\
+Entropic unbalanced, radial & .555 & .473 & .353 & .257 & .159 & .056 \\
+Entropic unbalanced, darcy & .564 & .491 & .376 & .298 & .189 & .102 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Optimal-transport baselines} on OIAM M3/M4. Hyperparameters (capacity factor; entropy and KL relaxation) chosen on M0--M2. Costs are squared distances in units of the ancestor spacing.}
+\label{tab:ot}
+\end{table}

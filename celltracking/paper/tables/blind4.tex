@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccccccc}
+\toprule
+Subset & $n$ & Best geom. & Best other & \rodsim & + Hung. & + boot. & \multicolumn{2}{c}{wins} \\
+\cmidrule(lr){8-9}
+ & & & & & & & \rodsim & boot. \\
+\midrule
+trpL & 10 & .574 & .591 & .674 & .598 & \textbf{.711} & 10/10 & 10/10 \\
+metA & 9 & .497 & .517 & .636 & .542 & \textbf{.668} & 9/9 & 9/9 \\
+pheA & 9 & .520 & .545 & .667 & .588 & \textbf{.714} & 9/9 & 9/9 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Pre-registered blind test} on three \emph{E.~coli} subsets of~\cite{vanvliet2018spatially} in minimal medium, never downloaded before the protocol was fixed (accuracy: mean over colonies of the mean over 30/60/120-minute gaps; run once). Best geom.: of nearest, translation, radial expansion and radial sector; best other: of exact and unbalanced OT (tuned on OIAM) and, added afterwards, radial-aligned OT, CPD, Darcy and forward simulation. Hung./boot.: \rodsim model fine-tuned on Hungarian-chained or bootstrapped pseudo-lineage of the other fold. Wins: colonies where \rodsim beats all ten baselines (also the six pre-registered), and where bootstrapping beats \rodsim.}
+\label{tab:blind4}
+\end{table}

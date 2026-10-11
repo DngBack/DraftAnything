@@ -1,0 +1,45 @@
+dropped frame 150303-01_segData017.mat
+dropped frame 150303-08_segData004.mat
+dropped frame 150309-04_segData003.mat
+dropped frame 150310-05_segData007.mat
+dropped frame 150310-05_segData009.mat
+dropped frame 150310-05_segData011.mat
+trpL 150303-01
+trpL 150303-08
+trpL 150309-04
+trpL 150310-05
+trpL 150310-11
+trpL 150428-06
+trpL 150428-08
+trpL 151021-05
+trpL 151021-11
+trpL 151021-12
+dropped frame 150331-12_segData001.mat
+metA 150317-03
+metA 150317-07
+metA 150318-06
+metA 150331-11
+metA 150331-12
+metA 150401-02
+metA 151222-05
+metA 151222-10
+metA 151222-11
+dropped frame 150324-12_segData001.mat
+dropped frame 150325-04_segData006.mat
+pheA 150324-03
+pheA 150324-05
+pheA 150324-12
+pheA 150325-04
+pheA 150325-06
+pheA 150512-14
+pheA 150512-15
+pheA 160112-04
+pheA 160112-06
+method   nearest_anchor  centroid_translation  radial_expansion  radial_sector  ot_exact  ot_uot    sim  adapt  adaptm
+dataset                                                                                                               
+metA              0.451                 0.487             0.497          0.435     0.516   0.517  0.636  0.542   0.668
+pheA              0.498                 0.515             0.520          0.466     0.543   0.543  0.667  0.588   0.714
+trpL              0.511                 0.558             0.574          0.517     0.568   0.577  0.674  0.598   0.711
+trpL F1 sim 0.674 vs best 0.577 (ot_uot) F2 colonies 10/10 F3 adaptm 0.711 vs sim F4 vs adapt 0.598 | colonies adaptm>sim 10/10
+metA F1 sim 0.636 vs best 0.517 (ot_uot) F2 colonies 9/9 F3 adaptm 0.668 vs sim F4 vs adapt 0.542 | colonies adaptm>sim 9/9
+pheA F1 sim 0.667 vs best 0.543 (ot_exact) F2 colonies 9/9 F3 adaptm 0.714 vs sim F4 vs adapt 0.588 | colonies adaptm>sim 9/9

@@ -1,0 +1,44 @@
+\section{Two-snapshot ancestry}
+\label{sec:problem}
+
+\paragraph{Task.}
+We observe a population at times $a$ and $b{=}a{+}H$.
+Each snapshot provides cell detections $\mathcal{A}{=}\{\mathbf{x}_i\}_{i=1}^{N_a}$ and $\mathcal{B}{=}\{\mathbf{y}_j\}_{j=1}^{N_b}$ (centroid, and optionally major/minor axis and orientation) and, when available, the image.
+For every target $j$ we predict its ancestor $\pi(j)\in\mathcal{A}\cup\{\varnothing\}$, the cell at time $a$ whose lineage contains $j$; $\varnothing$ denotes cells that entered the field of view.
+No intermediate frame and no identity information is available at inference.
+Ground-truth ancestry comes from full-resolution tracking and is used only for training and evaluation.
+
+\paragraph{Metrics.}
+Accuracy is the fraction of evaluable targets (inside the field of interest, with a visible ancestor) assigned to the correct ancestor, averaged over windows (one snapshot pair of one movie); weighting by cells instead counts dense windows more and gives lower numbers (Supp.~E).
+At the family level we compare biological readouts of the predicted and true families (size control; family-size spread in Supp.~H).
+We report results separately on \emph{dense} windows ($N_a{>}200$), where ambiguity is highest.
+
+\paragraph{Data.}
+\cref{tab:datasets} summarises the datasets.
+\emph{OIAM}~\cite{seiffarth2024oiam}: five \emph{C.~glutamicum} microcolony movies (M0--M4) with over 1.4M annotated instances; we train in-domain models on M0--M2 (or four movies in leave-one-movie-out) and evaluate at $H\in\{33,66,132\}$ minutes.
+\emph{FAST}~\cite{meacock2023fast}: seven \emph{E.~coli} microcolonies with manually corrected lineages.
+\emph{recA} and \emph{rpsM}: nine \emph{E.~coli} microcolonies each from the raw data of~\cite{vanvliet2018spatially}, the study FAST was also drawn from, but with different reporters, dates and colonies, and with uncurated Schnitzcells lineages (audited in Supp.~E).
+\emph{LFCT}~\cite{gachloo2026lfct}: one field of motile MDA-MB-231 breast cancer cells; \emph{T98G}~\cite{chang2026tui}: one field of T98G glioblastoma cells under electrotaxis.
+The last two are sparse and motile, a regime deliberately unlike the simulator.
+External datasets are never used for training.
+The window lists, the \rodsim simulator, code and trained models will be released.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lllrrr}
+\toprule
+Dataset & Organism & Gaps (min) & Seq. & Windows & max $N_a$ \\
+\midrule
+OIAM (M3/M4) & \emph{C. glutamicum} & 33/66/132 & 2 & 109 & 1359 \\
+FAST & \emph{E. coli} & 35/65/130 & 7 & 1409 & 124 \\
+recA & \emph{E. coli} & 30/60/120 & 9 & 345 & 108 \\
+rpsM & \emph{E. coli} & 30/60/120 & 9 & 900 & 113 \\
+LFCT & MDA-MB-231 & 30/60/120 & 1 & 1141 & 13 \\
+T98G & T98G & 30/70/130 & 1 & 88 & 74 \\
+\bottomrule
+\end{tabular}}
+\caption{\textbf{Evaluation datasets.} Windows pool all gaps.}
+\label{tab:datasets}
+\end{table}

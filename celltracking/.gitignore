@@ -6,3 +6,29 @@ outputs/benchmarks/
 outputs/audit/overlays/
 docs/*
 !docs/260930_cvpr2028_research_angles.md
+
+# virtualenvs (uv/pip)
+.venv*/
+
+# run artifacts: logs, checkpoints, caches, simulated data, segmentation masks
+outputs/logs/
+outputs/checkpoints/
+outputs/cache/
+outputs/sim/
+outputs/seg/
+outputs/results/glue/
+outputs/results/pseudo_links/
+outputs/results/invalid_uncorrected_crop/
+outputs/results/*.pkl
+outputs/results/*.npy
+
+# paper: LaTeX build files, version snapshots, upstream template clone
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.brf
+paper/*.log
+paper/*.out
+paper/versions/
+paper/kit/
+.venv-onmi/

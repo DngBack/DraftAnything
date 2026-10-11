@@ -1,0 +1,10 @@
+colony,n_frames,frame_offset,n_tracks,n_detections,n_mapped,n_unmapped,n_invalid_centroids,n_lineage_observations_outside_features,n_mismatched_track_centroids,n_invalid_parent_edges,coordinate_system
+151027-06,21,1,466,968,965,3,0,0,0,0,original_image_via_rect
+151027-10,23,1,534,1242,1231,11,15,0,11,0,original_image_via_rect
+151028-01,19,1,256,614,613,1,1,0,1,0,original_image_via_rect
+151028-08,21,1,320,766,766,0,2,0,0,0,original_image_via_rect
+151029-05,23,1,377,855,852,3,6,0,3,0,original_image_via_rect
+151029-09,22,1,266,625,623,2,18,0,1,0,original_image_via_rect
+151029-11,24,1,510,1204,1204,0,0,0,0,0,original_image_via_rect
+151031-03,23,1,183,417,417,0,2,0,0,0,original_image_via_rect
+151031-13,23,1,262,669,665,4,7,0,4,0,original_image_via_rect

@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccccc}
+\toprule
+Dataset & Best geom. & \rodsim & + Hungarian & + bootstrap & wins \\
+\midrule
+FAST & .593 & .702 & .642 & \textbf{.730} & 6/7 \\
+recA & .466 & .563 & .445 & \textbf{.576} & 6/9 \\
+rpsM & .455 & .560 & .450 & \textbf{.604} & 9/9 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Temporal bootstrapping} on the microcolony datasets (accuracy, mean over colonies of the mean over gaps; two folds per dataset, each model evaluated on the other fold). The \rodsim model is fine-tuned on pseudo-lineage chained from positions-only Hungarian links (protocol 4) or from its own one-frame predictions (protocol 5). Wins: colonies on which bootstrapping beats the \rodsim model.}
+\label{tab:bootstrap}
+\end{table}

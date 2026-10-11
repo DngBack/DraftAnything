@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccc}
+\toprule
+Gap & Accuracy & ECE & NLL of true ancestor \\
+\midrule
+33 min & 0.895 $\to$ 0.912 & 0.051 $\to$ 0.013 & 0.608 $\to$ 0.404 \\
+66 min & 0.599 $\to$ 0.634 & 0.229 $\to$ 0.111 & 2.570 $\to$ 1.787 \\
+132 min & 0.317 $\to$ 0.333 & 0.401 $\to$ 0.275 & 5.416 $\to$ 4.079 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Calibration} of the full model on OIAM M3/M4, pooled over scored targets: mean of three single seeds $\to$ their probability-averaged ensemble. ECE: expected calibration error of the top choice (15 bins). Single models are overconfident; averaging at least halves ECE at 33 and 66 minutes.}
+\label{tab:calibration}
+\end{table}

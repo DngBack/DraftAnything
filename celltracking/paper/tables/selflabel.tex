@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llcccccc}
+\toprule
+ & Lineage & \multicolumn{3}{c}{All windows} & \multicolumn{3}{c}{Dense ($>$200)} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Training & labels & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+\multicolumn{8}{l}{\emph{Positions only, seed 0}} \\
+\rodsim only & -- & .665 & .516 & .393 & .340 & .198 & .097 \\
+\quad + fine-tune, true lineage & M0--M2 & .719 & .556 & .418 & .458 & .292 & .182 \\
+\quad + fine-tune, self-labelled & none & .715 & .564 & .418 & .454 & .292 & .180 \\
+\multicolumn{8}{l}{\emph{Full model (shape, Darcy), mean of three seeds}} \\
+True lineage & M0--M2 & .957 & .780 & .473 & .907 & .598 & .267 \\
+Self-labelled & none & .935 & .733 & .452 & .865 & .533 & .244 \\
+\quad without consistency term (post hoc) & none & .940 & .759 & .456 & .877 & .577 & .258 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Self-labelling replaces lineage annotation} (OIAM M3/M4, accuracy, argmax). Self-labelled models are trained on lineage obtained by chaining one-frame links through the \emph{unannotated} M0--M2 time-lapses (\cref{sec:selflabel}); fine-tuning runs 6k steps from the \rodsim model, full models 80k steps from scratch (seed std $\le$0.013).}
+\label{tab:selflabel}
+\end{table}

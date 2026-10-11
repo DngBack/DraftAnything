@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccc}
+\toprule
+Genealogy in the decoder & 33 & 66 & 132 \\
+\midrule
+none (argmax) & .656 & .516 & .393 \\
+\rodsim & .659 & .520 & .376 \\
+\rodsim + division modes & .667 & .546 & .408 \\
+OIAM M0--M2 labels & .696 & .597 & .434 \\
+\textcolor{gray}{oracle partition} & .768 & .718 & .679 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{A label-free pipeline.} \ours trained only on \rodsim, decoded with single-image genealogy from different sources (Potts, $\beta{=}1$); OIAM M3/M4 accuracy. The first three rows use no real label. Decoding skips the one 33-minute window with fewer than nine target cells, which moves 33-minute argmax values by up to 0.009 from other tables.}
+\label{tab:labelfree}
+\end{table}

@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{Window-averaged (95\% CI)} & \multicolumn{3}{c}{Cell-weighted} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Method & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+Nearest ancestor & .497{\scriptsize$\pm$.104} & .361{\scriptsize$\pm$.092} & .263{\scriptsize$\pm$.070} & .183 & .113 & .098 \\
+Unbalanced OT & .555{\scriptsize$\pm$.093} & .473{\scriptsize$\pm$.090} & .353{\scriptsize$\pm$.079} & .244 & .178 & .138 \\
+Non-rigid CPD & .597{\scriptsize$\pm$.093} & .466{\scriptsize$\pm$.091} & .359{\scriptsize$\pm$.076} & .268 & .179 & .143 \\
+Trackastra, fine-tuned per gap & .892{\scriptsize$\pm$.037} & .716{\scriptsize$\pm$.064} & .451{\scriptsize$\pm$.073} & .762 & .502 & .243 \\
+Family-centre regression (GBDT) & .731{\scriptsize$\pm$.083} & .610{\scriptsize$\pm$.092} & .446{\scriptsize$\pm$.075} & .440 & .321 & .255 \\
+\ours, full (mean of 3 seeds) & .957{\scriptsize$\pm$.019} & .780{\scriptsize$\pm$.053} & .473{\scriptsize$\pm$.060} & .895 & .599 & .317 \\
+\ours, ensemble + decoder & .977{\scriptsize$\pm$.014} & .863{\scriptsize$\pm$.050} & .517{\scriptsize$\pm$.062} & .937 & .698 & .353 \\
+\ours, no annotation & .963{\scriptsize$\pm$.018} & .822{\scriptsize$\pm$.053} & .487{\scriptsize$\pm$.070} & .908 & .636 & .311 \\
+\midrule
+\textcolor{gray}{Oracle family partition} & .984{\scriptsize$\pm$.011} & .929{\scriptsize$\pm$.039} & .784{\scriptsize$\pm$.080} & .954 & .804 & .560 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Uncertainty and weighting} on OIAM M3/M4. Left: accuracy averaged over windows (as in the main table) with the half-width of a 95\% bootstrap interval over windows. Right: the same predictions weighted by scored targets, which counts the dense windows more. Decoder rows use the windows with at least 9 targets.}
+\label{tab:reliability}
+\end{table}

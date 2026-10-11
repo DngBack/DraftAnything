@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccccccccc}
+\toprule
+ & \multicolumn{3}{c}{Accuracy} & \multicolumn{3}{c}{Pair family F1} & \multicolumn{3}{c}{F1, dense} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+Method & 33 & 66 & 132 & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+Nearest ancestor & .484 & .361 & .263 & .277 & .238 & .209 & .078 & .091 & .102 \\
+Family-centre regression (GBDT) & .717 & .602 & .441 & .541 & .459 & .309 & .265 & .192 & .190 \\
+\ours (mean of three seeds) & .955 & .780 & .473 & .884 & .621 & .319 & .774 & .408 & .228 \\
+\quad + genealogy decoder & .966 & .814 & .485 & .933 & .717 & .363 & .871 & .566 & .282 \\
+\ours, 3-seed ensemble & .964 & .807 & .490 & .906 & .662 & .330 & .815 & .449 & .242 \\
+\quad + genealogy decoder & .977 & .863 & .517 & .962 & .812 & .405 & .919 & .648 & .295 \\
+\quad + decoder, no annotation & .963 & .822 & .487 & .941 & .756 & .394 & .881 & .577 & .262 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Grouping, scored directly} (OIAM M3/M4, windows with at least nine targets). Pair family F1 counts pairs of scored targets that share the true ancestor and are given the same ancestor, whichever it is; the adjusted Rand index agrees within 0.03. The oracle partition scores 1 by construction. GBDT is retrained on M0--M2 here, so its accuracy differs slightly from the main table.}
+\label{tab:partition}
+\end{table}

@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{2}{c}{Blind test 1} & \multicolumn{2}{c}{Blind test 2} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Method & TrackRefiner & TrackMate & LYN (yeast) & \emph{B.\ subtilis} \\
+\midrule
+Nearest ancestor & .407 & .796 & .827 & .895 \\
+Best of 8 geometric & .461 & .796 & .827 & .895 \\
+\ours, whole field & .306 & .419 & .817 & .874 \\
+\ours, per colony & .501$^\dagger$ & .661$^\dagger$ & .828 & .878 \\
+\ours-SV (label-free selection) & .496$^\dagger$ & .838$^\dagger$ & .842 & .887 \\
+SV wins / sequences & 6/8$^\dagger$ & 3/3$^\dagger$ & 3/6 & 9/44 \\
+\midrule
+\multicolumn{5}{l}{\emph{+ self-labelling on the other fold's unannotated sequences (protocol 3)}} \\
+\ours, whole field & .478 & .704 & .849 & .887 \\
+\ours, per colony & .560 & .753 & .856 & .890 \\
+\ours-SV & .555 & .803 & .856 & .894 \\
+SV wins / sequences & 8/8 & 2/3 & 4/6 & 22/44 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Pre-registered blind tests and self-labelled adaptation.} Accuracy averaged over windows, gaps (30/60/120 min) and sequences; \rodsim-trained, positions only. Test 1 (11 sequences) was run first and failed; $^\dagger$per-colony processing and SV were designed after seeing it, so these test-1 entries are post hoc (SV there uses one seed). Test 2 (6 yeast colonies, 44 \emph{B.\ subtilis} sequences) was fixed before its data were downloaded and run once. Best of 8 geometric: nearest, centroid translation, radial expansion and radial sector (the ancestor in the most similar direction from the colony centroid), each on the whole field or per colony, best chosen per source after the run. Protocol 3 (not blind: same windows, method fixed before running) fine-tunes the \rodsim model on chained pseudo-lineage of the other half of each source's sequences, with no ground-truth lineage.}
+\label{tab:blind}
+\end{table}

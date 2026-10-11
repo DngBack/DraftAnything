@@ -1,0 +1,10 @@
+{
+  "selected_on_M3": {
+    "init": "raw",
+    "eps": 1.0,
+    "tau": 10.0,
+    "smooth": 2.0
+  },
+  "selection": "maximize M3 dense macro accuracy + dense set-F1",
+  "M4_status": "viewed development movie, not fresh held-out test"
+}

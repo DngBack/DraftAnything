@@ -61,14 +61,17 @@ def load_alias(alias: str, windows: list[dict]) -> tuple[dict[int, pd.DataFrame]
     return by_frame, dict(list(tg.groupby("window_id")))
 
 
-def windows_for(alias: str, all_windows: list[dict]) -> list[dict]:
+def windows_for(alias: str, all_windows: list[dict], schedule_id: str = "ends",
+                horizon: int = HORIZON, require_experiment: bool = True) -> list[dict]:
     return [w for w in all_windows if w["sequence_id"] == alias and
-            w["horizon_frames"] == HORIZON and w["schedule_id"] == "ends" and
-            f"A_h{HORIZON}" in w["experiments"]]
+            w["horizon_frames"] == horizon and w["schedule_id"] == schedule_id and
+            (not require_experiment or f"A_h{horizon}" in w["experiments"])]
 
 
-def examples(alias: str, all_windows: list[dict], compensate: bool = True) -> list[dict]:
-    windows = windows_for(alias, all_windows)
+def examples(alias: str, all_windows: list[dict], compensate: bool = True,
+             schedule_id: str = "ends", horizon: int = HORIZON,
+             require_experiment: bool = True) -> list[dict]:
+    windows = windows_for(alias, all_windows, schedule_id, horizon, require_experiment)
     by_frame, targets = load_alias(alias, windows)
     out = []
     for w in windows:

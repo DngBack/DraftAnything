@@ -1,0 +1,33 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{All windows} & \multicolumn{3}{c}{Dense ($>$200)} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Model & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+\multicolumn{7}{l}{\emph{30k steps, seed 0 (core ablation)}} \\
+$T{=}4$, moving centre (reference) & .877 & .663 & .424 & .773 & .469 & .208 \\
+$T{=}2$ & .858 & .664 & .431 & .732 & .467 & .217 \\
+$T{=}1$ & .825 & .648 & .422 & .681 & .435 & .206 \\
+$T{=}0$: learned pairwise matcher & .790 & .620 & .416 & .653 & .405 & .196 \\
+$T{=}4$, fixed centre (direct matcher) & .806 & .623 & .419 & .631 & .364 & .191 \\
+\multicolumn{7}{l}{\emph{80k steps, mean of three seeds (matched direct matcher)}} \\
+\ours, Darcy init. & .957 & .780 & .473 & .907 & .598 & .267 \\
+Direct matcher, Darcy init. & .856 & .684 & .456 & .706 & .429 & .207 \\
+\ours, radial init. & .948 & .748 & .454 & .894 & .567 & .275 \\
+Direct matcher, radial init. & .846 & .681 & .458 & .685 & .433 & .206 \\
+Direct matcher, 96 candidates & .868 & .696 & .458 & .736 & .475 & .229 \\
+Direct matcher + centre loss & .904 & .709 & .457 & .789 & .445 & .205 \\
+\ours, $T{=}1$ & .873 & .670 & .450 & .756 & .466 & .233 \\
+\multicolumn{7}{l}{\emph{80k steps, seed 0}} \\
+\ours without consistency term & .963 & .789 & .478 & .918 & .618 & .269 \\
+\ours, $T{=}8$ & .941 & .750 & .441 & .885 & .582 & .237 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{What family registration needs} (OIAM M3/M4, accuracy, argmax). All rows use shape features, no rotation augmentation and the consistency term; Darcy initialisation unless stated. $T$: rounds of cross-snapshot attention and centre update. With $T{=}0$ each snapshot is encoded on its own and targets are scored against the initial anchor positions, a learned pairwise matcher. The direct matcher is the same network with the same 2.9M parameters, data, losses and schedule, except that the family centre never moves and has no loss: targets cross-attend to, and are scored against, candidate ancestors at their initial positions. Controls: the direct matcher with 96 instead of 24 candidate ancestors per target, or with the centre head trained by the centre loss but never used. All three protocols were fixed before training and run once.}
+\label{tab:core}
+\end{table}

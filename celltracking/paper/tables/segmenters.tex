@@ -1,0 +1,29 @@
+\begin{table*}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llcccccccc}
+\toprule
+ & & \multicolumn{2}{c}{Detection} & \multicolumn{3}{c}{All windows} & \multicolumn{3}{c}{Dense ($N_a{>}200$)} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+Model & Positions & Rec. & Prec. & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+\ours & true & 1 & 1 & .957 & .780 & .473 & .907 & .598 & .267 \\
+ & Cellpose-SAM & 1.000 & .936 & .922 & .730 & .436 & .902 & .592 & .262 \\
+ & Omnipose & 1.000 & .852 & .736 & .503 & .287 & .877 & .522 & .220 \\
+\midrule
+\ours, no annotation & true & & & .935 & .733 & .452 & .865 & .533 & .244 \\
+ & Cellpose-SAM & & & .918 & .697 & .420 & .859 & .531 & .243 \\
+ & Omnipose & & & .749 & .500 & .281 & .843 & .489 & .207 \\
+\midrule
+\ours, \rodsim only & true & & & .657 & .512 & .390 & .333 & .197 & .096 \\
+ & Cellpose-SAM & & & .562 & .438 & .342 & .342 & .201 & .099 \\
+ & Omnipose & & & .486 & .355 & .230 & .332 & .195 & .104 \\
+\midrule
+Nearest ancestor & true & & & .497 & .361 & .263 & .157 & .083 & .058 \\
+ & Cellpose-SAM & & & .497 & .359 & .261 & .155 & .081 & .055 \\
+ & Omnipose & & & .495 & .360 & .259 & .156 & .080 & .047 \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{End-to-end with two off-the-shelf segmenters} on OIAM M3/M4, neither fine-tuned nor tuned (Cellpose-SAM; Omnipose \texttt{bact\_phase\_omni} with the settings of its official notebook, fixed before segmenting). Accuracy is correct over \emph{all} annotated targets (missed or mismatched cells count as errors), mean of three training seeds. Both segmenters find essentially every cell; losses come from spurious objects, under Omnipose mostly out-of-colony debris in the sparse early frames of M3, so dense windows lose at most 0.08.}
+\label{tab:segmenters}
+\end{table*}

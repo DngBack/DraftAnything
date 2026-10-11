@@ -1,0 +1,146 @@
+\section{Implementation details}
+\label{sec:supp-impl}
+All values are those of our code. OIAM frames are one minute apart; elsewhere $H$ is converted to minutes before entering any model.
+
+\paragraph{\ours tokens.}
+From a cell's mask, the eigen-decomposition of its pixel covariance gives the unit major axis $\mathbf{u}$ and standard deviations $\sigma_\parallel\ge\sigma_\perp$.
+Let $s$ be the median nearest-neighbour distance among targets, $N_a,N_b$ the counts and $\boldsymbol\mu_a,\boldsymbol\mu_b$ the centroids.
+Targets have canonical positions $\tilde{\mathbf{y}}_j=(\mathbf{y}_j-\boldsymbol\mu_b)/s$; ancestors $\tilde{\mathbf{x}}_i=\sqrt{N_b/N_a}(\mathbf{x}_i-\boldsymbol\mu_a)/s$ (radial) or $(\mathcal{A}(\mathbf{x}_i)-\boldsymbol\mu_b)/s$ with $\mathcal{A}$ the Darcy advection; this is also $\mathbf{c}^{(0)}_i$.
+The 19-d token concatenates the canonical position (2), $(\mathbf{x}-\text{image centre})/10s$ (2), $(u_y^2{-}u_x^2,2u_yu_x)$ (2), $\log\sigma_\parallel{-}2$ and $\log\sigma_\perp{-}1.4$ (2), $\tanh(\mathbf{b}/4)$ (2) and $\log(1{+}\|\mathbf{b}\|)$ (1) for $\mathbf{b}$ the shortest axis-aligned vector to the image border in units of $s$, the drift $(\boldsymbol\mu_b{-}\boldsymbol\mu_a)/10s$ (2), $[\log_2\frac{H}{60},\log\frac{N_b}{N_a},\log N_a,\log N_b]$ (4) and a one-hot ancestor/target flag (2).
+Shape-free models zero the four shape entries.
+Augmentation applies one matrix to all vectors: \emph{full}, a rotation $\theta\sim U[0,2\pi)$ then a reflection with probability $\frac12$; \emph{flip}, reflecting $x$ with probability $\frac12$; \emph{none}.
+
+\paragraph{\ours layers} ($d{=}128$, 2{,}875{,}659 parameters).
+Input MLPs (one per snapshot): Linear$(19,d)$--GELU--Linear$(d,d)$.
+\emph{LocalAttn} is kNN attention with relative-position encoding: queries $W_q\mathrm{LN}(\mathbf{h}^q)$; keys and values $W_{kv}\mathrm{LN}(\mathbf{h}^x)$ gathered at the neighbours plus $\phi(\boldsymbol\delta/4)$, with $\phi$ = Linear$(2,d)$--GELU--Linear$(d,2d)$ of the neighbour offset $\boldsymbol\delta$; 4 heads of 32 channels, softmax over neighbours; residual output projection, then a residual FFN Linear$(d,2d)$--GELU--Linear$(2d,d)$ without normalisation.
+\emph{Encoder}: two LocalAttn layers per snapshot over the $k_{\text{self}}{+}1{=}13$ nearest cells (self included) in canonical coordinates.
+\emph{GlobalCtx}: $\mathbf{h}\leftarrow\mathbf{h}+\mathrm{MLP}([\mathbf{h},\overline{\mathbf{h}}])$, $\overline{\mathbf{h}}$ the snapshot mean, MLP Linear$(2d,d)$--GELU--Linear$(d,d)$.
+\emph{Iteration} $t{=}1..4$ (unshared weights), with $\mathbf{c}=\mathrm{sg}(\mathbf{c}^{(t-1)})$ (stop-gradient):
+(i) ancestor $i$ attends to the $k_{\text{cross}}{=}24$ targets nearest $\mathbf{c}_i$, offsets $\tilde{\mathbf{y}}_j{-}\mathbf{c}_i$;
+(ii) ancestors attend over their fixed 13-NN graph of initial canonical positions;
+(iii) $\mathbf{c}^{(t)}_i=\mathbf{c}_i+\Delta_t(\mathbf{h}_i)$, $\Delta_t$ Linear$(d,2)$ with zero-initialised weight and bias;
+(iv) target $j$ attends to its 24 nearest $\mathrm{sg}(\mathbf{c}^{(t)})$, offsets $\mathbf{c}_i{-}\tilde{\mathbf{y}}_j$.
+\emph{Assignment}: target $j$ is scored against its $k_{\text{out}}{=}24$ nearest final centres by Linear$(2d{+}3,d)$--GELU--Linear$(d,d)$--GELU--Linear$(d,1)$ on $[\mathbf{h}_j,\mathbf{h}_i,\mathbf{o}/4,\|\mathbf{o}\|/4]$, $\mathbf{o}=\tilde{\mathbf{y}}_j{-}\mathbf{c}^{(T)}_i$ (not detached), plus a dustbin logit Linear$(d,1)(\mathbf{h}_j)$; softmax over 25.
+At test time the probabilities are scattered into an $N_b{\times}N_a$ matrix, the dustbin dropped and rows renormalised; no test-time augmentation.
+\emph{Family head}: Linear$(2d{+}3,d)$--GELU--Linear$(d,1)$ on $[\mathbf{h}_j,\mathbf{h}_k,\boldsymbol\delta/4,\|\boldsymbol\delta\|/4]$, $\boldsymbol\delta=\tilde{\mathbf{y}}_k{-}\tilde{\mathbf{y}}_j$, logits averaged over both orders.
+
+\paragraph{Labels and losses.}
+A target's label is the track alive at $a$ reached through its parents; it is the dustbin if the chain ends at a root born after $a$ or that track has no detection at $a$ (in \rodsim, e.g.\ outside the field of view).
+Cross-entropy runs over the 25 classes and ignores targets whose labelled ancestor is not among their candidates.
+With $\bar{\mathbf{g}}_i$ the mean canonical position of the labelled descendants of ancestor $i$, $\mathcal{L}_c=\sum_{t=1}^{T}0.8^{T-t}\,\mathrm{mean}_i\min(\|\mathbf{c}^{(t)}_i{-}\bar{\mathbf{g}}_i\|,10)$.
+The family loss is a binary cross-entropy for ``same ancestor'' on the directed 8-NN graph of $\tilde{\mathbf{y}}$, restricted to pairs of labelled targets (skipped if fewer than three are labelled).
+With $P$ the dense $N_b{\times}(N_a{+}1)$ assignment matrix, dustbin included, the consistency loss on the same pairs is $\mathrm{BCE}(\mathrm{clip}(\sum_iP_{ji}P_{ki},10^{-5},1{-}10^{-5}),[\text{same}])$.
+In total, $\mathcal{L}=\mathcal{L}_{\text{CE}}+0.3\mathcal{L}_c+0.5\mathcal{L}_{\text{fam}}+\lambda_{\text{cons}}\mathcal{L}_{\text{cons}}$.
+
+\paragraph{Training.}
+A batch is one window: a movie or colony drawn uniformly, $H=\mathrm{round}(\exp U[\ln h_{\min},\ln h_{\max}])$, and a uniform frame $a$ with at least two cells, redrawn until frame $a{+}H$ exists; all cells of both frames are used.
+We use AdamW (weight decay 0.01), OneCycle with 5\% warm-up and otherwise PyTorch defaults (cosine, start and end at $1/25$ and $1/(25{\cdot}10^4)$ of the peak, $\beta_1\in[0.85,0.95]$), gradient clipping at norm 1 and bf16 autocast (Table~\ref{tab:impl-raft}).
+
+\begin{table}[t]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+& OIAM main & \rodsim & fine-tune \\
+\midrule
+data & M0--M2 & 256 colonies & pseudo-lineage \\
+initial weights & random & random & \rodsim \\
+steps & 80k & 30k & 6k \\
+peak learning rate & $5{\cdot}10^{-4}$ & $5{\cdot}10^{-4}$ & $2{\cdot}10^{-4}$ \\
+$h_{\min}$--$h_{\max}$ (min) & 8--240 & 8--240 & 8 or 15--240 \\
+$\mathbf{c}^{(0)}$ & Darcy & radial & radial \\
+augmentation & none & full & full \\
+shape features & yes & no & no \\
+$\lambda_{\text{cons}}$ & 0.5 & 0 & 0 \\
+seeds & 0, 1, 2 & 0, 1, 2 & 0 \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{\ours settings.} All use $T{=}4$, $k_{\text{self}}{=}12$, $k_{\text{cross}}{=}k_{\text{out}}{=}24$. The annotation-free OIAM model uses the main settings on pseudo-lineage; the ablation without consistency sets $\lambda_{\text{cons}}{=}0$. Fine-tuning: on OIAM $h_{\min}{=}8$, on external sources 15.}
+\label{tab:impl-raft}
+\end{table}
+
+\paragraph{OIAM evaluation windows.}
+With $C{=}66$ frames the median duration of tracks that begin and end with a division in M0--M2, horizons are $\{C/2,C,2C\}$ and anchor frames lie on a grid of step $C/2{=}33$ from the first frame with at least 8 cells, keeping windows with $a{+}H$ within the movie: 20/19/17 windows on M3 and 19/18/16 on M4 at 33/66/132 minutes (109).
+Only frames $a$ and $b$ are given (annotated centres in a seeded random order, and mask moments).
+The field of interest is the whole image. A target is scored if its chain reaches a track alive and annotated at $a$; descendants of roots born after $a$ (entries), broken chains and unannotated ancestors are excluded.
+Accuracy is averaged over windows; \emph{dense} windows have more than 200 ancestors.
+
+\paragraph{Darcy prior.}
+With $s_a$ the median nearest-neighbour spacing of ancestors, the grid step is $\ell=\max(s_a/2,2\,\text{px})$ over the image.
+For each snapshot, grid cells containing a centre are dilated $r=\max(1,\mathrm{round}(1.5s_a/\ell))$ times, hole-filled and eroded $r{-}1$ times.
+We solve $4p_m-\sum_{n\sim m}p_n=g\ell^2$ with $p{=}0$ outside the domain and grid (sparse direct solver); $\mathbf{v}=-\nabla p$ by central differences, interpolated bilinearly.
+By default $g=\ln2/68$\,min$^{-1}$ (a fixed doubling time, not fitted). If both snapshots are fully visible (at most 2\% of cells within $2s_a$ of the border), $g=\ln(\max(N_b/N_a,1))/H$ and the result is re-centred on $\boldsymbol\mu_b$; \ours uses this rule, while the ``Darcy 68'' baseline always uses the fixed rate without re-centring and assigns each target to the nearest advected ancestor.
+Advection: 12 midpoint (RK2) steps of $H/12$ in $(1{-}\tau)\mathbf{v}_a{+}\tau\mathbf{v}_b$, $\tau$ the elapsed fraction.
+
+\paragraph{Genealogy network} (1{,}291{,}910 parameters).
+Pairs are the undirected union of each cell's 8 nearest neighbours.
+With $D$ the pair distance, $\varsigma$ a cell's nearest-neighbour distance and $\hat{\mathbf{d}}$ the pair direction, the ten standardised features are $D/\sqrt{\varsigma_j\varsigma_k}$, $D/\sqrt{\sigma_{\parallel j}\sigma_{\parallel k}}$, $|\mathbf{u}_j{\cdot}\mathbf{u}_k|$, $|\hat{\mathbf{d}}{\cdot}\mathbf{u}_j|$, $|\hat{\mathbf{d}}{\cdot}\mathbf{u}_k|$, $|\log\frac{\sigma_{\parallel j}}{\sigma_{\parallel k}}|$, $|\log\frac{\sigma_{\perp j}}{\sigma_{\perp k}}|$, the difference of log aspect ratios, $|\log\frac{\varsigma_j}{\varsigma_k}|$ and the difference of distances to the centroid over their RMS (all absolute).
+The z-scored frame is sampled bilinearly on a $64{\times}64$ grid at 1\,px, $x$ axis along the pair, centred on its midpoint; a second channel holds $\exp(-\|\mathbf{p}-\mathbf{p}_c\|^2/0.01)$ at both centres (patch coordinates in $[-1,1]$).
+CNN: four stages of [conv$3{\times}3$--BN--ReLU]$\times2$ (32/64/128/256 channels), $2{\times}2$ max-pooling between stages, global average pooling; geometry MLP $10{\to}128{\to}128$; head $384{\to}256{\to}6$ (ReLU).
+The outputs are trained with mean binary cross-entropy on $\tau_{jk}<\{8,16,33,66,132,264\}$, $\tau_{jk}$ being $b$ minus the birth frame of the daughter on $j$'s side of the last common ancestor ($10^4$ if none).
+Data: M0--M2 frames $250,252,\dots,798$ with at least 8 cells; batches of 4 frames $\times$ 256 pairs; pair order reversed (per frame) and the perpendicular axis reflected (per pair) with probability $\frac12$; AdamW (lr $10^{-3}$, weight decay $10^{-4}$), OneCycle (PyTorch defaults), 15k steps, bf16.
+At test time the logits of both orders are averaged and $w_{jk}$ is the sigmoid of the output whose threshold equals $H$; thresholds 8, 16 and 264 are auxiliary targets only.
+The annotation-free variant sets $\tau{=}H{-}0.5$ for the smallest threshold $H$ at which both cells chain back to the same pseudo-ancestor.
+\emph{Potts decoding}: $q\leftarrow p$ (dustbin removed, renormalised, floored at $10^{-9}$), then 10 synchronous updates $q_j\leftarrow\mathrm{softmax}(\log p_j+\beta\sum_{k\in\mathcal{N}(j)}(2w_{jk}{-}1)q_k)$ on the same graph, without degree normalisation; $\beta{=}2$ (main) or 1 (label-free table).
+Ensembles average probabilities before decoding. Windows with fewer than 9 targets or 2 ancestors are not decoded.
+
+\paragraph{\rodsim.}
+Cells are spherocylinders (cap radius $r{=}0.5\,\mu$m, length $L$, angle $\theta$), each represented by $\max(2,\lceil(L{-}2r)/r\rceil{+}1)$ spheres along its axis. Every minute:
+(1) $L\leftarrow Le^{\lambda}$, $\lambda=\frac{\ln2}{T_d}e^{\epsilon}$, $\epsilon\sim\mathcal{N}(0,\mathrm{CV}_g^2)$ drawn at birth;
+(2) adder division when $L{-}L_{\text{birth}}\ge\ell_0e^{\eta}$, $\eta\sim\mathcal{N}(0,\mathrm{CV}_a^2)$ drawn at birth: the septum sits at fraction $f=\mathrm{clip}(\frac12{+}\mathcal{N}(0,\sigma_f^2),0.3,0.7)$ and daughters of lengths $fL,(1{-}f)L$ lie on either side along $\theta\mp\varsigma\alpha/2+\mathcal{N}(0,\sigma_\theta^2)$, $\varsigma{=}\pm1$, $\alpha=|\mathcal{N}(0,(1.2533\bar\alpha)^2)|$ (mean $\bar\alpha$); widths inherit a factor $e^{\mathcal{N}(0,\mathrm{CV}_w^2)}$;
+(3) eight sub-steps in which spheres of different cells closer than $2r$ repel with force $2r{-}d$, giving per cell $\Delta\mathbf{x}=(\kappa\mathbf{F}_\parallel{+}\mathbf{F}_\perp)/2L$ and $\Delta\theta=M/(L^3/12)$ for net force $\mathbf{F}$ and torque $M$;
+(4) $\Delta\mathbf{x}\sim\mathcal{N}(0,D^2I)$, $\Delta\theta\sim\mathcal{N}(0,D_r^2)$.
+Founders: positions $\mathcal{N}(0,(2\,\mu\text{m})^2I)$, $\theta\sim U[0,\pi)$, $L=\ell_0U(1,1.9)$, $L_{\text{birth}}=L/U(1,1.9)$.
+Colonies stop at $N_{\max}$ cells or 1{,}500 minutes; every minute is recorded with $\sigma_\parallel=L/\sqrt{12}$, $\sigma_\perp=wr/2$.
+\emph{Field of view}: with $R$ = 1.4$\times$ the final RMS radius ${+}1\,\mu$m, a square of half-side $\rho R$ centred at the final centroid ${+}\,\mathbf{o}R$, at $\gamma$ px/$\mu$m; cells outside are dropped, ancestry uses the full tree.
+Division modes add per-frame noise $e^{\mathcal{N}(0,\sigma_{\text{obs}}^2)}$ on $\sigma_\parallel,\sigma_\perp$ and $\mathcal{N}(0,\sigma_{\text{ang}}^2)$ on the axis (Table~\ref{tab:impl-rodsim}). Colony seeds are $0..255$.
+\emph{Rendering} (\rodsim genealogy; 6 frames per colony at minute $\ge$200 with 30--1{,}500 cells, 200 colonies): rescale so that the width $4\,\mathrm{median}\,\sigma_\perp$ is $U(12,19)$\,px; draw capsules of radius $2\sigma_\perp$ through their signed distance, blending background $U(0.6,1)$ and cell level $U(0,0.3)$ by $\mathrm{sigmoid}(-\mathrm{sdf}/U(0.5,1.5))$, with per-cell factor $1{+}\mathcal{N}(0,U(0,0.15)^2)$; add an outside halo (amplitude $U(0,0.6)$, decay $U(1,4)$\,px), a linear gradient $\mathcal{N}(0,0.15^2)$ per axis, Gaussian blur $U(0.7,2)$\,px and noise of s.d.\ $U(0.01,0.08)$.
+Render v2 instead inherits the per-cell factor from the mother times $e^{\mathcal{N}(0,U(0.03,0.12)^2)}$ and constricts the longest $U(5,25)\%$ of cells at mid-cell (depth $U(0.15,0.45)r$, width $0.6r$). Image patches are also z-scored per patch.
+
+\begin{table}[t]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}llc@{}}
+\toprule
+parameter & range (uniform) & midpoint \\
+\midrule
+birth length $\ell_0$ & 1--3\,$\mu$m & 2 \\
+doubling time $T_d$ & 40--110\,min & 75 \\
+growth-rate CV$_g$ & 0.05--0.3 & 0.15 \\
+adder CV$_a$ & 0.05--0.25 & 0.15 \\
+division angle noise $\sigma_\theta$ & 0--0.15\,rad & 0.07 \\
+position noise $D$ & 0--0.02\,$\mu$m/min & 0.01 \\
+angle noise $D_r$ & 0--0.03\,rad/min & 0.015 \\
+drag anisotropy $\kappa$ & 0.5--2 & 1 \\
+founders $n_0$ & 1--4 & -- \\
+final cells $N_{\max}$ & 900--2199 & -- \\
+pixel scale $\gamma$ & 6--14\,px/$\mu$m & -- \\
+FOV half-size $\rho$ & 0.35--1.2 & -- \\
+FOV offset $\mathbf{o}$ (per axis) & $-$0.4--0.4 & -- \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{division modes only (otherwise 0)}}\\
+septum s.d.\ $\sigma_f$ & 0--0.08 & -- \\
+mean V-snap angle $\bar\alpha$ & 0--1.2\,rad & -- \\
+width CV$_w$ & 0--0.06 & -- \\
+length/width noise $\sigma_{\text{obs}}$ & 0--0.08 & -- \\
+axis noise $\sigma_{\text{ang}}$ & 0--0.15\,rad & -- \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{\rodsim randomisation}, drawn once per colony (integers for $n_0,N_{\max}$). Midpoints: fixed-physics ablation.}
+\label{tab:impl-rodsim}
+\end{table}
+
+\paragraph{Self-labelling.}
+For frames $t\to t{+}1$, each cell of $t$ offers a \emph{stay} slot at $\mathbf{x}_i$ and two daughter slots at $\mathbf{x}_i\pm\frac{L_i}{4}\mathbf{u}_i$ ($L_i=\sqrt{12}\sigma_{\parallel i}$), and each cell of $t{+}1$ a private no-parent column.
+Costs are Euclidean distances, plus 10\,px for daughter slots; no parent costs 60\,px; only the 8 nearest slots of each type are finite.
+Each cell of $t{+}1$ is matched to one column by exact linear assignment (SciPy); a slot takes one cell, so a parent can take up to three.
+Without masks, daughter slots sit at $\mathbf{x}_i$, the extra cost is $0.55s$ and no parent $3.5s$ ($s$ the median nearest-neighbour spacing of frame $t$).
+Pseudo-ancestry composes links backwards; a no-parent link gives the dustbin.
+\emph{Temporal bootstrapping} replaces each link by the argmax (dustbin excluded) of the \rodsim model on $(t,t{+}1)$, positions only, with $H$ the frame interval.
+For adaptation, each source's sequences, sorted by name, alternate between two folds; a model fine-tuned on one fold is tested on the other.
+
+\paragraph{Per-colony processing and SV.}
+Ancestors are grouped by single linkage at 3 median spacings; targets join the colony of their nearest ancestor; the \rodsim model runs per colony (a one-ancestor colony takes all its targets).
+SV scores nearest assignment and per-colony \ours by \emph{coverage}, the fraction of ancestors receiving at least one target (all targets counted), and keeps the higher; ties go to the lower coefficient of variation of family sizes (zeros included), then to nearest assignment.
+External inputs are positions only, with image size $1.05\times$ the detections' bounding box ${+}5$\,px.
+
+\paragraph{Compute.}
+Training ran on one shared NVIDIA H200: 1.9--3.0\,h per 80k-step OIAM model, 0.6--1.2\,h per 30k-step \rodsim model, about 13\,min per 6k-step fine-tune; 19\,min for the OIAM genealogy network (15k steps) and about 41\,min for the \rodsim one, including rendering.

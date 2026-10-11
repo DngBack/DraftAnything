@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccccccc}
+\toprule
+& \multicolumn{4}{c}{Baselines} & \multicolumn{2}{c}{\ours trained on} & Seq. \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-7}
+Dataset & Nearest & Radial & Transl. & Other$^*$ & OIAM & \rodsim & wins \\
+\midrule
+FAST & .596 & .608 & .591 & .618$^{\mathrm{o}}$ & .615 & \textbf{.709} & 7/7 \\
+recA & .452 & .470 & .462 & .481$^{\mathrm{o}}$ & .474 & \textbf{.560} & 9/9 \\
+rpsM & .425 & .455 & .447 & .464$^{\mathrm{o}}$ & .465 & \textbf{.564} & 9/9 \\
+OIAM & .374 & .449 & .345 & .487$^{\mathrm{d}}$ & .498 & \textbf{.520} & 2/2 \\
+T98G & .889 & .896 & .898 & \textbf{.941}$^{\mathrm{o}}$ & .814 & .877 & 0/1 \\
+LFCT & \textbf{.930} & .868 & .868 & .926$^{\mathrm{o}}$ & .793 & .894 & 0/1 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Zero-shot transfer.} Accuracy averaged over the three gaps of each dataset. No model saw labels from these datasets; the \rodsim model saw no real data at all. $^*$Best per dataset, in hindsight, of OT (o; three settings), CPD (c), Darcy advection (d) and \rodsim forward simulation (f), all fixed on OIAM M0--M2. \ours uses positions only. Last column: sequences on which \rodsim-trained \ours beats the best of all ten baselines (the columns, radial sector and the six behind Other; mean over gaps). \rodsim-trained: mean of three training seeds (per window); OIAM-trained: one seed, three movies, with rotation augmentation.}
+\label{tab:external}
+\end{table}

@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccc}
+\toprule
+Simulator variant & FAST & recA & rpsM & OIAM \\
+\midrule
+Full \rodsim (256 colonies) & .712 & .566 & .571 & .525 \\
+No physics randomisation & .701 & .552 & .562 & .521 \\
+No field-of-view crop & .696 & .549 & .559 & .507 \\
+64 colonies & .713 & .560 & .577 & .524 \\
+16 colonies & .720 & .580 & .592 & .522 \\
++ division modes & .658 & .507 & .504 & .485 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Simulator ablations} (zero-shot accuracy, mean over gaps; every row is one training seed, seed 0, so it differs from the three-seed means of the zero-shot table).}
+\label{tab:simablate}
+\end{table}

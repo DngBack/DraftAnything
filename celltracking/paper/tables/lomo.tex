@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccccccccc}
+\toprule
+& \multicolumn{3}{c}{Family-centre regression} & \multicolumn{3}{c}{\ours, no rot., 30k} & \multicolumn{3}{c}{\ours, full} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+Held out & 33 & 66 & 132 & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+M0 & .724 & .582 & .408 & .884 & .697 & .436 & \textbf{.955} & \textbf{.748} & \textbf{.447} \\
+M1 & .777 & .650 & .451 & .900 & .721 & .487 & \textbf{.955} & \textbf{.824} & \textbf{.518} \\
+M2 & .698 & .556 & .409 & .834 & .631 & .440 & \textbf{.928} & \textbf{.764} & \textbf{.451} \\
+M3 & .738 & .599 & .434 & .859 & .630 & .422 & \textbf{.964} & \textbf{.793} & \textbf{.489} \\
+M4 & .724 & .622 & .459 & .849 & .690 & .453 & \textbf{.966} & \textbf{.830} & \textbf{.511} \\
+\midrule
+Mean & .732 & .602 & .432 & .865 & .674 & .447 & \textbf{.954} & \textbf{.792} & \textbf{.483} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Leave-one-movie-out on OIAM.} Each row trains on the other four movies and tests on all windows of the held-out one. \ours, full: the configuration of the main results (80k steps, Darcy initialisation, consistency term, no rotation), one seed, fixed before running (protocol in the ledger). The five movies come from one experiment, so folds measure sensitivity to the movie, not independent replication. Bold: the best model per gap.}
+\label{tab:lomo}
+\end{table}

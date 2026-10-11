@@ -1,0 +1,337 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage[review]{cvpr}
+\input{preamble}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xspace}
+\newcommand{\ours}{LineageRAFT\xspace}
+\newcommand{\rodsim}{\textsc{RodSim}\xspace}
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+
+\def\paperID{*****}
+\def\confName{CVPR}
+\def\confYear{2027}
+
+\title{Lineage from Two Snapshots, Learned without Lineage Labels\\Supplementary Material}
+\author{Anonymous CVPR submission}
+
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thesection}{S\arabic{section}}
+\begin{document}
+\maketitle
+\appendix
+
+\input{sec/supp_impl}
+
+\section{What family registration needs}
+\label{sec:core}
+\cref{tab:core} isolates the family centre. At a fixed budget of 30k steps, accuracy rises with the number of refinement rounds (0.79, 0.83, 0.86 and 0.88 at 33 minutes for $T{=}0,1,2,4$), and keeping all four attention rounds but freezing the centre (the direct matcher) falls back to the level of the matcher without cross-attention, most clearly on dense windows (0.63 \vs 0.77 at 33 minutes, 0.36 \vs 0.47 at 66). The gain is largest at short and medium gaps and small at 132 minutes (0.419 \vs 0.424), where the partition limits accuracy. The training logs show that the true ancestor is among a target's 24 candidates for 99\% of training targets with a moving centre and for 95\% with a fixed one; the controls below show that this is not the explanation. Longer training matters as much as the architecture: the same model (seed 0) reaches 0.877 at 33 minutes after 30k steps and 0.962 after 80k. Longer training does not close the gap. In a second protocol, fixed before training, we trained the direct matcher at the main-table budget (80k steps, three seeds) with Darcy and with radial initialisation, and compared seed-mean accuracy per window. With Darcy initialisation, \ours is ahead by 0.101 [0.068, 0.138], 0.096 [0.072, 0.123] and 0.017 [0.004, 0.031] at 33/66/132 minutes, and on dense windows by 0.201, 0.169 and 0.061, winning every dense window at every gap (hypotheses D1, D2 hold). With radial initialisation it is ahead by 0.102 and 0.068 at 33 and 66 minutes but ties at 132 ($-$0.005 [$-$0.027, 0.019]; D3 fails there), although it still leads on dense windows (0.069 [0.030, 0.108]). Candidate recall in training stays at 0.95--0.96 for the direct matcher and 0.997 for \ours after 80k steps. A third protocol, also fixed before training (three seeds each, Darcy initialisation, 80k steps), tested three simpler explanations of the gap. (K1)~Four times as many candidates (96) restore the direct matcher's recall to 0.99 but its accuracy only to 0.868/0.696/0.458; \ours stays ahead by 0.089 [0.062, 0.117] and 0.084 [0.067, 0.102] at 33 and 66 minutes, so missing candidates are not the cause. (K2)~Training the centre head with the centre loss but never using it gives 0.904/0.709/0.457: centre supervision as an auxiliary task explains about half of the gain at 33 minutes and little at 66 (\ours ahead by 0.053 [0.026, 0.085] and 0.071 [0.044, 0.100]). (K3)~One refinement round instead of four, with the same full recall, gives 0.873/0.670/0.450 (\ours ahead by 0.083 [0.062, 0.107] at 33 minutes). All three hypotheses hold, and \ours wins every dense window against every control at every gap; at 132 minutes the differences are 0.015--0.023. What matters is that candidates are scored relative to a centre that has moved over several rounds, not which ancestors are in the candidate set.
+\input{tables/core}
+
+\paragraph{How do the centres move?}
+\cref{fig:centretraj} follows the family centres of the full model (seed 0) through the four rounds on M3/M4.
+The first round removes most of the initial error and later rounds keep reducing it: on dense windows the mean distance to the true family centroid falls from 2.1 to 0.3 cell spacings at 33 minutes, from 3.7 to 1.3 at 66 minutes and from 6.5 to 3.1 at 132 minutes, and the true ancestor is among a target's 24 nearest centres for 0.99/0.97/0.90 of targets instead of 0.90/0.78/0.69 at initialisation.
+Candidate recall alone does not explain the gain: the direct matcher with 96 candidates reaches 0.99 recall in training and still trails by 0.08--0.09 at 33 and 66 minutes (\cref{tab:core}). What helps is that target offsets are measured from a point close to the family.
+Accuracy follows the centre: targets whose family centre ends within half a spacing of the true centroid are assigned correctly in 0.98/0.89/0.62 of cases at 33/66/132 minutes, beyond four spacings in 0.05--0.07. Larger families are harder: at 132 minutes accuracy is 0.35, 0.33 and 0.25 for families of 2, 3--4 and 5--8 scored descendants (rare unsplit cells: 0.12).
+\paragraph{On small colonies the centre adds little.}
+Under a protocol fixed before training (\texttt{docs/vv\_family\_vs\_direct\_protocol.md}) we repeated the bootstrapped self-labelling of blind test 4 (main-text Table 5) with the direct matcher: initialised from the \rodsim direct matcher, trained on the same pseudo-lineage of the other fold with the same settings, and evaluated on the same windows of the 28 van Vliet colonies.
+Self-labelling helps both equally (0.660$\to$0.698 for \ours, 0.655$\to$0.695 for the direct matcher), and \ours leads by only 0.003 [$-$0.001, 0.007] over colonies (17 of 28 colonies; ahead in all three subsets by 0.002--0.005): the primary hypothesis, a CI above zero, fails.
+These windows are small (median 10 ancestors, 99th percentile 186, against more than 200 for a dense OIAM window); post hoc, in the 188 windows with more than 100 ancestors at 30 minutes \ours leads by 0.028 [0.023, 0.033] (window bootstrap), and by at most 0.004 elsewhere.
+The same holds on OIAM (post hoc, \texttt{experiments/centre\_crowding\_analysis.py}): the full model's margin over the direct matcher grows with the number of ancestors in a window (Spearman $\rho$ 0.88/0.88/0.69 at 33/66/132 minutes), from 0.02/0.02/$-$0.01 in windows of at most 25 ancestors to 0.24/0.19/0.08 in windows of more than 400.
+The moving family centre is thus a remedy for crowding: it matters where many families compete for each target, as in dense OIAM windows, and not in microcolonies, where a learned matcher does as well.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\linewidth]{fig/centre_trajectory.pdf}
+\caption{\textbf{Family centres through the refinement rounds.} (a) The eight families nearest the centre of a crop of a dense 66-minute OIAM window (the window of the qualitative figure) among those whose initial (Darcy) centre is more than 1.5 spacings off; dots: their scored descendants. (b) Mean distance from each ancestor's centre to its true family centroid, in target cell spacings, after round $t$ ($t{=}0$: initialisation). (c) Fraction of targets whose true ancestor is among the 24 centres nearest to them, the candidate set of the assignment step. Solid: all M3/M4 windows; dashed: dense windows ($N_a{>}200$).}
+\label{fig:centretraj}
+\end{figure*}
+
+\section{All in-domain variants}
+\cref{tab:oiamfull} extends Table~2 of the main paper with Trackastra's greedy decoding, the rotation-augmented model with Darcy initialisation, the full model with the genealogy decoder, and the undecoded three-seed ensemble.
+\input{tables/oiam_full}
+
+\section{Leave-one-movie-out evaluation}
+OIAM M3/M4 were inspected during development. \cref{tab:lomo} trains on four OIAM movies and tests on the fifth, for all five folds.
+The full model, retrained in each fold under a protocol fixed beforehand (\texttt{docs/full\_lomo\_protocol.md}), reaches 0.954/0.792/0.483 on average over held-out movies, against 0.957/0.780/0.473 on the M3/M4 test: the development test movies did not flatter it. All three hypotheses hold: it beats the 30k-step no-rotation model at 33 and 66 minutes and the regressor at every gap on all five folds, and averages at least 0.90 at 33 minutes. On dense windows it averages 0.90/0.60/0.26.
+\input{tables/lomo}
+
+\paragraph{Does the no-rotation gain need the chamber orientation?}
+In-domain OIAM models are trained without rotation augmentation, which exploits the fixed orientation of the growth chambers in the image. We tested whether this prior must be known (\texttt{docs/orientation\_protocol.md}): each M3/M4 window is presented in all eight orientations and reflections of the image (positions, cell axes, image borders and Darcy initialisation transformed exactly). Without correction, the no-rotation model (three-seed mean) drops from 0.957/0.780/0.473 to 0.851/0.689/0.421 (dense 0.907/0.598/0.267 to 0.649/0.359/0.125), close to the rotation-augmented model (0.807/0.698/0.510 over the eight frames). The chamber axis can be estimated per sequence without labels from the sign of the nematic order $\langle\cos 2\phi\rangle$ of the cells' major axes (chosen on M0--M2; correct for both test sequences in all eight frames), leaving four axis-preserving frames. The rule fixed as primary before the test, which picks among these the frame with the highest model confidence, gives 0.942/0.764/0.465 (dense 0.873/0.556/0.236), recovering 90\% and 80\% of the no-rotation gain over the rotation-augmented model at 33 and 66 minutes; at 132 minutes there is no gain to recover over all windows. Averaging the predictions of the four frames, the rule we had planned first but replaced after a design check on the training movies, recovers all of it (0.962/0.813/0.504; dense 0.910/0.602/0.247). The orientation prior is therefore a property of the experiment that can be estimated from the detections, not knowledge supplied by the user.
+
+\section{Uncertainty, weighting and paired tests}
+\cref{tab:reliability} adds 95\% bootstrap intervals over windows to the main table and weights the same predictions by targets.
+Weighting by targets lowers every method, most at long gaps, because dense windows are hardest; the ranking is unchanged.
+Window intervals are wide because windows differ in density, but paired comparisons over the same windows are tight.
+At 132 minutes the full model beats the family-centre regressor by 0.027 (95\% CI 0.003--0.048; 25 of 33 windows), the ensemble with decoder by 0.071 (0.044--0.094; 29 of 33) and the annotation-free pipeline by 0.041 (0.018--0.062; 26 of 33).
+Ensembling and decoding improve the full model at every gap (+0.021/+0.083/+0.044, all intervals above 0.009), and annotation-free training costs 0.014/0.042/0.030 (intervals 0.009--0.019, 0.029--0.054, 0.012--0.047).
+\input{tables/reliability}
+
+\paragraph{Quality of the uncurated recA and rpsM lineages.}
+Unlike FAST, recA and rpsM carry uncurated Schnitzcells lineages, so we audited them against FAST with statistics fixed in advance (\texttt{docs/schnitzcells\_audit\_protocol.md}), on exactly the scored targets.
+Neither contains non-binary divisions, interior orphans or lost cells.
+Size changes at division and large displacements are flagged often (76\% and 9\% of scored recA and rpsM targets lie on a flagged lineage path), but almost all flags are explained by one frame of growth (7.5 minutes) and whole-colony stage drift; after correcting for both (post hoc), 5.2\% (recA) and 1.7\% (rpsM) of scored targets lie on a flagged path, against 0.2\% on FAST.
+Label errors on a fraction $f$ of targets shift a method difference by at most $2f$; only the extreme case for recA (all flagged labels wrong, all in favour of the baseline) reaches its 0.10 margin.
+The margin over each colony's best geometric baseline is positive in all 25 colonies, unchanged in colonies with few flags, and of similar size on curated FAST, so label noise does not explain the zero-shot result; swaps of two adjacent cells of similar size would escape these checks.
+
+\section{Optimal-transport and registration baselines}
+\cref{tab:ot} lists all six optimal-transport variants.
+Transport with uniform growth spreads every ancestor's mass over its neighbourhood: it fixes the most blatant failure of nearest assignment, interior ancestors receiving no target, but cannot know which ancestors grew or where the colony flowed, so in dense windows it stays below 0.30 even at 33 minutes, against 0.91 for \ours.
+\input{tables/ot}
+Non-rigid CPD~\cite{myronenko2010cpd} treats ancestors as the centroids of a Gaussian mixture, moves them with a Gaussian-kernel displacement field of width $\beta$ and regularisation $\lambda$ (coordinates in ancestor spacings, 150 EM iterations), and assigns each target to the centroid of highest posterior.
+We searched $\beta\in\{2,4,8,16,32\}$, $\lambda\in\{1,4,16\}$, outlier weight $w\in\{0,0.1\}$, with or without radial pre-alignment, on M0--M2; the selected setting ($\beta{=}8$, $\lambda{=}4$, $w{=}0$, radial) is interior to the grid, and its grid neighbours score within 0.007 on M0--M2.
+On M3/M4 it reaches 0.597/0.466/0.359 (dense 0.294/0.162/0.060), the level of unbalanced OT: a smooth deformation cannot follow the many independent family displacements of a dense colony.
+
+\paragraph{Trackastra fine-tuned at each gap.}
+The public \texttt{general\_2d} model never saw gaps of an hour or more, so we also fine-tune it in domain, following a protocol fixed before training (one model per gap; architecture, features, loss, augmentation and optimiser of the official training script; batch 8 instead of 48 for memory; 20k steps).
+Training data are M0/M1 subsampled at the gap from every start frame, each detection's parent being its ground-truth ancestor one subsampled frame earlier, with images and ground-truth masks; the checkpoint (every 1k steps) and the decoding are chosen on M2, and M3/M4 are evaluated once.
+M2 accuracy rises from 0.66/0.16/0.17 off the shelf to 0.86/0.67/0.43; at 132 minutes it peaks at the first checkpoint and then declines while the training loss keeps falling, so that checkpoint is used.
+Argmax beats the greedy linker on M2 at every gap; on M3/M4 the greedy linker reaches 0.870/0.667/0.340 (dense 0.731/0.415/0.062) and argmax 0.892/0.716/0.451 (dense 0.788/0.507/0.171; main-text table at 33/66 minutes).
+Paired over windows, \ours (mean of three seeds) exceeds it by 0.065 [0.045, 0.087], 0.064 [0.043, 0.087] and 0.023 [$-$0.003, 0.048] at 33/66/132 minutes and wins every dense window at every gap; the ensemble with decoder exceeds it by 0.088/0.148/0.067, and the pipeline without annotation by 0.074/0.106/0.036 (all intervals above zero), winning every dense window at every gap.
+Fine-tuning closes most of the gap to \ours at 33 minutes but not in dense colonies (0.79/0.51/0.17 \vs 0.91/0.60/0.27), where many neighbours compete for each target.
+
+\paragraph{Without rotation augmentation.}
+Our in-domain models exploit the fixed chamber orientation by training without rotations, whereas the official Trackastra recipe rotates, flips and shears. Under a protocol fixed beforehand (\texttt{docs/trackastra\_norot\_protocol.md}) we fine-tuned Trackastra again with these three augmentations removed and everything else unchanged. It does not help: on M3/M4 it reaches 0.894/0.703/0.428 (dense 0.787/0.454/0.142) against 0.892/0.716/0.451, and it is worse on M2 at every gap (0.847/0.650/0.404 \vs 0.861/0.673/0.429), so the main-text row is unchanged. A first run that by mistake also doubled the batch to 16 gave 0.909/0.698/0.438; even the best Trackastra number at each gap, chosen on test, stays below \ours (0.957/0.780/0.473).
+
+\paragraph{A learned tracker zero-shot.}
+Of the bacterial datasets of the zero-shot table only FAST ships raw images (recA, rpsM and the blind-test subsets provide segmentations and lineage only). Under a protocol fixed before running (\texttt{docs/trackastra\_zeroshot\_fast\_protocol.md}) we ran off-the-shelf Trackastra on every FAST window with the images and the \emph{corrected} masks: 0.675/0.656/0.546 at 35/65/130 minutes with argmax decoding (greedy 0.688/0.624/0.553), against 0.789/0.697/0.640 for the positions-only \rodsim-trained \ours, which is better on all seven colonies (by 0.046--0.123).
+
+\paragraph{Simulation or architecture?}
+To separate what the simulator contributes from what family registration contributes zero-shot, we trained the direct matcher (the same network with the family centre frozen; main-text Table 2) on \rodsim exactly like the \rodsim-trained \ours, under a protocol fixed before training (\texttt{docs/sim\_direct\_matcher\_protocol.md}). At the learning rate of \ours all three seeds diverged at the one-cycle peak (training loss rising from 1.0 to 30--1200); as fixed in an amendment before any evaluation, they were rerun at half the learning rate, and the diverged runs are also reported (0.05--0.48). Averaged over gaps and the three reruns, the direct matcher reaches 0.709/0.572/0.580/0.501 on FAST/recA/rpsM/OIAM against 0.709/0.560/0.564/0.520 for \ours (0.854/0.881 \vs 0.877/0.894 on T98G/LFCT), and it too beats all ten baselines on all 27 bacterial sequences. The pre-registered hypothesis that \ours beats it on all four bacterial datasets therefore \textbf{fails} (it holds on OIAM and, by less than 0.001, FAST); the hypothesis that the direct matcher beats the best baseline on at least three holds (4/4). The zero-shot transfer is the simulator's; the moving centre matters in domain and on the densest data (OIAM), not on the small microcolonies of recA, rpsM and FAST, where \ours trails mostly at the longest gap ($-$0.03/$-$0.04).
+
+\paragraph{Over several gaps, and on matched data.}
+The in-domain comparison with fine-tuned Trackastra is asymmetric: Trackastra gets one model per gap and two training movies (M2 selects its checkpoint), \ours one model over horizons of 8--240 minutes and three movies, and Trackastra at 132 minutes peaks at its first checkpoint. Under a protocol fixed before training (\texttt{docs/matched\_trackastra\_protocol.md}) we (i) fine-tuned one Trackastra model on M0/M1 over gaps of 16, 33, 66, 132 and 240 minutes, keeping per evaluated gap the checkpoint best on M2, with the rule, fixed beforehand, that the main table takes whichever Trackastra variant is better on M2 at each gap; and (ii) trained the full \ours recipe on M0/M1 only for 20k steps (Trackastra's data and step budget; three seeds). Training over several gaps lowers Trackastra at 33/66 minutes ($-$0.028, $-$0.015 on M3/M4) but raises it at 132 minutes from 0.451 to 0.488 ($+$0.037 [0.017, 0.057]; dense 0.230), and it is also better there on M2 (0.466 \vs 0.429), so the main table now uses it at 132 minutes. Against it, the full model is ahead at 33/66 minutes ($+$0.093, $+$0.080, block CIs above zero) and behind at 132 minutes over windows ($-$0.015 [$-$0.044, 0.014]) but not weighted by cells (0.317 \vs 0.291); the ensemble with decoder leads by 0.029 [0.002, 0.058] (block CI $-$0.010--0.043) and the annotation-free pipeline ties ($-$0.001 [$-$0.032, 0.030]; $-$0.013 on M3, $+$0.012 on M4). Trained from scratch on M0/M1 only, \ours reaches 0.715/0.554/0.394 (dense 0.501/0.289/0.154; seeds within 0.012), far below both Trackastra variants: all three pre-registered hypotheses of the matched comparison \textbf{fail}. Its training accuracy (0.90) exceeds that of the full model at the same step (0.84), and the five movies have similar colony sizes, so it overfits two movies; Trackastra starts from weights pretrained on many datasets. \ours trained from scratch needs at least three annotated movies (or the annotation-free routes of the main text).
+
+\paragraph{Optical flow.}
+Under a protocol fixed before running (\texttt{docs/flow\_baseline\_protocol.md}) we computed pretrained torchvision RAFT flow~\cite{teed2020raft} (RAFT-large C+T+S+K+H and RAFT-small C+T, 12 or 32 updates) between the two snapshot images, stretched to their 1st--99.5th intensity percentiles, and either traced targets back along the backward flow to the nearest ancestor or advected ancestors along the forward flow.
+Twice-upsampled inputs, also planned, were dropped before any test window was scored: RAFT's field on them was about 30 times larger than at native resolution in a three-window check on M0, and the all-pairs correlation did not fit on a shared GPU.
+On M0--M2 the eight settings range from 0.372 to 0.413 (mean over gaps; nearest 0.368); the selected RAFT-small, forward, 12 updates reaches 0.636/0.367/0.244 on M3/M4 (dense 0.347/0.094/0.041), above nearest assignment at 33 minutes ($+$0.139, CI 0.098--0.182) but not at 66 or 132, and 0.23--0.41 below \ours at every gap.
+Flow trained on rigid scenes follows local motion over one cell cycle but cannot follow cells through several divisions in low-texture phase contrast.
+
+
+\paragraph{Runtime.}
+On the M3/M4 windows (one shared H200; median per window over sparse/dense windows, with a median of 32/527 ancestors and 72/1033 targets), Darcy initialisation takes 9/62\,ms, one \ours pass 35/90\,ms, the genealogy network 23/219\,ms and our NumPy Potts decoder 3/574\,ms; unbalanced OT takes 55/623\,ms and exact capacity OT 0.3/57\,ms. The largest window (1359 ancestors, 1485 targets) takes 3.4\,s end to end, mostly in the decoder, which runs on the CPU over dense probabilities and could be restricted to candidate ancestors.
+
+\section{Accuracy against colony size}
+\cref{fig:density} breaks OIAM accuracy down by colony size. Nearest assignment and off-the-shelf Trackastra collapse as the colony grows, because more neighbours compete for each target and growth displaces cells further; fine-tuned Trackastra matches \ours in small colonies but falls behind beyond about 100 ancestors.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{fig/density.pdf}
+\caption{\textbf{Accuracy against colony size} on OIAM M3/M4 (windows binned by number of ancestors). Frame-to-frame methods collapse in dense colonies; family registration degrades gracefully, and the remaining gap to the oracle partition at long gaps is a grouping problem.}
+\label{fig:density}
+\end{figure}
+
+\section{Biology read from two snapshots}
+\cref{tab:downstream} computes from predicted ancestry two readouts a biologist would take from lineage: size control (longer ancestors divide sooner) and the spread of family sizes across ancestors, a measure of growth heterogeneity.
+Nearest assignment destroys the first and inflates the second 1.7- to 3.2-fold; both \ours models are close to the ground truth at 33 minutes, and at 66 minutes keep a correlation of 0.7 between predicted and true family size.
+\input{tables/downstream}
+
+\section{Partition-aware decoding}
+\cref{tab:decoder} gives every decoder setting for two base models. Larger $\beta$ helps at short and medium gaps but not on dense windows at 132 minutes, and hard clustering helps most at 132 minutes; $\beta{=}2$ is the setting reported in the main text. Both networks are trained on M0--M2, so no annotated movie is left to select it on; instead we cross-fitted the choice among $\beta\in\{1,2,4\}$ and Cluster\,+\,argmax, selecting on M3 and scoring M4 and vice versa. This gives equal or higher accuracy than fixed $\beta{=}2$ for every base model at every gap (three-seed ensemble 0.978/0.869/0.531 \vs 0.977/0.863/0.517; annotation-free pipeline without the consistency term, post hoc, 0.968/0.854/0.518 \vs 0.966/0.847/0.497), so the reported setting is not tuned to the test windows.
+\input{tables/decoder}
+Averaging the probabilities of the three training seeds helps the decoder more than any single model (0.057 \vs 0.034 at 66 minutes).
+\cref{tab:calibration} suggests why: single models are overconfident (mean confidence 0.83 at 66 minutes for an accuracy of 0.60), and the ensemble's probabilities are better calibrated, so the genealogy prior can overrule confident mistakes.
+\input{tables/calibration}
+Is calibration the reason? We fitted one temperature per model and gap by the likelihood of the true ancestor on M0--M2 (protocol fixed before running) and decoded M3/M4 once (\cref{tab:temperature}).
+Even on the movies they were trained on, the models are overconfident (fitted $T{=}1.6$--$1.8$ for single seeds, 1.3--1.4 for the ensemble). On M3/M4 the temperature cuts the single models' ECE at 66 minutes from 0.23 to 0.14 and raises their decoded accuracy at that gap with every seed (+0.010 to +0.014), recovering about half of the gap between the single-model and ensemble decoder gains (0.034 and 0.057 at 66 minutes).
+It leaves the ensemble unchanged (within 0.004) and does not help dense windows at 132 minutes, so calibration explains part of the ensemble's advantage; the rest comes from its better base predictions.
+\input{tables/temperature}
+Seed averaging does not change the zero-shot picture: for the three \rodsim training seeds on the six datasets of the main transfer table, the ensemble is within $-0.004$ to $+0.011$ of seed 0 and $0.003$--$0.015$ above the seed mean, and it beats the best geometric baseline on exactly the same sequences.
+
+\paragraph{Is the decoder specific to \ours?}
+No. Under a protocol fixed before running (\texttt{docs/decoder\_on\_baselines\_protocol.md}) we applied the same decoder to fine-tuned Trackastra and to family-centre regression (\cref{tab:decbase}).
+It lifts Trackastra by 0.05/0.07 at 33/66 minutes; at 132 minutes it helps with Trackastra's raw probabilities ($+$0.024) but hurts with the temperature fitted on M2 ($-$0.039), the pre-registered primary setting.
+On GBDT's unaries it is worse than GBDT's own collective decoder, which already couples neighbours through learned geometric affinities.
+All three hypotheses hold: decoded \ours beats decoded Trackastra at every gap ($+$0.029 [0.012, 0.049], $+$0.029 [0.006, 0.057], $+$0.073 [0.042, 0.103]) and decoded GBDT, and at 132 minutes the decoded ensemble beats both ($+$0.105 [0.077, 0.135] over Trackastra).
+Against the better-decoding raw-probability variant the margins are $+$0.027/$+$0.025/$+$0.010, the last with a CI including zero ($-$0.024--0.044); the decoded ensemble leads by $+$0.042 [0.007, 0.078] and the annotation-free ensemble by $+$0.024/$+$0.032/$+$0.012 (CIs above zero at 33/66).
+The long-gap advantage is therefore shared between the family-registration probabilities and the decoder, and at 132 minutes it needs the ensemble.
+\input{tables/decoder_baselines}
+
+\paragraph{Overlapping windows.}
+Test windows start every 33 minutes and span up to 132, so neighbouring windows share frames and window-level CIs are optimistic.
+Under a protocol fixed before computing (\texttt{docs/block\_bootstrap\_protocol.md}) we resampled blocks of four consecutive windows within each movie (\cref{tab:blockboot}).
+The pre-registered hypothesis, that every comparison significant over windows stays significant over blocks, \textbf{fails}: 14 of 19 do.
+Every margin at 33 and 66 minutes over fine-tuned Trackastra, the direct matcher and the regressor survives, as does the decoded ensemble's lead over Trackastra at 132 minutes.
+No undecoded single-model margin at 132 minutes survives (lower bounds $-$0.005 to $-$0.002), nor do the decoder-on-decoder margins at 66 minutes; the annotation-free pipeline's lead at 132 minutes is positive in both movies ($+$0.022, $+$0.051) but its block CI touches zero.
+Blocks of eight windows give the same picture.
+\input{tables/block_bootstrap}
+
+\paragraph{Grouping, scored directly.}
+Ancestor accuracy mixes two errors: splitting or merging families, and naming the wrong ancestor for a correct family. \cref{tab:partition} scores grouping alone. The decoder's effect is mainly on grouping: for single models it raises pair family F1 by 0.05/0.10/0.04 but accuracy by only 0.01/0.03/0.01, and for the ensemble by 0.06/0.15/0.08 \vs 0.01/0.06/0.03; on dense windows at 66 minutes single-model F1 rises from 0.41 to 0.57. At 132 minutes a single \ours model groups barely better than the GBDT regressor (0.32 \vs 0.31) although it is more accurate; the decoded ensemble reaches 0.41.
+\input{tables/partition}
+
+\paragraph{What limits the decoder?}
+In a post hoc diagnostic on the three-seed ensemble we replaced the predicted affinities by true ones (1 if two neighbours share an ancestor $H$ minutes earlier, 0 otherwise) and widened the genealogy graph from 8 to 16 or 24 neighbours. With predicted affinities the wider graph changes accuracy by at most 0.004 at any gap. With true affinities it lifts 132-minute accuracy from 0.61 to 0.65 ($\beta{=}2$) and 0.70 ($\beta{=}4$, 24 neighbours), still below the 0.78 of the oracle partition (dense windows: at most 0.40 \vs 0.47). Potts mean field, however, is a weak partitioner even with true affinities. In a follow-up fixed in advance (\texttt{docs/global\_partition\_protocol.md}) we replaced it by non-local partitioners on 8- and 24-neighbour target graphs: correlation clustering of the affinity log-odds (greedy additive edge contraction with local moves), the same objective with \ours' co-assignment log-odds added, and spectral clustering with as many clusters as distinct argmax ancestors, each partition assigned to ancestors by Cluster\,+\,argmax or Hungarian matching. With predicted affinities none improves on Potts at 132 minutes (best 0.517 \vs 0.517, paired CI $-$0.014--0.014; dense 0.293 \vs 0.300; spectral 0.45), although pair family F1 rises from 0.41 to 0.47; at 66 minutes all are below Potts. With true affinities, correlation clustering on the 24-neighbour graph with Hungarian assignment reaches 0.780 (dense 0.454), the oracle partition's 0.784 (0.465). The remaining gap at long gaps is therefore the accuracy of single-image genealogy, not the locality of the decoder.
+
+\section{Simulator ablation}
+\cref{tab:simablate} retrains the positions-only \rodsim model with one ingredient changed and evaluates it zero-shot.
+Removing physics randomisation or the field-of-view crop costs at most 0.02, and 16 simulated colonies are as good as 256, whereas randomising division modes (asymmetry, V-snapping) hurts transfer of the assignment model by about 0.05 (it helps the genealogy model, \cref{sec:supp-labelfree}).
+What the network extracts from \rodsim is a simple prior on how growing rods push each other apart.
+\input{tables/simablate}
+
+\section{A pipeline without any real label}
+\label{sec:supp-labelfree}
+\cref{tab:labelfree} decodes the \rodsim-trained \ours with \rodsim-trained genealogy.
+Genealogy with division modes improves every gap (up to 3 points), the symmetric simulator's does not; genealogy trained on real labels gains about three times as much.
+\input{tables/labelfree}
+Real images need not mean real labels: the genealogy network trained on chained pseudo-lineage of the unannotated M0--M2 movies (same links as the self-labelled assignment model; protocol fixed before training) agrees with the annotated pair labels on 94--100\% of pairs in sampled M0 frames (lowest for dense frames and long horizons) and reaches 0.96/0.89/0.69 AP on M3/M4 at 33/66/132 minutes (annotated: 0.97/0.91/0.70). Post hoc, the self-labelled assignment model without the consistency term (three seeds), decoded in the same way, reaches 0.966/0.847/0.497.
+In the Potts decoder ($\beta{=}2$) it changes the accuracy of each full-model seed by at most 0.005 and of the three-seed ensemble by at most 0.003 (dense: 0.004) (0.976/0.861/0.520 \vs 0.977/0.863/0.517; dense 0.945/0.699/0.296 \vs 0.946/0.703/0.300).
+
+\section{Robustness to detection errors}
+\cref{fig:robustness} perturbs both snapshots of every OIAM M3/M4 window at the 33-minute gap with position noise, missed detections, merges of a cell with its nearest neighbour (under-segmentation) and spurious detections; only targets that survive unmerged and whose ancestor survives unmerged are scored.
+With 10\% of cells missed, merged or hallucinated, \ours is still correct for 90--91\% of targets, against about 50\% for nearest assignment on the same targets.
+Position noise of $0.3$ cell spacings, far beyond the localisation error of a modern segmenter, lowers accuracy to 0.82.
+The ordering is unchanged at 66 and 132 minutes.
+With Cellpose-SAM masks, the loss concentrates in the first, sparse frames, where a few spurious objects distort the population-size normalisation.
+
+\paragraph{A second segmenter.}
+\cref{tab:segmenters} adds Omnipose~\cite{cutler2022omnipose}, run with the settings of its official bacterial phase-contrast notebook under a protocol fixed before any test frame was segmented (one amendment: a dependency pin needed to import it). It finds every annotated cell but adds 16--43 small objects to every M3 frame, out-of-colony debris that Cellpose-SAM mostly ignores. On M4 the full model keeps 0.94/0.74/0.46 with Omnipose masks; on the small early M3 colonies the debris corrupts the population-size inputs ($N_a$, $N_b$, centroid, spacing) and accuracy falls below nearest assignment. Dense windows lose at most 0.08. We did not filter the debris, since any filter would be chosen on the test movies; a size or colony-membership filter is the obvious remedy and the population-size inputs are the component to harden.
+\input{tables/segmenters}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.8\linewidth]{fig/robustness.pdf}
+\caption{\textbf{Robustness to detection errors} on OIAM M3/M4 at a 33-minute gap. Each perturbation is applied independently to both snapshots; the leftmost point of every panel is the unperturbed result.}
+\label{fig:robustness}
+\end{figure*}
+
+\section{Self-labelling details}
+\paragraph{Linking.}
+One-frame links are solved with \texttt{scipy}'s exact linear assignment over the $8$ nearest slots of each target.
+On OIAM (masks available) the daughter slots sit at $\pm L/4$ along the mother's axis, with $L=\sqrt{12}$ times the major-axis standard deviation of the mask; the extra division cost is 10\,px and the no-parent cost 60\,px (0.55 and 3.5 median spacings).
+For the external sources, which provide positions only, both daughter slots sit at the mother's centre and costs are scaled by the median spacing of each frame.
+These values were set on OIAM M0 and never tuned on the external sources.
+
+\paragraph{Does self-labelling need family registration?}
+Under a protocol fixed before training (\texttt{docs/pseudo\_direct\_matcher\_protocol.md}) we trained the direct matcher (frozen family centre) on the same pseudo-lineage, recipe and seeds as self-labelled \ours. Both pre-registered hypotheses hold. Self-labelling is not specific to \ours: it costs the direct matcher only 0.009/0.011/0.012 (0.847/0.673/0.444 \vs 0.856/0.684/0.456 on true lineage). The architecture margin survives it: self-labelled \ours leads the self-labelled direct matcher by 0.088 [0.058, 0.122] and 0.059 [0.037, 0.082] at 33/66 minutes (0.008 [$-$0.005, 0.021] at 132; dense 0.865/0.533/0.244 \vs 0.686/0.412/0.199), and even the direct matcher trained on true lineage by 0.079 and 0.048 (CIs above zero). In domain, family registration with no annotation thus beats cell matching with annotation at 33 and 66 minutes.
+
+\paragraph{Quality of pseudo-lineage.}
+\cref{tab:pseudo} reports the fraction of cells whose chained ancestor equals the annotated one.
+Errors at divisions dominate without the fission prior: on M0, one-frame links are wrong for 30\% of dividing mothers and 0.5\% of the others; the daughter slots reduce the former to 4\%.
+Because a swap between two sisters does not change ancestry at longer gaps, the composed accuracy decays slowly with $H$.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccc}
+\toprule
+Data (gap) & 33/30 & 66/60 & 132/120 & 240 \\
+\midrule
+OIAM M0, fission prior & .977 & .930 & .921 & .927 \\
+OIAM M0, no daughter slots & .844 & .700 & .570 & .522 \\
+OIAM M1 & .976 & .930 & .929 & .928 \\
+OIAM M2 & .910 & .912 & .893 & .881 \\
+\midrule
+\emph{B.\ subtilis} (positions only) & .976 & .968 & .927 & -- \\
+LYN yeast & .950 & .914 & .852 & -- \\
+TrackMate & .892 & .834 & .869 & -- \\
+TrackRefiner & .739 & .654 & .551 & -- \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Accuracy of chained pseudo-lineage} against the annotation, weighted by cells, over random windows (minutes; OIAM at 33/66/132/240, external sources at 30/60/120). TrackRefiner movies are sampled every 2 minutes with large motion between frames.}
+\label{tab:pseudo}
+\end{table}
+
+\paragraph{Protocol 3.}
+The protocol (\texttt{docs/blind\_test3\_protocol.md}) fixed, before training: two folds per source by sorted sequence name; 6k fine-tuning steps from the \rodsim model at learning rate $2{\times}10^{-4}$, positions only, horizons log-uniform in 15--240 minutes; evaluation on the windows of blind tests 1 and 2 with the same seeds.
+One amendment was made before any evaluation: some short \emph{B.\ subtilis} sequences admit no frame pair at long horizons, so the sampler draws another sequence when 100 draws fail.
+Hypotheses and outcomes:
+A1 (SV with the adapted model beats the best of eight geometric baselines) holds on TrackRefiner, TrackMate and LYN and fails on \emph{B.\ subtilis} (0.894 \vs 0.895);
+A2 (it beats SV without adaptation) holds on TrackRefiner, LYN and \emph{B.\ subtilis} and fails on TrackMate (0.803 \vs 0.838);
+A3 (the adapted whole-field model beats the \rodsim model) holds on all four.
+
+\paragraph{Protocols 4 and 5.}
+On FAST, recA and rpsM (\texttt{docs/selflabel\_ext\_protocol.md}), the same procedure with positions-only Hungarian links failed: adaptation was below the \rodsim model on every dataset and all 25 colonies (\cref{tab:bootstrap}).
+Measured afterwards against the ground truth, one-frame Hungarian links are only 0.55 (recA), 0.84 (rpsM) and 0.94 (FAST) correct at these frame rates, and compose to 0.24--0.68, below the \rodsim model's direct accuracy; one-frame argmax links of the \rodsim model itself are 0.73, 0.94 and 0.99 correct.
+Protocol 5 (\texttt{docs/selflabel\_bootstrap\_protocol.md}), fixed before training and run once, changes only the one-frame links to the \rodsim model's predictions; it is post hoc in that the data had been scored.
+Both hypotheses hold on all three datasets: bootstrapping beats the \rodsim model (C1) and the best geometric baseline (C2).
+\input{tables/bootstrap}
+
+\paragraph{Protocol 6.}
+We then applied bootstrapping to the four blind sources of protocol 3 (\texttt{docs/selflabel\_bootstrap\_blind\_protocol.md}; same folds, windows and settings), again fixed before training and run once.
+E1 (the bootstrapped whole-field model beats the Hungarian-adapted one) fails on all four sources: 0.405 \vs 0.478 on TrackRefiner, 0.549 \vs 0.704 on TrackMate, 0.846 \vs 0.849 on yeast and 0.885 \vs 0.887 on \emph{B.~subtilis}.
+E2 (SV with the bootstrapped model beats the best geometric baseline) holds on TrackRefiner (0.559 \vs 0.461), TrackMate (0.832 \vs 0.796) and yeast (0.858 \vs 0.827) and fails on \emph{B.~subtilis} (0.894 \vs 0.895).
+E3 (it beats SV with Hungarian adaptation) holds on TrackRefiner, TrackMate and yeast by 0.002--0.029 and fails on \emph{B.~subtilis} (0.8937 \vs 0.8942).
+A likely reason, tested below: on these fields of many small colonies the whole-field \rodsim model is itself poor (0.30 on TrackRefiner), so its one-frame links are a worse teacher than Hungarian links, whereas on FAST, recA and rpsM it was the stronger of the two.
+Bootstrapping is therefore useful when the teacher is reliable, which can be checked without labels only indirectly.
+
+\paragraph{Can the teacher be judged without labels?}
+A further protocol (\texttt{docs/teacher\_reliability\_protocol.md}), fixed before computing, measured six label-free statistics of the \rodsim teacher's one-frame links on every sequence that supplied pseudo-labels (114 sequences or colonies of the ten sources): mean top-1 probability, entropy, agreement with Hungarian links (primary), fraction of ancestors with descendants, agreement with nearest assignment, and a fission-aware cycle consistency. All six track the teacher's own link accuracy (Spearman $|\rho|$ 0.70--0.90; primary 0.84, 95\% CI 0.74--0.90), but none decides whether bootstrapping beats Hungarian self-labelling: no single threshold on the source mean of the primary statistic separates the six sources where it won from the four where it lost (best: 2 of 10 wrong), and the same holds for the other five. With ground truth the rule is simple: bootstrapping won exactly where the teacher's one-frame links are more accurate than Hungarian links (all ten sources). On TrackRefiner and TrackMate they are not (0.78 \vs 0.96 and 0.83 \vs 0.98), confirming the explanation above; on yeast and \emph{B.~subtilis} both are 0.99. Agreement is symmetric and cannot tell which linker is wrong. A rule combining teacher confidence and agreement separates all ten sources but was found after seeing them and is untested.
+
+\section{Blind tests 1 and 2, per-colony processing and self-labelled adaptation}
+\label{sec:supp-blind12}
+All datasets above were inspected during development, so we fixed a protocol (data, gaps, models, baselines, metric, hypotheses) before running anything on 11 unseen sequences: eight TrackRefiner ground-truth movies~\cite{ahmadi2025trackrefiner} and three curated TrackMate \emph{E.\ coli} movies~\cite{anselmet2026trackmate}.
+The single run failed (\cref{tab:blind}, left): the \rodsim-trained model loses to the best geometric baseline on both sources and wins on only 2 of 11 sequences, the only two that show a single colony.
+The other fields hold 8 to 70 separate microcolonies or are steady-state chambers that flush cells out, so descendants do not move radially as \ours assumes.
+
+\paragraph{Per-colony processing and label-free selection.}
+From this diagnosis, ancestors are split into colonies by single linkage at three cell spacings, each target joins the colony of its nearest ancestor, and every colony is a separate input.
+Since no single method is best everywhere (registration wins in crowded, expanding colonies, nearest assignment where cells barely move), we pick per input between nearest assignment and per-colony \ours using a biological consistency check: in a growing population every ancestor has at least one descendant, so we keep the hypothesis under which more anchors receive a target (ties: more uniform family sizes).
+This survival-based selection (\ours-SV) is within 0.005 of a per-window oracle choice of its components on the first blind set, post hoc.
+
+\paragraph{Second blind test.}
+A second protocol, fixed before downloading the data, tested SV on six budding-yeast colonies from LYN~\cite{zelic2026lyn}, a different kingdom with asymmetric division, and 44 mostly sparse \emph{B.\ subtilis} spore-outgrowth sequences~\cite{kunzmann2026bsub}.
+On yeast SV beats every geometric variant (0.842 \vs 0.827) but on only half of the colonies; on \emph{B.\ subtilis}, where most spores neither move nor divide, it is 0.008 below nearest assignment (0.895), failing all three hypotheses.
+
+\paragraph{Self-labelled adaptation.}
+Before adapting, we fixed a third protocol on the same windows (not blind, since the data had been scored): within each source, sequences are split into two folds, the \rodsim model is fine-tuned for 6k steps on positions-only pseudo-lineage of one fold, and evaluated on the other.
+Adaptation improves the whole-field model on all four sources (\cref{tab:blind}, bottom), most where simulation failed: from 0.31 to 0.48 on TrackRefiner and from 0.42 to 0.70 on TrackMate.
+With SV it beats the best geometric baseline on TrackRefiner (0.555 \vs 0.461, all 8 sequences), TrackMate and yeast, but not on \emph{B.~subtilis} (0.894 \vs 0.895).
+On the microcolony datasets of the zero-shot table (FAST, recA, rpsM), Hungarian links are poor at their frame rates and adaptation hurts on all 25 colonies; with temporal bootstrapping, fixed in a further protocol, it beats the \rodsim model on all three datasets and 21 colonies, but not Hungarian self-labelling on the four blind sources (below).
+
+\input{tables/blind}
+
+\section{Blind-test protocols}
+\Cref{tab:ledger} lists every protocol fixed before running, with its outcome.
+\input{tables/ledger}
+\paragraph{Blind test 2.}
+The protocol (\texttt{docs/blind\_test2\_protocol.md}) was fixed before the LYN and \emph{B.~subtilis} data were downloaded and run once with the positions-only \rodsim model.
+Hypotheses, per source: H1, SV beats the best of eight geometric variants (chosen per source after the run); H2, it does so on most sequences; H3, SV is at least as accurate as both of its components (nearest assignment and per-colony \ours).
+On yeast H1 and H3 hold (0.842 \vs 0.827 and 0.828) and H2 fails (3 of 6 colonies); on \emph{B.~subtilis} all three fail (0.887 \vs 0.895; 9 of 44 sequences).
+
+\paragraph{Blind test 4.}
+The protocol (\texttt{docs/blind\_test4\_protocol.md}) was fixed before any file of the trpL, metA and pheA subsets of~\cite{vanvliet2018spatially} was downloaded; only the archive listings, which give colony names, were read.
+It fixed all colonies with Schnitzcells lineage (10, 9 and 9), the 7.5-minute frame interval stated in that paper, gaps of 4, 8 and 16 frames, the recA window sampler and seed, six baselines (four geometric; exact and unbalanced OT without alignment at the OIAM-selected settings), the \rodsim model, and Hungarian and bootstrapped self-labelling with protocol-3 settings and folds by sorted colony rank.
+Hypotheses, per subset: F1, \rodsim beats the best baseline; F2, on more than half of the colonies; F3, bootstrapping beats \rodsim; F4, bootstrapping beats Hungarian self-labelling.
+One amendment was made before any window was scored: nine frames (in seven colonies) store an empty crop rectangle that the parser rejects; they are dropped and logged, and windows ending on them do not exist. No colony was excluded.
+All hypotheses hold on all subsets (main-text table), at every gap: \rodsim exceeds the best baseline by 0.11--0.14 at 30 minutes and 0.06--0.09 at 120 minutes, and bootstrapping adds a further 0.03--0.06 at every gap.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{fig/blind4_effects.pdf}
+\caption{\textbf{Blind test 4, colony by colony} (28 colonies, accuracy averaged over the three gaps). Left: the zero-shot \rodsim model minus the best of the six baselines \emph{for that colony}: positive on 28/28, mean $+0.102$ (95\% bootstrap CI over colonies 0.091--0.114). Middle: bootstrapped self-labelling minus zero-shot: 28/28, $+0.039$ (0.031--0.046). Right: Hungarian self-labelling minus zero-shot: negative on 28/28, $-0.083$ ($-0.095$ to $-0.071$). Black: mean and CI.}
+\label{fig:blind4}
+\end{figure}
+
+\section{Where do long-gap errors go?}
+For every wrong target in 24 random windows per gap and movie of OIAM M3/M4 we measured how long before the first snapshot the lineages of the predicted and the true ancestor split.
+If errors at long gaps were confusions between sisters born just before the first snapshot, they would be an identifiability limit.
+They are not: at 132 minutes only 6\% of \ours's errors confuse ancestors that split within 33 minutes, and 19\% within 132 minutes; forgiving all confusions between ancestors that split within 66 minutes raises cell-weighted accuracy only from 0.33 to 0.40.
+The predicted ancestor is instead a neighbour of the true one, a median of 1.8 cell spacings away (nearest assignment: 3.6).
+The residual error at long gaps is therefore a registration error of one to two cells, which is consistent with the oracle-partition result: knowing which cells form a family places most families correctly.
+Feeding the predicted family centres back as the initialisation for a second pass does not refine them; it lowers accuracy at every gap (0.33 to 0.19 at 132 minutes), because the network learned offsets relative to the Darcy initialisation.
+
+\section{Further negative results}
+\paragraph{More refinement steps.}
+Doubling the refinement rounds of the full model to $T{=}8$ (unshared weights, otherwise identical, 80k steps, one seed) lowers accuracy at every gap: 0.94/0.75/0.44 \vs 0.96/0.79/0.49 for $T{=}4$ (seed 0), and 0.88/0.58/0.24 \vs 0.91/0.60/0.27 on dense windows, although its final training accuracy is the same (0.96).
+Consistent with the long-gap analysis above, the residual error is not resolved by iterating the same local update longer.
+
+\paragraph{Fission-prior decoding.}
+Replacing argmax by an exact MAP assignment under a log-normal prior on family size around $N_B/N_A$ (min-cost matching over ancestor slots with convex costs) changes accuracy by at most 0.01 (full model: 0.794$\to$0.800 at 66 minutes): predicted family sizes are already about right, and errors come from which cells form a family.
+
+\paragraph{Forward simulation.}
+FSA initialises \rodsim with the first snapshot (doubling time $H\ln 2/\ln(N_B/N_A)$), simulates $H$ minutes eight times, warps each rollout onto the second snapshot and assigns every target to the ancestor whose simulated descendants are densest there.
+FSA's alignment by a similarity transform gives 0.60/0.51/0.38 on OIAM; a smooth non-rigid warp raises it to 0.63/0.53/0.39 and dropping the similarity step to 0.68/0.55/0.40.
+These rollouts start from the true cell lengths and orientations; from positions only, as in the transfer experiments, FSA gives 0.57/0.45/0.36. With shapes (mean 0.54) it is the only baseline above the positions-only \rodsim model on OIAM (0.52); the other datasets lack comparable shape features.
+Selecting rollouts by Chamfer distance to the second snapshot, or calibrating the doubling time so that the simulated count \emph{inside the field of view} matches $N_B$, does not help on dense windows (0.52/0.29/0.14 \vs 0.54/0.30/0.14).
+
+{
+    \small
+    \bibliographystyle{ieeenat_fullname}
+    \bibliography{main}
+}
+\end{document}

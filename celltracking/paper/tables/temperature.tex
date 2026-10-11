@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{All windows} & \multicolumn{3}{c}{Dense} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Probabilities $\to$ decoder & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+Single seed, argmax & .955 & .780 & .473 & .907 & .598 & .267 \\
+Single seed & .966 & .814 & .485 & .928 & .650 & .275 \\
+Single seed, fitted $T$ & .969 & .826 & .489 & .934 & .660 & .269 \\
+Ensemble, argmax & .964 & .807 & .490 & .923 & .634 & .284 \\
+Ensemble & .976 & .863 & .516 & .946 & .703 & .300 \\
+Ensemble, fitted $T$ & .977 & .867 & .515 & .947 & .705 & .296 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Temperature before decoding} (OIAM M3/M4; Potts $\beta{=}2$ unless argmax). $T$ is chosen per model and gap by the likelihood of the true ancestor on M0--M2 and applied once. Single-seed rows: mean of three seeds. Here each seed is normalised before averaging, which moves ensemble rows by at most 0.001 from the main table. Decoding skips the one 33-minute window with fewer than nine target cells, which moves 33-minute argmax values by up to 0.009 from other tables.}
+\label{tab:temperature}
+\end{table}

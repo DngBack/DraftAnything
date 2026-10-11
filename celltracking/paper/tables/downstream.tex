@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccccccc}
+\toprule
+ & \multicolumn{3}{c}{Size control (33 min)} & \multicolumn{3}{c}{CV of family size} & $r(\hat n,n)$ \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-8}
+Method & $\rho$ & long & short & 33 & 66 & 132 & 66 \\
+\midrule
+Ground truth & .574 & .789 & .003 & .369 & .314 & .496 & 1.000 \\
+\midrule
+Nearest ancestor & .134 & .341 & .211 & .620 & .919 & 1.567 & .069 \\
+\rodsim only & .174 & .395 & .223 & .412 & .402 & .357 & .281 \\
+\ours, self-labelled & .489 & .688 & .039 & .396 & .441 & .658 & .679 \\
+\ours & .510 & .711 & .027 & .397 & .439 & .646 & .692 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Biology read from two snapshots} (OIAM M3/M4, 32 random windows per gap and movie). Family size $n$ is the number of descendants assigned to an ancestor. Size control: Spearman $\rho$ between ancestor length (ranked within window) and $n$, and the fraction of the longest and shortest third of ancestors that divided within 33 minutes. CV: coefficient of variation of $n$ across ancestors (growth heterogeneity). $r(\hat n,n)$: Pearson correlation of predicted with true family size at 66 minutes.}
+\label{tab:downstream}
+\end{table}

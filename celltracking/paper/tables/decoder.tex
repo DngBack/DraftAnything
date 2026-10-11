@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llcccccc}
+\toprule
+& & \multicolumn{3}{c}{All} & \multicolumn{3}{c}{Dense} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Model & Decoder & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+No rot. & argmax & .849 & .653 & .447 & .717 & .443 & .247 \\
+ & Potts $\beta{=}1$ & .873 & .688 & .458 & .763 & .488 & .248 \\
+ & Potts $\beta{=}2$ & .890 & .706 & .462 & .786 & .506 & .240 \\
+ & Potts $\beta{=}4$ & .902 & .729 & .461 & .799 & .505 & .229 \\
+ & Cluster + argmax & .876 & .724 & .490 & .769 & .494 & .253 \\
+ & \textcolor{gray}{Oracle partition} & .947 & .855 & .731 & .876 & .658 & .380 \\
+\midrule
+Full & argmax & .961 & .794 & .486 & .913 & .603 & .269 \\
+ & Potts $\beta{=}1$ & .966 & .814 & .493 & .925 & .635 & .274 \\
+ & Potts $\beta{=}2$ & .969 & .828 & .498 & .933 & .656 & .271 \\
+ & Potts $\beta{=}4$ & .973 & .841 & .506 & .938 & .661 & .264 \\
+ & Cluster + argmax & .955 & .830 & .526 & .926 & .649 & .274 \\
+ & \textcolor{gray}{Oracle partition} & .982 & .911 & .764 & .958 & .777 & .418 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Partition-aware decoding} with single-snapshot genealogy on OIAM M3/M4. $\beta$ was not tuned on held-out data; all values are shown; the Darcy-initialised model behaves alike. Cluster + argmax: average-linkage clusters of the genealogy affinities cut at 0.3, each cluster sent to the ancestor with the largest summed log-probability. Full is training seed 0; the main results table applies Potts $\beta{=}2$ to the probability ensemble of three seeds. Decoding skips the one 33-minute window with fewer than nine target cells, which moves 33-minute argmax values by up to 0.009 from other tables.}
+\label{tab:decoder}
+\end{table}

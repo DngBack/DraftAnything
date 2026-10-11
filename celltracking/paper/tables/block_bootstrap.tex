@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccccccccc}
+\toprule
+ & \multicolumn{3}{c}{33 min} & \multicolumn{3}{c}{66 min} & \multicolumn{3}{c}{132 min} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+Comparison & mean & windows & blocks of 4 & mean & windows & blocks of 4 & mean & windows & blocks of 4 \\
+\midrule
+Full $-$ Trackastra, fine-tuned & +0.065 & \textbf{+0.045, +0.087} & \textbf{+0.030, +0.087} & +0.064 & \textbf{+0.043, +0.087} & \textbf{+0.037, +0.085} & +0.023 & {-0.003, +0.048} & {-0.019, +0.046} \\
+Full $-$ direct matcher & +0.101 & \textbf{+0.068, +0.138} & \textbf{+0.041, +0.138} & +0.096 & \textbf{+0.072, +0.123} & \textbf{+0.057, +0.123} & +0.017 & \textbf{+0.004, +0.031} & {-0.005, +0.028} \\
+Full $-$ regressor (GBDT) & +0.226 & \textbf{+0.160, +0.297} & \textbf{+0.104, +0.331} & +0.170 & \textbf{+0.126, +0.214} & \textbf{+0.095, +0.249} & +0.027 & \textbf{+0.003, +0.048} & {-0.002, +0.057} \\
+Ens.\ + dec.\ $-$ Trackastra, fine-tuned & +0.088 & \textbf{+0.063, +0.116} & \textbf{+0.041, +0.117} & +0.148 & \textbf{+0.123, +0.174} & \textbf{+0.113, +0.183} & +0.067 & \textbf{+0.041, +0.093} & \textbf{+0.032, +0.089} \\
+No annotation $-$ Trackastra, fine-tuned & +0.074 & \textbf{+0.052, +0.098} & \textbf{+0.034, +0.097} & +0.106 & \textbf{+0.081, +0.131} & \textbf{+0.074, +0.135} & +0.036 & \textbf{+0.010, +0.064} & {-0.001, +0.054} \\
+Full + dec.\ $-$ Trackastra + dec.\ (fitted $T$) & +0.029 & \textbf{+0.012, +0.049} & \textbf{+0.005, +0.041} & +0.029 & \textbf{+0.006, +0.057} & {-0.005, +0.049} & +0.073 & \textbf{+0.042, +0.103} & \textbf{+0.034, +0.106} \\
+Full + dec.\ $-$ Trackastra + dec.\ ($T{=}1$) & +0.027 & \textbf{+0.011, +0.047} & \textbf{+0.005, +0.039} & +0.025 & \textbf{+0.002, +0.051} & {-0.007, +0.043} & +0.010 & {-0.024, +0.044} & {-0.043, +0.051} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{Window \vs time-block bootstrap} (OIAM M3/M4; 95\% CIs of the mean paired difference in accuracy, bold when above zero). Blocks: four consecutive windows (132 minutes of anchor times) resampled within each movie. Full: mean of three seeds; ensemble, decoder and no-annotation rows on the decoder windows.}
+\label{tab:blockboot}
+\end{table*}

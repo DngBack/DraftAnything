@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llcccccc}
+\toprule
+ & & \multicolumn{3}{c}{All windows} & \multicolumn{3}{c}{Dense ($>$200)} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Base & Decoding & 33 & 66 & 132 & 33 & 66 & 132 \\
+\midrule
+Trackastra, fine-tuned & argmax & .889 & .716 & .451 & .788 & .507 & .171 \\
+ & + decoder, $T$ fitted on M2 & .937 & .785 & .412 & .869 & .586 & .151 \\
+ & + decoder, $T{=}1$ & .939 & .789 & .475 & .873 & .601 & .169 \\
+Family-centre regression & own geometric decoder & .717 & .602 & .441 & .452 & .289 & .201 \\
+ & argmax & .602 & .494 & .380 & .390 & .263 & .168 \\
+ & + decoder & .521 & .485 & .359 & .376 & .261 & .150 \\
+\ours, full (3 seeds) & argmax & .955 & .780 & .473 & .907 & .598 & .267 \\
+ & + decoder & .966 & .814 & .485 & .928 & .650 & .275 \\
+\ours, 3-seed ensemble & + decoder & \textbf{.977} & \textbf{.863} & \textbf{.517} & \textbf{.946} & \textbf{.703} & \textbf{.300} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{\textbf{The genealogy decoder on baseline probabilities} (OIAM M3/M4, decoder windows; Potts $\beta{=}2$ on the same image affinities; protocol fixed before running). Trackastra: row-normalised association weights; GBDT: softmax of its own cost at its decoder temperature, and its own collective decoder with geometric affinities and capacity (the main-table setting).}
+\label{tab:decbase}
+\end{table}

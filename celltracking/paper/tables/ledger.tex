@@ -1,0 +1,41 @@
+\begin{table*}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}p{5.4cm}>{\raggedright\arraybackslash}p{4.6cm}}
+\toprule
+Protocol & Data & Hypotheses (fixed before running) & Outcome (run once, reported as is) \\
+\midrule
+Blind test 1 & TrackRefiner, TrackMate; 11 seq., unseen & H1 \rodsim $>$ best geometric, per source; H2 on most sequences; H3 \rodsim $>$ OIAM-trained & H1 \textbf{fails} 0/2; H2 \textbf{fails} (2/11); H3 holds 2/2 \\
+Blind test 2 & LYN yeast, \emph{B.~subtilis}; fixed before download & H1 SV $>$ best geometric; H2 on most sequences; H3 SV $\ge$ both components & yeast: H1, H3 hold, H2 fails (3/6); \emph{B.~subtilis}: all \textbf{fail} (9/44) \\
+Protocol 3 & four blind-test sources, already scored; two folds & A1 adapted SV $>$ best geometric; A2 $>$ unadapted SV; A3 adapted $>$ \rodsim & A1 3/4; A2 3/4; A3 4/4 \\
+Protocol 4 & FAST, recA, rpsM (not blind) & B1 Hungarian self-labelling $>$ \rodsim; B2 $>$ best geometric & B1 \textbf{fails} 0/3; B2 1/3 \\
+Protocol 5$^\ddagger$ & FAST, recA, rpsM (not blind) & C1 bootstrapping $>$ \rodsim; C2 $>$ best geometric & C1 3/3; C2 3/3 \\
+Protocol 6 & as protocol 3 & E1 bootstrapping $>$ Hungarian self-labelling; E2 its SV $>$ best geometric; E3 $>$ SV with Hungarian & E1 \textbf{fails} 0/4; E2 3/4; E3 3/4 \\
+Blind test 4 & trpL, metA, pheA; 28 colonies, fixed before download & F1 \rodsim $>$ best of six baselines; F2 on most colonies; F3 bootstrapping $>$ \rodsim; F4 $>$ Hungarian & all hold, 3/3 subsets, every gap \\
+Teacher reliability & ten self-labelling sources, 114 units & (a) label-free teacher statistics track one-frame link accuracy; (b) primary statistic separates sources where bootstrapping wins & (a) holds ($\rho{=}0.84$); (b) \textbf{fails} (2/10 wrong) \\
+Matched direct matcher & OIAM M3/M4; 80k steps, 3 seeds per arm & D1 \ours $>$ direct matcher (Darcy) every gap; D2 dense; D3 radial init. & D1, D2 hold (CIs $>$0); D3 \textbf{fails} at 132 min (tie) \\
+Trackastra without rot.\ aug. & OIAM M3/M4; batch 8 (amended after a batch-16 run) & R1 no-rot.\ fine-tuning helps Trackastra at $\ge$2 gaps; R2 \ours $>$ better Trackastra at 33/66; R3 decoded ensemble $>$ it at all gaps & R1 \textbf{fails} (1/3); R2, R3 hold \\
+Full-model LOMO & five OIAM folds, 80k steps, one seed & L1 $>$ no-rot.\ 30k at 33/66 on $\ge$4/5 folds; L2 $>$ regressor at every gap on $\ge$4/5; L3 mean $\ge$0.90 at 33 & all hold (5/5, 5/5; 0.954) \\
+Centre controls & OIAM M3/M4; 80k steps, 3 seeds per arm & K1 \ours $>$ direct matcher with 96 candidates; K2 $>$ centre loss without moving; K3 $T{=}4 > T{=}1$ & all hold (CIs $>$0 at 33/66 min) \\
+Orientation & OIAM M3/M4 in 8 image frames; estimator chosen on M0--M2 & H1 no correction worse; H2 primary rule recovers $\ge$75\% of the no-rotation gain; H3 per-window $<$ per-sequence; H4 confidence $>$ averaging & H1 holds; H2 holds at 33/66 (nothing to recover at 132); H3 mixed; H4 \textbf{fails} \\
+Decoder on baselines & OIAM M3/M4, decoder windows & G1 decoded \ours $>$ decoded Trackastra at every gap (CI $>$0 at 33/66); G2 $>$ decoded GBDT; G3 decoded ensemble $>$ both at 132 & all hold; \vs raw-probability Trackastra $+$0.010 at 132 (CI includes 0) \\
+Time-block bootstrap & OIAM M3/M4, 7 main comparisons & B1 every window-significant margin stays significant with blocks of 4 windows & \textbf{fails}: 14/19; 132-min single-model margins and 66-min decoder-on-decoder lost \\
+Optical flow & OIAM; RAFT setting chosen on M0--M2 (8 settings) & R1 \ours $>$ flow at every gap; R2 flow $>$ nearest at 33 min & both hold (flow 0.636/0.367/0.244) \\
+Trackastra zero-shot & FAST (images + corrected masks), 7 colonies & Z1 \rodsim-trained \ours $>$ Trackastra; Z2 on $\ge$5/7 colonies & both hold (0.709 \vs 0.626; 7/7) \\
+\rodsim direct matcher & zero-shot table, 4 bacterial + 2 human datasets; 3 seeds (rerun at half lr after divergence) & S1 \ours $>$ direct matcher on all 4 bacterial datasets; S2 direct matcher $>$ best baseline on $\ge$3/4 & S1 \textbf{fails} (2/4: OIAM, FAST); S2 holds (4/4) \\
+Matched Trackastra & OIAM M3/M4; \ours on M0/M1, 20k steps, 3 seeds; Trackastra over 5 gaps & M1/M2 matched \ours $>$ per-gap / multi-gap Trackastra at 33/66; M3 $\ge$ selected Trackastra at 132 & all \textbf{fail} (0.715/0.554/0.394); multi-gap Trackastra replaces the 132-min entry (0.488) \\
+Direct matcher, van Vliet & 28 colonies of blind test 4; bootstrapped self-labelling, 6k steps & V1 \ours $>$ direct matcher over colonies (CI $>$ 0); V2 in every subset & V1 fails ($+$0.003 [$-$0.001, 0.007]); V2 holds \\
+Self-labelled direct matcher & OIAM M3/M4; pseudo-lineage of M0--M2, 80k steps, 3 seeds & P1 self-labelled \ours $>$ self-labelled direct matcher at 33/66; P2 self-labelling costs the direct matcher $<$0.05 & both hold ($+$0.088/$+$0.059; cost 0.01) \\
+\midrule
+Global partitioners & OIAM M3/M4, 66/132 min & no threshold; correlation and spectral clustering \vs Potts & predicted affinities: no gain (0.517 \vs 0.517); true: 0.780 \vs oracle 0.784 \\
+Self-labelled genealogy & OIAM M3/M4 & no threshold; ensemble decoder \vs annotated genealogy & 0.976/0.861/0.520 \vs 0.977/0.863/0.517 \\
+Annotation-free pipeline & OIAM M3/M4 & no threshold; full model on pseudo-lineage, 3 seeds & 0.963/0.822/0.487; no-consistency variant post hoc \\
+Fine-tuned Trackastra & OIAM; trained on M0/M1, selected on M2 & no threshold; one model per gap, decoding fixed on M2 & 0.892/0.716/0.451 (\ours 0.957/0.780/0.473) \\
+Lineage audit & recA, rpsM \vs curated FAST & no threshold; descriptive label statistics & flagged targets 5.2\%/1.7\% \vs 0.2\% (correction post hoc) \\
+Second segmenter & Omnipose on OIAM M3/M4, notebook settings & no threshold; end-to-end accuracy & 0.74/0.50/0.29 (\vs 0.92/0.73/0.44 Cellpose-SAM); dense loss $\le$0.08 \\
+Temperature scaling & OIAM; $T$ fitted on M0--M2 & no threshold; decoded once on M3/M4 & single seeds $+$0.010--0.014 at 66 min; ensemble unchanged \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Protocol ledger.} Every evaluation whose protocol was fixed in advance (files in \texttt{docs/}), in the order run; counts are sources, datasets or subsets on which a hypothesis holds. Failures are kept in the paper and drove the next protocol: per-colony processing and SV after test 1, bootstrapping after protocol 4. $^\ddagger$Post hoc in that the data had been scored before. Earlier protocols on recA and rpsM for a previous gradient-boosting method were invalidated by a coordinate bug found after scoring; all recA and rpsM results here are therefore development results, not blind.}
+\label{tab:ledger}
+\end{table*}
