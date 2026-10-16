@@ -21,11 +21,11 @@ CIs are paired bootstraps over windows; under a block bootstrap respecting windo
 \subsection{Long gaps break frame-to-frame tracking}
 \cref{tab:oiam} shows that off-the-shelf Trackastra, given perfect masks, improves over nearest assignment at 33 minutes but falls below it at 66 and 132 minutes; fine-tuned it is the strongest baseline, yet \ours without any annotation beats it at 33 and 66 minutes, on all 30 dense windows, and matches it at 132. No OT or CPD variant exceeds 0.60/0.51/0.38 (Supp.~F), and pretrained optical flow helps only at 33 minutes.
 The \emph{full} model (no rotation augmentation, which exploits OIAM's fixed chamber geometry; Darcy initialisation; consistency loss; 80k steps) lifts 33-minute accuracy from 0.74 to $0.957{\pm}0.005$ (three seeds); with rotations it is better at 132 minutes over all windows but not on dense ones (Supp.~C).
-The moving family centre is what matters: with it frozen, the same network reaches 0.86/0.68/0.46 (dense 0.71/0.43/0.21), and neither 96 candidates, nor a supervised but unused centre, nor one refinement round closes the gap at 33 and 66 minutes (pre-registered; Supp.~B). The centre is a remedy for crowding: its margin grows from 0.02 in windows of at most 25 ancestors to 0.24 above 400 (33 minutes, post hoc), and on the small van Vliet colonies it adds only 0.003 (pre-registered, failed; Supp.~B).
+The moving family centre is what matters: with it frozen, the same network reaches 0.86/0.68/0.46, and neither 96 candidates, nor a supervised but unused centre, nor one refinement round closes the gap at 33 and 66 minutes (pre-registered; Supp.~B). The centre is a remedy for crowding: its margin grows from 0.02 in windows of at most 25 ancestors to 0.24 above 400 (33 minutes, post hoc), and on the small van Vliet colonies it adds only 0.003 (pre-registered, failed; Supp.~B).
 Retrained leaving out each OIAM movie in turn, the full model averages 0.95/0.79/0.48 on the held-out movie, as on M3/M4 (pre-registered; Supp.~D).
-At 132 minutes Trackastra trained over several gaps edges the full model over windows (0.49 \vs 0.47) but not weighted by cells (0.29 \vs 0.32); there the family partition, not motion, limits accuracy (oracle row).
-Trained from scratch on M0/M1 only, as Trackastra is, \ours overfits (0.72/0.55/0.39; Supp.~F); Trackastra is pretrained at scale.
-In windows of more than 400 ancestors at 33 minutes, nearest assignment, off-the-shelf and fine-tuned Trackastra and \ours are correct for 13, 29, 74 and 89\% of targets (Supp.~G; a 66-minute window in \cref{fig:qualitative}).
+At 132 minutes Trackastra trained over several gaps edges the full model over windows (0.49 \vs 0.47) but not weighted by cells (0.29 \vs 0.32). On dense windows true family centres lift the ensemble from 0.28 to 0.50, the true partition to 0.47, both to 0.90 (Supp.~R).
+Trained from scratch on M0/M1 only, \ours overfits (0.72/0.55/0.39; Supp.~F).
+Above 400 ancestors at 33 minutes, nearest assignment, off-the-shelf and fine-tuned Trackastra and \ours are right for 13, 29, 74 and 89\% of targets (Supp.~G; a 66-minute window in \cref{fig:qualitative}).
 
 \paragraph{How many snapshots are needed?}
 \cref{fig:sparsity} composes links over equally spaced snapshots.
@@ -33,7 +33,7 @@ At 132 minutes, frame-to-frame linking with the fission prior reaches 0.96 with 
 The self-labelled model (0.84 and 0.97) is close, and with every frame beats the linker that produced its labels (0.98 \vs 0.96).
 
 \paragraph{Is the recovered lineage biologically usable?}
-Longer cells divide sooner: over 33 minutes 79\% of the longest third of ancestors divide and 0.3\% of the shortest. \ours recovers this size control (71\% \vs 2.7\%; self-labelled 69\% \vs 3.9\%), nearest assignment erases it (34\% \vs 21\%; Supp.~H).
+Longer cells divide sooner: over 33 minutes 79\% of the longest third of ancestors divide and 0.3\% of the shortest. \ours recovers this size control (71\% \vs 2.7\%; self-labelled 69\% \vs 3.9\%), nearest assignment erases it (34\% \vs 21\%). Decoded \ours halves decoded Trackastra's inflation of growth heterogeneity (Supp.~H).
 
 \begin{figure}[t]
 \centering
@@ -55,21 +55,19 @@ Longer cells divide sooner: over 33 minutes 79\% of the longest third of ancesto
 \cref{tab:external} evaluates positions-only \ours on datasets it was never trained on.
 The model trained on OIAM M0--M2 barely improves on geometric baselines elsewhere and is worse on the human-cell datasets: it has learned the geometry of one experiment.
 The model trained only on \rodsim is the best method on every bacterial dataset, by 3--10 points over the best baseline (three-seed mean), and wins on all 27 bacterial sequences; on FAST, Trackastra with images and true masks reaches 0.63 (pre-registered; Supp.~F).
-The transfer is the simulator's: the direct matcher trained on the same simulations does as well (FAST/recA/rpsM/OIAM 0.71/0.57/0.58/0.50 \vs 0.71/0.56/0.56/0.52; pre-registered, Supp.~F).
+The transfer is the simulator's: the direct matcher trained on the same simulations does as well (FAST/recA/rpsM/OIAM 0.71/0.57/0.58/0.50 \vs 0.71/0.56/0.56/0.52; pre-registered, Supp.~F). External windows hold 4--6 ancestors, where even in-domain the centre adds 0.01; on crowded OIAM windows the \rodsim-trained centre adds 0.02 (in-domain 0.19); forward simulation with true shapes beats it there (Supp.~Q), and simulating crowded colonies does not help (Supp.~R).
 These datasets were seen while the simulator was designed (\cref{sec:sim}), so the clean zero-shot evidence is the blind test of \cref{tab:blind4}.
 On the sparse human-cell datasets a baseline is best.
 
-\paragraph{Is the network more than its simulator?}
-Running \rodsim forward with true cell shapes, which the positions-only network does not see, beats it on OIAM, especially on dense windows (0.54 \vs 0.34 at 33 minutes; Supp.~Q).
 
 \input{tables/selflabel}
 
 \subsection{Self-labelling replaces lineage annotation}
 Chaining one-frame links (\cref{sec:selflabel}) through the unannotated OIAM training movies recovers the true ancestor of 0.88--0.98 of cells at horizons of 33 to 240 minutes (Supp.~M).
-The fission prior matters: without the daughter slots, links at divisions are wrong 30\% of the time instead of 4\%, and pseudo-lineage accuracy on M0--M2 at 132 minutes drops from 0.92 to 0.57.
+Without the fission prior's daughter slots, links at divisions are wrong 30\% of the time instead of 4\% (pseudo-lineage at 132 minutes: 0.57 \vs 0.92).
 \cref{tab:selflabel} trains on this pseudo-lineage instead of the annotation.
 Fine-tuning the \rodsim model on it gains as much as on true lineage, and the full model trained from scratch on it comes within 0.02--0.05 of the annotated one over all windows (three seeds; \cref{tab:selflabel}); self-labelling costs the direct matcher only 0.01, yet self-labelled \ours beats the direct matcher trained on true lineage at 33/66 minutes (+0.08/+0.05; pre-registered, Supp.~M).
-Self-labelling the genealogy network too (AP within 0.02; Supp.~K) removes annotation from every step: decoded ensembles reach 0.963/0.822/0.487 (\cref{tab:oiam}, fixed beforehand) \vs 0.977/0.863/0.517.
+Self-labelling the genealogy network too (AP within 0.02; Supp.~K) removes annotation from every step: decoded ensembles reach 0.963/0.822/0.487 (fixed beforehand) \vs 0.977/0.863/0.517 (\cref{tab:oiam}).
 
 \input{tables/blind4}
 
@@ -79,7 +77,7 @@ The first two failed instructively: on TrackRefiner~\cite{ahmadi2025trackrefiner
 Per-colony processing (post hoc) and self-labelling within each source (fixed beforehand) recover much of this, budding yeast~\cite{zelic2026lyn} included (Supp.~N).
 
 A last test, with these procedures fixed, used three unused subsets of~\cite{vanvliet2018spatially}: 28 \emph{E.~coli} microcolonies in minimal medium from the lab and pipeline of recA/rpsM (\cref{tab:blind4}).
-All four hypotheses hold on all three subsets: zero-shot, the \rodsim model beats every baseline on all 28 colonies, by 0.10 on average (95\% CI 0.09--0.11), as it does the four baselines we added afterwards, and bootstrapped self-labelling from the other fold raises it further on all 28, whereas self-labelling from positions-only Hungarian links lowers it.
+All four hypotheses hold on all three subsets: zero-shot, the \rodsim model beats every baseline on all 28 colonies, by 0.10 on average (95\% CI 0.09--0.11), and bootstrapped self-labelling from the other fold raises it further on all 28, whereas positions-only Hungarian self-labels lower it.
 
 
 
@@ -88,16 +86,16 @@ All four hypotheses hold on all three subsets: zero-shot, the \rodsim model beat
 \subsection{Genealogy from a single snapshot}
 A single image carries much of the family structure that geometry lacks (\cref{tab:genealogy}).
 At 33 minutes, where the positive pairs are mostly sisters from the last division, the image model reaches 0.97 AP against 0.76 for geometry and a 6\% base rate; even at 132 minutes it reaches 0.70 against 0.54.
-Trained on \rodsim, it transfers only once division modes are randomised (asymmetric, V-snapping~\cite{messelink2021single}; added after inspecting OIAM M3): zero-shot AP 0.53/0.50/0.47, mostly from geometry (0.49/0.49/0.46 without the image).
-In the Potts decoder ($\beta{=}2$, fixed), the image affinities improve every base model at every gap; the full model gains 0.034 at 66 minutes (every seed positive), the three-seed probability ensemble 0.057: single models are overconfident (Supp.~I).
-The decoder also lifts fine-tuned Trackastra at 33/66 minutes, yet decoded \ours stays ahead (pre-registered; Supp.~I). Non-local partitioners do not beat it with predicted affinities but match the oracle partition with true ones (0.780 \vs 0.784 at 132 minutes; Supp.~I): affinity quality, not decoder locality, limits long gaps.
+Trained on \rodsim, it transfers only once division modes are randomised (V-snapping~\cite{messelink2021single}; added after inspecting OIAM M3), and then mostly through geometry (AP 0.53/0.50/0.47; 0.49/0.49/0.46 without the image).
+In the Potts decoder ($\beta{=}2$, fixed), the image affinities improve every base model at every gap; the full model gains 0.034 at 66 minutes, the three-seed ensemble 0.057 (single models are overconfident; Supp.~I).
+The decoder also lifts fine-tuned Trackastra at 33/66 minutes, yet decoded \ours stays ahead (pre-registered; Supp.~I). Non-local partitioners, a fission prior on family size and ancestors competing inside refinement leave 132-minute accuracy unchanged (the last helps dense windows; Supp.~I, R).
 
 
 \subsection{Robustness to detection errors}
-With 10\% of cells missed, merged or hallucinated, \ours is still 90--91\% correct at 33 minutes (nearest: about 50\%; Supp.~L).
-With masks of Cellpose-SAM~\cite{pachitariu2025cellposesam}, not fine-tuned (99.9\% recall, 94\% precision), \ours is correct for 0.92/0.73/0.44 of all annotated targets (0.96/0.78/0.47 with true positions; three seeds). Omnipose~\cite{cutler2022omnipose} adds debris to sparse frames (85\% precision; 0.74/0.50/0.29), but costs at most 0.08 on dense windows (Supp.~L).
+With 10\% of cells missed, merged or hallucinated, \ours is still 90--91\% correct at 33 minutes (nearest: 50\%).
+With untuned Cellpose-SAM~\cite{pachitariu2025cellposesam} masks, \ours reaches 0.92/0.73/0.44; Omnipose~\cite{cutler2022omnipose} adds debris to sparse frames (0.74/0.50/0.29; Supp.~L).
 
 \subsection{Limitations}
-End-to-end results cover two segmenters on one dataset, and synthetic detection errors ignore image content.
-Trained from scratch, \ours needs more annotated movies than a pretrained tracker. OIAM's five movies are one experiment, and the zero-shot advantage vanishes on fields of many tiny colonies or steady-state chambers.
-Self-labelling needs one dense time-lapse per condition and inherits linking errors under fast motion (TrackRefiner).
+End-to-end results cover two segmenters on one dataset; synthetic detection errors ignore image content.
+Trained from scratch on two annotated movies, \ours trails fine-tuned Trackastra (0.72 \vs 0.89 at 33 minutes; Supp.~F). OIAM's five movies are one experiment (the only public crowded lineage data we found), and the zero-shot advantage vanishes on fields of many tiny colonies or steady-state chambers.
+Self-labelling needs a dense time-lapse per condition and inherits fast-motion linking errors (TrackRefiner).

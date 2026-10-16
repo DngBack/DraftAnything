@@ -45,7 +45,7 @@ The simulator was designed from first principles and generic literature values; 
 \subsection{Self-labelling from unannotated time-lapses}
 \label{sec:selflabel}
 Lineage is hard to infer across hours but nearly trivial across one frame of a dense time-lapse, and binary fission constrains it further: a cell has one successor, or two daughters lying on either side of its old centre along its axis.
-Given an unannotated dense time-lapse with detections only, we link every pair of consecutive frames by an exact linear assignment in which each cell $i$ of frame $t$ offers three slots, \emph{stay} at $\mathbf{x}_i$ and two \emph{daughter} slots at $\mathbf{x}_i\pm\tfrac{L_i}{4}\mathbf{u}_i$ (length $L_i$, axis $\mathbf{u}_i$) that cost an extra $0.55s$, plus a no-parent option at $3.5s$, where $s$ is the nearest-neighbour spacing.
+Given an unannotated dense time-lapse with detections only (lineage-free, not segmentation-free: on OIAM the same masks as for every method), we link every pair of consecutive frames by an exact linear assignment in which each cell $i$ of frame $t$ offers three slots, \emph{stay} at $\mathbf{x}_i$ and two \emph{daughter} slots at $\mathbf{x}_i\pm\tfrac{L_i}{4}\mathbf{u}_i$ (length $L_i$, axis $\mathbf{u}_i$) that cost an extra $0.55s$ (in units of the median nearest-neighbour spacing $s$, not seconds), plus a no-parent option at $3.5s$.
 Without masks, the daughter slots sit at $\mathbf{x}_i$.
 Where cells move far between frames, \emph{temporal bootstrapping} replaces these one-frame links by the \rodsim model's own one-frame predictions.
 Composing the one-frame links gives pseudo-ancestry between any two frames, and we train \ours on it exactly as on annotated lineage.

@@ -20,21 +20,21 @@ A single network is trained across horizons from 8 to 240 minutes.
 \paragraph{Learning lineage without lineage labels.}
 Lineage annotations are scarce, and a model trained on one experiment transfers poorly to others (\cref{tab:external}).
 A model trained only on \rodsim, an agent-based simulator of growing rod-shaped colonies, transfers well: it beats ten positions-only geometric, optimal-transport, registration and simulation baselines on all 27 bacterial sequences of four real datasets it was never trained on, by 3 to 10 points of accuracy over the best of them (three-seed mean); a plain learned matcher trained on the same simulations does as well, so the transfer is the simulator's.
-A pre-registered blind test (protocol and hypotheses fixed in a file before the data were downloaded) confirms this on 28 unseen colonies grown in another medium, against the same baselines; earlier blind tests delimit its scope: it assumes a contiguous population expanding by its own growth, and fails on fields of many separate microcolonies and on steady-state chambers.
+A pre-registered blind test confirms this on 28 unseen colonies grown in another medium, against the same baselines; earlier blind tests delimit its scope: it assumes a contiguous population expanding by its own growth, and fails on fields of many separate microcolonies and on steady-state chambers.
 The remedy comes from biology.
 Between consecutive frames, binary fission reduces lineage to an assignment in which each cell either persists or is replaced by daughters on either side of its centre along its axis; chaining such links through a dense \emph{unannotated} time-lapse yields pseudo-lineage at horizons up to four hours, 0.88--0.98 correct on the One-in-a-Million (OIAM) movies.
 Trained on pseudo-lineage of three unannotated OIAM movies, \ours comes within 0.02--0.05 of the annotated model over all windows; decoded, it beats Trackastra~\cite{gallusser2024trackastra} fine-tuned on annotated lineage at 33 and 66 minutes and matches it at 132.
-Bootstrapped self-labelling from the other half of a dataset's movies, fixed in advance, improves the simulation-trained model on all seven sources of our blind tests (pre-registered on the last three; on the four earlier ones, simpler Hungarian links did even better).
-One dense, unannotated movie per organism could thus replace dense imaging later.
+Bootstrapped self-labelling on half of a dataset's movies improves the simulation-trained model on all seven blind-test sources.
+One dense, unannotated movie per organism can thus train a model for sparse imaging.
 
 \paragraph{Genealogy in a single image.}
-An oracle analysis shows that, given the true partition of targets into families, assignment accuracy at $H{=}132$ rises from 0.52 (our best model) to 0.78: errors pick a neighbour of the true ancestor, so the bottleneck is grouping, not coarse motion.
+An oracle analysis shows that, given the true partition of targets into families, assignment accuracy at $H{=}132$ rises from 0.52 (our best model) to 0.78, and with the true family centres as well to 0.97. The true ancestor is among the 24 candidates for 98\% of targets, and errors pick a neighbour of it, so the bottleneck is grouping and family position jointly, not coarse motion or retrieval.
 Grouping is visible in one frame: a network that predicts the time since two neighbours' lineages split, from a single phase-contrast image, detects same-family pairs with 0.97/0.91/0.70 average precision at $H{=}33/66/132$.
 Coupling these affinities with \ours in a Potts mean-field decoder improves every base model at every gap.
 The same network can be trained on \rodsim alone once the simulator randomises how cells divide, giving a pipeline with no real lineage label, though it then relies mostly on geometry.
 
 \paragraph{Contributions.}
 (1)~We formalise \emph{two-snapshot ancestry} and assemble a benchmark spanning six bacterial and human-cell datasets and three horizons, with cell-level accuracy and family-level biological readouts.
-(2)~We propose \ours, an iterative family-registration network that resolves crowded colonies, where a learned matcher of the same capacity trails it by 0.10.
-(3)~We show that \ours needs no annotated lineage: simulated colonies, or fission-constrained pseudo-lineage from unannotated time-lapses, suffice, including in pre-registered blind tests.
+(2)~We propose \ours, an iterative family-registration network that resolves crowded colonies in-domain, where a learned matcher of the same capacity and data trails it by 0.10.
+(3)~We show that \ours needs no annotated lineage: simulation suffices to beat every positions-only baseline (also in pre-registered blind tests), and fission pseudo-lineage from unannotated time-lapses comes within 0.02--0.05 of annotation.
 (4)~We predict genealogy from a single image and use it in a partition-aware decoder.

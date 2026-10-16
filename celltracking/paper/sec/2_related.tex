@@ -2,14 +2,14 @@
 \label{sec:related}
 
 \paragraph{Cell tracking.}
-Classical pipelines, including bacterial ones~\cite{stylianidou2016supersegger,lugagne2020delta,ollion2019bacmman,ollion2024distnet2d}, link segmented cells between consecutive frames by nearest neighbour or linear assignment~\cite{jaqaman2008robust,ershov2022trackmate}, optionally with global optimisation over a tracking graph~\cite{bragantini2024ultrack}.
+Classical pipelines, including bacterial ones~\cite{stylianidou2016supersegger,lugagne2020delta,ollion2019bacmman,ollion2024distnet2d}, link segmented cells between consecutive frames by nearest neighbour or linear assignment~\cite{jaqaman2008robust,ershov2022trackmate}, optionally with global optimisation over a tracking graph~\cite{bragantini2024ultrack}, also jointly with divisions~\cite{schiegg2013conservation,jug2016moral}.
 Learned trackers predict associations with graph networks or transformers~\cite{ben2022graph,gallusser2024trackastra,joy2021hipsc,fedorchuk2025deepkymo}, and the Cell Tracking Challenge~\cite{ulman2017objective,maska2023ctc} benchmarks them on dense movies.
 Whole-embryo systems combine learned detectors with integer linear programs~\cite{malinmayor2023linajea,hirsch2022celegans,sugawara2022elephant}; Tui~\cite{chang2026tui} adds expert correction across generations.
 All assume that consecutive frames overlap substantially in appearance and position; with two snapshots the tracking graph has a single layer, so global optimisation reduces to one constrained assignment, the setting of our optimal-transport baselines.
 The One-in-a-Million dataset~\cite{seiffarth2024oiam} reports that tracking quality falls with frame interval and population size; we study a single long interval.
 
 \paragraph{Correspondence and flow.}
-\ours borrows iterative refinement from optical flow~\cite{teed2020raft}, attention-based matching with a dustbin from feature matching~\cite{sarlin2020superglue,lindenberger2023lightglue}, and, closest in mechanism, the per-query reference point that DETR-style detectors refine by attending around it~\cite{carion2020detr,zhu2021deformable,liu2022dabdetr}, akin to voting for object centres~\cite{qi2019votenet}.
+\ours borrows iterative refinement from optical flow~\cite{teed2020raft}, attention-based matching with a dustbin from feature matching~\cite{sarlin2020superglue,lindenberger2023lightglue}, and, closest in mechanism, the per-query reference point that DETR-style detectors refine by attending around it~\cite{carion2020detr,zhu2021deformable,liu2022dabdetr}, akin to voting for object centres~\cite{qi2019votenet} and track queries~\cite{meinhardt2022trackformer,zeng2022motr}.
 Here a query is an ancestor and its reference point the centre of a set of points that did not exist at $a$.
 Scene flow~\cite{liu2019flownet3d,wu2020pointpwc,puy2020flot}, point-cloud registration~\cite{wang2019dcp,yew2020rpmnet} and point tracking~\cite{karaev2024cotracker} follow the same objects; here the mapping is one-to-many.
 

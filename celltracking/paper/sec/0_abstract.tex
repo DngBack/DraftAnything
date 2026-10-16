@@ -4,9 +4,9 @@ We ask how much lineage survives sparse imaging: given two snapshots of a growin
 Between snapshots cells divide several times and colonies deform, so trackers, optimal transport and point-set registration degrade sharply.
 We propose \ours, which registers descendant \emph{families} rather than cells: it iteratively moves one predicted family centre per ancestor and scores candidates relative to it.
 On One-in-a-Million movies its window-averaged accuracy is 0.96 at a 33-minute gap and 0.47 at 132 minutes, where an ancestor has up to eight descendants; composing its links over 13 of 133 frames recovers two hours of lineage for 0.99 of cells, where off-the-shelf Trackastra, even given true masks, needs 34 frames.
-Annotated lineage is optional.
+Two routes avoid lineage annotation.
 Trained only on a colony simulator, \ours beats every positions-only baseline, optimal transport and forward simulation included, zero-shot on all 27 sequences of four bacterial datasets and, in a pre-registered blind test, on all 28 colonies of three unseen subsets; a plain learned matcher trained the same way does as well, so this transfer is the simulator's.
 Chaining one-frame links under a binary-fission prior through unannotated time-lapses yields pseudo-lineage that trains \ours to within 0.02--0.05 of annotation.
-Decoded with a single-image genealogy network, this annotation-free pipeline beats a transformer tracker fine-tuned on annotated lineage by 0.07--0.11 at 33 and 66 minutes and matches it at 132.
+Decoded with a single-image genealogy network, this annotation-free pipeline beats a transformer tracker fine-tuned on annotated lineage and decoded the same way by 0.02--0.03 at 33 and 66 minutes (0.07--0.11 against its own output) and matches it at 132.
 We also report pre-registered failures: fields of many tiny colonies and steady-state chambers.
 \end{abstract}
