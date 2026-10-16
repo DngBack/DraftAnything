@@ -75,12 +75,42 @@ class Lineage:
         self.parent = dict(zip(tr.gt_track_id.astype(int), tr.parent_id.astype(int)))
         self.anc = lru_cache(maxsize=None)(self._anc)
 
-    def _anc(self, track, frame):  # = lineage_glue.Movie.ancestor
+    def _anc(self, track, frame, at=None):  # = lineage_glue.Movie.ancestor (at: frame of `track`, unused)
         while self.start.get(track, -1) > frame:
             track = self.parent.get(track, 0)
             if track == 0:
                 return 0
         return track
+
+
+class PseudoTrackLineage:
+    """Annotation-free stand-in for Lineage (docs/trackastra_pseudo_protocol.md): ancestry from chained
+    one-frame links (chained_pseudo_lineage.PseudoMovie, div_cost 10, as for the self-labelled LineageRAFT).
+    Mask labels are used only as per-frame detection ids; anc(label, f, at) = label at frame f of the
+    pseudo-ancestor of detection `label` at frame `at` (0 = none)."""
+
+    def __init__(self, alias):
+        from experiments.chained_pseudo_lineage import PseudoMovie
+        pm = PseudoMovie(alias)
+        self.links = pm.pl.links
+        self.tracks = {t: f["track"].astype(np.int64) for t, f in pm.frames.items()}
+        self.row = {t: {int(k): i for i, k in enumerate(tr)} for t, tr in self.tracks.items()}
+        self.chain = lru_cache(maxsize=8192)(self._chain)
+
+    def _chain(self, f, at):  # pseudo-ancestor index in frame f of every cell of frame `at`
+        idx = np.arange(len(self.tracks[at]))
+        for t in range(at, f, -1):
+            idx = np.where(idx >= 0, self.links[t][np.maximum(idx, 0)], -1)
+        return idx
+
+    def anc(self, track, frame, at):
+        i = self.row.get(at, {}).get(track)
+        if i is None:
+            return 0
+        if frame >= at:
+            return track
+        j = self.chain(frame, at)[i]
+        return int(self.tracks[frame][j]) if j >= 0 else 0
 
 
 def assoc(labels, timepoints, frames, lin):
@@ -89,7 +119,7 @@ def assoc(labels, timepoints, frames, lin):
     am = np.full((len(labels), w), -2, dtype=np.int64)
     for j, (lb, t) in enumerate(zip(labels, timepoints)):
         for k in range(t + 1):
-            am[j, k] = lin.anc(int(lb), int(frames[k]))
+            am[j, k] = lin.anc(int(lb), int(frames[k]), int(frames[t]))
     up = am[np.arange(len(labels))[None, :], timepoints[:, None]] == labels[:, None]  # [i,j]: anc(j, t_i) == i
     return up | up.T
 
@@ -110,7 +140,7 @@ class GapData(torch.utils.data.Dataset):
                 wrfeat.WRRandomOffset(p=0.8, offset=(-3, 3)),
             ])
         self.feats = {a: frame_features(a) for a in aliases}
-        self.lin = {a: Lineage(a) for a in aliases}
+        self.lin = {a: (PseudoTrackLineage if cfg.get("pseudo") else Lineage)(a) for a in aliases}
         self.items, self.n_objects, self.n_divs = [], [], []
         for h in (horizon if isinstance(horizon, (list, tuple)) else [horizon]):  # list: docs/matched_trackastra_protocol.md
             for a in aliases:
@@ -135,7 +165,7 @@ class GapData(torch.utils.data.Dataset):
             lk = f[fk].labels
             best = np.ones(len(lk), dtype=int)
             for fm in frames[k + 1:]:
-                anc = np.array([lin.anc(int(b), fk) for b in f[fm].labels])
+                anc = np.array([lin.anc(int(b), fk, fm) for b in f[fm].labels])
                 cnt = (anc[None, :] == lk[:, None]).sum(1)
                 best = np.maximum(best, cnt)
             n += int((best == 2).sum())
@@ -323,7 +353,7 @@ def train(a):
     torch.backends.cuda.enable_cudnn_sdp(False)
     dev = "cuda"
     model = Trackastra.from_pretrained("general_2d", device=dev)
-    cfg = {**model.train_args, "aug_mode": a.aug}
+    cfg = {**model.train_args, "aug_mode": a.aug, "pseudo": a.pseudo}
     net = model.transformer
     # --multi: one model over several horizons, best checkpoint kept per validated gap in h{H}{suffix}/
     gaps = a.val_horizons if a.multi else [a.horizon]
@@ -447,6 +477,7 @@ def main():
     t.add_argument("--suffix", default="")
     t.add_argument("--aug", choices=["official", "norot"], default="official")
     t.add_argument("--no-val", action="store_true", help="no M2 validation; keep the last checkpoint")
+    t.add_argument("--pseudo", action="store_true", help="train on chained pseudo-lineage (no annotation)")
     e = sub.add_parser("eval")
     e.add_argument("--sequences", nargs="+", default=["M3", "M4"])
     e.add_argument("--horizons", nargs="+", type=int, default=[33, 66, 132])

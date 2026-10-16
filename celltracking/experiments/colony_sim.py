@@ -177,9 +177,11 @@ class Colony:
                 "major_um": self.length / math.sqrt(12), "minor_um": self.width * r / 2}
 
 
-def simulate(seed, fixed_physics=False, division_modes=False):
+def simulate(seed, fixed_physics=False, division_modes=False, max_cells=None):
     rng = np.random.default_rng(seed)
     p = random_params(rng, fixed_physics, division_modes)
+    if max_cells:  # sim v3: larger colonies, hence crowded windows with large expansion displacements
+        p["max_cells"] = int(rng.integers(*max_cells))
     col = Colony(p, rng)
     frames = {}
     for minute in range(p["minutes"]):
@@ -235,8 +237,8 @@ class SimMovie:
 
 
 def _job(args):
-    seed, out, fixed, modes = args
-    p, frames, start, parent = simulate(seed, fixed, modes)
+    seed, out, fixed, modes, mc = args
+    p, frames, start, parent = simulate(seed, fixed, modes, mc)
     Path(out, f"colony_{seed:05d}.pkl").write_bytes(pickle.dumps(
         {"p": p, "frames": frames, "start": start, "parent": parent}))
     return seed, len(frames), len(frames[max(frames)]["track"])
@@ -251,11 +253,12 @@ def main():
     ap.add_argument("--preview", action="store_true")
     ap.add_argument("--fixed-physics", action="store_true")
     ap.add_argument("--division-modes", action="store_true", help="sim v2: asymmetric/snapping division, widths")
+    ap.add_argument("--max-cells", type=int, nargs=2, default=None, help="sim v3: colony size range")
     a = ap.parse_args()
     if a.preview:
         import time
         t0 = time.time()
-        p, frames, start, parent = simulate(a.seed0, a.fixed_physics, a.division_modes)
+        p, frames, start, parent = simulate(a.seed0, a.fixed_physics, a.division_modes, a.max_cells)
         print(p, len(frames), len(frames[max(frames)]["track"]), f"{time.time()-t0:.1f}s")
         Path(a.out).mkdir(parents=True, exist_ok=True)
         Path(a.out, "preview.pkl").write_bytes(pickle.dumps(
@@ -263,7 +266,7 @@ def main():
         return
     Path(a.out).mkdir(parents=True, exist_ok=True)
     with Pool(a.workers) as pool:
-        for seed, nf, nc in pool.imap_unordered(_job, [(a.seed0 + i, a.out, a.fixed_physics, a.division_modes) for i in range(a.n)]):
+        for seed, nf, nc in pool.imap_unordered(_job, [(a.seed0 + i, a.out, a.fixed_physics, a.division_modes, a.max_cells) for i in range(a.n)]):
             print(seed, nf, nc, flush=True)
 
 

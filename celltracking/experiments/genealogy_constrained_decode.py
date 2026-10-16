@@ -69,6 +69,8 @@ def raft_scores(model, xa, xb, ca, cb, centre_override=None):
             nb = knn(c, cb, model.k_cross)
             ha = model.a_from_b[t](ha, hb, nb, cb[nb] - c[:, None])
             ha = model.a_from_a[t](ha, ha, ia, ca[ia] - ca[:, None])
+            if getattr(model, "couple", False):
+                ha = model.em_step(t, ha, hb, nb, c, cb)
             pred = c + model.delta[t](ha)
             centre = pred if model.move else c
             na = knn(cb, centre.detach(), model.k_cross)
