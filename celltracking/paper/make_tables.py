@@ -33,6 +33,7 @@ SKIP_NOTE = ("Decoding skips the one 33-minute window with fewer than nine targe
              "which moves 33-minute argmax values by up to 0.009 from other tables.")
 PSEUDO_SEEDS = ("raft_v3p", "raft_v3p_s1", "raft_v3p_s2")
 SEED_STD = {}
+FRAMES = {}
 
 
 def oiam_rows():
@@ -45,6 +46,10 @@ def oiam_rows():
             return
         d = df.copy()
         d["dense"] = d.n_anchors > 200
+        # per-window values of every row (one frame per seed), for the protocol audit (experiments/table2_audit.py)
+        FRAMES.setdefault(name, []).append(
+            d[[hcol, "window_id", "n_anchors", col] + (["n_scored"] if "n_scored" in d else [])]
+            .rename(columns={hcol: "H", col: "value"}))
         rows[name] = ([d[d[hcol] == h][col].mean() for h in H],
                       [d[(d[hcol] == h) & d.dense][col].mean() for h in H])
 
@@ -250,7 +255,7 @@ def table_external():
     seed_note = " \\rodsim-trained: mean of three training seeds (per window); OIAM-trained: one seed, three movies, with rotation augmentation." if seeds is not None else ""
     lines += [r"\bottomrule", r"\end{tabular}",
               r"\caption{\textbf{Zero-shot transfer.} Accuracy averaged over the three gaps of each dataset. "
-              r"No model saw labels from these datasets; the \rodsim model saw no real data at all. "
+              r"Except for the OIAM-trained model on OIAM, no model saw labels from these datasets; the \rodsim model saw no real data at all. "
               r"$^*$Best per dataset, in hindsight, of OT (o; three settings), CPD (c), Darcy advection (d) "
               r"and \rodsim forward simulation (f), all fixed on OIAM M0--M2. "
               r"\ours uses positions only. Last column: sequences on which \rodsim-trained \ours beats the best of all ten baselines (the columns, radial sector and the six behind Other; mean over gaps)." +
@@ -268,7 +273,6 @@ def table_genealogy():
             fmt(real[(real.H == h) & (real.model == "image")].pos_rate.mean()) for h in H) + r" \\")
     rows = [("OIAM M0--M2", real, "geometry", "Geometry"), ("OIAM M0--M2", real, "image", "Image + geometry"),
             ("\\rodsim", sim, "sim_geometry", "Geometry"), ("\\rodsim", sim, "sim_image", "Image + geometry"),
-            ("\\rodsim, lineage rendering", load("sim_genealogy_v2_eval"), "simv2_image", "Image + geometry"),
             ("\\rodsim + division modes", load("sim_genealogy_v2_v2_eval"), "simv2_v2_geometry", "Geometry"),
             ("\\rodsim + division modes", load("sim_genealogy_v2_v2_eval"), "simv2_v2_image", "Image + geometry")]
     for label, df, m, inp in rows:
@@ -277,7 +281,7 @@ def table_genealogy():
     lines += [r"\bottomrule", r"\end{tabular}",
               r"\caption{\textbf{Genealogy is visible in one snapshot.} Average precision for ``same ancestor $H$ minutes ago'' "
               r"over 8-nearest-neighbour pairs in single OIAM M3/M4 frames. \rodsim rows use no real label; "
-              r"lineage rendering adds inherited intensity and septum constriction, and the division-modes rows use it too.}", r"\label{tab:genealogy}", r"\end{table}"]
+              r"division-modes rows also render lineage (inherited intensity, septum constriction; alone: AP .110/.166/.219).}", r"\label{tab:genealogy}", r"\end{table}"]
     return "\n".join(lines)
 
 
@@ -609,6 +613,153 @@ def table_partition():
     return "\n".join(lines)
 
 
+def table_decomp():
+    """Conditional error decomposition (experiments/error_decomposition.py, docs/error_decomposition_protocol.md)."""
+    d = load("error_decomposition")
+    if d is None:
+        return r"\TODO{decomp}"
+    d["dense"] = d.n_anchors > 200
+    per = d.groupby(["H", "window_id"]).mean(numeric_only=True)
+    wm = pd.concat({False: per.groupby("H").mean(), True: per[per.dense > 0].groupby("H").mean()})
+    rows = (("Network (ensemble argmax)", "ok_argmax"), ("+ true family centres", "ok_oracle_centre"),
+            ("+ true partition", "ok_oracle_partition"), ("+ both", "ok_oracle_both"),
+            ("True ancestor among the 24 candidates", "in_cand_any"))
+    lines = [r"\begin{table}[t]", r"\centering\small", r"\setlength{\tabcolsep}{3pt}",
+             r"\begin{tabular}{lcccccc}", r"\toprule",
+             r"& \multicolumn{3}{c}{All windows} & \multicolumn{3}{c}{Dense ($N_a{>}200$)} \\",
+             r"\cmidrule(lr){2-4}\cmidrule(lr){5-7}", r"Intervention & 33 & 66 & 132 & 33 & 66 & 132 \\", r"\midrule"]
+    for name, c in rows:
+        if c == "in_cand_any":
+            lines.append(r"\midrule")
+        v = [wm.loc[(dn, h), c] for dn in (False, True) for h in H]
+        lines.append(f"{name} & " + " & ".join(fmt(x) for x in v) + r" \\")
+    lines += [r"\bottomrule", r"\end{tabular}",
+              r"\caption{\textbf{Which oracle fixes long gaps?} OIAM M3/M4, three-seed ensemble of the full model, "
+              r"window-mean accuracy. True centres: the final family centre of every ancestor is replaced by the centroid "
+              r"of its true family and the network re-scores its candidates (features unchanged). True partition: the "
+              r"descendant partition is given to the decoder. Protocol fixed before the run.}",
+              r"\label{tab:decomp}", r"\end{table}"]
+    return "\n".join(lines)
+
+
+def table_structured():
+    """Genealogy-constrained decoder, confirmatory movie M4 (docs/genealogy_constrained_protocol.md)."""
+    d = load("genealogy_constrained_decode")
+    if d is None:
+        return r"\TODO{structured}"
+    d = d[d.sequence == "M4"].assign(dense=lambda x: x.n_anchors > 200)
+    rows = (("Argmax", "argmax"), ("Potts (main paper)", "potts"), ("Growth prior only", "growth_only"),
+            ("Pairwise likelihood only", "pairwise_only"), ("Structured", "gc_noEM"),
+            ("Structured + centre update", "gc_full"), ("\\textcolor{gray}{True family sizes}", "oracle_card"),
+            ("\\textcolor{gray}{True partition}", "oracle_partition"))
+    g = d.groupby(["decoder", "H"]).mean(numeric_only=True)
+    gd = d[d.dense].groupby(["decoder", "H"]).mean(numeric_only=True)
+    lines = [r"\begin{table}[t]", r"\centering\small", r"\setlength{\tabcolsep}{2.5pt}",
+             r"\begin{tabular}{lccccccc}", r"\toprule",
+             r"& \multicolumn{2}{c}{Accuracy} & \multicolumn{2}{c}{Dense acc.} & \multicolumn{2}{c}{Pair F1}"
+             r" & Size err. \\",
+             r"\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-8}",
+             r"Decoder & 66 & 132 & 66 & 132 & 66 & 132 & 132 \\", r"\midrule"]
+    for name, m in rows:
+        if m == "oracle_card":
+            lines.append(r"\midrule")
+        v = [g.loc[(m, h), "acc"] for h in (66, 132)] + [gd.loc[(m, h), "acc"] for h in (66, 132)] + \
+            [g.loc[(m, h), "f1"] for h in (66, 132)]
+        lines.append(f"{name} & " + " & ".join(fmt(x) for x in v) + f" & {g.loc[(m, 132), 'size_err']:.2f}" + r" \\")
+    lines += [r"\bottomrule", r"\end{tabular}",
+              r"\caption{\textbf{A family-size prior repairs grouping, not long-gap ancestry} (OIAM M4, the confirmatory "
+              r"movie; same ensemble scores and genealogy affinities for every decoder; protocol and hyperparameters fixed "
+              r"before M4 was decoded). Size err.: mean $|n_{\text{pred}}-n_{\text{true}}|$ per ancestor; truth has std "
+              + f"{d[d.decoder == 'truth'].groupby('H').size_std.mean()[132]:.2f}" + r" of family sizes at 132 minutes.}",
+              r"\label{tab:structured}", r"\end{table}"]
+    return "\n".join(lines)
+
+
+def table_regime():
+    """Post hoc: moving centre minus direct matcher by crowding (experiments/regime_analysis.py)."""
+    d = load("regime_analysis")
+    if d is None:
+        return r"\TODO{regime}"
+    d = d.dropna(subset=["disp", "diff"]).copy()
+    d["crowd"] = pd.cut(d.n_anchors, [0, 25, 100, 400, 1e5], labels=["c1", "c2", "c3", "c4"])
+    groups = (("OIAM, trained on M0--M2", (d.regime == "in-domain")),
+              ("OIAM, trained on \\rodsim", (d.regime == "zero-shot") & (d.dataset == "OIAM")),
+              ("FAST/recA/rpsM, \\rodsim", (d.regime == "zero-shot") & d.dataset.isin(["FAST", "recA", "rpsM"])),
+              ("T98G/LFCT, \\rodsim", (d.regime == "zero-shot") & d.dataset.isin(["T98G", "LFCT"])))
+    lines = [r"\begin{table}[t]", r"\centering\small", r"\setlength{\tabcolsep}{3pt}",
+             r"\begin{tabular}{lcccccc}", r"\toprule",
+             r"& \multicolumn{2}{c}{Median} & \multicolumn{4}{c}{Margin by ancestors per window} \\",
+             r"\cmidrule(lr){2-3}\cmidrule(lr){4-7}",
+             r"Test windows, training & $N_a$ & disp. & $\le$25 & 26--100 & 101--400 & $>$400 \\", r"\midrule"]
+    for name, m in groups:
+        s = d[m]
+        cells = []
+        for c in ("c1", "c2", "c3", "c4"):
+            x = s[s.crowd == c]["diff"]
+            cells.append(f"{x.mean():+.3f} ({len(x)})" if len(x) >= 5 else "--")
+        lines.append(f"{name} & {s.n_anchors.median():.0f} & {s.disp.median():.1f} & " + " & ".join(cells) + r" \\")
+    lines += [r"\bottomrule", r"\end{tabular}",
+              r"\caption{\textbf{Where the moving centre helps} (post hoc). Per-window accuracy of \ours minus the direct "
+              r"matcher trained identically (three seeds each; in brackets the number of windows), all gaps pooled. "
+              r"Disp.: median displacement of targets from their true ancestor after removing the mean shift, in anchor "
+              r"spacings. The external bacterial windows are small; on crowded OIAM windows the centre learned from "
+              r"\rodsim adds little.}",
+              r"\label{tab:regime}", r"\end{table}"]
+    return "\n".join(lines)
+
+
+def table_longgap():
+    """Three attempts at long gaps, each under its protocol: coupled refinement (docs/coupled_refinement_protocol.md),
+    RodSim v3 (docs/sim_v3_protocol.md), one midpoint snapshot (docs/adaptive_snapshot_protocol.md)."""
+    import sys
+    sys.path.insert(0, str(ROOT))
+    cpl = RES / "coupled_confirm.csv"
+    ada = load("adaptive_snapshot")
+    if not cpl.exists() or ada is None or not (RES / "raft_external_simv3.parquet").exists():
+        return r"\TODO{longgap}"
+    from experiments.sim_v3_analysis import arm_means, oiam_ci
+    from experiments.adaptive_snapshot import boot
+    c = pd.read_csv(cpl).rename(columns={"Unnamed: 0": "key"})
+    w = arm_means()
+
+    def cell(m, lo, hi):
+        return f"{m:+.3f} [{lo:+.3f}, {hi:+.3f}]"
+
+    lines = [r"\begin{table*}[t]", r"\centering\small", r"\setlength{\tabcolsep}{4pt}",
+             r"\begin{tabular}{llccc}", r"\toprule", r"Comparison & Windows & 33 min & 66 min & 132 min \\", r"\midrule"]
+    for sub in ("all", "dense"):
+        x = c[c.key == f"argmax|accuracy|{sub}"].set_index("H")
+        lines.append((r"Coupled $-$ \ours (OIAM, 3+3 seeds)" if sub == "all" else "") + f" & {sub} & " +
+                     " & ".join(cell(x.loc[h, "diff"], x.loc[h, "blk_lo"], x.loc[h, "blk_hi"]) for h in (33, 66, 132)) + r" \\")
+    lines.append(r"\midrule")
+    for sub, dense in (("all", False), ("dense", True)):
+        x = oiam_ci(w, "v3", "v1", dense).set_index("H")
+        lines.append((r"\rodsim v3 $-$ v1, zero-shot (OIAM)" if sub == "all" else "") + f" & {sub} & " +
+                     " & ".join(cell(x.loc[h, "diff"], x.loc[h, "blk_lo"], x.loc[h, "blk_hi"]) for h in (33.0, 66.0, 132.0)) + r" \\")
+    for sub, dense in (("dense", True),):
+        x = oiam_ci(w, "v3", "v3dm", dense).set_index("H")
+        lines.append(r"\rodsim v3: \ours $-$ direct matcher" + f" & {sub} & " +
+                     " & ".join(cell(x.loc[h, "diff"], x.loc[h, "blk_lo"], x.loc[h, "blk_hi"]) for h in (33.0, 66.0, 132.0)) + r" \\")
+    lines.append(r"\midrule")
+    for sub in ("all", "dense"):
+        cells = ["--"]
+        for h in (66, 132):
+            s = ada[ada.H == h]
+            s = s[s.n_anchors > 200] if sub == "dense" else s
+            m, lo, hi = boot((s.chain - s.direct).to_numpy())
+            cells.append(f"{s.direct.mean():.3f}$\\to${s.chain.mean():.3f} ({m:+.3f} [{lo:+.3f}, {hi:+.3f}])")
+        lines.append((r"Midpoint snapshot, ensemble" if sub == "all" else "") + f" & {sub} & " + " & ".join(cells) + r" \\")
+    lines += [r"\bottomrule", r"\end{tabular}",
+              r"\caption{\textbf{Three attempts at long gaps}, each with hypotheses fixed before running (\cref{tab:ledger}). "
+              r"Window-mean argmax accuracy differences with block-bootstrap 95\% CIs (window bootstrap for the snapshot rows); "
+              r"dense: $>$200 ancestors. Coupled: E/M competition of ancestors for targets inside each refinement round, "
+              r"same recipe as \ours otherwise. \rodsim v3: colonies of 4{,}000--9{,}000 instead of 900--2{,}200 cells, "
+              r"all arms at learning rate $2.5{\times}10^{-4}$. Midpoint snapshot: assignment composed through one extra "
+              r"snapshot halfway through the window.}",
+              r"\label{tab:longgap}", r"\end{table*}"]
+    return "\n".join(lines)
+
+
 def table_downstream():
     """Biology read from predicted ancestry: family size per ancestor and size control."""
     import sys
@@ -823,7 +974,8 @@ def main():
     OUT.mkdir(exist_ok=True)
     for name, fn in (("oiam", table_oiam), ("oiam_full", lambda: table_oiam(True)), ("decoder_baselines", table_decoder_baselines), ("block_bootstrap", table_block_bootstrap), ("lomo", table_lomo), ("external", table_external),
                      ("genealogy", table_genealogy), ("decoder", table_decoder), ("simablate", table_ablation), ("labelfree", table_labelfree), ("blind", table_blind),
-                     ("selflabel", table_selflabel), ("downstream", table_downstream), ("bootstrap", table_bootstrap), ("blind4", table_blind4), ("calibration", table_calibration), ("temperature", table_temperature), ("reliability", table_reliability), ("core", table_core), ("partition", table_partition)):
+                     ("selflabel", table_selflabel), ("downstream", table_downstream), ("bootstrap", table_bootstrap), ("blind4", table_blind4), ("calibration", table_calibration), ("temperature", table_temperature), ("reliability", table_reliability), ("core", table_core), ("partition", table_partition),
+                     ("decomp", table_decomp), ("structured", table_structured), ("regime", table_regime), ("longgap", table_longgap)):
         tex = fn()
         if "adjustbox" not in tex:
             tex = tex.replace(r"\begin{tabular}", "\\begin{adjustbox}{max width=\\linewidth}\n\\begin{tabular}", 1)
