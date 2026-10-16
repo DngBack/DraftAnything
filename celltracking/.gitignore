@@ -32,3 +32,9 @@ paper/*.out
 paper/versions/
 paper/kit/
 .venv-onmi/
+
+# results, paper and logs stay local (only code is committed from here on)
+outputs/
+paper/*
+!paper/*.py
+!paper/*.sh

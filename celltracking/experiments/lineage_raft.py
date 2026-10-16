@@ -72,8 +72,12 @@ class GlobalCtx(nn.Module):
 
 
 class LineageRAFT(nn.Module):
-    def __init__(self, d=128, iters=4, k_self=12, k_cross=24, k_out=24, move=True, aux=False):
+    def __init__(self, d=128, iters=4, k_self=12, k_cross=24, k_out=24, move=True, aux=False, couple=False):
         super().__init__()
+        # couple: each round also runs an E-step (ancestors compete for the targets near their centres) and feeds the
+        # M-step (claimed-family centroid and soft size) to the centre update, so centre and partition are inferred
+        # jointly (docs/coupled_refinement_protocol.md). Zero-initialised: at step 0 identical to the plain model.
+        self.couple = couple
         self.iters, self.k_self, self.k_cross, self.k_out = iters, k_self, k_cross, k_out
         self.move = move  # ablation: False keeps every family centre at its initialisation
         self.aux = aux  # ablation: with move=False, still predict (and supervise) centres but never use them
@@ -93,6 +97,29 @@ class LineageRAFT(nn.Module):
                                   nn.GELU(), nn.Linear(d, 1))
         self.dust = nn.Linear(d, 1)
         self.fam = nn.Sequential(nn.Linear(2 * d + 3, d), nn.GELU(), nn.Linear(d, 1))
+        if couple:
+            self.claim = nn.ModuleList([nn.Sequential(nn.Linear(2 * d + 3, d), nn.GELU(), nn.Linear(d, 1))
+                                        for _ in range(iters)])
+            self.m_in = nn.ModuleList([nn.Linear(4, d) for _ in range(iters)])
+            for lin in self.m_in:
+                nn.init.zeros_(lin.weight)
+                nn.init.zeros_(lin.bias)
+
+    def em_step(self, t, ha, hb, nb, c, can_b):
+        """E: responsibility of anchor i for target nb[i, k], normalised over all anchors claiming that target.
+        M: soft family size n_i and claimed centroid m_i, returned as a residual input to the anchor state."""
+        off = can_b[nb] - c[:, None]
+        x = torch.cat([ha[:, None].expand(-1, nb.shape[1], -1), hb[nb], off / 4, off.norm(dim=-1, keepdim=True) / 4], -1)
+        s = self.claim[t](x).squeeze(-1).float()
+        flat, sf = nb.reshape(-1), s.reshape(-1)
+        mx = torch.full((len(can_b),), -1e9, device=s.device).scatter_reduce(0, flat, sf, "amax")
+        e = torch.exp(sf - mx[flat])
+        z = torch.zeros(len(can_b), device=s.device).index_add_(0, flat, e)
+        q = (e / z[flat].clamp_min(1e-9)).view_as(s)
+        n = q.sum(1, keepdim=True)
+        m = (q[..., None] * can_b[nb].float()).sum(1) / n.clamp_min(1e-6)
+        g = n / (n + 1)
+        return ha + self.m_in[t](torch.cat([g * (m - c.float()) / 4, torch.log1p(n), g], -1).to(ha.dtype))
 
     def forward(self, xa, xb, can_a, can_b):
         ha, hb = self.inp_a(xa), self.inp_b(xb)
@@ -109,6 +136,8 @@ class LineageRAFT(nn.Module):
             nb = knn(c, can_b, self.k_cross)
             ha = self.a_from_b[t](ha, hb, nb, can_b[nb] - c[:, None])
             ha = self.a_from_a[t](ha, ha, ia, can_a[ia] - can_a[:, None])
+            if self.couple:
+                ha = self.em_step(t, ha, hb, nb, c, can_b)
             pred = c + self.delta[t](ha)
             centre = pred if self.move else c
             if self.move or self.aux:
@@ -186,7 +215,8 @@ def train(args):
     movies = load_movies(args)
     stream = iter(torch.utils.data.DataLoader(WindowStream(movies, args), batch_size=None,
                                               num_workers=args.workers, prefetch_factor=8))
-    model = LineageRAFT(args.d, args.iters, k_out=args.k_out, move=not args.no_centre, aux=args.aux_centre).to(dev)
+    model = LineageRAFT(args.d, args.iters, k_out=args.k_out, move=not args.no_centre, aux=args.aux_centre,
+                        couple=args.couple).to(dev)
     if args.init_from:
         model.load_state_dict(torch.load(CKPT / f"{args.init_from}.pt", map_location=dev)["model"])
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
@@ -255,7 +285,7 @@ def load(tag, dev="cuda"):
     ck = torch.load(CKPT / f"{tag}.pt", map_location=dev, weights_only=False)
     a = ck["args"]
     model = LineageRAFT(a["d"], a["iters"], k_out=a.get("k_out", 24), move=not a.get("no_centre", False),
-                        aux=a.get("aux_centre", False)).to(dev)
+                        aux=a.get("aux_centre", False), couple=a.get("couple", False)).to(dev)
     model.load_state_dict(ck["model"])
     model.eval()
     return model, a
@@ -374,6 +404,7 @@ def main():
     p.add_argument("--no-centre", action="store_true", help="ablation: family centres stay at their initialisation")
     p.add_argument("--aux-centre", action="store_true", help="ablation: with --no-centre, keep the centre head and loss unused")
     p.add_argument("--k-out", type=int, default=24, help="candidate ancestors per target")
+    p.add_argument("--couple", action="store_true", help="E/M coupling of partition and centre in each round")
     args = p.parse_args()
     (train if args.mode == "train" else evaluate)(args)
 

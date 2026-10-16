@@ -1,0 +1,12 @@
+# environment / caches
+.venv*/
+__pycache__/
+
+# experiment outputs and run logs (regenerable, ~67 GB)
+results/
+logs/
+
+# paper: sources, builds and versions stay local; only the build scripts are tracked
+paper/*
+!paper/*.py
+!paper/*.sh
