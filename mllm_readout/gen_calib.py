@@ -41,6 +41,15 @@ def items(task):
         from count_repro import items as cb, SYS, Q
         return [dict(image=it["image"], sys=SYS, q=Q, cands=[str(i) for i in range(1, 10)], y=str(it["y"] + 1),
                      group="countbench") for it in cb()]
+    if task == "illusyn":  # G5 S: procedural shortcut-controlled illusions (illusyn.py)
+        from illusyn import items as syn
+        return syn()
+    if task == "illusynL":  # G5 Addendum 4: the same with VLMBias-range differences
+        from illusyn import items as syn
+        return syn(diffs=(0.30, 0.40, 0.50), seed=2027, tag="L_")
+    if task == "illusynC":  # G6 S': fresh stimuli, same generator as illusynL (docs/g6_protocol.md)
+        from illusyn import items as syn
+        return syn(diffs=(0.30, 0.40, 0.50), seed=2028, tag="C_")
     if task == "mmvp":  # 150 pairs; both images of a pair share the question and have opposite answers
         from huggingface_hub import snapshot_download
         from PIL import Image

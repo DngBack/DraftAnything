@@ -16,7 +16,9 @@ from gen_calib import items, Decide, ILLUSIONS
 G3 = os.environ.get("G3_DIR", f"{OUT}/g3")
 SETS = {"illusions": ("vlmbias", sorted(ILLUSIONS)), "carlogos": ("vlmbias", ["Car Logos"]),
         "dice": ("vlmbias", ["Dice Pattern"]), "tally": ("vlmbias", ["Tally Pattern"]),
-        "mmvp": ("mmvp", None), "pope": ("pope", None), "countbench": ("countbench", None)}
+        "mmvp": ("mmvp", None), "pope": ("pope", None), "countbench": ("countbench", None),
+        "illusyn": ("illusyn", None), "illusynL": ("illusynL", None),
+        "illusynC": ("illusynC", None)}
 
 
 class Stop(StoppingCriteria):
