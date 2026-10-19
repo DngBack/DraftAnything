@@ -43,6 +43,34 @@ def zero_label(name):
     return out
 
 
+ICL_MODELS = ["qwen3vl4b", "qwen3vl8b", "qwen35_4b", "qwen35_9b", "gemma3_4b", "internvl35_8b"]
+
+
+def icl_base(m):
+    """free generation on the ICL test items: the G4 plain run, else ICL k=0 if parsed, else the G3 decision-step answer"""
+    k0 = np.load(f"{R}/g4/icl_{m}_k0.npz") if glob.glob(f"{R}/g4/icl_{m}_k0.npz") else None
+    if glob.glob(f"{R}/g4/{m}_illusions_plain.npz"):
+        p = np.load(f"{R}/g4/{m}_illusions_plain.npz")
+        return dict(zip(p["idx"].tolist(), (p["pred"] == p["y"]).tolist()))
+    if k0 is not None and np.mean(k0["pred"] < 0) < 0.1:
+        return dict(zip(k0["idx"].tolist(), (k0["pred"] == k0["y"]).tolist()))
+    d = np.load(glob.glob(f"{R}/g3*/{m}_illusions_states.npz")[0])
+    return dict(zip(d["idx"].tolist(), (d["ans"] == d["y"]).tolist()))
+
+
+def icl_gains(fmt="", models=ICL_MODELS, ks=(1, 2, 4, 8)):
+    """{k: [gain in points per model]} of k-shot in-context examples over free generation on the same items"""
+    out = {}
+    for m in models:
+        base = icl_base(m)
+        for k in ks:
+            f = f"{R}/g4/icl_{m}{fmt}_k{k}.npz"
+            if glob.glob(f):
+                z = np.load(f)
+                out.setdefault(k, []).append(100 * (np.mean(z["pred"] == z["y"]) - np.mean([base.get(int(i), 0) for i in z["idx"]])))
+    return out
+
+
 def labelcost():
     D = pd.read_csv(f"{R}/explore_labelcost.csv")
     fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.35), gridspec_kw={"width_ratios": [1.25, 1]})
@@ -56,14 +84,10 @@ def labelcost():
             ax.plot(np.log2(g.index), g[c], "-o", color=COL[c], ms=2.5, lw=1.3, label=lab[c])
         z = zero_label(name)
         if name == "illusions":
-            icl = {}
-            for f in glob.glob(f"{R}/g4/icl_*_k*.npz"):
-                m, k = f.split("icl_")[1][:-4].rsplit("_k", 1)
-                a, b = acc(f, f"{R}/g4/{m}_illusions_plain.npz")
-                icl.setdefault(int(k), []).append(100 * (a - b))
+            icl = icl_gains()
             ks = sorted(icl)
             ax.plot(np.log2(ks), [np.mean(icl[k]) for k in ks], "--s", color=COL["icl"], ms=3, lw=1.1,
-                    label="in-context examples (model)")
+                    label="in-context examples (model, 6 models)")
         # label-free repairs at x = "0 labels"; labels spread vertically
         zk = [("R4", "think"), ("R2", "guidance"), ("R5", "2$\\times$ image")] + ([("channel", "boxes")] if "channel" in z else [])
         zk.sort(key=lambda t: z[t[0]])

@@ -22,34 +22,38 @@ def med(x, pct=True):
 def types():
     d = pd.read_csv(f"{R}/g4_types.csv")
     va = pd.read_csv(f"{R}/explore_valueadd.csv")
+    nat = pd.read_csv(f"{R}/g5/native.csv")  # G5 N: the MLLM's own visual pathway
     cols = {}
     for s in ("illusions", "countbench"):
         x = d[d.set == s]
         v = va[va.set == s]
         err = x[TYPES].sum(axis=1)
+        n = nat[nat.set == s]
         cols[s] = [
-            med(x.raw), med(x.acc_cal), med(x.acc_ans), med(x.acc_mllmL), med(x.acc_mllm0), med(x.acc_ext_mean), med(x.acc_ext),
+            med(x.raw), med(x.acc_cal), med(x.acc_ans), med(x.acc_mllmL), med(n.l0), med(n.pre), med(x.acc_ext_mean), med(x.acc_ext),
             med(x.acc_dino_mean), med(x.acc_ext_shuf),
             med(x.acc_loso_ans) if s == "illusions" else "--", med(x.acc_loso_ext) if s == "illusions" else "--",
-            med(100 * v.llm_adds, False), med(100 * v.input_adds, False),
-        ] + [med(x[t] / err) for t in TYPES]
+            med(100 * n.va_l0, False), med(100 * v.llm_adds, False), med(100 * v.input_adds, False),
+        ] + [med(x[t] / err) for t in TYPES] + [med(n[t] / n.errors) for t in ("UNSPOKEN", "INHERITED")]
         cols[s + "_n"] = len(x)
     names = ["Model output", "Calibrator (own logits)", "Decision state, 75\\% depth", "Image tokens, 75\\% depth",
-             "Image tokens, layer 0", "SigLIP2 (frozen), mean", "SigLIP2, 4$\\times$4 grid (types)", "DINOv2 (frozen)", "SigLIP2, shuffled labels",
+             "Own LLM input (projector out)", "Own vision encoder output", "SigLIP2 (frozen), mean", "SigLIP2, 4$\\times$4 grid (types)",
+             "DINOv2 (frozen)", "SigLIP2, shuffled labels",
              "Decision state, leave-one-type-out", "SigLIP2, leave-one-type-out",
-             "LLM adds over SigLIP2 (pts)", "SigLIP2 adds over LLM (pts)"] + [TNAME[t] for t in TYPES]
+             "LLM adds over own input (pts)", "LLM adds over SigLIP2 (pts)", "SigLIP2 adds over LLM (pts)"] + [TNAME[t] for t in TYPES] + \
+            [TNAME[t] + ", own input as $E$" for t in ("UNSPOKEN", "INHERITED")]
     rows = []
     for i, n in enumerate(names):
         if i == 0:
             rows.append(r"\multicolumn{3}{@{}l}{\emph{Accuracy of each readout (\%)}} \\")
-        if i == 11:
+        if i == 12:
             rows.append(r"\multicolumn{3}{@{}l}{\emph{Value added, probe on the concatenation}} \\")
-        if i == 13:
+        if i == 15:
             rows.append(r"\multicolumn{3}{@{}l}{\emph{Share of errors (\%)}} \\")
         rows.append(f"{n} & {cols['illusions'][i]} & {cols['countbench'][i]} \\\\")
     open(f"{T}/types.tex", "w").write(r"""\begin{table}[t]
 \centering\small
-\caption{\textbf{Who is doing the seeing?} Median [min--max] over """ + str(cols["illusions_n"]) + r""" models of linear readouts fitted with 5-fold cross-fitting grouped by base image. On the illusions, a frozen image encoder separates the answers better than the MLLM's own decision state and the LLM adds nothing to it; on CountBench, the count is computed by the LLM. Leave-one-type-out: trained on five illusion types, tested on the sixth. Error types: \cref{sec:method}.}
+\caption{\textbf{Who is doing the seeing?} Median [min--max] over """ + str(cols["illusions_n"]) + r""" models of linear readouts fitted with 5-fold cross-fitting grouped by base image. On the illusions, the MLLM's own visual pathway (vision-encoder output and projector output entering the LLM, mean-pooled, question-blind) and a frozen SigLIP2 separate the answers at least as well as the decision state, and the LLM adds nothing to its own input; on CountBench, the count is computed by the LLM. Leave-one-type-out: trained on five illusion types, tested on the sixth. Error types: \cref{sec:method}; $E$ is SigLIP2 unless stated.}
 \label{tab:types}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -186,16 +190,24 @@ def labelcost():
         f = lambda c, k: "--" if pd.isna(r.loc[k, c]) else f"{100 * r.loc[k, c]:.0f}"
         rows.append(f"{MODEL[m]} & {100 * r.raw.mean():.0f} & " + " & ".join(f"{f(c, 8)}/{f(c, 32)}" for c in
                                                                          ["cal_ridge", "ans_ridge", "mllm0_ridge", "ext_ridge"]) + r" \\")
-    icl = {}
-    for f in glob.glob(f"{R}/g4/icl_*_k*.npz"):
-        m, k = f.split("icl_")[1][:-4].rsplit("_k", 1)
-        z = np.load(f)
-        icl[(m, int(k))] = 100 * np.mean(z["pred"] == z["y"])
-    irows = [f"{MODEL[m]} & " + " & ".join(f"{icl[(m, k)]:.1f}" for k in (1, 2, 4, 8)) + r" \\"
-             for m in sorted({m for m, _ in icl}, key=ORDER.index)]
+    from make_figures_g4 import icl_base, ICL_MODELS
+    irows = []
+    for m, fmt, lab in [(m, "", MODEL[m]) for m in sorted(ICL_MODELS, key=ORDER.index)] + \
+            [("qwen3vl8b", f"_{v}", f"Qwen3-VL-8B, {n}") for v, n in (("instr", "instruction"), ("alt", "alternating"), ("single", "one turn"))]:
+        base = icl_base(m)
+        cells, b = [], None
+        for k in (1, 2, 4, 8):
+            f = f"{R}/g4/icl_{m}{fmt}_k{k}.npz"
+            if glob.glob(f):
+                z = np.load(f)
+                b = 100 * np.mean([base.get(int(i), 0) for i in z["idx"]])
+                cells.append(f"{100 * np.mean(z['pred'] == z['y']):.1f}")
+            else:
+                cells.append("--")
+        irows.append(f"{lab} & {b:.1f} & " + " & ".join(cells) + r" \\")
     open(f"{T}/supp_labelcost.tex", "w").write(r"""\begin{table}[t]
 \centering\small
-\caption{\textbf{Label cost on the illusions, per model.} Ridge readouts with $k{=}8$ / $k{=}32$ labelled items per class and question wording, trained on half of the base images and tested on the other half (30 draws; \%). The SigLIP2 column is the same encoder for every model. Bottom: in-context learning with $k$ labelled demonstrations per class of the same wording (other base images), 264 test items.}
+\caption{\textbf{Label cost on the illusions, per model.} Ridge readouts with $k{=}8$ / $k{=}32$ labelled items per class and question wording, trained on half of the base images and tested on the other half (30 draws; \%). The SigLIP2 column is the same encoder for every model. Bottom: in-context learning with $k$ labelled demonstrations per class of the same wording (other base images), 264 test items; ``free'': the same items without examples (free generation; Qwen3.5-9B: decision-step answer, as its 16-token free answers are unparsed in 50\%). Format variants (G5): an instruction that the examples share the question and the answer depends on an exact measurement; alternating classes; all examples in one turn as numbered images.}
 \label{tab:supp_labelcost}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{@{}lrrrrr@{}}
@@ -204,9 +216,9 @@ Model & Raw & Calib. & Dec.\ state & Img.\ L0 & SigLIP2 \\
 \midrule
 """ + "\n".join(rows) + r"""
 \midrule
-ICL & $k{=}1$ & 2 & 4 & 8 & \\
+ICL & free & $k{=}1$ & 2 & 4 & 8 \\
 \midrule
-""" + "\n".join(r.replace(r" \\", r" & \\") for r in irows) + r"""
+""" + "\n".join(irows) + r"""
 \bottomrule
 \end{tabular}}
 \end{table}
