@@ -1,0 +1,22 @@
+0 T=4 loss=9.019 ce=7.983 ev=2.071 acc=0.012 1s
+200 T=9 loss=4.932 ce=3.971 ev=1.922 acc=0.172 31s
+400 T=13 loss=5.040 ce=3.919 ev=2.242 acc=0.186 74s
+600 T=17 loss=5.000 ce=3.787 ev=2.426 acc=0.225 125s
+800 T=17 loss=5.009 ce=3.818 ev=2.381 acc=0.209 186s
+1000 T=31 loss=5.264 ce=3.821 ev=2.887 acc=0.195 256s
+1200 T=27 loss=5.174 ce=3.786 ev=2.776 acc=0.215 332s
+1400 T=32 loss=5.417 ce=3.908 ev=3.017 acc=0.174 414s
+1600 T=37 loss=nan ce=nan ev=nan acc=0.012 514s
+1800 T=41 loss=nan ce=nan ev=nan acc=0.012 610s
+2000 T=41 loss=nan ce=nan ev=nan acc=0.023 709s
+2200 T=42 loss=nan ce=nan ev=nan acc=0.021 812s
+2400 T=21 loss=nan ce=nan ev=nan acc=0.014 906s
+2600 T=26 loss=nan ce=nan ev=nan acc=0.008 1000s
+2800 T=44 loss=nan ce=nan ev=nan acc=0.004 1100s
+3000 T=45 loss=nan ce=nan ev=nan acc=0.016 1202s
+3200 T=23 loss=nan ce=nan ev=nan acc=0.004 1299s
+3400 T=25 loss=nan ce=nan ev=nan acc=0.006 1395s
+3600 T=40 loss=nan ce=nan ev=nan acc=0.008 1493s
+3800 T=47 loss=nan ce=nan ev=nan acc=0.010 1595s
+3999 T=41 loss=nan ce=nan ev=nan acc=0.008 1691s
+{"10": 0.01, "25": 0.017, "50": 0.014, "100": 0.017, "200": 0.016}

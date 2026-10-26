@@ -1,0 +1,43 @@
+[W1026 00:21:49.197415051 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 2424832, total: 150109880320).
+[W1026 00:21:49.202849621 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 15007744, total: 150109880320).
+Traceback (most recent call last):
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/scripts/train.py", line 150, in <module>
+    main()
+    ~~~~^^
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/scripts/train.py", line 126, in main
+    value, ev = model(b['x'], b['svec'])
+                ~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/sleepkie/model.py", line 114, in forward
+    m = self.step(m, self.inp(x[:, t]))
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/sleepkie/model.py", line 102, in step
+    u = cap(u + (self.blocks[0 if self.tied else k](u, z) - u) / self.n_iter)
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/sleepkie/model.py", line 48, in forward
+    return u + self.mlp(self.n3(u))
+               ~~~~~~~~^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/container.py", line 259, in forward
+    input = module(input)
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 139.80 GiB of which 14.31 MiB is free. Process 1861878 has 105.11 GiB memory in use. Process 2487904 has 6.56 GiB memory in use. Process 2487906 has 14.19 GiB memory in use. Including non-PyTorch memory, this process has 13.91 GiB memory in use. Of the allocated memory 13.11 GiB is allocated by PyTorch, and 75.75 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
