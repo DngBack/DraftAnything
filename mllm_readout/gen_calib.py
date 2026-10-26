@@ -50,6 +50,9 @@ def items(task):
     if task == "illusynC":  # G6 S': fresh stimuli, same generator as illusynL (docs/g6_protocol.md)
         from illusyn import items as syn
         return syn(diffs=(0.30, 0.40, 0.50), seed=2028, tag="C_")
+    if task == "illusynP":  # G7 Y: psychometric set with an unseen regime C (docs/g7_protocol.md)
+        from illusyn import items as syn
+        return syn(n_per=140, diffs=(0.05, 0.10, 0.20, 0.30, 0.45, 0.60, 0.80), seed=2029, tag="P_", regimes="ABC")
     if task == "mmvp":  # 150 pairs; both images of a pair share the question and have opposite answers
         from huggingface_hub import snapshot_download
         from PIL import Image

@@ -60,19 +60,51 @@ def segments(fam, rng, diff):
     return seg
 
 
-def first_longer(fam, seg):
-    """signed label: Mueller-Lyer top shaft / Ponzo upper bar / vertical-horizontal horizontal line is the longer one"""
+def ref_lengths(fam, seg):
+    """(reference, other) length in px: Mueller-Lyer top shaft / Ponzo upper bar / vertical-horizontal horizontal line first"""
     l = np.hypot(seg[:2, 2] - seg[:2, 0], seg[:2, 3] - seg[:2, 1])
     if fam == "verticalhorizontal":
-        return int(l[0] > l[1])
+        return float(l[0]), float(l[1])
     top = int(np.argmin(seg[:2, 1]))
-    return int(l[top] > l[1 - top])
+    return float(l[top]), float(l[1 - top])
+
+
+def first_longer(fam, seg):
+    """signed label: the reference line (see ref_lengths) is the longer one"""
+    a, b = ref_lengths(fam, seg)
+    return int(a > b)
+
+
+def dashed(dr, x0, y0, x1, y1, col, w, dash, gap):
+    """G7 regime C: dashed segment at 2x scale"""
+    L = np.hypot(x1 - x0, y1 - y0)
+    ux, uy = (x1 - x0) / L, (y1 - y0) / L
+    t = 0.0
+    while t < L:
+        e = min(t + dash, L)
+        dr.line([(x0 + ux * t, y0 + uy * t), (x0 + ux * e, y0 + uy * e)], fill=col, width=w)
+        t = e + gap
 
 
 def render(fam, regime, diff, rng, info=None):
     seg = np.array(segments(fam, rng, diff), float)
+    if regime == "C":  # G7: whole figure scaled about the canvas centre (lengths are recorded after scaling)
+        seg = 256 + (seg - 256) * rng.uniform(0.70, 0.90)
     if info is not None:
         info["longer"] = first_longer(fam, seg) if diff else -1
+        info["L"] = ref_lengths(fam, seg)  # G7: rotation (regime B) preserves lengths
+    if regime == "C":
+        w = int(rng.integers(3, 6))
+        period, phase = int(rng.integers(16, 25)), int(rng.integers(0, 24))
+        yy, xx = np.mgrid[:S, :S]
+        bg = np.where(((xx + yy + phase) % period) < period // 3, 228, 246).astype(np.uint8)[..., None].repeat(3, 2)
+        col = tuple(int(255 * v) for v in colorsys.hsv_to_rgb(rng.random(), rng.uniform(0.5, 1), rng.uniform(0.15, 0.35)))
+        dash, gap = rng.uniform(10, 14), rng.uniform(5, 7)
+        im = Image.fromarray(bg).resize((2 * S, 2 * S))
+        dr = ImageDraw.Draw(im)
+        for x0, y0, x1, y1 in seg:
+            dashed(dr, 2 * x0, 2 * y0, 2 * x1, 2 * y1, col, 2 * w, 2 * dash, 2 * gap)
+        return im.resize((S, S), Image.LANCZOS)
     w = int(rng.integers(2, 5)) if regime == "A" else int(rng.integers(5, 9))
     if regime == "B":
         th = np.deg2rad(rng.uniform(-8, 8))
@@ -95,16 +127,16 @@ def render(fam, regime, diff, rng, info=None):
     return im.resize((S, S), Image.LANCZOS)
 
 
-def items(n_per=100, diffs=DIFFS, seed=2026, tag=""):
+def items(n_per=100, diffs=DIFFS, seed=2026, tag="", regimes="AB"):
     rng = np.random.default_rng(seed)
     out = []
     for fam in Q:
-        for regime in "AB":
+        for regime in regimes:
             for k in range(2 * n_per):
                 eq = k < n_per
                 diff = 0.0 if eq else diffs[k % len(diffs)]
                 info = {}
-                out.append(dict(image=render(fam, regime, diff, rng, info), longer=info["longer"], sys=None, q=Q[fam], cands=["Yes", "No"],
+                out.append(dict(image=render(fam, regime, diff, rng, info), longer=info["longer"], L=info["L"], logr=0.0 if eq else float(np.log(info["L"][0] / info["L"][1])), sys=None, q=Q[fam], cands=["Yes", "No"],
                                 y="Yes" if eq else "No", group=fam, gate="{", regime=regime, diff=diff,
                                 key=f"{tag}{fam}_{regime}_{k:03d}"))
     return out

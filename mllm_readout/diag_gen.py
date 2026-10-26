@@ -18,7 +18,8 @@ SETS = {"illusions": ("vlmbias", sorted(ILLUSIONS)), "carlogos": ("vlmbias", ["C
         "dice": ("vlmbias", ["Dice Pattern"]), "tally": ("vlmbias", ["Tally Pattern"]),
         "mmvp": ("mmvp", None), "pope": ("pope", None), "countbench": ("countbench", None),
         "illusyn": ("illusyn", None), "illusynL": ("illusynL", None),
-        "illusynC": ("illusynC", None)}
+        "illusynC": ("illusynC", None),
+        "illusynP": ("illusynP", None)}
 
 
 class Stop(StoppingCriteria):
