@@ -1,0 +1,32 @@
+cem_r1 seed=1 params=3,373,371 train=1470 val=259 test=440
+ep 0 step 184 loss 3.485 val micro 0.5664 income=0.181 spending=0.212 date=0.885 number=0.868 postcode=0.526 recall_at_K=0.985 8s
+ep 1 step 368 loss 2.526 val micro 0.6077 income=0.211 spending=0.215 date=0.909 number=0.866 postcode=0.657 recall_at_K=0.987 14s
+ep 2 step 552 loss 2.200 val micro 0.6134 income=0.234 spending=0.223 date=0.922 number=0.882 postcode=0.614 recall_at_K=0.991 20s
+ep 3 step 736 loss 2.002 val micro 0.6126 income=0.207 spending=0.258 date=0.924 number=0.893 postcode=0.606 recall_at_K=0.993 27s
+ep 4 step 920 loss 1.854 val micro 0.6046 income=0.216 spending=0.284 date=0.916 number=0.885 postcode=0.649 recall_at_K=0.997 34s
+ep 5 step 1104 loss 1.691 val micro 0.6174 income=0.241 spending=0.288 date=0.927 number=0.881 postcode=0.646 recall_at_K=0.993 41s
+ep 6 step 1288 loss 1.535 val micro 0.5904 income=0.256 spending=0.248 date=0.917 number=0.873 postcode=0.603 recall_at_K=0.993 48s
+ep 7 step 1472 loss 1.441 val micro 0.5850 income=0.187 spending=0.209 date=0.922 number=0.877 postcode=0.621 recall_at_K=0.993 56s
+ep 8 step 1656 loss 1.314 val micro 0.6002 income=0.230 spending=0.282 date=0.913 number=0.871 postcode=0.654 recall_at_K=0.993 64s
+ep 9 step 1840 loss 1.185 val micro 0.6012 income=0.194 spending=0.257 date=0.918 number=0.883 postcode=0.661 recall_at_K=0.992 72s
+ep 10 step 2024 loss 1.069 val micro 0.5883 income=0.210 spending=0.262 date=0.923 number=0.881 postcode=0.643 recall_at_K=0.991 80s
+ep 11 step 2208 loss 0.971 val micro 0.5961 income=0.216 spending=0.210 date=0.921 number=0.891 postcode=0.667 recall_at_K=0.991 88s
+ep 12 step 2392 loss 0.848 val micro 0.6068 income=0.262 spending=0.242 date=0.929 number=0.893 postcode=0.643 recall_at_K=0.993 96s
+ep 13 step 2576 loss 0.758 val micro 0.5938 income=0.206 spending=0.223 date=0.919 number=0.901 postcode=0.634 recall_at_K=0.992 103s
+ep 14 step 2760 loss 0.665 val micro 0.5873 income=0.235 spending=0.254 date=0.918 number=0.882 postcode=0.619 recall_at_K=0.992 112s
+ep 15 step 2944 loss 0.583 val micro 0.5982 income=0.234 spending=0.240 date=0.923 number=0.893 postcode=0.633 recall_at_K=0.989 121s
+ep 16 step 3128 loss 0.525 val micro 0.5820 income=0.235 spending=0.213 date=0.915 number=0.889 postcode=0.607 recall_at_K=0.991 129s
+ep 17 step 3312 loss 0.450 val micro 0.6024 income=0.221 spending=0.251 date=0.923 number=0.885 postcode=0.623 recall_at_K=0.992 137s
+ep 18 step 3496 loss 0.370 val micro 0.6020 income=0.253 spending=0.266 date=0.928 number=0.872 postcode=0.620 recall_at_K=0.991 145s
+ep 19 step 3680 loss 0.315 val micro 0.5911 income=0.247 spending=0.225 date=0.921 number=0.879 postcode=0.580 recall_at_K=0.991 153s
+ep 20 step 3864 loss 0.265 val micro 0.5923 income=0.226 spending=0.244 date=0.925 number=0.885 postcode=0.619 recall_at_K=0.990 161s
+ep 21 step 4048 loss 0.210 val micro 0.6080 income=0.244 spending=0.265 date=0.923 number=0.885 postcode=0.609 recall_at_K=0.990 169s
+ep 22 step 4232 loss 0.186 val micro 0.5980 income=0.221 spending=0.238 date=0.922 number=0.889 postcode=0.602 recall_at_K=0.987 177s
+ep 23 step 4416 loss 0.142 val micro 0.5949 income=0.240 spending=0.257 date=0.923 number=0.889 postcode=0.589 recall_at_K=0.990 185s
+ep 24 step 4600 loss 0.113 val micro 0.6005 income=0.230 spending=0.252 date=0.925 number=0.889 postcode=0.615 recall_at_K=0.990 193s
+ep 25 step 4784 loss 0.099 val micro 0.5899 income=0.215 spending=0.227 date=0.925 number=0.889 postcode=0.599 recall_at_K=0.989 201s
+ep 26 step 4968 loss 0.079 val micro 0.5929 income=0.225 spending=0.241 date=0.923 number=0.889 postcode=0.591 recall_at_K=0.990 210s
+ep 27 step 5152 loss 0.068 val micro 0.5931 income=0.223 spending=0.244 date=0.921 number=0.893 postcode=0.584 recall_at_K=0.991 218s
+ep 28 step 5336 loss 0.065 val micro 0.5944 income=0.221 spending=0.249 date=0.923 number=0.893 postcode=0.589 recall_at_K=0.990 233s
+ep 29 step 5520 loss 0.063 val micro 0.5948 income=0.223 spending=0.246 date=0.923 number=0.893 postcode=0.589 recall_at_K=0.991 241s
+best ep 5 val 0.6174 test 0.6065

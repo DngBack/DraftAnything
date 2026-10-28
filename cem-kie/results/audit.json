@@ -1,0 +1,191 @@
+{
+ "train": {
+  "income": {
+   "docs": 1729,
+   "subsets": {
+    "competing": 1373,
+    "absent": 338,
+    "null": 18
+   },
+   "candidate_values_median": 228.0,
+   "gold_mentions_median": 2.0,
+   "gold_spread_median": 0.17687533729087968,
+   "f1": {
+    "first": 0.004653868528214078,
+    "last": 0.002326934264107039,
+    "frequent": 0.02501454333915067,
+    "max": 0.01687027341477603,
+    "oracle": 0.8904020752269779
+   }
+  },
+  "spending": {
+   "docs": 1729,
+   "subsets": {
+    "competing": 1357,
+    "absent": 349,
+    "null": 23
+   },
+   "candidate_values_median": 228.0,
+   "gold_mentions_median": 2.0,
+   "gold_spread_median": 0.1870027484449588,
+   "f1": {
+    "first": 0.0,
+    "last": 0.00407806583163414,
+    "frequent": 0.005825808330905913,
+    "max": 0.0052432274978153216,
+    "oracle": 0.8860594188703885
+   }
+  },
+  "date": {
+   "docs": 1729,
+   "subsets": {
+    "competing": 145,
+    "repeated": 1485,
+    "absent": 86,
+    "single": 11,
+    "null": 2
+   },
+   "candidate_values_median": 6.0,
+   "gold_mentions_median": 18.0,
+   "gold_spread_median": 0.9479744361696508,
+   "f1": {
+    "first": 0.7715617715617715,
+    "last": 0.615967365967366,
+    "frequent": 0.8886946386946387,
+    "oracle": 0.9744655581947743
+   }
+  },
+  "number": {
+   "docs": 1729,
+   "subsets": {
+    "repeated": 997,
+    "absent": 87,
+    "competing": 445,
+    "single": 195,
+    "null": 5
+   },
+   "candidate_values_median": 1.0,
+   "gold_mentions_median": 2.0,
+   "gold_spread_median": 0.05428638718794159,
+   "f1": {
+    "first": 0.7952941176470588,
+    "last": 0.6323529411764706,
+    "frequent": 0.7788235294117647,
+    "oracle": 0.9741148467717942
+   }
+  },
+  "postcode": {
+   "docs": 1729,
+   "subsets": {
+    "competing": 823,
+    "absent": 519,
+    "repeated": 236,
+    "single": 122,
+    "null": 29
+   },
+   "candidate_values_median": 2.0,
+   "gold_mentions_median": 1.0,
+   "gold_spread_median": 0.0,
+   "f1": {
+    "first": 0.5269822128429303,
+    "last": 0.25203497135966235,
+    "frequent": 0.40096472716309917,
+    "oracle": 0.8198542172856647
+   }
+  }
+ },
+ "dev-0": {
+  "income": {
+   "docs": 440,
+   "subsets": {
+    "null": 6,
+    "competing": 342,
+    "absent": 92
+   },
+   "candidate_values_median": 252.0,
+   "gold_mentions_median": 2.0,
+   "gold_spread_median": 0.10659335603831326,
+   "f1": {
+    "first": 0.004576659038901602,
+    "last": 0.002288329519450801,
+    "frequent": 0.016018306636155607,
+    "max": 0.002288329519450801,
+    "oracle": 0.8814432989690721
+   }
+  },
+  "spending": {
+   "docs": 440,
+   "subsets": {
+    "null": 6,
+    "competing": 347,
+    "absent": 87
+   },
+   "candidate_values_median": 252.0,
+   "gold_mentions_median": 2.0,
+   "gold_spread_median": 0.2031781015511962,
+   "f1": {
+    "first": 0.0,
+    "last": 0.0,
+    "frequent": 0.006864988558352402,
+    "max": 0.002288329519450801,
+    "oracle": 0.8886043533930857
+   }
+  },
+  "date": {
+   "docs": 440,
+   "subsets": {
+    "competing": 30,
+    "repeated": 392,
+    "single": 3,
+    "absent": 15
+   },
+   "candidate_values_median": 8.0,
+   "gold_mentions_median": 19.0,
+   "gold_spread_median": 0.9591271672489946,
+   "f1": {
+    "first": 0.8164196123147093,
+    "last": 0.5974914481185861,
+    "frequent": 0.9099201824401368,
+    "oracle": 0.9826589595375722
+   }
+  },
+  "number": {
+   "docs": 440,
+   "subsets": {
+    "repeated": 268,
+    "competing": 126,
+    "single": 26,
+    "absent": 17,
+    "null": 3
+   },
+   "candidate_values_median": 2.0,
+   "gold_mentions_median": 2.0,
+   "gold_spread_median": 0.08928022135868269,
+   "f1": {
+    "first": 0.766743648960739,
+    "last": 0.5750577367205543,
+    "frequent": 0.7505773672055427,
+    "oracle": 0.9801633605600933
+   }
+  },
+  "postcode": {
+   "docs": 440,
+   "subsets": {
+    "single": 37,
+    "absent": 88,
+    "competing": 230,
+    "repeated": 71,
+    "null": 14
+   },
+   "candidate_values_median": 3.0,
+   "gold_mentions_median": 1.0,
+   "gold_spread_median": 0.0,
+   "f1": {
+    "first": 0.6244019138755981,
+    "last": 0.2511961722488038,
+    "frequent": 0.4688995215311005,
+    "oracle": 0.8848167539267016
+   }
+  }
+ }
+}

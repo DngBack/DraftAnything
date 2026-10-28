@@ -1,0 +1,7 @@
+04:47:35 start A0_N1 s0 on GPU 1
+04:51:35 start A2_N4 s0 on GPU 1
+04:55:35 start A5_deep4 s0 on GPU 1
+04:59:35 start A0_N1 s1 on GPU 1
+05:04:35 start A2_N4 s1 on GPU 0
+05:08:35 start A5_deep4 s1 on GPU 0
+05:12:35 start A0_N1 s2 on GPU 0

@@ -1,0 +1,53 @@
+[W1026 05:13:31.423665842 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 20971520 bytes (free: 21757952, total: 150109880320).
+[W1026 05:13:31.464712682 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2097152 bytes (free: 2883584, total: 150109880320).
+[W1026 05:13:31.466315642 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2097152 bytes (free: 2883584, total: 150109880320).
+Traceback (most recent call last):
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/scripts/train.py", line 151, in <module>
+    main()
+    ~~~~^^
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/scripts/train.py", line 126, in main
+    value, ev = model(b['x'], b['svec'])
+                ~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/sleepkie/model.py", line 115, in forward
+    return self.heads(q, m, T)
+           ~~~~~~~~~~^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/sleepkie/model.py", line 65, in forward
+    q = b(q, state)
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/jovyan/bachdx2/DraftAnything/sleep-kie/sleepkie/model.py", line 47, in forward
+    zz = self.nz(z); u = u + self.cross(self.n2(u), zz, zz, need_weights=False)[0]
+                             ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/modules/activation.py", line 1495, in forward
+    attn_output, attn_output_weights = F.multi_head_attention_forward(
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        query,
+        ^^^^^^
+    ...<17 lines>...
+        is_causal=is_causal,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/jovyan/bachdx2/DraftAnything/celltracking/.venv/lib/python3.13/site-packages/torch/nn/functional.py", line 7104, in multi_head_attention_forward
+    attn_output = scaled_dot_product_attention(
+        q, k, v, attn_mask, dropout_p, is_causal
+    )
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.00 MiB. GPU 0 has a total capacity of 139.80 GiB of which 2.75 MiB is free. Process 1861878 has 105.11 GiB memory in use. Process 2730359 has 6.55 GiB memory in use. Process 2733862 has 11.92 GiB memory in use. Including non-PyTorch memory, this process has 10.57 GiB memory in use. Process 2738965 has 5.62 GiB memory in use. Of the allocated memory 9.77 GiB is allocated by PyTorch, and 70.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

@@ -15,7 +15,9 @@ USE = tuple(os.environ.get("STEER_SETS", "illusions,countbench").split(","))
 ALPHA = float(os.environ.get("STEER_ALPHA", 1))  # pre-registered: 1; other values = post hoc dose-response
 CTRL = os.environ.get("STEER_CTRL", "")  # R1 controls (docs/r1_protocol.md D): "random" direction, "shuffle"d labels
 GRID = [float(a) for a in os.environ["STEER_GRID"].split(",")] if os.environ.get("STEER_GRID") else None  # R2 F
-SUF = "steergrid" if GRID else ("steer" if ALPHA == 1 else f"steerA{ALPHA:g}") + (f"_{CTRL}" if CTRL else "")
+SRC = os.environ.get("STEER_SRC", "")  # G4 R3x: "ext" = target class from the SigLIP2 grid probe, not the MLLM probe;
+# writeability controls (exploratory): "oracle" = the true class, "anti" = a wrong class (seeded) -- what steering writes when told
+SUF = "steergrid" if GRID else ("steer" if ALPHA == 1 else f"steerA{ALPHA:g}") + (f"_{CTRL}" if CTRL else "") + (f"_{SRC}" if SRC else "")
 
 
 def fit_probe(X, y, steps=300, wd=1e-3):
@@ -56,11 +58,13 @@ def run(model):
                [{"role": "user", "content": [{"type": "image", "image": it["image"]}, {"type": "text", "text": it["q"]}]}]
         x = R.p.apply_chat_template(msgs, add_generation_prompt=True, tokenize=True, return_dict=True, return_tensors="pt").to("cuda")
         numeric = it["cands"][0].isdigit()
-        cids = cand_ids(it["cands"])
+        cids = cand_ids(it["cands"], it.get("gate") == "letter")
         d = Decide(cids, None, digit_ids if numeric else None, ())
         n0 = x["input_ids"].shape[1]
         if it.get("gate") == "{":
             d.ready = lambda ids, n0=n0: tok.decode(ids[0, n0:]).strip() == "" or tok.decode(ids[0, n0:][-4:]).rstrip().endswith("{")
+        elif it.get("gate") == "letter":  # MMVP, as diag_gen.py
+            d.ready = lambda ids, n0=n0: tok.decode(ids[0, n0:]).strip().strip("*").strip() in ("", "(", "Answer:", "Answer: (")
         o = R.m.generate(**x, max_new_tokens=384 if it.get("gate") == "{" else 24, do_sample=False,
                          logits_processor=LogitsProcessorList([d]), stopping_criteria=StoppingCriteriaList([Stop(d)]))
         if not d.done:
@@ -97,6 +101,8 @@ def run(model):
         its = item_list(name, cache[task])
         y, ans, key = d["y"], d["ans"], d["key"]
         H = d["last"][:, L + 1].astype(np.float32)
+        if SRC == "ext":  # explore_input.py features in item_list order; 4x4 grid + mean, flattened
+            E = np.load(f"{OUT}/explore_input/siglip2_{name}.npz")["feats"][d["idx"], 0].reshape(len(y), -1).astype(np.float32)
         u, inv = np.unique(key, return_inverse=True)
         fold = (np.random.default_rng(0).permutation(len(u)) % 5)[inv]
         steer, probe, edited, check = ans.copy(), ans.copy(), np.zeros(len(y), bool), []
@@ -106,7 +112,15 @@ def run(model):
             ytr = np.random.default_rng(f).permutation(y[tr]) if CTRL == "shuffle" else y[tr]
             pred = fit_probe(H[tr], ytr)
             means = {c: H[tr][ytr == c].mean(0) for c in np.unique(ytr)}
-            probe[te] = pred(H[te])
+            if SRC == "ext":
+                probe[te] = fit_probe(E[tr], y[tr])(E[te])
+            elif SRC == "oracle":
+                probe[te] = y[te]
+            elif SRC == "anti":
+                cls = np.array(sorted(means))
+                probe[te] = [np.random.default_rng(int(j)).choice(cls[cls != y[j]]) for j in np.where(te)[0]]
+            else:
+                probe[te] = pred(H[te])
             for j in np.where(te)[0]:
                 p, m = int(probe[j]), int(ans[j])
                 if p == m or p not in means or m not in means:
