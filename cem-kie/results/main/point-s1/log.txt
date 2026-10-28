@@ -1,0 +1,32 @@
+point seed=1 params=530,438 train=1470 val=259 test=440
+ep 0 step 184 loss 2.061 val micro 0.5540 income=0.133 spending=0.177 date=0.893 number=0.874 postcode=0.575 recall_at_K=1.000 4s
+ep 1 step 368 loss 1.355 val micro 0.6016 income=0.201 spending=0.230 date=0.909 number=0.889 postcode=0.648 recall_at_K=1.000 6s
+ep 2 step 552 loss 1.182 val micro 0.5837 income=0.196 spending=0.224 date=0.910 number=0.881 postcode=0.630 recall_at_K=1.000 9s
+ep 3 step 736 loss 1.081 val micro 0.5970 income=0.179 spending=0.261 date=0.913 number=0.897 postcode=0.595 recall_at_K=1.000 12s
+ep 4 step 920 loss 1.013 val micro 0.6067 income=0.235 spending=0.242 date=0.921 number=0.897 postcode=0.639 recall_at_K=1.000 14s
+ep 5 step 1104 loss 0.932 val micro 0.6008 income=0.242 spending=0.247 date=0.914 number=0.877 postcode=0.645 recall_at_K=1.000 17s
+ep 6 step 1288 loss 0.864 val micro 0.5979 income=0.229 spending=0.251 date=0.923 number=0.879 postcode=0.620 recall_at_K=1.000 19s
+ep 7 step 1472 loss 0.816 val micro 0.6000 income=0.218 spending=0.248 date=0.920 number=0.875 postcode=0.603 recall_at_K=1.000 22s
+ep 8 step 1656 loss 0.752 val micro 0.6061 income=0.249 spending=0.241 date=0.916 number=0.869 postcode=0.642 recall_at_K=1.000 25s
+ep 9 step 1840 loss 0.685 val micro 0.6014 income=0.239 spending=0.247 date=0.916 number=0.877 postcode=0.661 recall_at_K=1.000 27s
+ep 10 step 2024 loss 0.642 val micro 0.5766 income=0.204 spending=0.229 date=0.917 number=0.864 postcode=0.648 recall_at_K=1.000 30s
+ep 11 step 2208 loss 0.587 val micro 0.5967 income=0.213 spending=0.246 date=0.915 number=0.874 postcode=0.649 recall_at_K=1.000 33s
+ep 12 step 2392 loss 0.513 val micro 0.5953 income=0.261 spending=0.254 date=0.919 number=0.881 postcode=0.618 recall_at_K=1.000 36s
+ep 13 step 2576 loss 0.462 val micro 0.6062 income=0.237 spending=0.253 date=0.914 number=0.883 postcode=0.642 recall_at_K=1.000 38s
+ep 14 step 2760 loss 0.414 val micro 0.5946 income=0.251 spending=0.257 date=0.913 number=0.878 postcode=0.620 recall_at_K=1.000 42s
+ep 15 step 2944 loss 0.362 val micro 0.6035 income=0.230 spending=0.236 date=0.918 number=0.869 postcode=0.618 recall_at_K=1.000 45s
+ep 16 step 3128 loss 0.313 val micro 0.5982 income=0.229 spending=0.240 date=0.917 number=0.877 postcode=0.599 recall_at_K=1.000 49s
+ep 17 step 3312 loss 0.276 val micro 0.6119 income=0.267 spending=0.243 date=0.922 number=0.879 postcode=0.647 recall_at_K=1.000 53s
+ep 18 step 3496 loss 0.235 val micro 0.6109 income=0.283 spending=0.276 date=0.918 number=0.881 postcode=0.641 recall_at_K=1.000 57s
+ep 19 step 3680 loss 0.191 val micro 0.6060 income=0.243 spending=0.255 date=0.914 number=0.881 postcode=0.632 recall_at_K=1.000 61s
+ep 20 step 3864 loss 0.162 val micro 0.5967 income=0.239 spending=0.241 date=0.916 number=0.887 postcode=0.606 recall_at_K=1.000 65s
+ep 21 step 4048 loss 0.138 val micro 0.6065 income=0.246 spending=0.250 date=0.913 number=0.881 postcode=0.632 recall_at_K=1.000 69s
+ep 22 step 4232 loss 0.114 val micro 0.6085 income=0.221 spending=0.221 date=0.922 number=0.881 postcode=0.644 recall_at_K=1.000 73s
+ep 23 step 4416 loss 0.088 val micro 0.5967 income=0.249 spending=0.264 date=0.912 number=0.877 postcode=0.602 recall_at_K=1.000 77s
+ep 24 step 4600 loss 0.070 val micro 0.5996 income=0.233 spending=0.241 date=0.908 number=0.881 postcode=0.639 recall_at_K=1.000 81s
+ep 25 step 4784 loss 0.061 val micro 0.5971 income=0.237 spending=0.223 date=0.918 number=0.885 postcode=0.631 recall_at_K=1.000 85s
+ep 26 step 4968 loss 0.051 val micro 0.5970 income=0.229 spending=0.250 date=0.909 number=0.881 postcode=0.625 recall_at_K=1.000 89s
+ep 27 step 5152 loss 0.045 val micro 0.5975 income=0.233 spending=0.240 date=0.918 number=0.881 postcode=0.620 recall_at_K=1.000 93s
+ep 28 step 5336 loss 0.042 val micro 0.5996 income=0.234 spending=0.248 date=0.918 number=0.881 postcode=0.623 recall_at_K=1.000 97s
+ep 29 step 5520 loss 0.041 val micro 0.6007 income=0.239 spending=0.248 date=0.918 number=0.881 postcode=0.623 recall_at_K=1.000 101s
+best ep 17 val 0.6119 test 0.5751
