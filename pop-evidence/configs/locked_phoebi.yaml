@@ -1,0 +1,25 @@
+# LOCKED test config, PHOEBI (selected on pooled dev folds; see docs/findings.md F9, results/analysis/).
+# Primary: tileonly_mean (instance-level supervision derived from set labels, no bag-level loss, mean of
+# tile evidence). Primary metric: mean per-species AUROC with per-partition rank normalisation and,
+# reported alongside, raw pooled AUROC; unit = partition:combination.
+name: phoebi_v1
+dataset: phoebi
+partitions: [1337, 1338, 1339]
+reference: mean_lin
+n_fields: [1, 4]
+seeds: [0, 1, 2]
+caps: {cap_train: 600, cap_calib: 150, cap_eval: 300}
+_fix: &f {type: fixed, wd: 1.0e-2, lr: 1.0e-2, steps: 500}
+_set: &s {type: set, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64}
+_to: &t {type: set, model: popevidence, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64, lambda_bce: 0.0, lambda_tile: 1.0}
+methods:
+  - {<<: *f, name: mean_lin,    rep: mean}
+  - {<<: *f, name: meanstd_lin, rep: meanstd}
+  - {<<: *s, name: deepsets,    model: deepsets, model_kw: {hidden: 256}}
+  - {<<: *s, name: abmil,       model: abmil}
+  - {<<: *s, name: abmil_cla1,  model: abmil, cla: {mode: conditional, tau: 1.0, C: 1.0}}
+  - {<<: *t, name: tileonly_q50,  model_kw: {pool: quantile, m: 1, score: q50}}
+  - {<<: *t, name: tileonly_mean, model_kw: {pool: quantile, m: 1, score: mean}}
+
+locked_sha256: bd71e2a6c882dac5ba2274151e1e2dbf4bced93b73281ddd1d4155c357b13c32
+locked_at: '2026-10-29 09:23:00'

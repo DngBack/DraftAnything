@@ -1,0 +1,13 @@
+# Stage D, second family: label-valid tile-level evidence supervision (findings F1-F2).
+reference: pe_quantile
+n_fields: [1, 4]
+seeds: [0, 1, 2]
+caps: {cap_train: 600, cap_calib: 150, cap_eval: 300}
+_base: &b {type: set, model: popevidence, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64}
+methods:
+  - {<<: *b, name: pe_quantile,         model_kw: {pool: quantile, m: 4, class_specific: true}}
+  - {<<: *b, name: pe_quantile_tile03,  model_kw: {pool: quantile, m: 4, class_specific: true}, lambda_tile: 0.3}
+  - {<<: *b, name: pe_quantile_tile1,   model_kw: {pool: quantile, m: 4, class_specific: true}, lambda_tile: 1.0}
+  - {<<: *b, name: pe_quantile_tile3,   model_kw: {pool: quantile, m: 4, class_specific: true}, lambda_tile: 3.0}
+  - {<<: *b, name: pe_mean_tile1,       model_kw: {pool: mean,     m: 4, class_specific: true}, lambda_tile: 1.0}
+  - {<<: *b, name: pe_quantile_shared_tile1, model_kw: {pool: quantile, m: 4, class_specific: false}, lambda_tile: 1.0}

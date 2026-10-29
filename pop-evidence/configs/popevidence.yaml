@@ -1,0 +1,14 @@
+# Stage D: only after the probe passes Gate 2 (protocol.md §7). Ablations of plan §14.2.
+reference: pe_mean
+n_fields: [1, 4]
+seeds: [0, 1, 2]
+caps: {cap_train: 600, cap_calib: 150, cap_eval: 300}
+_base: &b {type: set, model: popevidence, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64}
+methods:
+  - {<<: *b, name: pe_mean,          model_kw: {pool: mean,     m: 4, class_specific: true}}
+  - {<<: *b, name: pe_meanstd,       model_kw: {pool: meanstd,  m: 4, class_specific: true}}
+  - {<<: *b, name: pe_quantile,      model_kw: {pool: quantile, m: 4, class_specific: true}}
+  - {<<: *b, name: pe_quantile_shared, model_kw: {pool: quantile, m: 4, class_specific: false}}
+  - {<<: *b, name: pe_quantile_cons01, model_kw: {pool: quantile, m: 4, class_specific: true}, lambda_cons: 0.1}
+  - {<<: *b, name: pe_quantile_cons1,  model_kw: {pool: quantile, m: 4, class_specific: true}, lambda_cons: 1.0}
+  - {<<: *b, name: deepsets_ref, model: deepsets, model_kw: {hidden: 256}}

@@ -1,0 +1,9 @@
+# Attention-MIL baseline: do attention maps localise? With and without label-valid tile constraints.
+reference: abmil
+n_fields: [1]
+seeds: [0, 1, 2]
+caps: {cap_train: 1, cap_calib: 1, cap_eval: 1}
+_set: &b {type: set, model: abmil, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64, save_tile_evidence: true}
+methods:
+  - {<<: *b, name: abmil}
+  - {<<: *b, name: abmil_tile1, lambda_tile: 1.0}

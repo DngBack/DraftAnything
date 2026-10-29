@@ -1,0 +1,12 @@
+# BBBC041: score reads only the constrained evidence channel (m = 1), so context cannot travel
+# through unconstrained channels (finding F6). Tile evidence saved for localisation.
+reference: pe_quantile_m1
+n_fields: [1]
+seeds: [0, 1, 2]
+caps: {cap_train: 1, cap_calib: 1, cap_eval: 1}
+_set: &b {type: set, model: popevidence, steps: 1500, lr: 1.0e-3, wd: 1.0e-2, batch: 64, save_tile_evidence: true}
+methods:
+  - {<<: *b, name: pe_quantile_m1,       model_kw: {pool: quantile, m: 1, class_specific: true}}
+  - {<<: *b, name: pe_quantile_tile1_m1, model_kw: {pool: quantile, m: 1, class_specific: true}, lambda_tile: 1.0}
+  - {<<: *b, name: pe_quantile_tile3_m1, model_kw: {pool: quantile, m: 1, class_specific: true}, lambda_tile: 3.0}
+  - {<<: *b, name: pe_max_tile1_m1,      model_kw: {pool: max,      m: 1, class_specific: true}, lambda_tile: 1.0}

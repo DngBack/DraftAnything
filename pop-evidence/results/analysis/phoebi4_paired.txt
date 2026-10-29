@@ -1,0 +1,16 @@
+/home/jovyan/bachdx2/DraftAnything/pop-evidence/popev/metrics.py:102: RuntimeWarning: Mean of empty slice
+  out[k] = list(np.nanmean([q[k] for q in pts], axis=0))
+n=1 [E1] abmil_cla1 - abmil: dAUROC -0.002 [-0.029, 0.024] P>0 0.467 | dAP -0.009 [-0.057, 0.036]
+n=1 [E2] mean_lin - deepsets: dAUROC 0.053 [-0.039, 0.134] P>0 0.873 | dAP 0.040 [-0.057, 0.113]
+n=1 [E2] mean_lin - abmil: dAUROC 0.060 [-0.065, 0.181] P>0 0.808 | dAP 0.044 [-0.064, 0.150]
+n=1 [E3] tileonly_mean - mean_lin: dAUROC -0.043 [-0.118, 0.045] P>0 0.138 | dAP -0.040 [-0.102, 0.047]
+n=1 [exploratory] abmil_tile1 - abmil: dAUROC 0.042 [-0.023, 0.104] P>0 0.891 | dAP 0.030 [-0.047, 0.088]
+n=1 [exploratory] abmil_tile1 - mean_lin: dAUROC -0.018 [-0.116, 0.084] P>0 0.381 | dAP -0.014 [-0.110, 0.062]
+n=1 [E4 descr.] protomatch - mean_lin: dAUROC -0.040 [-0.137, 0.067] P>0 0.232 | dAP -0.037 [-0.128, 0.079]
+n=4 [E1] abmil_cla1 - abmil: dAUROC 0.008 [-0.027, 0.037] P>0 0.706 | dAP 0.020 [-0.032, 0.061]
+n=4 [E2] mean_lin - deepsets: dAUROC 0.076 [-0.015, 0.162] P>0 0.948 | dAP 0.078 [-0.022, 0.165]
+n=4 [E2] mean_lin - abmil: dAUROC 0.099 [-0.015, 0.209] P>0 0.957 | dAP 0.123 [0.006, 0.212]
+n=4 [E3] tileonly_mean - mean_lin: dAUROC -0.052 [-0.139, 0.039] P>0 0.126 | dAP -0.093 [-0.148, 0.008]
+n=4 [exploratory] abmil_tile1 - abmil: dAUROC 0.087 [0.010, 0.169] P>0 0.984 | dAP 0.076 [-0.021, 0.150]
+n=4 [exploratory] abmil_tile1 - mean_lin: dAUROC -0.012 [-0.082, 0.066] P>0 0.384 | dAP -0.047 [-0.106, 0.021]
+n=4 [E4 descr.] protomatch - mean_lin: dAUROC -0.026 [-0.099, 0.060] P>0 0.250 | dAP -0.069 [-0.139, 0.044]

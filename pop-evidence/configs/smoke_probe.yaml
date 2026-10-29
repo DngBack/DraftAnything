@@ -1,0 +1,59 @@
+reference: mean_lin
+n_fields:
+- 1
+- 4
+seeds:
+- 0
+- 1
+caps:
+  cap_train: 200
+  cap_calib: 60
+  cap_eval: 80
+methods:
+- name: mean_lin
+  type: fixed
+  rep: mean
+  wd: 0.01
+  lr: 0.01
+  steps: 300
+- name: meanstd_lin
+  type: fixed
+  rep: meanstd
+  wd: 0.01
+  lr: 0.01
+  steps: 300
+- name: meanquant_lin
+  type: fixed
+  rep: meanquant
+  rep_kw:
+    d: 32
+  wd: 0.01
+  lr: 0.01
+  steps: 300
+- name: kme_lin
+  type: fixed
+  rep: kme
+  rep_kw:
+    n_features: 2048
+    scale: 1.0
+  wd: 0.01
+  lr: 0.01
+  steps: 300
+- name: kme05_lin
+  type: fixed
+  rep: kme
+  rep_kw:
+    n_features: 2048
+    scale: 0.5
+  wd: 0.01
+  lr: 0.01
+  steps: 300
+- name: deepsets
+  type: set
+  model: deepsets
+  model_kw:
+    hidden: 256
+  steps: 400
+  lr: 0.001
+  wd: 0.01
+  batch: 64

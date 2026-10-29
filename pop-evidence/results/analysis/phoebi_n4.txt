@@ -1,0 +1,5 @@
+n=4 meanstd_lin            AUROC 0.601 [0.520, 0.674] mAP 0.554 F1m -0.087 | bs:0.40 bt:0.67 fj:0.46 ka:0.84 mx:0.75 pf:0.48
+n=4 tileonly_q50           AUROC 0.617 [0.539, 0.684] mAP 0.581 F1m -0.059 | bs:0.57 bt:0.62 fj:0.40 ka:0.88 mx:0.67 pf:0.56 | dAUROC vs ref 0.016 [-0.070, 0.094] P>0 0.67
+n=4 abmil_cla1             AUROC 0.600 [0.531, 0.653] mAP 0.537 F1m -0.107 | bs:0.54 bt:0.73 fj:0.45 ka:0.87 mx:0.64 pf:0.37 | dAUROC vs ref -0.001 [-0.077, 0.067] P>0 0.54
+n=4 abmil                  AUROC 0.562 [0.504, 0.615] mAP 0.513 F1m -0.129 | bs:0.57 bt:0.55 fj:0.39 ka:0.87 mx:0.63 pf:0.36 | dAUROC vs ref -0.039 [-0.099, 0.026] P>0 0.11
+n=4 mean_lin               AUROC 0.568 [0.485, 0.644] mAP 0.517 F1m -0.114 | bs:0.45 bt:0.52 fj:0.37 ka:0.83 mx:0.74 pf:0.50 | dAUROC vs ref -0.033 [-0.060, -0.005] P>0 0.01

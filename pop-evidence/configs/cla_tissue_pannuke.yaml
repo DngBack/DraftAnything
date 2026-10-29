@@ -1,0 +1,15 @@
+# Covariate-conditional CLA on PanNuke dev: prior p(y_k | y_{-k}, tissue type) added in training only.
+# Motivation: label-only CLA hurt PanNuke (tissue type confounds labels and appearance; F10).
+reference: abmil
+n_fields: [1]
+seeds: [0, 1, 2]
+caps: {cap_train: 1, cap_calib: 1, cap_eval: 1}
+_fix: &f {type: fixed, wd: 1.0e-2, lr: 1.0e-2, steps: 500}
+_set: &s {type: set, model: abmil, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64, save_tile_evidence: true}
+methods:
+  - {<<: *s, name: abmil}
+  - {<<: *s, name: abmil_cla1, cla: {mode: conditional, tau: 1.0, C: 1.0}}
+  - {<<: *s, name: abmil_clatissue, cla: {mode: conditional, tau: 1.0, C: 1.0, covariate: data/pannuke/tissue.npy}}
+  - {<<: *s, name: abmil_tile1_clatissue, lambda_tile: 1.0, cla: {mode: conditional, tau: 1.0, C: 1.0, covariate: data/pannuke/tissue.npy}}
+  - {<<: *f, name: mean_lin, rep: mean}
+  - {<<: *f, name: mean_lin_clatissue, rep: mean, cla: {mode: conditional, tau: 1.0, C: 1.0, covariate: data/pannuke/tissue.npy}}

@@ -1,0 +1,21 @@
+# LOCKED test config, bbbc041 (official test images; unit = image). Claims tested: localisation of tile
+# evidence, accuracy, decorrelated AUROC. Methods fixed from development (docs/findings.md F6-F8, CLA).
+name: bbbc041_v1
+dataset: bbbc041
+reference: mean_lin
+n_fields: [1]
+seeds: [0, 1, 2]
+caps: {cap_train: 1, cap_calib: 1, cap_eval: 1}
+_fix: &f {type: fixed, wd: 1.0e-2, lr: 1.0e-2, steps: 500}
+_set: &s {type: set, steps: 1500, lr: 1.0e-3, wd: 1.0e-2, batch: 64, save_tile_evidence: true}
+methods:
+  - {<<: *f, name: mean_lin, rep: mean}
+  - {<<: *s, name: deepsets, model: deepsets, model_kw: {hidden: 256}, save_tile_evidence: false}
+  - {<<: *s, name: abmil,    model: abmil}
+  - {<<: *s, name: abmil_tile1,      model: abmil, lambda_tile: 1.0}
+  - {<<: *s, name: abmil_tile1_cla1, model: abmil, lambda_tile: 1.0, cla: {mode: conditional, tau: 1.0, C: 1.0}}
+  - {<<: *s, name: pe_quantile_m1,   model: popevidence, model_kw: {pool: quantile, m: 1}}
+  - {<<: *s, name: tileonly_mean,    model: popevidence, model_kw: {pool: quantile, m: 1, score: mean}, lambda_bce: 0.0, lambda_tile: 1.0}
+
+locked_sha256: d8a53196f14b0a73a8bbc393729dcbd3b978c8555da4f69033deb7e3b21f2937
+locked_at: '2026-10-29 09:23:00'

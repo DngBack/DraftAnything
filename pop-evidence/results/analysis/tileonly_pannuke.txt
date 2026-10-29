@@ -1,0 +1,6 @@
+mean_lin                     AUROC 0.892  decorrelated 0.852  ctx-share 0.15
+deepsets                     AUROC 0.902  decorrelated 0.862  ctx-share 0.19 | Δin +0.010 [+0.003, +0.016] Δdec +0.010 [-0.005, +0.024]
+abmil_tile1                  AUROC 0.876  decorrelated 0.841  ctx-share 0.24 | Δin -0.016 [-0.026, -0.005] Δdec -0.010 [-0.032, +0.011] | loc 0.88 0.90 0.77 0.88 0.82
+pe_max_tile1_m1              AUROC 0.873  decorrelated 0.831  ctx-share 0.19 | Δin -0.019 [-0.027, -0.010] Δdec -0.021 [-0.042, +0.001] | loc 0.87 0.89 0.77 0.88 0.81
+pe_max_tileonly_m1           AUROC 0.874  decorrelated 0.836  ctx-share 0.18 | Δin -0.018 [-0.028, -0.008] Δdec -0.016 [-0.034, +0.003] | loc 0.88 0.89 0.76 0.89 0.80
+pe_q90_tileonly_m1           AUROC 0.882  decorrelated 0.840  ctx-share 0.20 | Δin -0.009 [-0.018, -0.002] Δdec -0.011 [-0.030, +0.006] | loc 0.88 0.89 0.76 0.89 0.80

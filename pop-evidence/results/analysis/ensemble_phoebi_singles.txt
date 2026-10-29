@@ -1,0 +1,8 @@
+n=1 ENSEMBLE[meanstd_lin] AUROC 0.600 [0.534, 0.656] mAP 0.551 | bs:0.51 bt:0.57 fj:0.48 ka:0.86 mx:0.71 pf:0.45 | vs meanstd_lin dAUROC 0.019 [-0.014, 0.052] P>0 0.85
+n=1 ENSEMBLE[tileonly_q50] AUROC 0.619 [0.553, 0.681] mAP 0.567 | bs:0.51 bt:0.54 fj:0.46 ka:0.87 mx:0.74 pf:0.59 | vs meanstd_lin dAUROC 0.038 [-0.018, 0.094] P>0 0.91
+n=1 ENSEMBLE[abmil_cla1] AUROC 0.608 [0.541, 0.673] mAP 0.547 | bs:0.54 bt:0.60 fj:0.50 ka:0.89 mx:0.66 pf:0.45 | vs meanstd_lin dAUROC 0.027 [-0.038, 0.093] P>0 0.79
+n=1 ENSEMBLE[mean_lin] AUROC 0.582 [0.520, 0.636] mAP 0.533 | bs:0.52 bt:0.52 fj:0.44 ka:0.84 mx:0.70 pf:0.47 | vs meanstd_lin dAUROC 0.001 [-0.036, 0.041] P>0 0.51
+n=4 ENSEMBLE[meanstd_lin] AUROC 0.615 [0.538, 0.682] mAP 0.565 | bs:0.48 bt:0.64 fj:0.54 ka:0.86 mx:0.75 pf:0.42 | vs meanstd_lin dAUROC 0.014 [-0.027, 0.060] P>0 0.69
+n=4 ENSEMBLE[tileonly_q50] AUROC 0.638 [0.565, 0.705] mAP 0.594 | bs:0.56 bt:0.59 fj:0.42 ka:0.89 mx:0.77 pf:0.62 | vs meanstd_lin dAUROC 0.037 [-0.035, 0.104] P>0 0.84
+n=4 ENSEMBLE[abmil_cla1] AUROC 0.620 [0.547, 0.692] mAP 0.544 | bs:0.55 bt:0.63 fj:0.59 ka:0.90 mx:0.65 pf:0.42 | vs meanstd_lin dAUROC 0.019 [-0.063, 0.100] P>0 0.72
+n=4 ENSEMBLE[mean_lin] AUROC 0.586 [0.512, 0.652] mAP 0.537 | bs:0.52 bt:0.55 fj:0.42 ka:0.82 mx:0.76 pf:0.44 | vs meanstd_lin dAUROC -0.015 [-0.063, 0.042] P>0 0.28

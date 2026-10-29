@@ -1,0 +1,9 @@
+.venv/
+cache/
+data/
+__pycache__/
+.pytest_cache/
+results/dev_synth/*/preds_*.npz
+logs/
+results/**/*.npz
+results/**/summary.json
