@@ -328,3 +328,23 @@ PHOEBI chỉ có 40 combination; dev có 26, test 9 (27 khi gộp 3 partition). 
   - Với dữ liệu hiện có (một batch train), cách tốt nhất khi đổi batch là **so sánh dạng đóng với mẫu chuẩn của cùng batch**: 0.764, so với 0.68 của decoder học được tốt nhất (mean_lin, đo trên mọi video).
   - Mọi cách học thêm đều cần dữ liệu train có ≥ 2–3 batch kèm mẫu chuẩn.
   - Lưu ý phạm vi: đây là lời giải cho dịch chuyển batch. Trên PHOEBI LCO (cùng batch, tổ hợp tới 6 loài), ProtoMatch dùng chuẩn cùng batch chỉ đạt khoảng 0.63. Neo theo chuẩn cùng batch không giải quyết được vấn đề mixture không cộng tính.
+
+## F18. Đơn vị cấp tế bào với so sánh dạng đóng: không có bằng chứng rõ (dev PHOEBI)
+
+- Nguồn: `results/dev/{objproto,tileproto}_phoebi`, `results/analysis/obj_vs_tile_proto.txt`. Cùng dev fold, cùng bag.
+- Giả thuyết: ở cấp từng tế bào, mixture là hợp của các tế bào thuần, nên prototype pure culture chuyển sang được mixture; "vote" là đếm tế bào theo loài.
+- AUROC n = 1 / n = 4:
+
+| Cách đọc điểm | Tế bào | Tile | Tế bào − tile |
+|---|---|---|---|
+| mean cos | 0.579 / 0.584 | 0.544 / 0.541 | +0.036 / +0.043 (P = 0.78–0.79) |
+| vote | 0.573 / 0.572 | 0.550 / 0.558 | +0.023 / +0.014 |
+| kNN (k = 10) | 0.581 / 0.588 | **0.608 / 0.622** | −0.03 |
+| mean_lin | 0.582 / 0.607 | 0.554 / 0.569 | +0.03 |
+
+- Học decoder trên feature cấp object (phiên song song: `obj_phoebi*`) cho 0.50–0.59.
+- **Kết luận:**
+  - Không có cải thiện có ý nghĩa; mọi CI đều chứa 0.
+  - Vote không hơn mean cos, nên giả thuyết "đếm tế bào giải quyết vấn đề không cộng tính" không được ủng hộ.
+  - kNN cấp tile là cách dạng đóng tốt nhất trên dev PHOEBI (0.608 / 0.622), nhưng trên phoebi4 lại kém mean cos (F17), nên tín hiệu không nhất quán.
+  - Dev PHOEBI (26 combination, CI ±0.06–0.10) đã hết khả năng phân biệt các phương án ở mức hiệu ứng này.

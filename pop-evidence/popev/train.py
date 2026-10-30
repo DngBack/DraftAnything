@@ -103,9 +103,26 @@ def run(cfg: Dict, split: Split, store: np.ndarray, n_fields: int, seed: int, de
             protos.append(F.normalize(Xf[torch.from_numpy(sel)].flatten(0, 1).mean(0), dim=0))
         Pm = torch.stack(protos).to(dev)
         agg = cfg.get("agg", "mean")
+        if agg == "knn":
+            # reference instances per class (subsample), for nearest-reference scoring
+            gen_k = torch.Generator().manual_seed(0); refs_k = []
+            for k in range(K):
+                pure = (lab[:, k] == 1) & (lab.sum(1) == 1); sel = pure if pure.any() else lab[:, k] == 1
+                r = F.normalize(Xf[torch.from_numpy(sel)].flatten(0, 1), dim=-1)
+                refs_k.append(r[torch.randperm(len(r), generator=gen_k)[:8000]].to(dev))
         def score(x):
-            c = F.normalize(x, dim=-1) @ Pm.T                                # (B, T, K)
-            return c.mean(1) if agg == "mean" else torch.quantile(c, float(agg[1:]) / 100, dim=1)
+            xn = F.normalize(x, dim=-1)
+            if agg == "knn":
+                # mean over instances of the mean cosine to the 10 nearest reference instances of each class
+                B, T, D = xn.shape; flat = xn.reshape(-1, D)
+                return torch.stack([(flat @ r.T).topk(10, dim=1).values.mean(1).view(B, T).mean(1) for r in refs_k], 1)
+            c = xn @ Pm.T                                                    # (B, T, K)
+            if agg == "mean":
+                return c.mean(1)
+            if agg == "vote":
+                # fraction of instances whose nearest prototype is k: a cell count per class when instances are cells
+                return F.one_hot(c.argmax(-1), K).float().mean(1)
+            return torch.quantile(c, float(agg[1:]) / 100, dim=1)
         model = None; n_params = int(Pm.numel())
     elif cfg["type"] == "fixed":
         g = torch.Generator().manual_seed(seed)
