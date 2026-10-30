@@ -92,3 +92,18 @@ def test_context_prior_learns_cooccurrence_and_removes_it():
     assert np.all(m.W == 0)
     out = pr.logits(torch.tensor(Y[:5], dtype=torch.float32))
     assert out.shape == (5, 3)
+
+
+def test_tile_loss_label_valid_variant():
+    """With use_pure=False and q=1.0 (max), a positive bag is satisfied by a single strong tile: the loss
+    asks nothing of the other tiles of a positive bag (only that one tile carries the class)."""
+    from popev.models import tile_evidence_loss
+    T = 20
+    a_one = torch.full((1, T, 1, 1), -10.0); a_one[0, 3, 0, 0] = 10.0       # one evidence tile
+    a_all = torch.full((1, T, 1, 1), 10.0)                                 # every tile carries evidence
+    y = torch.ones(1, 1)
+    l_one = tile_evidence_loss(a_one, y, q=1.0, use_pure=False)
+    l_all = tile_evidence_loss(a_all, y, q=1.0, use_pure=False)
+    assert l_one < 1e-3 and l_all < 1e-3                                   # both satisfy "at least one tile"
+    assert tile_evidence_loss(a_one, y, q=0.9, use_pure=False) > 1.0       # q=0.9 demands ~10% of tiles
+    assert tile_evidence_loss(a_one, y, q=1.0, use_pure=True) > 1.0        # 'pure' demands every tile

@@ -10,7 +10,10 @@ On two datasets with instance annotations, used for evaluation only, we find tha
 
 We introduce two corrections, each derived from what set labels do and do not identify:
 
-1. **Label-valid tile constraints.** An absent class has no evidence in any tile; a present class has evidence in its upper-quantile tiles; a pure sample has evidence everywhere. On test they restore localisation to 0.76–0.98 at a cost of at most 0.03 image AUROC.
+1. **Tile constraints.** Exact negatives (an absent class has no evidence in any tile) and positives that hold at least in one tile.
+   - The strictly label-valid form restores localisation where classes occupy many tiles (PanNuke, development: 0.77–0.89 from as low as 0.12).
+   - For very sparse classes (malaria parasites in 0.2–3 % of tiles) it is too weak. There, treating every tile of a single-label image as a noisy positive restores localisation, to 0.86–0.98 on the locked BBBC041 test.
+   - Cost: at most 0.03 image AUROC.
 2. **Contextual logit adjustment (CLA).** CLA generalises logit adjustment from the marginal label prior to the label-conditional prior p(y_k | y_{−k}), added during training only. On PHOEBI, a bacterial benchmark that holds out whole species combinations, CLA improves attention-MIL by +0.039 [0.012, 0.066] and +0.041 [0.015, 0.066] mean AUROC on 27 unseen combinations. It does not help where co-occurrence is stable and informative (PanNuke), as its derivation predicts.
 
 We also report a negative result: a purely instance-level objective that led development by +0.03 to +0.06 AUROC was the worst method on test. Development folds with 26 combinations did not rank methods reliably.
@@ -29,7 +32,7 @@ We ask what these decoders use. Image-level accuracy cannot answer this, because
    - a decorrelated AUROC that reweights evaluation images so class presences are independent;
    - combination-level (or partition:combination-level) intervals for compositional benchmarks.
 2. **Finding:** set-trained decoders are accurate yet anti-localised for several classes. This replicates on locked test sets of two datasets and across three decoder families (§5.1).
-3. **Label-valid tile constraints**, which restore localisation at small cost (§5.2).
+3. **Tile constraints** (exact negatives from absent labels; positives either "at least one tile", which is label-valid, or all tiles of single-label images as noisy positives), which restore localisation at small cost (§5.2).
 4. **Contextual logit adjustment**, with its derivation and its failure condition, validated on held-out combinations (§5.3).
 5. **Negative results reported in full** (§5.4).
 
@@ -75,7 +78,7 @@ Instance boxes and masks are used only for evaluation.
 - Class-wise gated attention MIL (ABMIL).
 - PopEvidence: per-class tile evidence, pooled per class.
 
-**Label-valid tile constraints**, on the per-tile evidence a_{t,k} (for ABMIL, the attention logit):
+**Tile constraints**, on the per-tile evidence a_{t,k} (for ABMIL, the attention logit). The locked tests used the variant with a pure / single-label term and q = 0.9. The strictly label-valid variant drops the pure term and uses q = 1 (max); it is compared on development data (§5.2, findings F15):
 - Absent class: softplus(a_{t,k}) averaged over tiles.
 - Present class in a mixture: softplus(−q_{0.9}(a_{·,k})).
 - Pure sample: softplus(−a_{t,k}) averaged over tiles.
@@ -108,7 +111,7 @@ Tile localisation AUROC on locked test sets; 0.5 = chance, < 0.5 = anti-localise
 
 On development data the same pattern holds: BBBC041 trophozoite 0.076 [0.068, 0.083] at image AUROC 0.82; PanNuke dead 0.115. At fixed own presence and count, 11–17 of 20 context coefficients are resolved on BBBC041.
 
-### 5.2 Label-valid tile constraints restore localisation
+### 5.2 Tile constraints restore localisation (label-valid where classes are not too sparse; with single-label noisy positives otherwise)
 
 | Test set | Constrained decoder | Localisation | Image AUROC (Δ vs unconstrained) |
 |---|---|---|---|

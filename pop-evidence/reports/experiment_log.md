@@ -131,3 +131,5 @@ Mỗi lần chạy ghi: commit, dữ liệu, GPU, torch, lệnh, thời gian, me
 
 - 2026-10-29 12:30 TEST RUN `phoebi4_bn_exploratory` config@sha256:75186cc64070 HEAD@15439af
 - 2026-10-29 12:47 THĂM DÒ phoebi4_bn_exploratory (post-hoc): chuẩn hóa theo batch, Δ ±0.02 không có ý nghĩa; ProtoMatch −0.07. Xem F14.
+- 2026-10-30 02:09 CODE REVIEW: thành phần 'pure' và q = 0.9 của ràng buộc tile không hợp lệ về nhãn trên BBBC041/PanNuke. Chạy lại dev: dạng hợp lệ thật đủ trên PanNuke, không đủ trên BBBC041. Xem F15 và docs/code_review.md.
+- 2026-10-30 02:15 Dừng ablation tile trên BBBC041 theo yêu cầu người dùng (không ảnh hưởng kết quả).

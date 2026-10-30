@@ -281,3 +281,22 @@ PHOEBI chỉ có 40 combination; dev có 26, test 9 (27 khi gộp 3 partition). 
   - (a) dữ liệu train có nhiều batch cho mỗi loài, để học tính bất biến theo batch;
   - (b) can thiệp ở cấp biểu diễn (fine-tune hoặc encoder khác);
   - và trong cả hai trường hợp, một batch mới chưa dùng để test.
+
+## F15. Sửa lỗi ràng buộc tile (code review 2026-10-30): "hợp lệ về nhãn" chỉ đủ khi lớp không quá thưa
+
+- Lỗi: ràng buộc dùng trên BBBC041 và PanNuke có thành phần "pure" (mọi tile của ảnh một nhãn đều dương) và q = 0.9. Cả hai đều không suy ra được từ nhãn tập trên các dataset này (ảnh một nhãn vẫn có hồng cầu, nhân khác, nền). Xem `docs/code_review.md`.
+- Phiên bản hợp lệ thật: âm chính xác cho lớp vắng mặt; dương = ít nhất một tile (max); không có "pure". Chạy lại trên dev, cùng fold và bag (`results/analysis/valid_tile_*.txt`).
+
+| Dataset | Định vị: không ràng buộc → hợp lệ thật → ràng buộc cũ | AUROC ảnh (hợp lệ thật so với không ràng buộc) |
+|---|---|---|
+| PanNuke (PopEvidence) | con 0.23 → 0.77 → 0.77; dead 0.12 → 0.88 → 0.89; epi 0.19 → 0.80 → 0.80 | −0.016 |
+| PanNuke (ABMIL) | 0.71–0.84 → 0.77–0.89 → 0.77–0.90 | −0.014 |
+| BBBC041 (ABMIL) | gam 0.60, ring 0.30, sch 0.36 → **0.35, 0.35, 0.38** → 0.95, 0.61, 0.89 | **−0.030** |
+| BBBC041 (PopEvidence) | sch 0.09, tro 0.08 → 0.71, 0.75 → 0.84, 0.88 | −0.032 |
+
+- **Kết luận đã sửa:**
+  - Ràng buộc thật sự hợp lệ về nhãn khôi phục định vị khi lớp chiếm một phần đáng kể số tile (PanNuke), nhưng không đủ khi lớp cực thưa (ký sinh trùng trong BBBC041: 0.2–3 % tile, hồng cầu áp đảo).
+  - Ở đó cần thêm một giả định giám sát: coi mọi tile của ảnh một nhãn là dương có nhiễu, đối chiếu với âm chính xác.
+  - Đây chính là biến thể đã chạy trên test BBBC041. Nó khôi phục định vị, nhưng **không** "hợp lệ về nhãn".
+- Cơ chế giả định: tile chung (hồng cầu) bị ép âm chính xác ở mọi ảnh không có k và bị ép dương có nhiễu ở ảnh chỉ có k. Hai lực này triệt tiêu ở tile chung, nên chỉ tile đặc trưng của k còn giữ evidence dương.
+- Hệ quả cho các test đã khóa: số liệu không đổi, nhưng phải gọi đúng tên phương pháp đã chạy ("tile constraints with single-label noisy positives"). Claim "label-valid" chỉ đúng cho PanNuke, ở dev.

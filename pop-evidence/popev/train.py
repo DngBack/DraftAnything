@@ -32,8 +32,8 @@ def load_tiles(store: np.ndarray, view: View) -> torch.Tensor:
 
 
 def gather(X: torch.Tensor, pos: np.ndarray, device) -> torch.Tensor:
-    """(M, n) image positions -> (M, n*T, D) float tiles on device."""
-    x = X[torch.from_numpy(pos.reshape(-1))].to(device, non_blocking=True).float()
+    """(M, n) image positions -> (M, n*T, D) float tiles on device. X may live on the CPU or on the device."""
+    x = X[torch.from_numpy(pos.reshape(-1)).to(X.device)].to(device, non_blocking=True).float()
     return x.view(pos.shape[0], -1, X.shape[-1])
 
 
@@ -84,6 +84,12 @@ def run(cfg: Dict, split: Split, store: np.ndarray, n_fields: int, seed: int, de
             return 0.0
         z = torch.as_tensor(cov[rows], device=y.device) if (cov is not None and rows is not None) else None
         return tau * prior.logits(y, z)
+
+    if cfg.get("mix") and cov is not None:
+        raise ValueError("CompMix with a CLA covariate is not supported: mixed bags have no single covariate value")
+    if dev.type == "cuda" and cfg["type"] == "set":
+        # keep the training tiles on the GPU (fp16, ~1 GB for PHOEBI): removes host-side indexing per step
+        Xtr = Xtr.to(dev)
 
     if cfg["type"] == "proto":
         # ProtoMatch re-implementation (PHOEBI): prototype of species k = mean tile embedding of its pure

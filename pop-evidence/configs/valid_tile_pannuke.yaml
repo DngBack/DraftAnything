@@ -1,0 +1,15 @@
+# Corrected label-valid tile constraints for pannuke (code review 2026-10-30): no pure-sample term (single-label
+# images are not pure: they contain other cells and background) and the positive term is "at least one tile"
+# (tile_q 1.0 = max), since a class can occupy far fewer than 10 % of tiles. Same folds and bags as the
+# earlier pannuke runs, so results pair with abmil / abmil_tile1 there.
+reference: abmil
+n_fields: [1]
+seeds: [0, 1, 2]
+caps: {cap_train: 1, cap_calib: 1, cap_eval: 1}
+_set: &s {type: set, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64, save_tile_evidence: true}
+methods:
+  - {<<: *s, name: abmil, model: abmil}
+  - {<<: *s, name: abmil_tileV, model: abmil, lambda_tile: 1.0, tile_pure: false, tile_q: 1.0}
+  - {<<: *s, name: abmil_tileV_cla1, model: abmil, lambda_tile: 1.0, tile_pure: false, tile_q: 1.0, cla: {mode: conditional, tau: 1.0, C: 1.0}}
+  - {<<: *s, name: pe_quantile_m1_tileV, model: popevidence, model_kw: {pool: quantile, m: 1}, lambda_tile: 1.0, tile_pure: false, tile_q: 1.0}
+  - {<<: *s, name: tileonlyV_mean, model: popevidence, model_kw: {pool: quantile, m: 1, score: mean}, lambda_bce: 0.0, lambda_tile: 1.0, tile_pure: false, tile_q: 1.0}
