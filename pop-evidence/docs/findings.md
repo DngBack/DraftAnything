@@ -300,3 +300,31 @@ PHOEBI chỉ có 40 combination; dev có 26, test 9 (27 khi gộp 3 partition). 
   - Đây chính là biến thể đã chạy trên test BBBC041. Nó khôi phục định vị, nhưng **không** "hợp lệ về nhãn".
 - Cơ chế giả định: tile chung (hồng cầu) bị ép âm chính xác ở mọi ảnh không có k và bị ép dương có nhiễu ở ảnh chỉ có k. Hai lực này triệt tiêu ở tile chung, nên chỉ tile đặc trưng của k còn giữ evidence dương.
 - Hệ quả cho các test đã khóa: số liệu không đổi, nhưng phải gọi đúng tên phương pháp đã chạy ("tile constraints with single-label noisy positives"). Claim "label-valid" chỉ đúng cho PanNuke, ở dev.
+
+## F16. Tham chiếu cùng batch là đòn bẩy lớn nhất; thứ gì học trên batch cũ đều không chuyển được (thăm dò, phoebi4)
+
+- Nguồn: `results/analysis/reference_anchoring.md`, `reference_relative.md`. Đánh giá trên 10 video mixture của phoebi4.
+- Prototype pure culture **cùng batch** (dạng đóng): **0.764** [0.632, 0.894], fj 0.73. Prototype **khác batch**: 0.589, fj 0.40. Chênh lệch +0.175.
+- Head tuyến tính học trên phoebi6 áp lên độ tương tự với tham chiếu cùng batch: 0.53–0.55, kể cả khi đã chuẩn hóa theo tham chiếu. Thấp hơn mean_lin (0.619).
+- Làm trắng feature kiểu TVN: 0.574 (fj 0.08).
+- Nguyên lý: chuyển được sang batch mới là **phép so sánh** với tham chiếu cùng batch; tham số học trên một batch (trọng số, ngưỡng) mang theo shortcut của batch đó. Hướng phương pháp: học cách so sánh theo episode (EP-MIL); xem `docs/research_directions.md`.
+
+## F17. EP-MIL (học phép so sánh) thất bại khi chỉ có một batch train; so sánh dạng đóng cùng batch đạt trần khoảng 0.76 (thăm dò, phoebi4)
+
+- Nguồn: `results/analysis/epmil_feasibility.md`, `inbatch_variants.md`. Đánh giá trên 10 video mixture của phoebi4.
+- Sanity: g đồng nhất (không train) với chuẩn cùng batch tái hiện đúng 0.764.
+- EP-MIL train trên phoebi6 (3 seed):
+  - có dịch chuyển episode: 0.634 với chuẩn cùng batch (**fj 0.19**);
+  - không dịch chuyển: 0.640 (fj 0.34);
+  - với chuẩn khác batch: 0.62–0.66.
+  - Học g trên một batch phá mất phép so sánh vốn chuyển được, vì g học các hướng phân biệt đặc thù của batch train. Dịch chuyển ngẫu nhiên ở không gian feature không mô phỏng được dịch chuyển batch thật.
+- Các biến thể dạng đóng, cùng batch, không có tham số học trên batch khác:
+  - mean cos 0.764
+  - biên tương đối 0.762
+  - kNN tile (k = 10) 0.737
+  - tinh chỉnh prototype transductive 0.759
+  - Không biến thể nào vượt mốc.
+- **Kết luận:**
+  - Với dữ liệu hiện có (một batch train), cách tốt nhất khi đổi batch là **so sánh dạng đóng với mẫu chuẩn của cùng batch**: 0.764, so với 0.68 của decoder học được tốt nhất (mean_lin, đo trên mọi video).
+  - Mọi cách học thêm đều cần dữ liệu train có ≥ 2–3 batch kèm mẫu chuẩn.
+  - Lưu ý phạm vi: đây là lời giải cho dịch chuyển batch. Trên PHOEBI LCO (cùng batch, tổ hợp tới 6 loài), ProtoMatch dùng chuẩn cùng batch chỉ đạt khoảng 0.63. Neo theo chuẩn cùng batch không giải quyết được vấn đề mixture không cộng tính.
