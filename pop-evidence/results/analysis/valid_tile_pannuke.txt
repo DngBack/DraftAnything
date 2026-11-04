@@ -1,0 +1,11 @@
+abmil                        AUROC 0.880  decorrelated 0.846  ctx-share 0.23 | loc 0.72 0.84 0.73 0.71 0.74
+abmil_tile1                  AUROC 0.876  decorrelated 0.841  ctx-share 0.24 | Δin -0.005 [-0.010, +0.001] Δdec -0.005 [-0.015, +0.008] | loc 0.88 0.90 0.77 0.88 0.82
+abmil_tileV                  AUROC 0.866  decorrelated 0.831  ctx-share 0.24 | Δin -0.014 [-0.019, -0.009] Δdec -0.014 [-0.025, +0.000] | loc 0.87 0.89 0.77 0.84 0.80
+abmil_tileV_cla1             AUROC 0.852  decorrelated 0.832  ctx-share 0.30 | Δin -0.028 [-0.034, -0.022] Δdec -0.014 [-0.027, -0.003] | loc 0.87 0.89 0.77 0.85 0.80
+pe_quantile_m1               AUROC 0.880  decorrelated 0.836  ctx-share 0.19 | Δin +0.000 [-0.004, +0.005] Δdec -0.010 [-0.019, -0.001] | loc 0.85 0.75 0.23 0.12 0.19
+pe_quantile_tile1_m1         AUROC 0.875  decorrelated 0.829  ctx-share 0.19 | Δin -0.006 [-0.011, -0.000] Δdec -0.017 [-0.028, -0.007] | loc 0.88 0.89 0.77 0.89 0.80
+pe_quantile_m1_tileV         AUROC 0.865  decorrelated 0.823  ctx-share 0.21 | Δin -0.016 [-0.022, -0.010] Δdec -0.023 [-0.032, -0.013] | loc 0.87 0.89 0.77 0.88 0.80
+tileonlyV_mean               AUROC 0.850  decorrelated 0.808  ctx-share 0.21 | Δin -0.031 [-0.037, -0.023] Δdec -0.037 [-0.050, -0.026] | loc 0.86 0.88 0.74 0.85 0.78
+mean_lin                     AUROC 0.892  decorrelated 0.852  ctx-share 0.15
+pe_q90_tileonly_m1           AUROC 0.882  decorrelated 0.840  ctx-share 0.20 | Δin -0.010 [-0.018, -0.001] Δdec -0.012 [-0.032, +0.007] | loc 0.88 0.89 0.76 0.89 0.80
+tileonlyV_mean               AUROC 0.850  decorrelated 0.808  ctx-share 0.21 | Δin -0.042 [-0.052, -0.032] Δdec -0.043 [-0.065, -0.024] | loc 0.86 0.88 0.74 0.85 0.78

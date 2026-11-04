@@ -1,0 +1,15 @@
+# Instance-level supervision derived from set labels only (no bag-level loss): exact negatives (every
+# tile of a bag without k), exact positives (every tile of a pure culture of k), weak MIL positives
+# (top-quantile tiles of bags with k). Score = a quantile of tile evidence; no learned read-out, so no
+# combination lookup can be learnt. Compared on the same PHOEBI dev bags as every other run.
+reference: tileonly_q50
+n_fields: [1, 4]
+seeds: [0, 1, 2]
+caps: {cap_train: 600, cap_calib: 150, cap_eval: 300}
+_s: &s {type: set, model: popevidence, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64, lambda_bce: 0.0, lambda_tile: 1.0}
+methods:
+  - {<<: *s, name: tileonly_q50, model_kw: {pool: quantile, m: 1, score: q50}}
+  - {<<: *s, name: tileonly_q90, model_kw: {pool: quantile, m: 1, score: q90}}
+  - {<<: *s, name: tileonly_mean, model_kw: {pool: quantile, m: 1, score: mean}}
+  - {<<: *s, name: tileonly_q50_pos50, model_kw: {pool: quantile, m: 1, score: q50}, tile_q: 0.5}
+  - {<<: *s, name: pureonly_q50, model_kw: {pool: quantile, m: 1, score: q50}, pure_only: true}

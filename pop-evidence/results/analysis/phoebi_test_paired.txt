@@ -1,0 +1,8 @@
+n=1 abmil_cla1 vs abmil: raw dAUROC 0.039 [0.012, 0.066] P>0 0.996 | split-rank dAUROC 0.027 [-0.002, 0.056] P>0 0.969 | dAP 0.033 [0.010, 0.057]
+n=1 abmil_cla1 vs mean_lin: raw dAUROC 0.017 [-0.012, 0.048] P>0 0.873 | split-rank dAUROC 0.011 [-0.019, 0.040] P>0 0.763 | dAP 0.022 [-0.005, 0.048]
+n=1 abmil_cla1 vs meanstd_lin: raw dAUROC 0.017 [-0.017, 0.050] P>0 0.840 | split-rank dAUROC 0.014 [-0.018, 0.045] P>0 0.811 | dAP 0.020 [-0.007, 0.046]
+n=1 tileonly_mean vs mean_lin: raw dAUROC -0.092 [-0.194, 0.008] P>0 0.037 | split-rank dAUROC -0.067 [-0.143, 0.004] P>0 0.031 | dAP -0.047 [-0.106, 0.009]
+n=4 abmil_cla1 vs abmil: raw dAUROC 0.041 [0.015, 0.066] P>0 1.000 | split-rank dAUROC 0.028 [0.004, 0.051] P>0 0.990 | dAP 0.031 [0.005, 0.056]
+n=4 abmil_cla1 vs mean_lin: raw dAUROC 0.013 [-0.025, 0.048] P>0 0.754 | split-rank dAUROC 0.007 [-0.033, 0.043] P>0 0.640 | dAP 0.017 [-0.020, 0.053]
+n=4 abmil_cla1 vs meanstd_lin: raw dAUROC 0.016 [-0.024, 0.053] P>0 0.787 | split-rank dAUROC 0.013 [-0.026, 0.049] P>0 0.749 | dAP 0.020 [-0.018, 0.049]
+n=4 tileonly_mean vs mean_lin: raw dAUROC -0.108 [-0.233, 0.012] P>0 0.045 | split-rank dAUROC -0.076 [-0.172, 0.017] P>0 0.051 | dAP -0.049 [-0.131, 0.023]

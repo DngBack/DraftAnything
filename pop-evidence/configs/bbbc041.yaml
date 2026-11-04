@@ -1,0 +1,15 @@
+# BBBC041: unit = image, 5-fold image-level CV over the official training images (n_fields = 1).
+reference: mean_lin
+n_fields: [1]
+seeds: [0, 1, 2]
+caps: {cap_train: 1, cap_calib: 1, cap_eval: 1}
+_set: &b {type: set, model: popevidence, steps: 1500, lr: 1.0e-3, wd: 1.0e-2, batch: 64}
+methods:
+  - {name: mean_lin,    type: fixed, rep: mean,    wd: 1.0e-2, lr: 1.0e-2, steps: 500}
+  - {name: meanstd_lin, type: fixed, rep: meanstd, wd: 1.0e-2, lr: 1.0e-2, steps: 500}
+  - {name: kme05_lin,   type: fixed, rep: kme, rep_kw: {n_features: 2048, scale: 0.5}, wd: 1.0e-2, lr: 1.0e-2, steps: 500}
+  - {<<: *b, name: deepsets, model: deepsets, model_kw: {hidden: 256}}
+  - {<<: *b, name: pe_mean,        model_kw: {pool: mean,     m: 4, class_specific: true}}
+  - {<<: *b, name: pe_quantile,    model_kw: {pool: quantile, m: 4, class_specific: true}}
+  - {<<: *b, name: pe_quantile_tile1, model_kw: {pool: quantile, m: 4, class_specific: true}, lambda_tile: 1.0}
+  - {<<: *b, name: pe_max_tile1,   model_kw: {pool: max,      m: 4, class_specific: true}, lambda_tile: 1.0}

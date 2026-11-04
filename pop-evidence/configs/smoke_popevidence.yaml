@@ -1,0 +1,89 @@
+reference: pe_mean
+n_fields:
+- 1
+- 4
+seeds:
+- 0
+- 1
+caps:
+  cap_train: 200
+  cap_calib: 60
+  cap_eval: 80
+methods:
+- type: set
+  model: popevidence
+  steps: 400
+  lr: 0.001
+  wd: 0.01
+  batch: 64
+  name: pe_mean
+  model_kw:
+    pool: mean
+    m: 4
+    class_specific: true
+- type: set
+  model: popevidence
+  steps: 400
+  lr: 0.001
+  wd: 0.01
+  batch: 64
+  name: pe_meanstd
+  model_kw:
+    pool: meanstd
+    m: 4
+    class_specific: true
+- type: set
+  model: popevidence
+  steps: 400
+  lr: 0.001
+  wd: 0.01
+  batch: 64
+  name: pe_quantile
+  model_kw:
+    pool: quantile
+    m: 4
+    class_specific: true
+- type: set
+  model: popevidence
+  steps: 400
+  lr: 0.001
+  wd: 0.01
+  batch: 64
+  name: pe_quantile_shared
+  model_kw:
+    pool: quantile
+    m: 4
+    class_specific: false
+- type: set
+  model: popevidence
+  steps: 400
+  lr: 0.001
+  wd: 0.01
+  batch: 64
+  name: pe_quantile_cons01
+  model_kw:
+    pool: quantile
+    m: 4
+    class_specific: true
+  lambda_cons: 0.1
+- type: set
+  model: popevidence
+  steps: 400
+  lr: 0.001
+  wd: 0.01
+  batch: 64
+  name: pe_quantile_cons1
+  model_kw:
+    pool: quantile
+    m: 4
+    class_specific: true
+  lambda_cons: 1.0
+- type: set
+  model: deepsets
+  steps: 400
+  lr: 0.001
+  wd: 0.01
+  batch: 64
+  name: deepsets_ref
+  model_kw:
+    hidden: 256

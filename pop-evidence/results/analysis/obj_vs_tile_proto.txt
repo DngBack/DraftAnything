@@ -1,0 +1,8 @@
+n=1 proto_mean cell 0.579 | tile 0.544 | cell - tile 0.036 [-0.044, 0.121] P>0 0.79
+n=1 proto_vote cell 0.573 | tile 0.550 | cell - tile 0.023 [-0.033, 0.070] P>0 0.80
+n=1 proto_knn  cell 0.581 | tile 0.608 | cell - tile -0.027 [-0.087, 0.030] P>0 0.18
+n=1 mean_lin   cell 0.582 | tile 0.554 | cell - tile 0.028 [-0.029, 0.093] P>0 0.81
+n=4 proto_mean cell 0.584 | tile 0.541 | cell - tile 0.043 [-0.049, 0.142] P>0 0.78
+n=4 proto_vote cell 0.572 | tile 0.558 | cell - tile 0.014 [-0.045, 0.069] P>0 0.65
+n=4 proto_knn  cell 0.588 | tile 0.622 | cell - tile -0.035 [-0.107, 0.038] P>0 0.18
+n=4 mean_lin   cell 0.607 | tile 0.569 | cell - tile 0.038 [-0.042, 0.125] P>0 0.81

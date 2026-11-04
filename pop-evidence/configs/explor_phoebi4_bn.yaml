@@ -1,0 +1,27 @@
+# EXPLORATORY, POST-HOC: phoebi4 has already been read (phoebi4_v1). Same methods and bags, features standardised per
+# culture batch (scripts/batch_norm_store.py). Any effect here needs a fresh batch to be confirmed.
+# LOCKED external test (docs/protocol_external.md): trained on all phoebi6 combinations (random-split train,
+# calibrated on its val), evaluated on every phoebi4 video. Methods fixed from the phoebi6 work; no tuning.
+# Hypotheses E1-E4 are stated in the protocol. Unit = phoebi4 video (14).
+name: phoebi4_bn_exploratory
+dataset: phoebi4
+store_tag: _p4bn
+reference: mean_lin
+n_fields: [1, 4]
+seeds: [0, 1, 2]
+caps: {cap_train: 600, cap_calib: 150, cap_eval: 300}
+_fix: &f {type: fixed, wd: 1.0e-2, lr: 1.0e-2, steps: 500}
+_set: &s {type: set, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64}
+_to: &t {type: set, model: popevidence, steps: 2000, lr: 1.0e-3, wd: 1.0e-2, batch: 64, lambda_bce: 0.0, lambda_tile: 1.0}
+methods:
+  - {<<: *f, name: mean_lin,    rep: mean}
+  - {<<: *f, name: meanstd_lin, rep: meanstd}
+  - {<<: *s, name: deepsets,    model: deepsets, model_kw: {hidden: 256}}
+  - {<<: *s, name: abmil,       model: abmil}
+  - {<<: *s, name: abmil_cla1,  model: abmil, cla: {mode: conditional, tau: 1.0, C: 1.0}}
+  - {<<: *s, name: abmil_tile1, model: abmil, lambda_tile: 1.0}
+  - {<<: *t, name: tileonly_mean, model_kw: {pool: quantile, m: 1, score: mean}}
+  - {name: protomatch, type: proto, agg: mean}
+
+locked_sha256: 75186cc64070066b8329b3fed8b86012dbd897c9c94f7b1b3304442609e255fb
+locked_at: '2026-10-29 12:30:17'

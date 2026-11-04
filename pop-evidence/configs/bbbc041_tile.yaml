@@ -1,0 +1,11 @@
+# BBBC041 tile-evidence variants with per-tile evidence saved for box-level localisation checks.
+reference: pe_quantile_s
+n_fields: [1]
+seeds: [0, 1, 2]
+caps: {cap_train: 1, cap_calib: 1, cap_eval: 1}
+_set: &b {type: set, model: popevidence, steps: 1500, lr: 1.0e-3, wd: 1.0e-2, batch: 64, save_tile_evidence: true}
+methods:
+  - {<<: *b, name: pe_quantile_s,       model_kw: {pool: quantile, m: 4, class_specific: true}}
+  - {<<: *b, name: pe_quantile_tile1_s, model_kw: {pool: quantile, m: 4, class_specific: true}, lambda_tile: 1.0}
+  - {<<: *b, name: pe_quantile_tile3_s, model_kw: {pool: quantile, m: 4, class_specific: true}, lambda_tile: 3.0}
+  - {<<: *b, name: pe_max_tile1_s,      model_kw: {pool: max,      m: 4, class_specific: true}, lambda_tile: 1.0}

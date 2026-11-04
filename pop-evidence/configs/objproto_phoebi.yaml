@@ -1,0 +1,12 @@
+# Closed-form pure-culture prototypes at the CELL level (object crops, popev/objects.py) vs tile level.
+# Hypothesis: at the single-cell level a mixture is a union of pure cells, so pure-culture references
+# transfer to mixtures (PHOEBI found tile embeddings of mixtures are not mixtures of constituents).
+reference: proto_mean
+n_fields: [1, 4]
+seeds: [0]
+caps: {cap_train: 600, cap_calib: 150, cap_eval: 300}
+methods:
+  - {name: proto_mean, type: proto, agg: mean}
+  - {name: proto_vote, type: proto, agg: vote}
+  - {name: proto_knn,  type: proto, agg: knn}
+  - {name: mean_lin,   type: fixed, rep: mean, wd: 1.0e-2, lr: 1.0e-2, steps: 500}

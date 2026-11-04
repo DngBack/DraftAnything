@@ -1,0 +1,8 @@
+# ProtoMatch re-implemented on the same PHOEBI dev folds and bags (closed form; seeds only affect nothing).
+reference: protomatch
+n_fields: [1, 4]
+seeds: [0]
+caps: {cap_train: 600, cap_calib: 150, cap_eval: 300}
+methods:
+  - {name: protomatch,     type: proto, agg: mean}
+  - {name: protomatch_q50, type: proto, agg: q50}

@@ -1,0 +1,12 @@
+# Is context reliance taught by the set-level loss? Train only with label-valid tile constraints
+# (lambda_bce = 0); with max pooling and m = 1 the score is a function of localised tile evidence only
+# (score = max or 0.9-quantile of tile evidence, no learned read-out).
+reference: pe_max_tile1_m1
+n_fields: [1]
+seeds: [0, 1, 2]
+caps: {cap_train: 1, cap_calib: 1, cap_eval: 1}
+_set: &b {type: set, model: popevidence, steps: 1500, lr: 1.0e-3, wd: 1.0e-2, batch: 64, save_tile_evidence: true}
+methods:
+  - {<<: *b, name: pe_max_tile1_m1,       model_kw: {pool: max, m: 1, class_specific: true}, lambda_tile: 1.0}
+  - {<<: *b, name: pe_max_tileonly_m1,    model_kw: {pool: max, m: 1, class_specific: true, score: max}, lambda_tile: 1.0, lambda_bce: 0.0}
+  - {<<: *b, name: pe_q90_tileonly_m1, model_kw: {pool: quantile, m: 1, class_specific: true, score: q90}, lambda_tile: 1.0, lambda_bce: 0.0}

@@ -1,0 +1,54 @@
+# Pure-culture probe (cls)
+
+Classifier: linear, 5 classes ['bs', 'fj', 'ka', 'mx', 'pf'], fitted on 13572 train images (651456 tiles) of the pure cultures.
+
+(a) Pure-culture val: tile accuracy 0.624, image accuracy (mean of 16 tile posteriors) 0.992. Upper bound: one video per species, so species and session coincide.
+
+Tile confusion (rows true, columns predicted, row-normalised):
+
+| | bs | fj | ka | mx | pf |
+|---|---|---|---|---|---|
+| bs | 0.60 | 0.17 | 0.00 | 0.11 | 0.12 |
+| fj | 0.10 | 0.55 | 0.00 | 0.20 | 0.15 |
+| ka | 0.00 | 0.00 | 0.99 | 0.00 | 0.00 |
+| mx | 0.09 | 0.26 | 0.00 | 0.51 | 0.14 |
+| pf | 0.10 | 0.25 | 0.01 | 0.17 | 0.47 |
+
+(b) Trained mixtures (26 combinations, orders 2-4, unseen by this classifier): fraction of tiles assigned to each species.
+
+| species | mean fraction when present | when absent | combination AUROC [95 % CI over combinations] |
+|---|---|---|---|
+| bs | 0.132 | 0.164 | 0.38 [0.17, 0.61] |
+| fj | 0.289 | 0.278 | 0.53 [0.30, 0.77] |
+| ka | 0.213 | 0.058 | 0.85 [0.67, 0.98] resolved |
+| mx | 0.201 | 0.171 | 0.65 [0.42, 0.86] |
+| pf | 0.252 | 0.233 | 0.55 [0.31, 0.78] |
+
+| combo | bs | fj | ka | mx | pf |
+|---|---|---|---|---|---|
+| bs_fj | ✓0.20 | ✓0.32 |  0.01 |  0.23 |  0.24 |
+| bs_ka | ✓0.04 |  0.09 | ✓0.38 |  0.11 |  0.38 |
+| bs_mx | ✓0.16 |  0.39 |  0.02 | ✓0.24 |  0.20 |
+| bt_ka |  0.27 |  0.10 | ✓0.37 |  0.12 |  0.14 |
+| bt_mx |  0.09 |  0.44 |  0.01 | ✓0.22 |  0.24 |
+| bt_pf |  0.17 |  0.40 |  0.02 |  0.21 | ✓0.20 |
+| fj_pf |  0.10 | ✓0.41 |  0.06 |  0.20 | ✓0.23 |
+| mx_fj |  0.10 | ✓0.46 |  0.01 | ✓0.21 |  0.22 |
+| mx_ka |  0.14 |  0.10 | ✓0.39 | ✓0.13 |  0.23 |
+| mx_pf |  0.12 |  0.40 |  0.08 | ✓0.19 | ✓0.21 |
+| bs_bt_mx | ✓0.12 |  0.33 |  0.04 | ✓0.20 |  0.32 |
+| bs_fj_pf | ✓0.14 | ✓0.47 |  0.01 |  0.20 | ✓0.19 |
+| bs_ka_fj | ✓0.20 | ✓0.34 | ✓0.04 |  0.18 |  0.23 |
+| bs_mx_ka | ✓0.13 |  0.26 | ✓0.16 | ✓0.13 |  0.31 |
+| bs_mx_pf | ✓0.11 |  0.34 |  0.00 | ✓0.29 | ✓0.25 |
+| bt_fj_pf |  0.19 | ✓0.07 |  0.39 |  0.18 | ✓0.16 |
+| bt_ka_fj |  0.17 | ✓0.05 | ✓0.53 |  0.10 |  0.15 |
+| bt_mx_ka |  0.29 |  0.25 | ✓0.09 | ✓0.14 |  0.23 |
+| bt_mx_pf |  0.10 |  0.36 |  0.01 | ✓0.30 | ✓0.22 |
+| ka_fj_pf |  0.23 | ✓0.38 | ✓0.03 |  0.16 | ✓0.20 |
+| mx_fj_pf |  0.21 | ✓0.14 |  0.10 | ✓0.18 | ✓0.36 |
+| mx_ka_pf |  0.11 |  0.24 | ✓0.08 | ✓0.28 | ✓0.29 |
+| bs_ka_fj_pf | ✓0.10 | ✓0.27 | ✓0.09 |  0.24 | ✓0.29 |
+| bs_mx_ka_pf | ✓0.14 |  0.16 | ✓0.21 | ✓0.15 | ✓0.34 |
+| bt_ka_fj_pf |  0.16 | ✓0.35 | ✓0.05 |  0.12 | ✓0.32 |
+| bt_mx_ka_fj |  0.16 | ✓0.20 | ✓0.36 | ✓0.15 |  0.13 |

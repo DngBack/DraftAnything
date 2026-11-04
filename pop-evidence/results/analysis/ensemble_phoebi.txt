@@ -1,0 +1,4 @@
+n=1 ENSEMBLE[tileonly_q50+meanstd_lin] AUROC 0.621 [0.552, 0.673] mAP 0.574 | bs:0.51 bt:0.57 fj:0.47 ka:0.88 mx:0.78 pf:0.52 | vs meanstd_lin dAUROC 0.040 [0.001, 0.075] P>0 0.98
+n=1 ENSEMBLE[tileonly_q50+meanstd_lin+abmil_cla1] AUROC 0.621 [0.551, 0.681] mAP 0.571 | bs:0.53 bt:0.59 fj:0.48 ka:0.89 mx:0.75 pf:0.49 | vs meanstd_lin dAUROC 0.040 [-0.010, 0.081] P>0 0.95
+n=4 ENSEMBLE[tileonly_q50+meanstd_lin] AUROC 0.640 [0.561, 0.705] mAP 0.594 | bs:0.52 bt:0.62 fj:0.48 ka:0.88 mx:0.82 pf:0.52 | vs meanstd_lin dAUROC 0.039 [-0.013, 0.089] P>0 0.93
+n=4 ENSEMBLE[tileonly_q50+meanstd_lin+abmil_cla1] AUROC 0.643 [0.564, 0.709] mAP 0.589 | bs:0.53 bt:0.64 fj:0.54 ka:0.89 mx:0.78 pf:0.47 | vs meanstd_lin dAUROC 0.042 [-0.019, 0.092] P>0 0.91
