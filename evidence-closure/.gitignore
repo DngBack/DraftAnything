@@ -1,0 +1,27 @@
+.venv/
+data/
+cache/
+hf/
+__pycache__/
+*.pyc
+# logs and build output
+dl.log
+pip.log
+results/*.log
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+# InternVL3 raw outputs stay local until its licence is checked (docs/protocol_decide.md)
+results/decide_internvl3_*.jsonl
+results/token_internvl3_*.jsonl
+results/viz/
+# intermediate outputs: kept locally, not needed to read or rebuild the paper
+results/*.jsonl
+!results/attr_*.jsonl
+!results/decide_*.jsonl
+results/decide_internvl3_*.jsonl
+results/*.pt
+results/*.png
+results/*_summary.*

@@ -1,0 +1,22 @@
+
+qwen25vl7b n=600 baseline EM 37.7, all repaired 82.5
+  perception(P)   +5.6 [+3.0,+8.1]
+  computation(C)  +20.6 [+17.2,+24.1]
+  scale(S)        +18.7 [+15.6,+21.9]
+  unexplained residual 17.5
+  by type:
+   arithmetic n=316 base  21.8 P  +6.9 C +39.0 S +12.0 full  79.7
+   span       n=198 base  54.0 P  +4.8 C  +0.0 S +25.0 full  83.8
+   multi-span n= 79 base  58.2 P  +2.5 C  +0.0 S +31.6 full  92.4
+   count      n=  7 base  57.1 P  +0.0 C  +0.0 S  +0.0 full  57.1
+
+qwen3vl8b n=300 baseline EM 38.3, all repaired 82.0
+  perception(P)   +8.3 [+4.9,+11.8]
+  computation(C)  +22.1 [+18.2,+26.1]
+  scale(S)        +13.3 [+10.0,+16.8]
+  unexplained residual 18.0
+  by type:
+   arithmetic n=158 base  15.8 P +10.3 C +42.0 S  +8.4 full  76.6
+   span       n=102 base  64.7 P  +6.4 C  +0.0 S +14.2 full  85.3
+   multi-span n= 36 base  61.1 P  +5.6 C  +0.0 S +33.3 full 100.0
+   count      n=  4 base  50.0 P  +0.0 C  +0.0 S  +0.0 full  50.0

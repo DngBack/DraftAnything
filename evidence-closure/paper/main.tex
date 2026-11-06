@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+\usepackage[review]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+
+% Every number comes from scripts/paper_tables.py. A missing key stops the build instead of printing nothing.
+\input{numbers}
+\newcommand{\val}[1]{\ifcsname v@#1\endcsname\csname v@#1\endcsname\else\errmessage{missing number #1}\fi}
+
+\title{Tokens, Pixels, or Position? A Factorial Study of Why\\Vision-Language Models Misread Table Cells}
+\author{Anonymous}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+When a financial page loses resolution, vision-language models (VLMs) misread the numbers on it. We ask what the failure consists of. On TAT-DQA documents we report interventional Shapley attribution of question-answering loss across image quality; pixel-level digit edits in real table cells; and a $2\times2$ factorial experiment that crosses a localization cue with restored glyph pixels at a fixed image-token count, on Qwen2.5-VL-7B, Qwen3-VL-8B and InternVL3-8B. Perception's share of the loss rises from 10--14\% to 50--65\%. Models read the digits actually drawn rather than the ones context suggests. Merely enlarging a downsampled page recovers much of the loss on the Qwen models, restored pixels add most at the lowest resolution, and a box helps mainly when digits are legible. Log-probabilities separate right from wrong readings while stated confidence does not. The confirmatory run stopped early (\val{seven.n}, \val{three.n} and \val{intern.n} of 500 planned cells) and our preregistered separability criterion was not met, so these findings are provisional.
+\end{abstract}
+
+\section{Introduction}
+
+Answering a question about a financial table requires locating a cell, reading its digits, and computing with them. Benchmarks report the product of these steps. When accuracy falls on a degraded page, the score cannot say whether the model lost the cell, lost the digits, or never received enough of the image to see them.
+
+These explanations imply different remedies. Lost position calls for a better search; lost pixels call for a better scan or a refusal; too few image tokens call for a resize before inference. Recent work has established parts of this picture. \citet{shi2026readaloud} enlarges rendered prose by bicubic interpolation and shows reading recover on Qwen3-VL-8B, and attributes InternVL3.5's insensitivity to its fixed tiling. Res-Bench separates information content from token length with padding and learned super-resolution \citep{li2025resbench}. Two studies report that red boxes give little benefit on compressed or many-page inputs \citep{shi2026readaloud,xia2026foundnotread}. We did not find, in the work we reviewed, a design that crosses restored pixels with a localization cue at a matched token count on real table cells.
+
+We contribute three things:
+\begin{itemize}
+\item An interventional Shapley curve of question-answering loss over image quality, attributing it to perception, computation and scale.
+\item A causal test by digit edit: one digit of a table cell is redrawn in pixels, and we measure whether the model reports the drawn number, the deleted one, or a placebo.
+\item A $2\times2$ factorial of localization and legibility at fixed image-token count, placed against the real downsampled image.
+\end{itemize}
+
+Our protocols were fixed before their main outputs existed, and we report where we departed from them. One departure matters throughout: the confirmatory experiment was stopped before its planned sample because the compute was needed elsewhere, and two interim looks preceded the stop (Section~\ref{sec:limits}).
+
+\section{Related Work}
+
+\paragraph{Resolution and reading.} \citet{shi2026readaloud} is the closest work. It enlarges the same image to several character heights, so that each size carries the same information. It measures a read-use gap on prose evidence, and also compares a box, copied pixels and enlargement as separate arms. \citet{li2025resbench} and \citet{hu2026lookzoom} study resolution and token budgets more broadly, and \citet{alonso2026table64} compresses tables under a token budget without upscaling images already below it. \citet{lin2026readingright} shows that small resizes crossing tiling or token-grid boundaries can flip answers. Our addition is the comparison of enlarged and sharp pixels at one token count, on single cells of real tables.
+
+\paragraph{Localization cues.} \citet{xia2026foundnotread} finds that red boxes add little over a many-page context while crops recover most of the gain from extracted text. Our pages are single tables, and our box is crossed with legibility rather than tested alone.
+
+\paragraph{Causal diagnosis.} CADET decomposes tasks into unit tasks and scores prerequisites by necessity and sufficiency through prompt-level injection, without an image-quality axis \citep{hu2026cadet}. Exact Shapley values have been applied to LLM agent components \citep{liu2026cci}; we apply the value \citep{shapley1953value} to VLM pipeline stages over image quality. \citet{hwang2026perceptual} erases answer-relevant pixels and treats abstention as correct, whereas we replace a digit, so a faithful reader has a definite correct output.
+
+\paragraph{Confidence.} Token-level signals have been reported to exceed stated confidence for small VLMs under degradation \citep{ferdous2026smallvlms,ferdous2026biggerorcheaper}. The direction is not universal: in ConfBench the two models supporting both families disagree \citep{roy2026confbench}. Abstention is known to be rare \citep{madhusudhan2026mmaqa}. We do not offer this gap as a new phenomenon, only as a measurement on table cells along a resolution axis.
+
+\section{Attribution across Image Quality}
+\label{sec:attr}
+
+\paragraph{Setup.} We used \val{seven.attr.n} TAT-DQA training questions \citep{zhu2022tatdqa}, one per document, unused by any other experiment, on Qwen2.5-VL-7B \citep{bai2025qwen25vl} and Qwen3-VL-8B \citep{bai2025qwen3vl}. Levels are s100, s60, s50, s40 and s30 (edge scale) and \emph{photo} (s60 with small rotation, blur and JPEG compression). Three players repair a stage: $P$ adds gold cell values to the prompt, $C$ runs the model's expression in Python, and $S$ supplies the gold scale. Scoring uses a port of the official TAT-QA exact-match metric \citep{zhu2021tatqa}. Intervals are 95\% document-bootstrap percentile intervals.
+
+\paragraph{Results.} Table~\ref{tab:attr} and Figure~\ref{fig:attr} show perception's share rising from \val{seven.attr.s100.share} to \val{seven.attr.s30.share} on 7B and from \val{three.attr.s100.share} to \val{three.attr.s30.share} on Qwen3. The locked primary criterion was met on both: the change in share is \val{seven.attr.dshare} and \val{three.attr.dshare} points. At s100, computation and scale jointly exceed perception by \val{seven.attr.crit} and \val{three.attr.crit} points, also meeting its criterion. On clean pages these models fail mostly after reading; at s30 reading is as large as, or larger than, everything else.
+
+The $P$ player is coarse. It bundles position and glyphs and, on span questions, nearly hands over the answer. The next two sections open it up.
+
+\begin{table}[t]
+\centering\small
+\resizebox{\columnwidth}{!}{\input{tables/attr}}
+\caption{Shapley attribution of exact-match loss (points). $n=\val{seven.attr.n}$ questions.}
+\label{tab:attr}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig/attr}
+\caption{Shapley values by image quality. P, C and S mark the end of each series.}
+\label{fig:attr}
+\end{figure}
+
+\section{Reading Experiments}
+\label{sec:method}
+
+\paragraph{Cells.} The planned set has 500 target cells, one per document, disjoint from the attribution set: numeric, at least three digits, unique on the page, with row and column labels found through OCR. Models are the two above plus InternVL3-8B \citep{zhu2025internvl3} with tiling enabled, since the checkpoint default squeezes a page into one 448\,px tile. Decoding is greedy. Prompts name the row and column labels and ask for the number. \textbf{The run stopped at \val{seven.n}, \val{three.n} and \val{intern.n} complete cells}; the cells are taken in a fixed shuffled order, and the stop did not depend on results.
+
+\paragraph{Digit edits.} We delete the number in pixels using the modal background colour and redraw it in a matched font, in three versions: unchanged (null), one interior digit replaced (counterfactual, cf), and, as a placebo, a digit value never drawn. $T$ is the rate of outputting the drawn number, $O$ the deleted original, $A$ the placebo.
+
+\paragraph{Factorial.} All four conditions downsample the page and enlarge it back to its original size with bicubic interpolation, which equalizes image tokens. \emph{Base} is that canvas. $G$ pastes the original pixels back over every numeric OCR word on the page, excluding year-like words unless they are the target, so sharpness does not reveal the target and labels stay blurred. $L$ draws a red box around the target and tells the model so. We report two-player Shapley values $\phi_L,\phi_G$ on $T$ and their interaction. \emph{Real} is the actual downsampled page, with fewer tokens (on a 1240$\times$1605 page, 7B receives about 285 image tokens at s30 and 2,508 at original size).
+
+\paragraph{Confidence and refusal.} We compare mean-token log-probability with a stated 0--100 confidence, and offer an UNREADABLE option under two wordings. Blank pages provide a floor.
+
+\paragraph{Criteria.} Table~\ref{tab:verdicts} applies the locked criteria. D1 requires both $\phi_L$ and $\phi_G$ to have intervals above zero at one level. D2 asks whether $O-A$ is at least 3 points with an interval above zero. D3 asks whether copying and writing an expression differ by at least 5 points. D4a requires log-probability AUROC of at least 0.75 at s40 and s30, above that of glyph height, with discordant within-cell pairs above 50\%.\footnote{The protocol does not state the levels for the discordant-pair part. We apply the stricter reading, both levels.} D4b requires a refusal gap of at least 20 points at s30. D4c requires log-probability AUROC to exceed that of stated confidence.
+
+\begin{table}[t]
+\centering\small
+\input{tables/verdicts}
+\caption{Locked criteria on the incomplete sample. All are provisional. For D1, the entry lists qualifying levels.}
+\label{tab:verdicts}
+\end{table}
+
+\section{Results}
+
+\paragraph{Validity.} At s100, the null edit shifts $T$ by \val{seven.null}, \val{three.null} and \val{intern.null} points; $T$(cf) is \val{seven.cf}, \val{three.cf} and \val{intern.cf}; and a box alone directs copying to a decoy cell at \val{seven.box}, \val{three.box} and \val{intern.box}\%. All three models pass, so the edits and the box function as intended.
+
+\paragraph{Models read what is drawn.} $O-A$ at s30 is \val{seven.s30.pull} on 7B and \val{three.s30.pull} on Qwen3, and D2 classes the context pull as negligible on all three (Table~\ref{tab:cf}). InternVL produced no original-digit outputs in this sample, so its interval is degenerate. The task effect is less uniform. It is inconclusive on the Qwen models and present on InternVL, where copying beats writing an expression by \val{intern.s50.task} points at s50. That criterion compares output formats and does not establish a difference in perception.
+
+\begin{table}[t]
+\centering\small
+\resizebox{\columnwidth}{!}{\input{tables/counterfactual}}
+\caption{Digit edits. $T-$ columns are point differences with 95\% intervals.}
+\label{tab:cf}
+\end{table}
+
+\paragraph{The factorial.} \textbf{The locked separability criterion D1 was not met at any level on any model}, so our preregistered stop rule for this part is triggered on the present sample. It was also unstable across looks: Qwen3 and InternVL each met it at s50 at a smaller interim sample, and $\phi_L$ at s40 on 7B has a lower bound at zero. The pattern is in Table~\ref{tab:factorial}. What follows is exploratory.
+
+$\phi_L$ is largest at s50 (\val{seven.s50.phiL} on 7B, \val{three.s50.phiL} on Qwen3), where restored pixels add almost nothing. $\phi_G$ is largest at s30 (\val{seven.s30.phiG}, \val{three.s30.phiG}, \val{intern.s30.phiG}), where $\phi_L$ cannot be told from zero. This crossover suggests that position limits reading at mild degradation and legibility at severe degradation. We chose this reading after seeing the data.
+
+The interaction at s30 is large and positive (\val{seven.s30.inter}, \val{three.s30.inter}, \val{intern.s30.inter}). On blurred pixels the box does not help at s30 and can harm: \val{seven.s30.boxBlur}, \val{three.s30.boxBlur}, \val{intern.s30.boxBlur}. On restored pixels it helps: \val{seven.s30.boxSharp}, \val{three.s30.boxSharp}, \val{intern.s30.boxSharp}. The harm may be an artifact, since a box can cover small blurred glyphs, and so $\phi_L$ may understate the value of position. Published box nulls \citep{shi2026readaloud,xia2026foundnotread} come from compressed pages and many-page contexts; ours concern a single table and may differ for that reason.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3.5pt}
+\resizebox{\columnwidth}{!}{\input{tables/factorial}}
+\caption{Percentage of cells read correctly. Real has fewer tokens on Qwen models; the other columns share a canvas. * marks intervals excluding zero.}
+\label{tab:factorial}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig/ladder}
+\caption{Reading rate from the real downsampled page through enlargement (Base), restored pixels (G), and box (LG).}
+\label{fig:ladder}
+\end{figure}
+
+\paragraph{Enlargement.} Enlarging adds no information, yet Base exceeds Real by \val{seven.s30.upscale} points on 7B and \val{three.s30.upscale} on Qwen3 at s30 (Figure~\ref{fig:ladder}). On InternVL it adds \val{intern.s30.upscale}, as expected when both inputs become the same tile grid. This replicates on table cells what \citet{shi2026readaloud} shows on prose. Reporting this difference was planned, but the inference is post hoc, since we noticed it at an interim look. A locked follow-up on fresh cells (\texttt{protocol\_token}) was stopped after too few cells to analyse, so its criteria remain untested.
+
+For Qwen3 at s30, the steps are \val{three.s30.orig} (Real), \val{three.s30.base} (Base), \val{three.s30.G} ($G$), \val{three.s30.LG} ($LG$). Most of the attribution curve's perception loss at s30 on this model may therefore reflect the input size rather than destroyed information. This inference crosses experiments, one on question answering and one on copying, and we did not test it directly.
+
+\paragraph{Confidence.} Stated confidence carries almost no information (AUROC \val{seven.s30.auc}, \val{three.s30.auc}, \val{intern.s30.auc} at s30), and D4c holds on all three (Table~\ref{tab:meta}). Excluding InternVL's few out-of-scale outputs leaves its AUROC at \val{intern.s30.aucin}. Log-probability reaches \val{seven.s30.au}, \val{three.s30.au} and \val{intern.s30.au}. The stronger D4a passes only on 7B; Qwen3's discordant-pair interval at s30 includes 50\% (\val{three.s30.disc}), and InternVL at s40 rests on few cells. So log-probability separates correct from incorrect readings across cells, while within-cell evidence is firm only on 7B.
+
+\paragraph{Refusal.} D4b fails on all three models: the \texttt{UNREADABLE} gap at s30 is \val{seven.s30.refgap}, \val{three.s30.refgap} and \val{intern.s30.refgap} under the stronger wording. Qwen3 falls just short of the 20-point threshold. Silence is not absolute either. All three models refuse 100\% of blank pages under that wording, and refuse \val{seven.s30.refrate}, \val{three.s30.refrate} and \val{intern.s30.refrate}\% at s30. Under the plain prompt, they output a number on \val{seven.blank}, \val{three.blank} and \val{intern.blank}\% of blank pages.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{3.5pt}
+\resizebox{\columnwidth}{!}{\input{tables/meta}}
+\caption{Log-probability vs stated confidence, and refusal under the stronger wording. Gap: P(refuse\,$|$\,wrong)$-$P(refuse\,$|$\,right), points.}
+\label{tab:meta}
+\end{table}
+
+\section{Limitations}
+\label{sec:limits}
+
+\paragraph{Incomplete sample.} We committed to conclude only from 500 cells and did not reach them: 44\%, 52\% and 25\% of the plan. InternVL's estimates are especially wide. Two interim looks occurred, one requested and one during tooling tests, and verdicts changed between them. D1 and D4a in particular sit near boundaries. No threshold or scoring rule changed after looking. There is no multiplicity correction.
+
+\paragraph{Unconfirmed explanation.} Enlargement changes token count and glyph size per patch together, and interpolation may matter; our follow-up was to examine this and did not complete. We cannot claim a token-budget mechanism.
+
+\paragraph{Unexplained disagreement.} \citet{shi2026readaloud} reports a read-use gap on Qwen3-VL-8B even with gold evidence alone, whereas we find little task effect on Qwen models. Multi-hop prose answering and copying one cell differ, but we did not test whether that accounts for it.
+
+\paragraph{Stimuli and scope.} Downsampling is simulated and the box and pasted sharpness are artificial cues. Edits use substitute fonts. Our sets require facts matching OCR, and all data come from one domain. Attribution's $P$ player is coarse. We tested three open models, and InternVL3-8B differs from the InternVL3.5 of prior work.
+
+\section{Conclusion}
+
+Perception's share of question-answering loss grows sharply as financial pages lose resolution, and models then read what is drawn rather than what context suggests. Our provisional data suggest this perception loss is not one thing: some may come from input size, some from destroyed glyphs, and some from position, with position and legibility trading places as degradation worsens. The preregistered separability test did not pass, so this structure is a hypothesis for the completed run, not a finding. Completing the planned sample and the token follow-up are the next steps, and a second dataset with real captures is needed before generalizing.
+
+\bibliography{refs}
+
+\end{document}
