@@ -1,0 +1,161 @@
+{
+  "source": "hand_writting/VATr-pp/docs/vietcompose/protocol/coverage.json",
+  "counts": {
+    "train": {
+      "note": "Character occurrences from existing protocol artifact; not unique images/writers; original split before composition filtering.",
+      "target_occurrences": {
+        "E": 366,
+        "Ê": 0,
+        "Ẽ": 0,
+        "Ễ": 0,
+        "e": 1466,
+        "ê": 2730,
+        "ẽ": 468,
+        "ễ": 166,
+        "Ấ": 39,
+        "Ỗ": 0,
+        "Ỡ": 0,
+        "Ẵ": 0
+      },
+      "uppercase_tones": {
+        "none": 14152,
+        "acute": 128,
+        "grave": 40,
+        "hook": 89,
+        "dot_below": 21,
+        "tilde": 1
+      },
+      "lowercase_tones": {
+        "hook": 8663,
+        "none": 233440,
+        "acute": 21395,
+        "grave": 16242,
+        "tilde": 4263,
+        "dot_below": 14761
+      },
+      "uppercase_shape_tone": {
+        "none|none": 13322,
+        "crossbar|none": 653,
+        "none|acute": 88,
+        "circumflex|grave": 23,
+        "circumflex|hook": 18,
+        "none|hook": 60,
+        "circumflex|dot_below": 20,
+        "circumflex|acute": 40,
+        "circumflex|none": 154,
+        "none|grave": 17,
+        "horn|hook": 11,
+        "horn|none": 22,
+        "none|tilde": 1,
+        "none|dot_below": 1,
+        "breve|none": 1
+      }
+    },
+    "hat_ocr": {
+      "note": "Character occurrences from existing protocol artifact; not unique images/writers; original split before composition filtering.",
+      "target_occurrences": {
+        "E": 2029,
+        "Ê": 1004,
+        "Ẽ": 73,
+        "Ễ": 100,
+        "e": 4365,
+        "ê": 4206,
+        "ẽ": 149,
+        "ễ": 188,
+        "Ấ": 303,
+        "Ỗ": 72,
+        "Ỡ": 103,
+        "Ẵ": 50
+      },
+      "uppercase_tones": {
+        "none": 100479,
+        "acute": 5105,
+        "dot_below": 3293,
+        "grave": 2713,
+        "tilde": 1021,
+        "hook": 1834
+      },
+      "lowercase_tones": {
+        "none": 240550,
+        "tilde": 2469,
+        "dot_below": 7879,
+        "grave": 9895,
+        "acute": 16841,
+        "hook": 5406
+      },
+      "uppercase_shape_tone": {
+        "none|none": 93005,
+        "circumflex|acute": 1313,
+        "none|dot_below": 1581,
+        "circumflex|dot_below": 1214,
+        "none|acute": 2950,
+        "breve|acute": 334,
+        "horn|none": 1448,
+        "none|grave": 1410,
+        "horn|acute": 508,
+        "none|tilde": 552,
+        "breve|none": 513,
+        "crossbar|none": 2604,
+        "circumflex|tilde": 273,
+        "circumflex|grave": 728,
+        "none|hook": 1047,
+        "circumflex|hook": 477,
+        "horn|grave": 452,
+        "circumflex|none": 2909,
+        "horn|hook": 253,
+        "horn|dot_below": 324,
+        "breve|grave": 123,
+        "breve|dot_below": 174,
+        "breve|tilde": 50,
+        "breve|hook": 57,
+        "horn|tilde": 146
+      }
+    },
+    "val": {
+      "note": "Character occurrences from existing protocol artifact; not unique images/writers; original split before composition filtering.",
+      "target_occurrences": {
+        "E": 19,
+        "Ê": 0,
+        "Ẽ": 0,
+        "Ễ": 0,
+        "e": 182,
+        "ê": 313,
+        "ẽ": 71,
+        "ễ": 25,
+        "Ấ": 5,
+        "Ỗ": 0,
+        "Ỡ": 0,
+        "Ẵ": 0
+      },
+      "uppercase_tones": {
+        "none": 1612,
+        "hook": 10,
+        "acute": 13,
+        "grave": 4,
+        "dot_below": 2
+      },
+      "lowercase_tones": {
+        "tilde": 546,
+        "none": 28377,
+        "grave": 2083,
+        "dot_below": 1822,
+        "hook": 1076,
+        "acute": 2593
+      },
+      "uppercase_shape_tone": {
+        "none|none": 1499,
+        "none|hook": 7,
+        "circumflex|acute": 5,
+        "none|grave": 2,
+        "circumflex|none": 17,
+        "crossbar|none": 79,
+        "none|acute": 8,
+        "circumflex|grave": 2,
+        "circumflex|hook": 2,
+        "circumflex|dot_below": 2,
+        "horn|hook": 1,
+        "horn|none": 17
+      }
+    }
+  }
+}

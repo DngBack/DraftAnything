@@ -1,0 +1,94 @@
+{
+  "source_step": 175500,
+  "target_step": 176500,
+  "source_adam_steps": {
+    "G": {
+      "min": 351000.0,
+      "max": 351000.0
+    },
+    "D": {
+      "min": 351000.0,
+      "max": 351000.0
+    },
+    "W": {
+      "min": 175500.0,
+      "max": 175500.0
+    }
+  },
+  "verification": {
+    "legacy": {
+      "outer_step": 176500,
+      "adam_steps": {
+        "G": {
+          "min": 353000.0,
+          "max": 353000.0
+        },
+        "D": {
+          "min": 353000.0,
+          "max": 353000.0
+        },
+        "W": {
+          "min": 176500.0,
+          "max": 176500.0
+        }
+      },
+      "ocr_unchanged": true,
+      "native_network_keys_and_shapes_unchanged": true
+    },
+    "component": {
+      "outer_step": 176500,
+      "adam_steps": {
+        "G": {
+          "min": 353000.0,
+          "max": 353000.0
+        },
+        "D": {
+          "min": 353000.0,
+          "max": 353000.0
+        },
+        "W": {
+          "min": 176500.0,
+          "max": 176500.0
+        }
+      },
+      "ocr_unchanged": true,
+      "native_network_keys_and_shapes_unchanged": true
+    }
+  },
+  "source_unchanged": true,
+  "fixed_final_checkpoint_comparison": {
+    "first": {
+      "cer": 0.17953216374269007,
+      "word_exact": 0.525,
+      "tail_macro_f1": 0.21212121212121213
+    },
+    "second": {
+      "cer": 0.12690058479532162,
+      "word_exact": 0.65,
+      "tail_macro_f1": 0.2222222222222222
+    },
+    "paired_writer_cluster_difference": {
+      "cer": {
+        "difference_second_minus_first": -0.052631578947368446,
+        "low_95": -0.06725146198830409,
+        "high_95": -0.038596491228070184,
+        "valid_replicates": 2000
+      },
+      "word_exact": {
+        "difference_second_minus_first": 0.125,
+        "low_95": 0.09833333333333327,
+        "high_95": 0.15166666666666667,
+        "valid_replicates": 2000
+      },
+      "tail_macro_f1": {
+        "difference_second_minus_first": 0.010101010101010083,
+        "low_95": 0.0,
+        "high_95": 0.026143790849673193,
+        "valid_replicates": 2000
+      }
+    },
+    "writers": 30,
+    "samples": 600,
+    "note": "Second minus first. Negative CER is better; positive F1/exact is better. Single-seed exploratory percentile intervals; tail CI conditional on reference glyph coverage."
+  }
+}

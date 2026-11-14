@@ -1,0 +1,1281 @@
+{
+  "created_utc": "2026-11-14T11:59:28.209045+00:00",
+  "sources": [
+    "docs/VIETNAMESE.md",
+    "docs/BAO_CAO_KET_QUA_FINETUNE_100K.md",
+    "docs/BAO_CAO_TONG_HOP_TRIEN_KHAI_VA_KET_QUA_200K.md",
+    "docs/BAO_CAO_OCR_DUNG_NHUNG_CHU_XAU_VA_CAI_TIEN.md"
+  ],
+  "policy": "Keep 100k source; 107500 best A; baseline 150k; best 175500 and last 200k; all selected best/focus/visual and final pilot weights; all weights of active pretrained_longtail and newer research. Delete only obsolete smoke/debug, superseded 54k and periodic aliases/intermediates in completed runs. Logs, metrics, samples untouched.",
+  "estimated_reclaimed_bytes": 40626544640,
+  "deleted": [
+    {
+      "path": "runs/ablation_100k_v1/A_control/checkpoint_109000.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356068,
+      "links": 1,
+      "mtime_ns": 1794472575327957929,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/ablation_100k_v1/A_control/checkpoint_109500.pth",
+      "bytes": 1375263009,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356074,
+      "links": 1,
+      "mtime_ns": 1794472705937637428,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/ablation_100k_v1/A_control/checkpoint_110000.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356081,
+      "links": 2,
+      "mtime_ns": 1794472841979197901,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/ablation_100k_v1/B_half_g_lr/checkpoint_109000.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356169,
+      "links": 1,
+      "mtime_ns": 1794475433608752067,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/ablation_100k_v1/B_half_g_lr/checkpoint_109500.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356173,
+      "links": 1,
+      "mtime_ns": 1794475596801965165,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/ablation_100k_v1/B_half_g_lr/checkpoint_110000.pth",
+      "bytes": 1375263009,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356177,
+      "links": 2,
+      "mtime_ns": 1794475730411669389,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/ablation_100k_v1/C_half_ocr_weight/checkpoint_109000.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356263,
+      "links": 1,
+      "mtime_ns": 1794478299284201597,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/ablation_100k_v1/C_half_ocr_weight/checkpoint_109500.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356267,
+      "links": 1,
+      "mtime_ns": 1794478500168234574,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/ablation_100k_v1/C_half_ocr_weight/checkpoint_110000.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356271,
+      "links": 2,
+      "mtime_ns": 1794478701752397969,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/continuation_150k_v1/training/checkpoint_149000.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20847819,
+      "links": 1,
+      "mtime_ns": 1794497971943733881,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/continuation_150k_v1/training/checkpoint_149500.pth",
+      "bytes": 1375263009,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20847830,
+      "links": 1,
+      "mtime_ns": 1794498227799058857,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/continuation_150k_v1/training/checkpoint_150000.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20847838,
+      "links": 2,
+      "mtime_ns": 1794498483994401013,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/continuation_200k_v1/checkpoint_199000.pth",
+      "bytes": 1375263265,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 21159842,
+      "links": 1,
+      "mtime_ns": 1794599697293728179,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/continuation_200k_v1/checkpoint_199500.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 21159846,
+      "links": 1,
+      "mtime_ns": 1794599947356850771,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/continuation_200k_v1/checkpoint_200000.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 21159850,
+      "links": 2,
+      "mtime_ns": 1794600132521323126,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/auxiliary/checkpoint_111500.pth",
+      "bytes": 1375313742,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20846937,
+      "links": 1,
+      "mtime_ns": 1794482506568848505,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/auxiliary/checkpoint_112000.pth",
+      "bytes": 1375313806,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20846951,
+      "links": 1,
+      "mtime_ns": 1794482776260981543,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/auxiliary/checkpoint_112500.pth",
+      "bytes": 1375313806,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20846965,
+      "links": 2,
+      "mtime_ns": 1794483039056771325,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/control/checkpoint_111500.pth",
+      "bytes": 1375313806,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20847106,
+      "links": 1,
+      "mtime_ns": 1794485132326143327,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/control/checkpoint_112000.pth",
+      "bytes": 1375313742,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20847137,
+      "links": 1,
+      "mtime_ns": 1794485393049206966,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/control/checkpoint_112500.pth",
+      "bytes": 1375313742,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20847022,
+      "links": 2,
+      "mtime_ns": 1794485652248319344,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/rare_hat_Ễ_smoke_v1/last.pth",
+      "bytes": 1375313678,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20749359,
+      "links": 1,
+      "mtime_ns": 1794480362872207212,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vatrpp_vn_finetune/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 31199938,
+      "links": 1,
+      "mtime_ns": 1794382693165405172,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vatrpp_vn_finetune/last.pth",
+      "bytes": 1375262817,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 31202093,
+      "links": 1,
+      "mtime_ns": 1794404841849234824,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vatrpp_vn_gan_smoke/last.pth",
+      "bytes": 1420543065,
+      "allocated_bytes": 1420550144,
+      "device": 64515,
+      "inode": 20728224,
+      "links": 1,
+      "mtime_ns": 1794366370261296217,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vatrpp_vn_ocr_smoke/best.pth",
+      "bytes": 67946943,
+      "allocated_bytes": 67952640,
+      "device": 64515,
+      "inode": 20728215,
+      "links": 1,
+      "mtime_ns": 1794366343249905145,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vatrpp_vn_ocr_smoke/last.pth",
+      "bytes": 67946943,
+      "allocated_bytes": 67948544,
+      "device": 64515,
+      "inode": 20728211,
+      "links": 1,
+      "mtime_ns": 1794366343445900710,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/control/checkpoint_154000.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971860,
+      "links": 1,
+      "mtime_ns": 1794508896195333972,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/control/checkpoint_154500.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971892,
+      "links": 1,
+      "mtime_ns": 1794509206918278630,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/control/checkpoint_155000.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971896,
+      "links": 2,
+      "mtime_ns": 1794509493637352265,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_only/checkpoint_154000.pth",
+      "bytes": 1375263393,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971690,
+      "links": 1,
+      "mtime_ns": 1794504030784696328,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_only/checkpoint_154500.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971769,
+      "links": 1,
+      "mtime_ns": 1794504227341381767,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_only/checkpoint_155000.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971777,
+      "links": 2,
+      "mtime_ns": 1794504413910230389,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_pixel/checkpoint_154000.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971817,
+      "links": 1,
+      "mtime_ns": 1794506077579888508,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_pixel/checkpoint_154500.pth",
+      "bytes": 1375263265,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971833,
+      "links": 1,
+      "mtime_ns": 1794506312907220992,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_pixel/checkpoint_155000.pth",
+      "bytes": 1375263393,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971837,
+      "links": 2,
+      "mtime_ns": 1794506500915550325,
+      "reason": "Periodic checkpoint of completed run; retain last and all selected best weights."
+    },
+    {
+      "path": "runs/visual_quality_smoke_v1/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20971608,
+      "links": 1,
+      "mtime_ns": 1794502565236820163,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/visual_quality_smoke_v1/best_visual.pth",
+      "bytes": 1375318538,
+      "allocated_bytes": 1375326208,
+      "device": 64515,
+      "inode": 20971623,
+      "links": 1,
+      "mtime_ns": 1794502575764642381,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/visual_quality_smoke_v1/last.pth",
+      "bytes": 1375263201,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971625,
+      "links": 1,
+      "mtime_ns": 1794502578144602184,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/visual_quality_smoke_v1/visual_discriminator.pth",
+      "bytes": 145190033,
+      "allocated_bytes": 145195008,
+      "device": 64515,
+      "inode": 20971611,
+      "links": 1,
+      "mtime_ns": 1794502566688795647,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/visual_quality_smoke_v2/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20971631,
+      "links": 1,
+      "mtime_ns": 1794502622887845964,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/visual_quality_smoke_v2/best_visual.pth",
+      "bytes": 1375318538,
+      "allocated_bytes": 1375326208,
+      "device": 64515,
+      "inode": 20971646,
+      "links": 1,
+      "mtime_ns": 1794502634239653957,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/visual_quality_smoke_v2/last.pth",
+      "bytes": 1375263201,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971648,
+      "links": 1,
+      "mtime_ns": 1794502637275602597,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/visual_quality_smoke_v2/visual_discriminator.pth",
+      "bytes": 145190033,
+      "allocated_bytes": 145195008,
+      "device": 64515,
+      "inode": 20971634,
+      "links": 1,
+      "mtime_ns": 1794502624343821341,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vn_gan_smoke/last.pth",
+      "bytes": 1375261921,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20355194,
+      "links": 1,
+      "mtime_ns": 1794365868597685275,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vn_gan_verified/last.pth",
+      "bytes": 1375262689,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20728204,
+      "links": 1,
+      "mtime_ns": 1794366190325451426,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vn_ocr_smoke/last.pth",
+      "bytes": 67946751,
+      "allocated_bytes": 67952640,
+      "device": 64515,
+      "inode": 20321381,
+      "links": 1,
+      "mtime_ns": 1794365620145200348,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vn_ocr_verified/best.pth",
+      "bytes": 67946751,
+      "allocated_bytes": 67948544,
+      "device": 64515,
+      "inode": 20727988,
+      "links": 1,
+      "mtime_ns": 1794366158614210949,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    },
+    {
+      "path": "runs/vn_ocr_verified/last.pth",
+      "bytes": 67946879,
+      "allocated_bytes": 67948544,
+      "device": 64515,
+      "inode": 20727992,
+      "links": 1,
+      "mtime_ns": 1794366165770038747,
+      "reason": "Obsolete implementation/smoke weights or superseded 54k fine-tune; reports retained."
+    }
+  ],
+  "retained": [
+    {
+      "path": "runs/ablation_100k_v1/A_control/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20355879,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/ablation_100k_v1/A_control/best.pth",
+      "bytes": 1375263009,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356050,
+      "links": 1,
+      "mtime_ns": 1794472172170909888
+    },
+    {
+      "path": "runs/ablation_100k_v1/A_control/last.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356081,
+      "links": 2,
+      "mtime_ns": 1794472841979197901
+    },
+    {
+      "path": "runs/ablation_100k_v1/B_half_g_lr/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20355881,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/ablation_100k_v1/B_half_g_lr/best.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356129,
+      "links": 1,
+      "mtime_ns": 1794474042137562484
+    },
+    {
+      "path": "runs/ablation_100k_v1/B_half_g_lr/last.pth",
+      "bytes": 1375263009,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356177,
+      "links": 2,
+      "mtime_ns": 1794475730411669389
+    },
+    {
+      "path": "runs/ablation_100k_v1/C_half_ocr_weight/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20355883,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/ablation_100k_v1/C_half_ocr_weight/best.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356235,
+      "links": 1,
+      "mtime_ns": 1794477194243686986
+    },
+    {
+      "path": "runs/ablation_100k_v1/C_half_ocr_weight/last.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20356271,
+      "links": 2,
+      "mtime_ns": 1794478701752397969
+    },
+    {
+      "path": "runs/acl_longtail_v1/clean_recognizer/best_seen_cer.pth",
+      "bytes": 12573699,
+      "allocated_bytes": 12574720,
+      "device": 64515,
+      "inode": 24027023,
+      "links": 1,
+      "mtime_ns": 1794656284894583993
+    },
+    {
+      "path": "runs/acl_longtail_v1/clean_recognizer/last.pth",
+      "bytes": 12569817,
+      "allocated_bytes": 12570624,
+      "device": 64515,
+      "inode": 24027019,
+      "links": 1,
+      "mtime_ns": 1794656313582097043
+    },
+    {
+      "path": "runs/acl_longtail_v1/clean_recognizer_whole/best_seen_cer.pth",
+      "bytes": 12790435,
+      "allocated_bytes": 12791808,
+      "device": 64515,
+      "inode": 24027062,
+      "links": 1,
+      "mtime_ns": 1794656420551297269
+    },
+    {
+      "path": "runs/acl_longtail_v1/clean_recognizer_whole/last.pth",
+      "bytes": 12787609,
+      "allocated_bytes": 12787712,
+      "device": 64515,
+      "inode": 24027032,
+      "links": 1,
+      "mtime_ns": 1794656420347302433
+    },
+    {
+      "path": "runs/acl_longtail_v1/gan_factorized_seed742/best_pixel_proxy.pth",
+      "bytes": 19812322,
+      "allocated_bytes": 19812352,
+      "device": 64515,
+      "inode": 24813229,
+      "links": 1,
+      "mtime_ns": 1794656979782815125
+    },
+    {
+      "path": "runs/acl_longtail_v1/gan_factorized_seed742/last.pth",
+      "bytes": 19809882,
+      "allocated_bytes": 19812352,
+      "device": 64515,
+      "inode": 24813228,
+      "links": 1,
+      "mtime_ns": 1794656979558819659
+    },
+    {
+      "path": "runs/acl_longtail_v1/gan_glyph_seed742/best_pixel_proxy.pth",
+      "bytes": 18470187,
+      "allocated_bytes": 18472960,
+      "device": 64515,
+      "inode": 24551567,
+      "links": 1,
+      "mtime_ns": 1794656903580372218
+    },
+    {
+      "path": "runs/acl_longtail_v1/gan_glyph_seed742/last.pth",
+      "bytes": 18468395,
+      "allocated_bytes": 18468864,
+      "device": 64515,
+      "inode": 24551791,
+      "links": 1,
+      "mtime_ns": 1794656952719364567
+    },
+    {
+      "path": "runs/acl_longtail_v1/guided_factorized_seed742/best_pixel_proxy.pth",
+      "bytes": 16901124,
+      "allocated_bytes": 16904192,
+      "device": 64515,
+      "inode": 24530892,
+      "links": 1,
+      "mtime_ns": 1794656802634487858
+    },
+    {
+      "path": "runs/acl_longtail_v1/guided_factorized_seed742/last.pth",
+      "bytes": 16899084,
+      "allocated_bytes": 16900096,
+      "device": 64515,
+      "inode": 24551685,
+      "links": 1,
+      "mtime_ns": 1794656848401520532
+    },
+    {
+      "path": "runs/acl_longtail_v1/guided_glyph_seed742/best_pixel_proxy.pth",
+      "bytes": 15558989,
+      "allocated_bytes": 15560704,
+      "device": 64515,
+      "inode": 24530761,
+      "links": 1,
+      "mtime_ns": 1794656647529884996
+    },
+    {
+      "path": "runs/acl_longtail_v1/guided_glyph_seed742/last.pth",
+      "bytes": 15557597,
+      "allocated_bytes": 15560704,
+      "device": 64515,
+      "inode": 24551135,
+      "links": 1,
+      "mtime_ns": 1794656647309889963
+    },
+    {
+      "path": "runs/acl_longtail_v1/profile_factorized/best_pixel_proxy.pth",
+      "bytes": 16899972,
+      "allocated_bytes": 16900096,
+      "device": 64515,
+      "inode": 23896460,
+      "links": 1,
+      "mtime_ns": 1794655850445650670
+    },
+    {
+      "path": "runs/acl_longtail_v1/profile_factorized/last.pth",
+      "bytes": 16897932,
+      "allocated_bytes": 16900096,
+      "device": 64515,
+      "inode": 23896299,
+      "links": 1,
+      "mtime_ns": 1794655850225654224
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_factorized_seed743/best_seen_cer.pth",
+      "bytes": 12573763,
+      "allocated_bytes": 12574720,
+      "device": 64515,
+      "inode": 24551580,
+      "links": 1,
+      "mtime_ns": 1794657114828124657
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_factorized_seed743/last.pth",
+      "bytes": 12569881,
+      "allocated_bytes": 12570624,
+      "device": 64515,
+      "inode": 24551579,
+      "links": 1,
+      "mtime_ns": 1794657114616128820
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_factorized_seed744/best_seen_cer.pth",
+      "bytes": 12573763,
+      "allocated_bytes": 12574720,
+      "device": 64515,
+      "inode": 24551584,
+      "links": 1,
+      "mtime_ns": 1794657115284115702
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_factorized_seed744/last.pth",
+      "bytes": 12569881,
+      "allocated_bytes": 12570624,
+      "device": 64515,
+      "inode": 24551583,
+      "links": 1,
+      "mtime_ns": 1794657115076119786
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_glyph_seed742/best_seen_cer.pth",
+      "bytes": 13281122,
+      "allocated_bytes": 13283328,
+      "device": 64515,
+      "inode": 24551806,
+      "links": 1,
+      "mtime_ns": 1794657080812794944
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_glyph_seed742/last.pth",
+      "bytes": 13277467,
+      "allocated_bytes": 13279232,
+      "device": 64515,
+      "inode": 24551805,
+      "links": 1,
+      "mtime_ns": 1794657080604799057
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_whole_seed743/best_seen_cer.pth",
+      "bytes": 12790435,
+      "allocated_bytes": 12791808,
+      "device": 64515,
+      "inode": 24551575,
+      "links": 1,
+      "mtime_ns": 1794657106464289046
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_whole_seed743/last.pth",
+      "bytes": 12787609,
+      "allocated_bytes": 12787712,
+      "device": 64515,
+      "inode": 24551356,
+      "links": 1,
+      "mtime_ns": 1794657106252293216
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_whole_seed744/best_seen_cer.pth",
+      "bytes": 12790435,
+      "allocated_bytes": 12791808,
+      "device": 64515,
+      "inode": 24551576,
+      "links": 1,
+      "mtime_ns": 1794657097560464349
+    },
+    {
+      "path": "runs/acl_longtail_v1/recognizer_whole_seed744/last.pth",
+      "bytes": 12787609,
+      "allocated_bytes": 12787712,
+      "device": 64515,
+      "inode": 24551574,
+      "links": 1,
+      "mtime_ns": 1794657097348468526
+    },
+    {
+      "path": "runs/acl_longtail_v1/snapshots/clean_ctc_guidance.pth",
+      "bytes": 12573699,
+      "allocated_bytes": 12574720,
+      "device": 64515,
+      "inode": 24027072,
+      "links": 1,
+      "mtime_ns": 1794656357708918916
+    },
+    {
+      "path": "runs/continuation_150k_v1/training/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20846691,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/continuation_150k_v1/training/best.pth",
+      "bytes": 1375263009,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20846762,
+      "links": 1,
+      "mtime_ns": 1794480386663562539
+    },
+    {
+      "path": "runs/continuation_150k_v1/training/last.pth",
+      "bytes": 1375263073,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20847838,
+      "links": 2,
+      "mtime_ns": 1794498483994401013
+    },
+    {
+      "path": "runs/continuation_200k_v1/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 21159434,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/continuation_200k_v1/best.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 21159654,
+      "links": 1,
+      "mtime_ns": 1794590685301604053
+    },
+    {
+      "path": "runs/continuation_200k_v1/best_focus.pth",
+      "bytes": 1375317627,
+      "allocated_bytes": 1375322112,
+      "device": 64515,
+      "inode": 21159602,
+      "links": 1,
+      "mtime_ns": 1794588185971036313
+    },
+    {
+      "path": "runs/continuation_200k_v1/last.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 21159850,
+      "links": 2,
+      "mtime_ns": 1794600132521323126
+    },
+    {
+      "path": "runs/pretrained_longtail_v1/component/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 24026582,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/pretrained_longtail_v1/component/best_focus.pth",
+      "bytes": 1375317755,
+      "allocated_bytes": 1375322112,
+      "device": 64515,
+      "inode": 24027537,
+      "links": 1,
+      "mtime_ns": 1794657496304854516
+    },
+    {
+      "path": "runs/pretrained_longtail_v1/component/checkpoint_175750.pth",
+      "bytes": 1375263457,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 24027541,
+      "links": 2,
+      "mtime_ns": 1794657498812807862
+    },
+    {
+      "path": "runs/pretrained_longtail_v1/component/last.pth",
+      "bytes": 1375263457,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 24027541,
+      "links": 2,
+      "mtime_ns": 1794657498812807862
+    },
+    {
+      "path": "runs/pretrained_longtail_v1/legacy/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 24026565,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/pretrained_longtail_v1/legacy/best_focus.pth",
+      "bytes": 1375317755,
+      "allocated_bytes": 1375322112,
+      "device": 64515,
+      "inode": 24027536,
+      "links": 1,
+      "mtime_ns": 1794657495200875056
+    },
+    {
+      "path": "runs/pretrained_longtail_v1/legacy/checkpoint_175750.pth",
+      "bytes": 1375263457,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 24027539,
+      "links": 2,
+      "mtime_ns": 1794657497644829587
+    },
+    {
+      "path": "runs/pretrained_longtail_v1/legacy/last.pth",
+      "bytes": 1375263457,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 24027539,
+      "links": 2,
+      "mtime_ns": 1794657497644829587
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/auxiliary/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20846767,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/auxiliary/best.pth",
+      "bytes": 1375313806,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20846837,
+      "links": 1,
+      "mtime_ns": 1794481203884515943
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/auxiliary/best_focus.pth",
+      "bytes": 1375313870,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20846818,
+      "links": 1,
+      "mtime_ns": 1794480938050262234
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/auxiliary/last.pth",
+      "bytes": 1375313806,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20846965,
+      "links": 2,
+      "mtime_ns": 1794483039056771325
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/control/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20846769,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/control/best.pth",
+      "bytes": 1375313742,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20847173,
+      "links": 1,
+      "mtime_ns": 1794485647928400689
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/control/best_focus.pth",
+      "bytes": 1375313806,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20847037,
+      "links": 1,
+      "mtime_ns": 1794483845142637600
+    },
+    {
+      "path": "runs/rare_hat_Ễ_pilot_v1/control/last.pth",
+      "bytes": 1375313742,
+      "allocated_bytes": 1375318016,
+      "device": 64515,
+      "inode": 20847022,
+      "links": 2,
+      "mtime_ns": 1794485652248319344
+    },
+    {
+      "path": "runs/vatrpp_vn_finetune_100k/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 55580876,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/vatrpp_vn_finetune_100k/last.pth",
+      "bytes": 1375262817,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 55584012,
+      "links": 1,
+      "mtime_ns": 1794465806098438859
+    },
+    {
+      "path": "runs/vatrpp_vn_ocr_train/best.pth",
+      "bytes": 67946751,
+      "allocated_bytes": 67952640,
+      "device": 64515,
+      "inode": 30935662,
+      "links": 1,
+      "mtime_ns": 1794382007501870138
+    },
+    {
+      "path": "runs/vatrpp_vn_ocr_train/last.pth",
+      "bytes": 67946751,
+      "allocated_bytes": 67948544,
+      "device": 64515,
+      "inode": 30935661,
+      "links": 1,
+      "mtime_ns": 1794382007729862109
+    },
+    {
+      "path": "runs/vietcompose_pilot_v1/factorized/adapter_best.pth",
+      "bytes": 7036535,
+      "allocated_bytes": 7036928,
+      "device": 64515,
+      "inode": 20489111,
+      "links": 1,
+      "mtime_ns": 1794645686679355452
+    },
+    {
+      "path": "runs/vietcompose_pilot_v1/factorized/adapter_last.pth",
+      "bytes": 7036535,
+      "allocated_bytes": 7036928,
+      "device": 64515,
+      "inode": 20489128,
+      "links": 1,
+      "mtime_ns": 1794645783581476664
+    },
+    {
+      "path": "runs/vietcompose_pilot_v1/glyph/adapter_best.pth",
+      "bytes": 7016675,
+      "allocated_bytes": 7020544,
+      "device": 64515,
+      "inode": 20489148,
+      "links": 1,
+      "mtime_ns": 1794645912178995298
+    },
+    {
+      "path": "runs/vietcompose_pilot_v1/glyph/adapter_last.pth",
+      "bytes": 7016675,
+      "allocated_bytes": 7020544,
+      "device": 64515,
+      "inode": 20489165,
+      "links": 1,
+      "mtime_ns": 1794646005829195228
+    },
+    {
+      "path": "runs/vietcompose_renderer_synthetic_smoke_v1/renderer.pth",
+      "bytes": 958327,
+      "allocated_bytes": 958464,
+      "device": 64515,
+      "inode": 20751256,
+      "links": 1,
+      "mtime_ns": 1794646217974109076
+    },
+    {
+      "path": "runs/vietcompose_smoke_v1/adapter_best.pth",
+      "bytes": 7036471,
+      "allocated_bytes": 7036928,
+      "device": 64515,
+      "inode": 20358078,
+      "links": 1,
+      "mtime_ns": 1794645586177314139
+    },
+    {
+      "path": "runs/vietcompose_smoke_v1/adapter_last.pth",
+      "bytes": 7036471,
+      "allocated_bytes": 7036928,
+      "device": 64515,
+      "inode": 20358077,
+      "links": 1,
+      "mtime_ns": 1794645586161314452
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/control/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20971659,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/control/best.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971872,
+      "links": 1,
+      "mtime_ns": 1794507704433331468
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/control/best_focus.pth",
+      "bytes": 1375317627,
+      "allocated_bytes": 1375322112,
+      "device": 64515,
+      "inode": 20971867,
+      "links": 1,
+      "mtime_ns": 1794507353731804403
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/control/best_visual.pth",
+      "bytes": 1375318666,
+      "allocated_bytes": 1375326208,
+      "device": 64515,
+      "inode": 20971888,
+      "links": 1,
+      "mtime_ns": 1794508892299394637
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/control/last.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971896,
+      "links": 2,
+      "mtime_ns": 1794509493637352265
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/control/visual_discriminator.pth",
+      "bytes": 145190033,
+      "allocated_bytes": 145195008,
+      "device": 64515,
+      "inode": 20971845,
+      "links": 1,
+      "mtime_ns": 1794506526927045490
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_only/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20971655,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_only/best.pth",
+      "bytes": 1375263265,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971753,
+      "links": 1,
+      "mtime_ns": 1794503789536752837
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_only/best_focus.pth",
+      "bytes": 1375317691,
+      "allocated_bytes": 1375322112,
+      "device": 64515,
+      "inode": 20971743,
+      "links": 1,
+      "mtime_ns": 1794503581764230738
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_only/best_visual.pth",
+      "bytes": 1375318730,
+      "allocated_bytes": 1375326208,
+      "device": 64515,
+      "inode": 20971761,
+      "links": 1,
+      "mtime_ns": 1794504026868762289
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_only/last.pth",
+      "bytes": 1375263329,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971777,
+      "links": 2,
+      "mtime_ns": 1794504413910230389
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_only/visual_discriminator.pth",
+      "bytes": 145190033,
+      "allocated_bytes": 145195008,
+      "device": 64515,
+      "inode": 20971674,
+      "links": 1,
+      "mtime_ns": 1794502750097786075
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_pixel/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "allocated_bytes": 22654976,
+      "device": 64515,
+      "inode": 20971657,
+      "links": 1,
+      "mtime_ns": 1794382693165405172
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_pixel/best.pth",
+      "bytes": 1375263393,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971794,
+      "links": 1,
+      "mtime_ns": 1794504995380603884
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_pixel/best_focus.pth",
+      "bytes": 1375317627,
+      "allocated_bytes": 1375322112,
+      "device": 64515,
+      "inode": 20971821,
+      "links": 1,
+      "mtime_ns": 1794505580178256166
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_pixel/best_visual.pth",
+      "bytes": 1375318666,
+      "allocated_bytes": 1375326208,
+      "device": 64515,
+      "inode": 20971829,
+      "links": 1,
+      "mtime_ns": 1794506073623967879
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_pixel/last.pth",
+      "bytes": 1375263393,
+      "allocated_bytes": 1375268864,
+      "device": 64515,
+      "inode": 20971837,
+      "links": 2,
+      "mtime_ns": 1794506500915550325
+    },
+    {
+      "path": "runs/visual_quality_pilot_v1/feature_pixel/visual_discriminator.pth",
+      "bytes": 145190033,
+      "allocated_bytes": 145195008,
+      "device": 64515,
+      "inode": 20971786,
+      "links": 1,
+      "mtime_ns": 1794504435557864481
+    }
+  ],
+  "completed_utc": "2026-11-14T11:59:28.539606+00:00",
+  "verification": "All planned deletions absent; all retained paths present."
+}

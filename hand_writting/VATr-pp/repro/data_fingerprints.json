@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "manifest_sha256": "adc3b3e62e392a75606ced98cf403c622bb2d3de80678d58999f669702a48de9",
+  "glyph_sha256": "f062b4d31a453be3d4a5410cdcc340e57bcbefaac351428f90df869a9356ed66",
+  "source_files": {
+    "train.h5": {
+      "bytes": 379535024,
+      "sha256": "95d2aa9d849553f94ee99346f1faf7acb1c5f4a10ab73100d5f7c1d08faf99e8"
+    },
+    "test.h5": {
+      "bytes": 44359196,
+      "sha256": "9814da1acc22bd0ddd21cfee9183bf49a7e62faaf7ea55057b42e883b1c37a28"
+    }
+  }
+}

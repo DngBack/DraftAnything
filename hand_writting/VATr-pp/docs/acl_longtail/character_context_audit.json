@@ -1,0 +1,184 @@
+{
+  "Ễ": {
+    "real_train": {
+      "containing_images": 0,
+      "standalone_images": 0,
+      "distinct_transcripts": 0,
+      "examples": []
+    },
+    "HAT": {
+      "containing_images": 100,
+      "standalone_images": 0,
+      "distinct_transcripts": 50,
+      "examples": [
+        "BỄ",
+        "CHỄM",
+        "CHỄNH",
+        "DIỄM",
+        "DIỄN",
+        "DIỄU",
+        "DỄ",
+        "GHỄNH"
+      ]
+    }
+  },
+  "ễ": {
+    "real_train": {
+      "containing_images": 166,
+      "standalone_images": 0,
+      "distinct_transcripts": 13,
+      "examples": [
+        "Dễ",
+        "Lễ",
+        "Nguyễn",
+        "diễn",
+        "dễ",
+        "liễn",
+        "liễu",
+        "lễ"
+      ]
+    },
+    "HAT": {
+      "containing_images": 188,
+      "standalone_images": 0,
+      "distinct_transcripts": 91,
+      "examples": [
+        "Bễ",
+        "Chễm",
+        "Chễnh",
+        "Diễm",
+        "Diễn",
+        "Diễu",
+        "Dễ",
+        "Ghễnh"
+      ]
+    }
+  },
+  "Ỡ": {
+    "real_train": {
+      "containing_images": 0,
+      "standalone_images": 0,
+      "distinct_transcripts": 0,
+      "examples": []
+    },
+    "HAT": {
+      "containing_images": 103,
+      "standalone_images": 0,
+      "distinct_transcripts": 51,
+      "examples": [
+        "BỠ",
+        "BỠN",
+        "CHƯỠNG",
+        "CƯỠI",
+        "CƯỠÌ",
+        "CỠ",
+        "CỠ-LÊ",
+        "CỠI"
+      ]
+    }
+  },
+  "ỡ": {
+    "real_train": {
+      "containing_images": 57,
+      "standalone_images": 0,
+      "distinct_transcripts": 13,
+      "examples": [
+        "cỡ",
+        "dưỡng",
+        "dỡ",
+        "gỡ",
+        "lưỡi",
+        "lưỡng",
+        "lỡ",
+        "ngỡ"
+      ]
+    },
+    "HAT": {
+      "containing_images": 175,
+      "standalone_images": 1,
+      "distinct_transcripts": 95,
+      "examples": [
+        "Bỡ",
+        "Bỡn",
+        "Cưỡi",
+        "Cưỡng",
+        "Cưỡì",
+        "Cỡ",
+        "Cỡi",
+        "Cỡm"
+      ]
+    }
+  },
+  "Ẵ": {
+    "real_train": {
+      "containing_images": 0,
+      "standalone_images": 0,
+      "distinct_transcripts": 0,
+      "examples": []
+    },
+    "HAT": {
+      "containing_images": 50,
+      "standalone_images": 0,
+      "distinct_transcripts": 21,
+      "examples": [
+        "BẴNG",
+        "CHẴN",
+        "CẴNG",
+        "GIẴM",
+        "HOẴNG",
+        "HẴM",
+        "HẴNG",
+        "LẴNG"
+      ]
+    }
+  },
+  "ẵ": {
+    "real_train": {
+      "containing_images": 14,
+      "standalone_images": 0,
+      "distinct_transcripts": 2,
+      "examples": [
+        "chẵm",
+        "sẵn"
+      ]
+    },
+    "HAT": {
+      "containing_images": 51,
+      "standalone_images": 0,
+      "distinct_transcripts": 35,
+      "examples": [
+        "Bẵm",
+        "Bẵng",
+        "Chẵn",
+        "Cẵng",
+        "Giẵm",
+        "Hoẵng",
+        "Hẵm",
+        "Hẵng"
+      ]
+    }
+  },
+  "Ê": {
+    "real_train": {
+      "containing_images": 0,
+      "standalone_images": 0,
+      "distinct_transcripts": 0,
+      "examples": []
+    },
+    "HAT": {
+      "containing_images": 961,
+      "standalone_images": 4,
+      "distinct_transcripts": 492,
+      "examples": [
+        "A-LÊ",
+        "A-PÊ-RI-TI",
+        "A-PÊ-RI-TÍP",
+        "A-VĂNG-XÊ",
+        "A-XÊ-TI-LEN",
+        "A-XÊ-TIC",
+        "A-XÊ-TÔN",
+        "A-ĐRÊ-NA-LIN"
+      ]
+    }
+  }
+}

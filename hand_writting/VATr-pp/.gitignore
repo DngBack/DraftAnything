@@ -1,0 +1,26 @@
+wandb
+files/*.pickle
+saved_models/IAM-339-15-E3D3-LR5e-05-bs8-finetune/vatr.pth
+files/style_samples/*
+.idea/
+files/tired_*
+*.pyc
+logs/
+saved_images/
+files/*.pth
+*.pth
+saved_models/*
+files/stats/*
+files/*.png
+# Local Vietnamese data artifacts and training outputs
+files/vietnamese/
+runs/
+.venv/
+files/pretrained/
+
+.venv-infer/
+# Machine-local relocation, downloaded release artifacts and credentials
+.local/
+artifacts/
+__pycache__/
+.pytest_cache/

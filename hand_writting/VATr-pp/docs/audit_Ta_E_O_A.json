@@ -1,0 +1,159 @@
+{
+  "Tà": {
+    "train": {
+      "images_containing": 34,
+      "occurrences": 34,
+      "exact_word_images": 0,
+      "sources": {
+        "VNOnDB": 30,
+        "ViHTGen": 4
+      },
+      "word_examples": [
+        "Tàu",
+        "Tài"
+      ]
+    },
+    "hat_ocr": {
+      "images_containing": 25,
+      "occurrences": 25,
+      "exact_word_images": 1,
+      "sources": {
+        "HAT2023": 25
+      },
+      "word_examples": [
+        "Tào",
+        "Tày-Thái",
+        "Tà",
+        "Tàu",
+        "Tàng",
+        "Tàn",
+        "Tày-Nùng",
+        "Tàm",
+        "Tày",
+        "Tài"
+      ]
+    },
+    "val": {
+      "images_containing": 4,
+      "occurrences": 4,
+      "exact_word_images": 0,
+      "sources": {
+        "VNOnDB": 3,
+        "ViHTGen": 1
+      },
+      "word_examples": [
+        "Tàn",
+        "Tàu",
+        "Tài"
+      ]
+    }
+  },
+  "Ê": {
+    "train": {
+      "images_containing": 0,
+      "occurrences": 0,
+      "exact_word_images": 0,
+      "sources": {},
+      "word_examples": []
+    },
+    "hat_ocr": {
+      "images_containing": 961,
+      "occurrences": 1004,
+      "exact_word_images": 4,
+      "sources": {
+        "HAT2023": 961
+      },
+      "word_examples": [
+        "PÔ-LI-Ê-TI-LEN",
+        "TỐC-KÊ",
+        "LI-VÊ",
+        "YÊM",
+        "STÊ-RÊ-Ô",
+        "BÊRÊ",
+        "KÊ",
+        "CHÊM",
+        "XI-NHÊ",
+        "KHUYÊN"
+      ]
+    },
+    "val": {
+      "images_containing": 0,
+      "occurrences": 0,
+      "exact_word_images": 0,
+      "sources": {},
+      "word_examples": []
+    }
+  },
+  "Ỡ": {
+    "train": {
+      "images_containing": 0,
+      "occurrences": 0,
+      "exact_word_images": 0,
+      "sources": {},
+      "word_examples": []
+    },
+    "hat_ocr": {
+      "images_containing": 103,
+      "occurrences": 103,
+      "exact_word_images": 0,
+      "sources": {
+        "HAT2023": 103
+      },
+      "word_examples": [
+        "BỠ",
+        "PHƯỠN",
+        "MƯỠU",
+        "HỠM",
+        "LƯỠI",
+        "CỠI",
+        "NHƯỠNG",
+        "LƯỠi",
+        "CỠN",
+        "RỠN"
+      ]
+    },
+    "val": {
+      "images_containing": 0,
+      "occurrences": 0,
+      "exact_word_images": 0,
+      "sources": {},
+      "word_examples": []
+    }
+  },
+  "Ắ": {
+    "train": {
+      "images_containing": 0,
+      "occurrences": 0,
+      "exact_word_images": 0,
+      "sources": {},
+      "word_examples": []
+    },
+    "hat_ocr": {
+      "images_containing": 334,
+      "occurrences": 334,
+      "exact_word_images": 0,
+      "sources": {
+        "HAT2023": 334
+      },
+      "word_examples": [
+        "DẮT",
+        "XẮN",
+        "RẮC",
+        "BẮM",
+        "SẮC-GIƠ",
+        "QUẮM",
+        "NGẮT",
+        "CẮN",
+        "VẮC",
+        "XẮC-CỐT"
+      ]
+    },
+    "val": {
+      "images_containing": 0,
+      "occurrences": 0,
+      "exact_word_images": 0,
+      "sources": {},
+      "word_examples": []
+    }
+  }
+}

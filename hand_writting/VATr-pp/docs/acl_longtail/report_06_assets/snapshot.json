@@ -1,0 +1,705 @@
+{
+  "snapshot_utc": "2026-11-14T12:49:14.383309+00:00",
+  "training_status": "running",
+  "trainer_alive": true,
+  "source_step": 176500,
+  "target_step": 250000,
+  "last_logged_step": 181250,
+  "latest_training_metrics": {
+    "G_OCR_image_gradient_adv_std": 0.008774243295192719,
+    "G_OCR_image_gradient_aux_std": 0.0020956851076334715,
+    "G_OCR_adversarial": 1.015915870666504,
+    "G_OCR_effective_weight": 11.722519874572754,
+    "G_OCR_grad_norm_before_clip": 54.24924087524414,
+    "G_OCR": 2.25065279006958,
+    "ocr_fake": 0.10533033311367035,
+    "D_OCR_real_score": 1.17549729347229,
+    "D_OCR_fake_score": -1.6414127349853516,
+    "D_OCR": 0.610080361366272,
+    "G_W_image_gradient_adv_std": 0.007273467257618904,
+    "G_W_image_gradient_aux_std": 0.009951688349246979,
+    "G_W_adversarial": 2.0277907848358154,
+    "G_W_effective_weight": 0.05116092786192894,
+    "G_W_grad_norm_before_clip": 24.318748474121094,
+    "G_W": 2.262230396270752,
+    "writer_fake": 4.582396030426025,
+    "D_W_real_score": 2.085813045501709,
+    "D_W_fake_score": -1.5081067085266113,
+    "D_W": 0.15967033803462982,
+    "writer_real": 0.8572984337806702,
+    "step": 181250,
+    "seconds": 1060.0200133699982,
+    "effective_learning_rates": {
+      "G": [
+        5e-06,
+        2e-05
+      ],
+      "D": [
+        1e-05
+      ],
+      "W": [
+        2e-05
+      ]
+    }
+  },
+  "benchmarks": [
+    {
+      "step": 176500,
+      "samples": 600,
+      "guidance_ocr_cer": 0.12690058479532162,
+      "exact_transcript_rate": 0.65,
+      "per_prompt": {
+        "Tiếng": {
+          "samples": 30,
+          "cer": 0.04,
+          "exact_transcript_rate": 0.8
+        },
+        "Việt": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "rất": {
+          "samples": 30,
+          "cer": 0.011111111111111112,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "đẹp": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "ma": {
+          "samples": 30,
+          "cer": 0.05,
+          "exact_transcript_rate": 0.9
+        },
+        "má": {
+          "samples": 30,
+          "cer": 0.03333333333333333,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "mà": {
+          "samples": 30,
+          "cer": 0.08333333333333333,
+          "exact_transcript_rate": 0.8333333333333334
+        },
+        "mả": {
+          "samples": 30,
+          "cer": 0.05,
+          "exact_transcript_rate": 0.9
+        },
+        "mã": {
+          "samples": 30,
+          "cer": 0.31666666666666665,
+          "exact_transcript_rate": 0.36666666666666664
+        },
+        "mạ": {
+          "samples": 30,
+          "cer": 0.3333333333333333,
+          "exact_transcript_rate": 0.4
+        },
+        "NGUYỄN": {
+          "samples": 30,
+          "cer": 0.011111111111111112,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "Ỹ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "người": {
+          "samples": 30,
+          "cer": 0.006666666666666667,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "trường": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "học": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "đường": {
+          "samples": 30,
+          "cer": 0.006666666666666667,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "Ắ": {
+          "samples": 30,
+          "cer": 1.1333333333333333,
+          "exact_transcript_rate": 0.0
+        },
+        "Ễ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ỡ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ự": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        }
+      }
+    },
+    {
+      "step": 177000,
+      "samples": 600,
+      "guidance_ocr_cer": 0.15029239766081873,
+      "exact_transcript_rate": 0.5833333333333334,
+      "per_prompt": {
+        "Tiếng": {
+          "samples": 30,
+          "cer": 0.09333333333333334,
+          "exact_transcript_rate": 0.6
+        },
+        "Việt": {
+          "samples": 30,
+          "cer": 0.016666666666666666,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "rất": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "đẹp": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "ma": {
+          "samples": 30,
+          "cer": 0.03333333333333333,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "má": {
+          "samples": 30,
+          "cer": 0.15,
+          "exact_transcript_rate": 0.7
+        },
+        "mà": {
+          "samples": 30,
+          "cer": 0.03333333333333333,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "mả": {
+          "samples": 30,
+          "cer": 0.21666666666666667,
+          "exact_transcript_rate": 0.5666666666666667
+        },
+        "mã": {
+          "samples": 30,
+          "cer": 0.4,
+          "exact_transcript_rate": 0.26666666666666666
+        },
+        "mạ": {
+          "samples": 30,
+          "cer": 0.31666666666666665,
+          "exact_transcript_rate": 0.36666666666666664
+        },
+        "NGUYỄN": {
+          "samples": 30,
+          "cer": 0.05555555555555555,
+          "exact_transcript_rate": 0.6666666666666666
+        },
+        "Ỹ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "người": {
+          "samples": 30,
+          "cer": 0.05333333333333334,
+          "exact_transcript_rate": 0.7333333333333333
+        },
+        "trường": {
+          "samples": 30,
+          "cer": 0.005555555555555556,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "học": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "đường": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "Ắ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ễ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ỡ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ự": {
+          "samples": 30,
+          "cer": 1.1,
+          "exact_transcript_rate": 0.0
+        }
+      }
+    },
+    {
+      "step": 178000,
+      "samples": 600,
+      "guidance_ocr_cer": 0.14444444444444443,
+      "exact_transcript_rate": 0.6166666666666667,
+      "per_prompt": {
+        "Tiếng": {
+          "samples": 30,
+          "cer": 0.06666666666666667,
+          "exact_transcript_rate": 0.8
+        },
+        "Việt": {
+          "samples": 30,
+          "cer": 0.008333333333333333,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "rất": {
+          "samples": 30,
+          "cer": 0.07777777777777778,
+          "exact_transcript_rate": 0.8
+        },
+        "đẹp": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "ma": {
+          "samples": 30,
+          "cer": 0.016666666666666666,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "má": {
+          "samples": 30,
+          "cer": 0.08333333333333333,
+          "exact_transcript_rate": 0.8333333333333334
+        },
+        "mà": {
+          "samples": 30,
+          "cer": 0.016666666666666666,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "mả": {
+          "samples": 30,
+          "cer": 0.21666666666666667,
+          "exact_transcript_rate": 0.6
+        },
+        "mã": {
+          "samples": 30,
+          "cer": 0.5666666666666667,
+          "exact_transcript_rate": 0.16666666666666666
+        },
+        "mạ": {
+          "samples": 30,
+          "cer": 0.23333333333333334,
+          "exact_transcript_rate": 0.5333333333333333
+        },
+        "NGUYỄN": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "Ỹ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "người": {
+          "samples": 30,
+          "cer": 0.02666666666666667,
+          "exact_transcript_rate": 0.8666666666666667
+        },
+        "trường": {
+          "samples": 30,
+          "cer": 0.03888888888888889,
+          "exact_transcript_rate": 0.8333333333333334
+        },
+        "học": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "đường": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "Ắ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ễ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ỡ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ự": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        }
+      }
+    },
+    {
+      "step": 179000,
+      "samples": 600,
+      "guidance_ocr_cer": 0.13625730994152047,
+      "exact_transcript_rate": 0.615,
+      "per_prompt": {
+        "Tiếng": {
+          "samples": 30,
+          "cer": 0.05333333333333334,
+          "exact_transcript_rate": 0.8
+        },
+        "Việt": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "rất": {
+          "samples": 30,
+          "cer": 0.011111111111111112,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "đẹp": {
+          "samples": 30,
+          "cer": 0.03333333333333333,
+          "exact_transcript_rate": 0.9
+        },
+        "ma": {
+          "samples": 30,
+          "cer": 0.016666666666666666,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "má": {
+          "samples": 30,
+          "cer": 0.03333333333333333,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "mà": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "mả": {
+          "samples": 30,
+          "cer": 0.2833333333333333,
+          "exact_transcript_rate": 0.43333333333333335
+        },
+        "mã": {
+          "samples": 30,
+          "cer": 0.4166666666666667,
+          "exact_transcript_rate": 0.16666666666666666
+        },
+        "mạ": {
+          "samples": 30,
+          "cer": 0.31666666666666665,
+          "exact_transcript_rate": 0.36666666666666664
+        },
+        "NGUYỄN": {
+          "samples": 30,
+          "cer": 0.005555555555555556,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "Ỹ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "người": {
+          "samples": 30,
+          "cer": 0.02666666666666667,
+          "exact_transcript_rate": 0.8666666666666667
+        },
+        "trường": {
+          "samples": 30,
+          "cer": 0.005555555555555556,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "học": {
+          "samples": 30,
+          "cer": 0.011111111111111112,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "đường": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "Ắ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ễ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ỡ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ự": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        }
+      }
+    },
+    {
+      "step": 180000,
+      "samples": 600,
+      "guidance_ocr_cer": 0.14385964912280702,
+      "exact_transcript_rate": 0.595,
+      "per_prompt": {
+        "Tiếng": {
+          "samples": 30,
+          "cer": 0.06,
+          "exact_transcript_rate": 0.7333333333333333
+        },
+        "Việt": {
+          "samples": 30,
+          "cer": 0.058333333333333334,
+          "exact_transcript_rate": 0.8
+        },
+        "rất": {
+          "samples": 30,
+          "cer": 0.022222222222222223,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "đẹp": {
+          "samples": 30,
+          "cer": 0.05555555555555555,
+          "exact_transcript_rate": 0.8333333333333334
+        },
+        "ma": {
+          "samples": 30,
+          "cer": 0.03333333333333333,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "má": {
+          "samples": 30,
+          "cer": 0.016666666666666666,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "mà": {
+          "samples": 30,
+          "cer": 0.05,
+          "exact_transcript_rate": 0.9
+        },
+        "mả": {
+          "samples": 30,
+          "cer": 0.18333333333333332,
+          "exact_transcript_rate": 0.6333333333333333
+        },
+        "mã": {
+          "samples": 30,
+          "cer": 0.4166666666666667,
+          "exact_transcript_rate": 0.2
+        },
+        "mạ": {
+          "samples": 30,
+          "cer": 0.3333333333333333,
+          "exact_transcript_rate": 0.3333333333333333
+        },
+        "NGUYỄN": {
+          "samples": 30,
+          "cer": 0.022222222222222223,
+          "exact_transcript_rate": 0.8666666666666667
+        },
+        "Ỹ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "người": {
+          "samples": 30,
+          "cer": 0.006666666666666667,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "trường": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "học": {
+          "samples": 30,
+          "cer": 0.022222222222222223,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "đường": {
+          "samples": 30,
+          "cer": 0.02666666666666667,
+          "exact_transcript_rate": 0.8666666666666667
+        },
+        "Ắ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ễ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ỡ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ự": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        }
+      }
+    },
+    {
+      "step": 181000,
+      "samples": 600,
+      "guidance_ocr_cer": 0.16374269005847952,
+      "exact_transcript_rate": 0.5783333333333334,
+      "per_prompt": {
+        "Tiếng": {
+          "samples": 30,
+          "cer": 0.12666666666666668,
+          "exact_transcript_rate": 0.43333333333333335
+        },
+        "Việt": {
+          "samples": 30,
+          "cer": 0.025,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "rất": {
+          "samples": 30,
+          "cer": 0.13333333333333333,
+          "exact_transcript_rate": 0.7333333333333333
+        },
+        "đẹp": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "ma": {
+          "samples": 30,
+          "cer": 0.06666666666666667,
+          "exact_transcript_rate": 0.8666666666666667
+        },
+        "má": {
+          "samples": 30,
+          "cer": 0.016666666666666666,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "mà": {
+          "samples": 30,
+          "cer": 0.016666666666666666,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "mả": {
+          "samples": 30,
+          "cer": 0.16666666666666666,
+          "exact_transcript_rate": 0.6666666666666666
+        },
+        "mã": {
+          "samples": 30,
+          "cer": 0.4666666666666667,
+          "exact_transcript_rate": 0.06666666666666667
+        },
+        "mạ": {
+          "samples": 30,
+          "cer": 0.2,
+          "exact_transcript_rate": 0.6
+        },
+        "NGUYỄN": {
+          "samples": 30,
+          "cer": 0.10555555555555556,
+          "exact_transcript_rate": 0.6666666666666666
+        },
+        "Ỹ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "người": {
+          "samples": 30,
+          "cer": 0.006666666666666667,
+          "exact_transcript_rate": 0.9666666666666667
+        },
+        "trường": {
+          "samples": 30,
+          "cer": 0.03888888888888889,
+          "exact_transcript_rate": 0.7666666666666667
+        },
+        "học": {
+          "samples": 30,
+          "cer": 0.022222222222222223,
+          "exact_transcript_rate": 0.9333333333333333
+        },
+        "đường": {
+          "samples": 30,
+          "cer": 0.0,
+          "exact_transcript_rate": 1.0
+        },
+        "Ắ": {
+          "samples": 30,
+          "cer": 1.3666666666666667,
+          "exact_transcript_rate": 0.0
+        },
+        "Ễ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ỡ": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        },
+        "Ự": {
+          "samples": 30,
+          "cer": 1.0,
+          "exact_transcript_rate": 0.0
+        }
+      }
+    }
+  ],
+  "best_selection": {
+    "step": 178000,
+    "rolling_cer": 0.1405458089668616,
+    "current_cer": 0.14444444444444443,
+    "window": 3,
+    "metric": "expanded supervisor OCR proxy",
+    "warning": "Rolling window ranks training progress; best.pth contains only the current model, not a weight average."
+  },
+  "source_status_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/component_continuation_250k_v1/status.json",
+  "note": "Frozen report snapshot. Training continues independently; report 05 is live."
+}

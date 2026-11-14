@@ -1,0 +1,9 @@
+group,branch,last_step,final_cer,final_exact,mean_cer_excluding_initial,last5_mean_cer
+ABC,A_control,110000,"13,16%","62,67%","15,33%","15,19%"
+ABC,B_half_g_lr,110000,"15,03%","58,83%","14,76%","14,65%"
+ABC,C_half_ocr_weight,110000,"16,20%","55,83%","16,95%","17,36%"
+HAT,auxiliary,112500,"13,68%","61,50%","14,57%","14,74%"
+HAT,control,112500,"12,98%","63,50%","14,74%","14,46%"
+Visual,feature_only,155000,"16,37%","56,17%","16,22%","16,33%"
+Visual,feature_pixel,155000,"15,15%","57,67%","16,53%","16,12%"
+Visual,control,155000,"15,20%","59,50%","15,84%","15,92%"

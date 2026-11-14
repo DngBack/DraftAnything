@@ -1,0 +1,14 @@
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/README.txt
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/SHA256SUMS
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/artifacts.json
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/baseline_100000.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/baseline_150000.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/baseline_175500.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/baseline_200000.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/benchmark_ocr.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/component_176500.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/component_176500_generator.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/component_snapshot_191000.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/control_176500.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/ocr_best.pth
+/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/repro_inputs.tar.gz

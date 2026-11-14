@@ -1,0 +1,246 @@
+{
+  "version": 1,
+  "distribution": "User-managed upload. Native checkpoint public URLs have not been supplied; no remote availability is claimed.",
+  "local_upload_folder": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114",
+  "assets": [
+    {
+      "id": "baseline_175500",
+      "install_path": "runs/continuation_200k_v1/best.pth",
+      "bytes": 1375263329,
+      "sha256": "99c222d327fa0aec97164f0b8074bd79b784ee7271675b893bc57cc0862e5948",
+      "description": "Native recommended baseline, full G/D/W/R/Adam/RNG.",
+      "kind": "native-full-checkpoint",
+      "step": 175500,
+      "stage": "gan",
+      "manifest_sha256": "adc3b3e62e392a75606ced98cf403c622bb2d3de80678d58999f669702a48de9",
+      "resumable": true,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/baseline_175500.pth",
+      "parts": [
+        {
+          "file_name": "baseline_175500.pth",
+          "bytes": 1375263329,
+          "sha256": "99c222d327fa0aec97164f0b8074bd79b784ee7271675b893bc57cc0862e5948"
+        }
+      ]
+    },
+    {
+      "id": "baseline_200000",
+      "install_path": "runs/continuation_200k_v1/last.pth",
+      "bytes": 1375263329,
+      "sha256": "4971efff9c723412af7695a4a12a8f31719dc0b79b2382e857d707b638608831",
+      "description": "Historical final baseline; not the recommended best.",
+      "kind": "native-full-checkpoint",
+      "step": 200000,
+      "stage": "gan",
+      "manifest_sha256": "adc3b3e62e392a75606ced98cf403c622bb2d3de80678d58999f669702a48de9",
+      "resumable": true,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/baseline_200000.pth",
+      "parts": [
+        {
+          "file_name": "baseline_200000.pth",
+          "bytes": 1375263329,
+          "sha256": "4971efff9c723412af7695a4a12a8f31719dc0b79b2382e857d707b638608831"
+        }
+      ]
+    },
+    {
+      "id": "control_176500",
+      "install_path": "runs/pretrained_longtail_v1/legacy/last.pth",
+      "bytes": 1375263457,
+      "sha256": "9c6623de2b48a8b44e9e234cb46431a976812a3aa868c98d8b01ce21fdd2296d",
+      "description": "Matched legacy-sampling control.",
+      "kind": "native-full-checkpoint",
+      "step": 176500,
+      "stage": "gan",
+      "manifest_sha256": "adc3b3e62e392a75606ced98cf403c622bb2d3de80678d58999f669702a48de9",
+      "resumable": true,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/control_176500.pth",
+      "parts": [
+        {
+          "file_name": "control_176500.pth",
+          "bytes": 1375263457,
+          "sha256": "9c6623de2b48a8b44e9e234cb46431a976812a3aa868c98d8b01ce21fdd2296d"
+        }
+      ]
+    },
+    {
+      "id": "component_176500",
+      "install_path": "runs/pretrained_longtail_v1/component/last.pth",
+      "bytes": 1375263393,
+      "sha256": "8faeb04d1097c1693377eaf9e7937be241b9c0f7958e92bff8b81f1e7781cb91",
+      "description": "Component-sampling pilot; source of the ongoing continuation.",
+      "kind": "native-full-checkpoint",
+      "step": 176500,
+      "stage": "gan",
+      "manifest_sha256": "adc3b3e62e392a75606ced98cf403c622bb2d3de80678d58999f669702a48de9",
+      "resumable": true,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/component_176500.pth",
+      "parts": [
+        {
+          "file_name": "component_176500.pth",
+          "bytes": 1375263393,
+          "sha256": "8faeb04d1097c1693377eaf9e7937be241b9c0f7958e92bff8b81f1e7781cb91"
+        }
+      ]
+    },
+    {
+      "id": "baseline_100000",
+      "install_path": "runs/vatrpp_vn_finetune_100k/last.pth",
+      "bytes": 1375262817,
+      "sha256": "873a6f856c85b27797f1722ac2077caf7e9e1c92204204a86113adb74a7f0e05",
+      "description": "Source for historical ABC ablations.",
+      "kind": "native-full-checkpoint",
+      "step": 100000,
+      "stage": "gan",
+      "manifest_sha256": "adc3b3e62e392a75606ced98cf403c622bb2d3de80678d58999f669702a48de9",
+      "resumable": true,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/baseline_100000.pth",
+      "parts": [
+        {
+          "file_name": "baseline_100000.pth",
+          "bytes": 1375262817,
+          "sha256": "873a6f856c85b27797f1722ac2077caf7e9e1c92204204a86113adb74a7f0e05"
+        }
+      ]
+    },
+    {
+      "id": "baseline_150000",
+      "install_path": "runs/continuation_150k_v1/training/last.pth",
+      "bytes": 1375263073,
+      "sha256": "5f350e300c8be43157b621a87bdb8d90b20b94cc9e18f617bba40dd255c5d872",
+      "description": "Source for historical 150k visual and continuation experiments.",
+      "kind": "native-full-checkpoint",
+      "step": 150000,
+      "stage": "gan",
+      "manifest_sha256": "adc3b3e62e392a75606ced98cf403c622bb2d3de80678d58999f669702a48de9",
+      "resumable": true,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/baseline_150000.pth",
+      "parts": [
+        {
+          "file_name": "baseline_150000.pth",
+          "bytes": 1375263073,
+          "sha256": "5f350e300c8be43157b621a87bdb8d90b20b94cc9e18f617bba40dd255c5d872"
+        }
+      ]
+    },
+    {
+      "id": "ocr_best",
+      "install_path": "runs/vatrpp_vn_ocr_train/best.pth",
+      "bytes": 67946751,
+      "sha256": "5da331c80b79a989559464cb741836886c9b3ad037c544ff71bfb4e4ebd1bc4c",
+      "description": "Vietnamese warmup OCR checkpoint with optimizer and metadata.",
+      "kind": "native-full-checkpoint",
+      "step": 20000,
+      "stage": "ocr",
+      "manifest_sha256": "adc3b3e62e392a75606ced98cf403c622bb2d3de80678d58999f669702a48de9",
+      "resumable": true,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/ocr_best.pth",
+      "parts": [
+        {
+          "file_name": "ocr_best.pth",
+          "bytes": 67946751,
+          "sha256": "5da331c80b79a989559464cb741836886c9b3ad037c544ff71bfb4e4ebd1bc4c"
+        }
+      ]
+    },
+    {
+      "id": "benchmark_ocr",
+      "install_path": "runs/pretrained_longtail_v1/component/benchmark_ocr.pth",
+      "bytes": 22652452,
+      "sha256": "a9a76eb4f8b75a9b4ae34c644cbabdb385c016ea1e541839e3d3c342c078a809",
+      "description": "Fixed supervisor OCR state used by benchmark panels.",
+      "kind": "benchmark-state",
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/benchmark_ocr.pth",
+      "parts": [
+        {
+          "file_name": "benchmark_ocr.pth",
+          "bytes": 22652452,
+          "sha256": "a9a76eb4f8b75a9b4ae34c644cbabdb385c016ea1e541839e3d3c342c078a809"
+        }
+      ]
+    },
+    {
+      "id": "component_snapshot_191000",
+      "install_path": "runs/component_continuation_250k_v1/checkpoint_191000.pth",
+      "bytes": 1375263457,
+      "sha256": "08156f2db81e7fe93e188c6734f64b518bfc0fa526bc410a91b06cc621102881",
+      "description": "Intermediate running-continuation snapshot; NOT a completed 250k model.",
+      "kind": "native-full-checkpoint",
+      "step": 191000,
+      "stage": "gan",
+      "manifest_sha256": "adc3b3e62e392a75606ced98cf403c622bb2d3de80678d58999f669702a48de9",
+      "resumable": true,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/component_snapshot_191000.pth",
+      "parts": [
+        {
+          "file_name": "component_snapshot_191000.pth",
+          "bytes": 1375263457,
+          "sha256": "08156f2db81e7fe93e188c6734f64b518bfc0fa526bc410a91b06cc621102881"
+        }
+      ]
+    },
+    {
+      "id": "repro_inputs",
+      "install_path": "artifacts/repro_inputs.tar.gz",
+      "bytes": 1682529,
+      "sha256": "bb7c01e7a31b38b6e1ee2e521746decc94594342c103cdaa12dcfc7166ca2c8f",
+      "description": "Original byte-identical manifest/charset/glyphs/audit plus content fingerprints. No HDF5 images.",
+      "kind": "bundle",
+      "resumable": false,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/repro_inputs.tar.gz",
+      "parts": [
+        {
+          "file_name": "repro_inputs.tar.gz",
+          "bytes": 1682529,
+          "sha256": "bb7c01e7a31b38b6e1ee2e521746decc94594342c103cdaa12dcfc7166ca2c8f"
+        }
+      ]
+    },
+    {
+      "id": "component_176500_generator",
+      "install_path": "artifacts/component_176500_generator.pth",
+      "bytes": 159214203,
+      "sha256": "9b2e191b434f05cd2975dd9eec8f0acf9c8a9f103da051491f75f2bbcfb8a290",
+      "description": "Generator-only pilot export; no optimizer/discriminator/OCR; not resumable.",
+      "kind": "inference-only",
+      "resumable": false,
+      "access": "local-only",
+      "local_file": "/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/weights_upload_261114/component_176500_generator.pth",
+      "parts": [
+        {
+          "file_name": "component_176500_generator.pth",
+          "bytes": 159214203,
+          "sha256": "9b2e191b434f05cd2975dd9eec8f0acf9c8a9f103da051491f75f2bbcfb8a290"
+        }
+      ]
+    },
+    {
+      "id": "english_generator",
+      "install_path": "files/pretrained/vatrpp_english.safetensors",
+      "kind": "upstream-safetensors",
+      "description": "Original upstream English pretrained model; pinned public URL.",
+      "bytes": 560965208,
+      "sha256": "3b1e4b7cae23652acd5c559117d06ef42fdd5317da2a5e0bc94ea44d8c0eb1ff",
+      "access": "public",
+      "resumable": false,
+      "parts": [
+        {
+          "file_name": "vatrpp_english.safetensors",
+          "bytes": 560965208,
+          "sha256": "3b1e4b7cae23652acd5c559117d06ef42fdd5317da2a5e0bc94ea44d8c0eb1ff",
+          "download_url": "https://huggingface.co/blowing-up-groundhogs/vatrpp/resolve/fb73be2be8e96ce70d9cad9675a30667e19ac376/model.safetensors"
+        }
+      ]
+    }
+  ]
+}

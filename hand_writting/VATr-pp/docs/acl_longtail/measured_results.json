@@ -1,0 +1,848 @@
+{
+  "updated_utc": "2026-11-14T11:51:41.299594+00:00",
+  "recognition": [
+    {
+      "mode": "whole",
+      "seed": 742,
+      "path": "runs/acl_longtail_v1/clean_recognizer_whole",
+      "cer": 0.3515625,
+      "word_exact": 0.28342245989304815,
+      "tail_macro_f1": 0.0,
+      "tail_reference_coverage": 3,
+      "tail_requested": 6,
+      "per_target": {
+        "Ẵ": {
+          "reference_occurrences": 0,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "ẵ": {
+          "reference_occurrences": 2,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "Ễ": {
+          "reference_occurrences": 0,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "ễ": {
+          "reference_occurrences": 25,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "Ỡ": {
+          "reference_occurrences": 0,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "ỡ": {
+          "reference_occurrences": 10,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        }
+      },
+      "component_error_rates": {
+        "base_errors": 0.253125,
+        "shape_errors": 0.1671875,
+        "tone_errors": 0.2203125,
+        "case_errors": 0.140625
+      },
+      "seen_combination_cer": 0.321011673151751,
+      "unseen_combination_cer": 0.47619047619047616,
+      "step": 5000,
+      "seconds": 330.51741103301174
+    },
+    {
+      "mode": "whole",
+      "seed": 744,
+      "path": "runs/acl_longtail_v1/recognizer_whole_seed744",
+      "cer": 0.340625,
+      "word_exact": 0.32085561497326204,
+      "tail_macro_f1": 0.0,
+      "tail_reference_coverage": 3,
+      "tail_requested": 6,
+      "per_target": {
+        "Ẵ": {
+          "reference_occurrences": 0,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "ẵ": {
+          "reference_occurrences": 2,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "Ễ": {
+          "reference_occurrences": 0,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "ễ": {
+          "reference_occurrences": 25,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "Ỡ": {
+          "reference_occurrences": 0,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "ỡ": {
+          "reference_occurrences": 10,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        }
+      },
+      "component_error_rates": {
+        "base_errors": 0.2453125,
+        "shape_errors": 0.159375,
+        "tone_errors": 0.2109375,
+        "case_errors": 0.1359375
+      },
+      "seen_combination_cer": 0.3093385214007782,
+      "unseen_combination_cer": 0.46825396825396826,
+      "step": 5000,
+      "seconds": 324.938143441017
+    },
+    {
+      "mode": "factorized",
+      "seed": 742,
+      "path": "runs/acl_longtail_v1/clean_recognizer",
+      "cer": 0.3484375,
+      "word_exact": 0.29411764705882354,
+      "tail_macro_f1": 0.26495726495726496,
+      "tail_reference_coverage": 3,
+      "tail_requested": 6,
+      "per_target": {
+        "Ẵ": {
+          "reference_occurrences": 0,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "ẵ": {
+          "reference_occurrences": 2,
+          "predicted_occurrences": 1,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "Ễ": {
+          "reference_occurrences": 0,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "ễ": {
+          "reference_occurrences": 25,
+          "predicted_occurrences": 5,
+          "correct_aligned": 5,
+          "f1": 0.3333333333333333
+        },
+        "Ỡ": {
+          "reference_occurrences": 0,
+          "predicted_occurrences": 0,
+          "correct_aligned": 0,
+          "f1": 0.0
+        },
+        "ỡ": {
+          "reference_occurrences": 10,
+          "predicted_occurrences": 3,
+          "correct_aligned": 3,
+          "f1": 0.46153846153846156
+        }
+      },
+      "component_error_rates": {
+        "base_errors": 0.2671875,
+        "shape_errors": 0.1890625,
+        "tone_errors": 0.2203125,
+        "case_errors": 0.15625
+      },
+      "seen_combination_cer": 0.31712062256809337,
+      "unseen_combination_cer": 0.47619047619047616,
+      "step": 5000,
+      "seconds": 351.3859299879987
+    }
+  ],
+  "generation": [
+    {
+      "phase": "guided",
+      "mode": "glyph",
+      "step": 1000,
+      "status": "complete",
+      "path": "runs/acl_longtail_v1/guided_glyph_seed742",
+      "external_ocr": {
+        "cer": 0.584070796460177,
+        "word_exact": 0.020618556701030927,
+        "tail_macro_f1": 0.0,
+        "tail_reference_coverage": 3,
+        "tail_requested": 6,
+        "per_target": {
+          "Ẵ": {
+            "reference_occurrences": 0,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "ẵ": {
+            "reference_occurrences": 2,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "Ễ": {
+            "reference_occurrences": 0,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "ễ": {
+            "reference_occurrences": 25,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "Ỡ": {
+            "reference_occurrences": 0,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "ỡ": {
+            "reference_occurrences": 10,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          }
+        },
+        "component_error_rates": {
+          "base_errors": 0.4631268436578171,
+          "shape_errors": 0.35988200589970504,
+          "tone_errors": 0.35693215339233036,
+          "case_errors": 0.26253687315634217
+        },
+        "writer_cluster_percentile_95_ci": {
+          "cer": {
+            "low": 0.537402151940474,
+            "high": 0.6345752622310695,
+            "valid_replicates": 1000
+          },
+          "word_exact": {
+            "low": 0.0,
+            "high": 0.05001262626262625,
+            "valid_replicates": 1000
+          },
+          "tail_macro_f1": {
+            "low": 0.0,
+            "high": 0.0,
+            "valid_replicates": 885
+          }
+        },
+        "writers": 30,
+        "samples": 97,
+        "bootstrap_requested": 1000,
+        "ci_note": "Descriptive percentile CI; one writer provides no between-writer evidence. Tail CI conditions on all observed target glyphs: inspect valid_replicates.",
+        "warning": "Transcription only. Unsupported target glyphs excluded from macro and explicitly counted; evaluator independence requires external provenance.",
+        "evaluator": {
+          "checkpoint": "runs/vatrpp_vn_ocr_train/best.pth",
+          "sha256": "5da331c80b79a989559464cb741836886c9b3ad037c544ff71bfb4e4ebd1bc4c",
+          "step": 20000,
+          "training_relation": "Legacy full-data OCR; evaluation-only, no gradient to new G. May know target handwriting. Selected on legacy development; not a blinded human judgment."
+        }
+      },
+      "prompt_ocr": null,
+      "parameters": 558001
+    },
+    {
+      "phase": "guided",
+      "mode": "factorized",
+      "step": 1000,
+      "status": "complete",
+      "path": "runs/acl_longtail_v1/guided_factorized_seed742",
+      "external_ocr": {
+        "cer": 0.4424778761061947,
+        "word_exact": 0.09278350515463918,
+        "tail_macro_f1": 0.28287841191067,
+        "tail_reference_coverage": 3,
+        "tail_requested": 6,
+        "per_target": {
+          "Ẵ": {
+            "reference_occurrences": 0,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "ẵ": {
+            "reference_occurrences": 2,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "Ễ": {
+            "reference_occurrences": 0,
+            "predicted_occurrences": 5,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "ễ": {
+            "reference_occurrences": 25,
+            "predicted_occurrences": 6,
+            "correct_aligned": 6,
+            "f1": 0.3870967741935484
+          },
+          "Ỡ": {
+            "reference_occurrences": 0,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "ỡ": {
+            "reference_occurrences": 10,
+            "predicted_occurrences": 3,
+            "correct_aligned": 3,
+            "f1": 0.46153846153846156
+          }
+        },
+        "component_error_rates": {
+          "base_errors": 0.2890855457227139,
+          "shape_errors": 0.20943952802359883,
+          "tone_errors": 0.2536873156342183,
+          "case_errors": 0.20943952802359883
+        },
+        "writer_cluster_percentile_95_ci": {
+          "cer": {
+            "low": 0.3895003958623776,
+            "high": 0.4915059751273799,
+            "valid_replicates": 1000
+          },
+          "word_exact": {
+            "low": 0.03190649496080627,
+            "high": 0.1753066684066292,
+            "valid_replicates": 1000
+          },
+          "tail_macro_f1": {
+            "low": 0.12621192621192623,
+            "high": 0.40867050523913273,
+            "valid_replicates": 885
+          }
+        },
+        "writers": 30,
+        "samples": 97,
+        "bootstrap_requested": 1000,
+        "ci_note": "Descriptive percentile CI; one writer provides no between-writer evidence. Tail CI conditions on all observed target glyphs: inspect valid_replicates.",
+        "warning": "Transcription only. Unsupported target glyphs excluded from macro and explicitly counted; evaluator independence requires external provenance.",
+        "evaluator": {
+          "checkpoint": "runs/vatrpp_vn_ocr_train/best.pth",
+          "sha256": "5da331c80b79a989559464cb741836886c9b3ad037c544ff71bfb4e4ebd1bc4c",
+          "step": 20000,
+          "training_relation": "Legacy full-data OCR; evaluation-only, no gradient to new G. May know target handwriting. Selected on legacy development; not a blinded human judgment."
+        }
+      },
+      "prompt_ocr": {
+        "cer": 0.84,
+        "word_exact": 0.18,
+        "tail_macro_f1": 0.0,
+        "tail_reference_coverage": 3,
+        "tail_requested": 3,
+        "per_target": {
+          "Ẵ": {
+            "reference_occurrences": 30,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "Ễ": {
+            "reference_occurrences": 60,
+            "predicted_occurrences": 11,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "Ỡ": {
+            "reference_occurrences": 30,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          }
+        },
+        "component_error_rates": {
+          "base_errors": 0.6177777777777778,
+          "shape_errors": 0.5311111111111111,
+          "tone_errors": 0.7177777777777777,
+          "case_errors": 0.5866666666666667
+        },
+        "writer_cluster_percentile_95_ci": {
+          "cer": {
+            "low": 0.8288888888888889,
+            "high": 0.8511111111111112,
+            "valid_replicates": 1000
+          },
+          "word_exact": {
+            "low": 0.16333333333333333,
+            "high": 0.19333333333333333,
+            "valid_replicates": 1000
+          },
+          "tail_macro_f1": {
+            "low": 0.0,
+            "high": 0.0,
+            "valid_replicates": 1000
+          }
+        },
+        "writers": 30,
+        "samples": 300,
+        "bootstrap_requested": 1000,
+        "ci_note": "Descriptive percentile CI; one writer provides no between-writer evidence. Tail CI conditions on all observed target glyphs: inspect valid_replicates.",
+        "warning": "Transcription only. Unsupported target glyphs excluded from macro and explicitly counted; evaluator independence requires external provenance.",
+        "per_prompt": {
+          "E": {
+            "cer": 0.0,
+            "word_exact": 1.0,
+            "tail_macro_f1": null,
+            "tail_reference_coverage": 0,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 0.0,
+              "shape_errors": 0.0,
+              "tone_errors": 0.0,
+              "case_errors": 0.0
+            }
+          },
+          "NGUYỄN": {
+            "cer": 0.9,
+            "word_exact": 0.0,
+            "tail_macro_f1": 0.0,
+            "tail_reference_coverage": 1,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 30,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 0.8333333333333334,
+              "shape_errors": 0.5833333333333334,
+              "tone_errors": 0.6888888888888889,
+              "case_errors": 0.6944444444444444
+            }
+          },
+          "Ê": {
+            "cer": 0.2,
+            "word_exact": 0.8,
+            "tail_macro_f1": null,
+            "tail_reference_coverage": 0,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 0.0,
+              "shape_errors": 0.2,
+              "tone_errors": 0.0,
+              "case_errors": 0.0
+            }
+          },
+          "Ẵ": {
+            "cer": 1.0,
+            "word_exact": 0.0,
+            "tail_macro_f1": 0.0,
+            "tail_reference_coverage": 1,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 30,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 1.0,
+              "shape_errors": 1.0,
+              "tone_errors": 1.0,
+              "case_errors": 1.0
+            }
+          },
+          "ẵ": {
+            "cer": 1.0,
+            "word_exact": 0.0,
+            "tail_macro_f1": null,
+            "tail_reference_coverage": 0,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 1.0,
+              "shape_errors": 1.0,
+              "tone_errors": 1.0,
+              "case_errors": 0.36666666666666664
+            }
+          },
+          "Ẽ": {
+            "cer": 1.0,
+            "word_exact": 0.0,
+            "tail_macro_f1": null,
+            "tail_reference_coverage": 0,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 1.0,
+              "shape_errors": 1.0,
+              "tone_errors": 1.0,
+              "case_errors": 1.0
+            }
+          },
+          "Ễ": {
+            "cer": 1.0,
+            "word_exact": 0.0,
+            "tail_macro_f1": 0.0,
+            "tail_reference_coverage": 1,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 30,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 0.0,
+              "shape_errors": 0.0,
+              "tone_errors": 1.0,
+              "case_errors": 0.0
+            }
+          },
+          "ễ": {
+            "cer": 1.0,
+            "word_exact": 0.0,
+            "tail_macro_f1": null,
+            "tail_reference_coverage": 0,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 11,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 0.0,
+              "shape_errors": 0.0,
+              "tone_errors": 0.6333333333333333,
+              "case_errors": 1.0
+            }
+          },
+          "Ỡ": {
+            "cer": 1.0,
+            "word_exact": 0.0,
+            "tail_macro_f1": 0.0,
+            "tail_reference_coverage": 1,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 30,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 1.0,
+              "shape_errors": 1.0,
+              "tone_errors": 1.0,
+              "case_errors": 1.0
+            }
+          },
+          "ỡ": {
+            "cer": 1.0,
+            "word_exact": 0.0,
+            "tail_macro_f1": null,
+            "tail_reference_coverage": 0,
+            "tail_requested": 3,
+            "per_target": {
+              "Ễ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ỡ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              },
+              "Ẵ": {
+                "reference_occurrences": 0,
+                "predicted_occurrences": 0,
+                "correct_aligned": 0,
+                "f1": 0.0
+              }
+            },
+            "component_error_rates": {
+              "base_errors": 0.26666666666666666,
+              "shape_errors": 0.26666666666666666,
+              "tone_errors": 1.0,
+              "case_errors": 0.26666666666666666
+            }
+          }
+        },
+        "evaluator": {
+          "checkpoint": "runs/vatrpp_vn_ocr_train/best.pth",
+          "sha256": "5da331c80b79a989559464cb741836886c9b3ad037c544ff71bfb4e4ebd1bc4c",
+          "step": 20000,
+          "training_relation": "Legacy full-data OCR; evaluation-only, no gradient to new G. May know target handwriting. Selected on legacy development; not a blinded human judgment."
+        }
+      },
+      "parameters": 685497
+    },
+    {
+      "phase": "gan",
+      "mode": "glyph",
+      "step": 2000,
+      "status": "complete",
+      "path": "runs/acl_longtail_v1/gan_glyph_seed742",
+      "external_ocr": {
+        "cer": 0.5250737463126843,
+        "word_exact": 0.12371134020618557,
+        "tail_macro_f1": 0.0,
+        "tail_reference_coverage": 3,
+        "tail_requested": 6,
+        "per_target": {
+          "Ẵ": {
+            "reference_occurrences": 0,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "ẵ": {
+            "reference_occurrences": 2,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "Ễ": {
+            "reference_occurrences": 0,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "ễ": {
+            "reference_occurrences": 25,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "Ỡ": {
+            "reference_occurrences": 0,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          },
+          "ỡ": {
+            "reference_occurrences": 10,
+            "predicted_occurrences": 0,
+            "correct_aligned": 0,
+            "f1": 0.0
+          }
+        },
+        "component_error_rates": {
+          "base_errors": 0.41297935103244837,
+          "shape_errors": 0.2949852507374631,
+          "tone_errors": 0.28023598820059,
+          "case_errors": 0.15339233038348082
+        },
+        "writer_cluster_percentile_95_ci": {
+          "cer": {
+            "low": 0.4763510849177253,
+            "high": 0.5657585614891117,
+            "valid_replicates": 1000
+          },
+          "word_exact": {
+            "low": 0.0636244019138756,
+            "high": 0.20430107526881722,
+            "valid_replicates": 1000
+          },
+          "tail_macro_f1": {
+            "low": 0.0,
+            "high": 0.0,
+            "valid_replicates": 885
+          }
+        },
+        "writers": 30,
+        "samples": 97,
+        "bootstrap_requested": 1000,
+        "ci_note": "Descriptive percentile CI; one writer provides no between-writer evidence. Tail CI conditions on all observed target glyphs: inspect valid_replicates.",
+        "warning": "Transcription only. Unsupported target glyphs excluded from macro and explicitly counted; evaluator independence requires external provenance.",
+        "evaluator": {
+          "checkpoint": "runs/vatrpp_vn_ocr_train/best.pth",
+          "sha256": "5da331c80b79a989559464cb741836886c9b3ad037c544ff71bfb4e4ebd1bc4c",
+          "step": 20000,
+          "training_relation": "Legacy full-data OCR; evaluation-only, no gradient to new G. May know target handwriting. Selected on legacy development; not a blinded human judgment."
+        }
+      },
+      "prompt_ocr": null,
+      "parameters": 558001
+    },
+    {
+      "phase": "gan",
+      "mode": "factorized",
+      "step": 2000,
+      "status": "pending",
+      "path": "runs/acl_longtail_v1/gan_factorized_seed742",
+      "external_ocr": null,
+      "prompt_ocr": null,
+      "parameters": 685497
+    }
+  ],
+  "note": "Exploratory development only; no final-test or blinded human results."
+}

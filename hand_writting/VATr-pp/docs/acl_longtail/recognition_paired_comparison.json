@@ -1,0 +1,35 @@
+{
+  "first": {
+    "cer": 0.3515625,
+    "word_exact": 0.28342245989304815,
+    "tail_macro_f1": 0.0
+  },
+  "second": {
+    "cer": 0.3484375,
+    "word_exact": 0.29411764705882354,
+    "tail_macro_f1": 0.26495726495726496
+  },
+  "paired_writer_cluster_difference": {
+    "cer": {
+      "difference_second_minus_first": -0.003124999999999989,
+      "low_95": -0.04140292465384653,
+      "high_95": 0.03693035724054922,
+      "valid_replicates": 2000
+    },
+    "word_exact": {
+      "difference_second_minus_first": 0.010695187165775388,
+      "low_95": -0.07446808510638298,
+      "high_95": 0.08901891068219105,
+      "valid_replicates": 2000
+    },
+    "tail_macro_f1": {
+      "difference_second_minus_first": 0.26495726495726496,
+      "low_95": 0.09080625257095845,
+      "high_95": 0.37777777777777777,
+      "valid_replicates": 1751
+    }
+  },
+  "writers": 30,
+  "samples": 187,
+  "note": "Second minus first. Negative CER is better; positive F1/exact is better. Single-seed exploratory percentile intervals; tail CI conditional on reference glyph coverage."
+}

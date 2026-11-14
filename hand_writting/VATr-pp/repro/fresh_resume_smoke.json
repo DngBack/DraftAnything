@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "source_step": 176500,
+  "completed_step": 176502,
+  "original_manifest_sha256_preserved": true,
+  "data_location": "Copied train/test HDF5 into a different directory with new mtimes; full content hashes verified.",
+  "restored_baseline_cer": 0.12690058479532162,
+  "optimizer_step_delta": {
+    "G": 4,
+    "D": 4,
+    "W": 2
+  },
+  "note": "Fresh source copy, source G/D/W/R/Adam restored, two real outer steps; engineering resume validation, not a quality experiment."
+}

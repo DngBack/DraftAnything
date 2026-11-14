@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "import_method": "Vendored source files, not submodules. Nested Git metadata backed up outside the worktree in the parent repository .git/vendor-backups/261114.",
+  "repositories": [
+    {"directory": "VATr-pp", "snapshot_remote": "https://github.com/DngBack/VATr-pp", "base_commit": "a32d6fd39d74fecbc3c99dcbcfc397c17fc9fc32", "original_project": "https://github.com/EDM-Research/VATr-pp", "note": "Local Vietnamese implementation and research additions are included in this parent repository. The imported snapshot did not include a LICENSE file; no blanket relicensing is asserted."},
+    {"directory": "VATr", "snapshot_remote": "https://github.com/DngBack/VATr", "base_commit": "183501e02113a3b4b636f2a2c5443771501c8f2b", "original_project": "https://github.com/aimagelab/VATr", "license_file": "VATr/LICENSE"}
+  ]
+}

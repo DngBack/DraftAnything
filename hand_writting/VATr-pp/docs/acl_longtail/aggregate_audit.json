@@ -1,0 +1,206 @@
+{
+  "source": "docs/vietcompose/protocol/coverage.json",
+  "unit": "character occurrences, NOT images or writers",
+  "note": "Split counts before clean composition filtering; source artifact not raw data re-audit.",
+  "targets": {
+    "Ễ": {
+      "factors": {
+        "base": "e",
+        "shape": "circumflex",
+        "tone": "tilde",
+        "case": "upper"
+      },
+      "occurrences": {
+        "train": 0,
+        "hat_ocr": 100,
+        "val": 0
+      },
+      "real_transfer_evidence": {
+        "base:e|upper": {
+          "occurrences": 420,
+          "characters": {
+            "Ề": 18,
+            "Ể": 18,
+            "Ệ": 18,
+            "E": 366
+          }
+        },
+        "pair:circumflex|tilde|upper": {
+          "occurrences": 0,
+          "characters": {}
+        },
+        "shape:circumflex|upper": {
+          "occurrences": 255,
+          "characters": {
+            "Ề": 18,
+            "Ể": 18,
+            "Ệ": 18,
+            "Ấ": 39,
+            "Â": 36,
+            "Ô": 118,
+            "Ầ": 4,
+            "Ố": 1,
+            "Ồ": 1,
+            "Ậ": 2
+          }
+        },
+        "tone:tilde|upper": {
+          "occurrences": 1,
+          "characters": {
+            "Ĩ": 1
+          }
+        }
+      },
+      "zero_real_train": true,
+      "missing_real_dev_ground_truth": true
+    },
+    "Ỡ": {
+      "factors": {
+        "base": "o",
+        "shape": "horn",
+        "tone": "tilde",
+        "case": "upper"
+      },
+      "occurrences": {
+        "train": 0,
+        "hat_ocr": 103,
+        "val": 0
+      },
+      "real_transfer_evidence": {
+        "base:o|upper": {
+          "occurrences": 337,
+          "characters": {
+            "O": 187,
+            "Ô": 118,
+            "Ở": 10,
+            "Ố": 1,
+            "Ơ": 18,
+            "Ồ": 1,
+            "Ọ": 1,
+            "Ó": 1
+          }
+        },
+        "pair:horn|tilde|upper": {
+          "occurrences": 0,
+          "characters": {}
+        },
+        "shape:horn|upper": {
+          "occurrences": 33,
+          "characters": {
+            "Ở": 10,
+            "Ư": 4,
+            "Ơ": 18,
+            "Ử": 1
+          }
+        },
+        "tone:tilde|upper": {
+          "occurrences": 1,
+          "characters": {
+            "Ĩ": 1
+          }
+        }
+      },
+      "zero_real_train": true,
+      "missing_real_dev_ground_truth": true
+    },
+    "Ẵ": {
+      "factors": {
+        "base": "a",
+        "shape": "breve",
+        "tone": "tilde",
+        "case": "upper"
+      },
+      "occurrences": {
+        "train": 0,
+        "hat_ocr": 50,
+        "val": 0
+      },
+      "real_transfer_evidence": {
+        "base:a|upper": {
+          "occurrences": 390,
+          "characters": {
+            "Á": 66,
+            "Ả": 42,
+            "A": 183,
+            "Ấ": 39,
+            "Â": 36,
+            "À": 17,
+            "Ầ": 4,
+            "Ậ": 2,
+            "Ă": 1
+          }
+        },
+        "pair:breve|tilde|upper": {
+          "occurrences": 0,
+          "characters": {}
+        },
+        "shape:breve|upper": {
+          "occurrences": 1,
+          "characters": {
+            "Ă": 1
+          }
+        },
+        "tone:tilde|upper": {
+          "occurrences": 1,
+          "characters": {
+            "Ĩ": 1
+          }
+        }
+      },
+      "zero_real_train": true,
+      "missing_real_dev_ground_truth": true
+    },
+    "Ắ": {
+      "factors": {
+        "base": "a",
+        "shape": "breve",
+        "tone": "acute",
+        "case": "upper"
+      },
+      "occurrences": {
+        "train": 0,
+        "hat_ocr": 334,
+        "val": 0
+      },
+      "real_transfer_evidence": {
+        "base:a|upper": {
+          "occurrences": 390,
+          "characters": {
+            "Á": 66,
+            "Ả": 42,
+            "A": 183,
+            "Ấ": 39,
+            "Â": 36,
+            "À": 17,
+            "Ầ": 4,
+            "Ậ": 2,
+            "Ă": 1
+          }
+        },
+        "pair:breve|acute|upper": {
+          "occurrences": 0,
+          "characters": {}
+        },
+        "shape:breve|upper": {
+          "occurrences": 1,
+          "characters": {
+            "Ă": 1
+          }
+        },
+        "tone:acute|upper": {
+          "occurrences": 128,
+          "characters": {
+            "Á": 66,
+            "Ấ": 39,
+            "Ú": 20,
+            "Ố": 1,
+            "Ó": 1,
+            "Í": 1
+          }
+        }
+      },
+      "zero_real_train": true,
+      "missing_real_dev_ground_truth": true
+    }
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "counts": {
+    "train": {
+      "Ễ": {
+        "images": 0,
+        "occurrences": 0,
+        "sources": {},
+        "writer_ids": 0
+      },
+      "ễ": {
+        "images": 166,
+        "occurrences": 166,
+        "sources": {
+          "VNOnDB": 107,
+          "ViHTGen": 59
+        },
+        "writer_ids": 80
+      }
+    },
+    "hat_ocr": {
+      "Ễ": {
+        "images": 100,
+        "occurrences": 100,
+        "sources": {
+          "HAT2023": 100
+        },
+        "writer_ids": 100
+      },
+      "ễ": {
+        "images": 188,
+        "occurrences": 188,
+        "sources": {
+          "HAT2023": 188
+        },
+        "writer_ids": 188
+      }
+    },
+    "val": {
+      "Ễ": {
+        "images": 0,
+        "occurrences": 0,
+        "sources": {},
+        "writer_ids": 0
+      },
+      "ễ": {
+        "images": 25,
+        "occurrences": 25,
+        "sources": {
+          "VNOnDB": 15,
+          "ViHTGen": 10
+        },
+        "writer_ids": 11
+      }
+    }
+  },
+  "samples": [
+    {
+      "split": "hat_ocr",
+      "index": 109652,
+      "label": "NHIỄM",
+      "writer_id": 350,
+      "file": "real_hat_ocr_109652.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 110107,
+      "label": "KỄNH",
+      "writer_id": 805,
+      "file": "real_hat_ocr_110107.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 110153,
+      "label": "TIỄU",
+      "writer_id": 851,
+      "file": "real_hat_ocr_110153.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 110294,
+      "label": "Ễnh",
+      "writer_id": 992,
+      "file": "real_hat_ocr_110294.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 110950,
+      "label": "KHỄNH",
+      "writer_id": 1648,
+      "file": "real_hat_ocr_110950.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 111328,
+      "label": "Ễnh",
+      "writer_id": 2026,
+      "file": "real_hat_ocr_111328.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 111640,
+      "label": "VIỄN",
+      "writer_id": 2338,
+      "file": "real_hat_ocr_111640.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 112210,
+      "label": "ĐỄ",
+      "writer_id": 2908,
+      "file": "real_hat_ocr_112210.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 112234,
+      "label": "NGHIỄM",
+      "writer_id": 2932,
+      "file": "real_hat_ocr_112234.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 113425,
+      "label": "LIỄM",
+      "writer_id": 4123,
+      "file": "real_hat_ocr_113425.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 114080,
+      "label": "NHỄ",
+      "writer_id": 4778,
+      "file": "real_hat_ocr_114080.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 114718,
+      "label": "TỄNH",
+      "writer_id": 5416,
+      "file": "real_hat_ocr_114718.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 114809,
+      "label": "NHỄ",
+      "writer_id": 5507,
+      "file": "real_hat_ocr_114809.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 116020,
+      "label": "DIỄN",
+      "writer_id": 6718,
+      "file": "real_hat_ocr_116020.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 117157,
+      "label": "NGHỄ",
+      "writer_id": 7855,
+      "file": "real_hat_ocr_117157.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 117660,
+      "label": "VIỄN",
+      "writer_id": 8358,
+      "file": "real_hat_ocr_117660.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 117720,
+      "label": "HUYỄN",
+      "writer_id": 8418,
+      "file": "real_hat_ocr_117720.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 117755,
+      "label": "DIỄU",
+      "writer_id": 8453,
+      "file": "real_hat_ocr_117755.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 117788,
+      "label": "SỄ",
+      "writer_id": 8486,
+      "file": "real_hat_ocr_117788.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 117963,
+      "label": "NHUYỄN",
+      "writer_id": 8661,
+      "file": "real_hat_ocr_117963.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 118061,
+      "label": "MIỄN",
+      "writer_id": 8759,
+      "file": "real_hat_ocr_118061.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 118093,
+      "label": "KHIỄNG",
+      "writer_id": 8791,
+      "file": "real_hat_ocr_118093.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 118277,
+      "label": "DIỄU",
+      "writer_id": 8975,
+      "file": "real_hat_ocr_118277.png"
+    },
+    {
+      "split": "hat_ocr",
+      "index": 118438,
+      "label": "DIỄN",
+      "writer_id": 9136,
+      "file": "real_hat_ocr_118438.png"
+    }
+  ]
+}

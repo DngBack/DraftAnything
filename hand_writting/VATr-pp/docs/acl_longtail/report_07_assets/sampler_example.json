@@ -1,0 +1,66 @@
+{
+  "corpus": [
+    "E",
+    "Ê",
+    "Ễ",
+    "ễ",
+    "Ấ",
+    "Ỗ",
+    "ma",
+    "ma"
+  ],
+  "rare_fraction": 0.3,
+  "component_mix": 0.5,
+  "rows": [
+    {
+      "text": "E",
+      "legacy_weight_per_entry": 2.8284271247461903,
+      "new_weight_per_entry": 2.5754444887915744,
+      "legacy_text_probability": 0.12796282150847268,
+      "new_text_probability": 0.12775421849543445
+    },
+    {
+      "text": "Ê",
+      "legacy_weight_per_entry": 2.8284271247461903,
+      "new_weight_per_entry": 2.3986677934949374,
+      "legacy_text_probability": 0.12796282150847268,
+      "new_text_probability": 0.1249911972972138
+    },
+    {
+      "text": "Ễ",
+      "legacy_weight_per_entry": 2.8284271247461903,
+      "new_weight_per_entry": 2.2951144029016635,
+      "legacy_text_probability": 0.12796282150847268,
+      "new_text_probability": 0.1233726569524205
+    },
+    {
+      "text": "ễ",
+      "legacy_weight_per_entry": 2.8284271247461903,
+      "new_weight_per_entry": 2.8284271247461903,
+      "legacy_text_probability": 0.12796282150847268,
+      "new_text_probability": 0.13170833917153035
+    },
+    {
+      "text": "Ấ",
+      "legacy_weight_per_entry": 2.8284271247461903,
+      "new_weight_per_entry": 2.6516504294495533,
+      "legacy_text_probability": 0.12796282150847268,
+      "new_text_probability": 0.12894531797330971
+    },
+    {
+      "text": "Ỗ",
+      "legacy_weight_per_entry": 2.8284271247461903,
+      "new_weight_per_entry": 2.444543648263006,
+      "legacy_text_probability": 0.12796282150847268,
+      "new_text_probability": 0.12570823728372313
+    },
+    {
+      "text": "ma",
+      "legacy_weight_per_entry": 2.0,
+      "new_weight_per_entry": 2.0,
+      "legacy_text_probability": 0.23222307094916383,
+      "new_text_probability": 0.237520032826368
+    }
+  ],
+  "note": "Toy illustration computed directly from code; not real corpus or quality results."
+}

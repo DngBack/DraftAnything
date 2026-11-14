@@ -1,0 +1,21 @@
+{
+  "ready": true,
+  "checks": [
+    {
+      "name": "source_train",
+      "ok": true,
+      "detail": "212597 rows"
+    },
+    {
+      "name": "source_test",
+      "ok": true,
+      "detail": "27257 rows"
+    },
+    {
+      "name": "torch",
+      "ok": true,
+      "detail": "{'torch': '2.14.0+cu130', 'cuda_available': True}"
+    }
+  ],
+  "note": "Preflight is not a completed training experiment."
+}

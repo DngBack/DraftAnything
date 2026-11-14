@@ -1,0 +1,8 @@
+{
+  "python": "3.13.15",
+  "torch": "2.9.1+cu128",
+  "torchvision": "0.24.1+cu128",
+  "cuda_build": "12.8",
+  "training_gpu": "NVIDIA H200",
+  "note": "Package versions captured from the original training interpreter. Bit-identical GPU results across hardware, driver or library builds are not promised. Sampler iterator restart also prevents bit-exact interrupted/continuous equivalence."
+}

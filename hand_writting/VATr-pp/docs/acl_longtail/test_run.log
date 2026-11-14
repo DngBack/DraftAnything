@@ -1,0 +1,51 @@
+test_insertions_penalized_and_missing_glyphs_reported (test_longtail.EvaluationTests.test_insertions_penalized_and_missing_glyphs_reported) ... ok
+test_nfc_and_repeatable_writer_cluster_bootstrap (test_longtail.EvaluationTests.test_nfc_and_repeatable_writer_cluster_bootstrap) ... ok
+test_hdf5_export_preserves_sources_and_pixel_integrity (test_longtail.ExportAndSuiteTests.test_hdf5_export_preserves_sources_and_pixel_integrity) ... ok
+test_suite_does_not_launch_with_missing_primary_ground_truth (test_longtail.ExportAndSuiteTests.test_suite_does_not_launch_with_missing_primary_ground_truth) ... ok
+test_canonical_glyph_control_has_finite_unseen_label_scores (test_longtail.GlyphSemanticControlTests.test_canonical_glyph_control_has_finite_unseen_label_scores) ... ok
+test_identity_has_zero_paired_difference (test_longtail.PairedComparisonTests.test_identity_has_zero_paired_difference) ... ok
+test_inventory_is_unique_and_roundtrips (test_longtail.PairedComparisonTests.test_inventory_is_unique_and_roundtrips) ... ok
+test_audit_counts_images_and_real_writers (test_longtail.PolicyTests.test_audit_counts_images_and_real_writers) ... ok
+test_fewshot_real_only_and_nested_budgets (test_longtail.PolicyTests.test_fewshot_real_only_and_nested_budgets) ... ok
+test_protocol_and_record_tampering_rejected (test_longtail.PolicyTests.test_protocol_and_record_tampering_rejected) ... ok
+test_reject_writer_pixel_id_leakage_and_hat_writer (test_longtail.PolicyTests.test_reject_writer_pixel_id_leakage_and_hat_writer) ... ok
+test_sampling_no_nan_and_rare_has_more_mass (test_longtail.PolicyTests.test_sampling_no_nan_and_rare_has_more_mass) ... ok
+test_zero_holdout_removed_from_every_training_consumer (test_longtail.PolicyTests.test_zero_holdout_removed_from_every_training_consumer) ... ok
+test_decode_repeats_and_true_width (test_longtail.StructuredRecognizerTests.test_decode_repeats_and_true_width) ... ok
+test_joint_ctc_logprobs_shared_roles_and_live_gradient (test_longtail.StructuredRecognizerTests.test_joint_ctc_logprobs_shared_roles_and_live_gradient) ... ok
+test_both_models_have_style_gradient_and_white_padding (test_longtail.TrainingTests.test_both_models_have_style_gradient_and_white_padding) ... ok
+test_cpu_end_to_end_both_arms_and_pixel_tamper (test_longtail.TrainingTests.test_cpu_end_to_end_both_arms_and_pixel_tamper) ... {"step": 2, "loss": 0.9844129085540771, "grad_norm": 0.13108783960342407, "seconds": 0.0328438290162012, "reconstruction": 0.9844129085540771, "ctc": -0.0, "adversarial": -0.0, "feature": -0.0, "discriminator": -0.0, "dev_pixel_l1": 0.9381017486254374, "samples": 3, "warning": "Pixel proxy only; no readability, mark correctness or writer-quality claim."}
+{"step": 2, "loss": 1.0169944763183594, "grad_norm": 0.1254757195711136, "seconds": 0.0393401809851639, "reconstruction": 1.0169944763183594, "ctc": -0.0, "adversarial": -0.0, "feature": -0.0, "discriminator": -0.0, "dev_pixel_l1": 0.9631660183270773, "samples": 3, "warning": "Pixel proxy only; no readability, mark correctness or writer-quality claim."}
+{"step": 2, "loss": 1.8869335651397705, "grad_norm": 0.18173645436763763, "seconds": 0.09021126001607627, "reconstruction": 0.7122045159339905, "ctc": 3.840085506439209, "adversarial": 0.010228358209133148, "feature": 0.4056891202926636, "discriminator": 1.9529762268066406, "dev_pixel_l1": 0.9639102816581726, "samples": 3, "warning": "Pixel proxy only; no readability, mark correctness or writer-quality claim."}
+{"step": 4, "loss": 1.9060183763504028, "grad_norm": 0.19701671600341797, "seconds": 0.07720566799980588, "reconstruction": 0.698630690574646, "ctc": 3.840169668197632, "adversarial": 0.031223179772496223, "feature": 0.43623149394989014, "discriminator": 1.865067958831787, "dev_pixel_l1": 0.9544024268786112, "samples": 3, "warning": "Pixel proxy only; no readability, mark correctness or writer-quality claim."}
+ok
+test_padding_does_not_affect_loss (test_longtail.TrainingTests.test_padding_does_not_affect_loss) ... ok
+test_case_and_joint_marks_are_distinct (test_pretrained_longtail.PretrainedSamplingTests.test_case_and_joint_marks_are_distinct) ... ok
+test_no_invented_text_and_analytic_exposure (test_pretrained_longtail.PretrainedSamplingTests.test_no_invented_text_and_analytic_exposure) ... ok
+test_zero_mix_preserves_legacy_rng_and_transcripts (test_pretrained_longtail.PretrainedSamplingTests.test_zero_mix_preserves_legacy_rng_and_transcripts) ... ok
+test_none_is_nonblank_and_gradient_is_finite (test_vietcompose.ComponentCTCTests.test_none_is_nonblank_and_gradient_is_finite) ... ok
+test_shared_tone_embedding_and_live_gradient (test_vietcompose.CompositionTests.test_shared_tone_embedding_and_live_gradient) ... ok
+test_tone_error_not_base_error (test_vietcompose.CompositionTests.test_tone_error_not_base_error) ... ok
+test_unicode_round_trip_and_roles (test_vietcompose.CompositionTests.test_unicode_round_trip_and_roles) ... ok
+test_zero_residual_preserves_glyph_and_padding (test_vietcompose.CompositionTests.test_zero_residual_preserves_glyph_and_padding) ... ok
+test_body_invariant_to_marks_and_none_has_no_ink (test_vietcompose.LayeredRendererTests.test_body_invariant_to_marks_and_none_has_no_ink) ... /home/bachdx2/DraftAnything/hand_writting/VATr-pp/tests/test_vietcompose.py:71: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  self.assertEqual(float(plain['modifier_ink'].sum()),0)
+ok
+test_dot_below_placement_and_gradient (test_vietcompose.LayeredRendererTests.test_dot_below_placement_and_gradient) ... ok
+test_padding_white_and_no_whole_character_lookup (test_vietcompose.LayeredRendererTests.test_padding_white_and_no_whole_character_lookup) ... ok
+test_ctc_blank_logprob_true_width_and_gradient (test_vietnamese.VietnameseTests.test_ctc_blank_logprob_true_width_and_gradient) ... ok
+test_decoder_ctc_repeat_and_true_length (test_vietnamese.VietnameseTests.test_decoder_ctc_repeat_and_true_length) ... ok
+test_nfc_last_character_and_unknown (test_vietnamese.VietnameseTests.test_nfc_last_character_and_unknown) ... ok
+test_packed_support_and_writer_ids (test_vietnamese.VietnameseTests.test_packed_support_and_writer_ids) ... ok
+test_benchmark_restores_rng_and_mode_on_failure (test_vietnamese_experiments.ExperimentTests.test_benchmark_restores_rng_and_mode_on_failure) ... ok
+test_resume_override_preserves_adam_moments (test_vietnamese_experiments.ExperimentTests.test_resume_override_preserves_adam_moments) ... ok
+test_reconstruction_masks_padding_and_has_gradient (test_vietnamese_rare_content.RareContentTests.test_reconstruction_masks_padding_and_has_gradient) ... ok
+test_split_by_transcript_no_pseudo_writer_targets (test_vietnamese_rare_content.RareContentTests.test_split_by_transcript_no_pseudo_writer_targets) ... ok
+test_eval_support_excludes_target_and_target_transcript (test_vietnamese_visual.VisualTests.test_eval_support_excludes_target_and_target_transcript) ... ok
+test_features_detach_target_and_mask_padding (test_vietnamese_visual.VisualTests.test_features_detach_target_and_mask_padding) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 4.504s
+
+OK

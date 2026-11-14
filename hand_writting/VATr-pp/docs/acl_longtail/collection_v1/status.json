@@ -1,0 +1,5 @@
+{
+  "status": "templates-only-no-data-collected",
+  "prompts": 145,
+  "instructions": "Assign train/development/test by writer BEFORE acquisition. Do not interpret blank fields as consent, valid labels, or completed samples. Boxes use original-image x0,y0,x1,y1; fused marks may need uncertainty flags. Glyph prompts are valid letters, not claims of valid syllables under arbitrary tone substitution."
+}

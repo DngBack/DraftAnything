@@ -1,0 +1,661 @@
+{
+  "version": 1,
+  "scope": "All Python source in both vendored trees; excludes generated code snapshots, environments and caches.",
+  "files": [
+    {
+      "path": "hand_writting/VATr-pp/create_style_sample.py",
+      "sha256": "ec80715948d6e22a8a26c8666f07f9a4cc954aecc4e588ffb21c72fde4447980",
+      "bytes": 733
+    },
+    {
+      "path": "hand_writting/VATr-pp/data/create_data.py",
+      "sha256": "f14569920c6c7a3d2904101413bb73cc9f7d5b975364cea4f3f64724edf87840",
+      "bytes": 16570
+    },
+    {
+      "path": "hand_writting/VATr-pp/data/dataset.py",
+      "sha256": "6f0edeb9cd2856cec67223d43c0925314b49f2f680e5f8a83f525c64f30d3daa",
+      "bytes": 12068
+    },
+    {
+      "path": "hand_writting/VATr-pp/data/iam_test.py",
+      "sha256": "ce1bbb17b8ed9bf109fdb9caf8bf9823394047413df6b940729654a714a0b68f",
+      "bytes": 1691
+    },
+    {
+      "path": "hand_writting/VATr-pp/data/show_dataset.py",
+      "sha256": "9706cb52b6835f1c13027bdfbdbac2892f9ae80aeaf03a3bf3b794b44b120e03",
+      "bytes": 4610
+    },
+    {
+      "path": "hand_writting/VATr-pp/data/vietnamese.py",
+      "sha256": "7ab800b76d7df37157a6ee0a6f700ed65ef06422cb2abfc50d4c303fa86422fd",
+      "bytes": 7244
+    },
+    {
+      "path": "hand_writting/VATr-pp/data/vietnamese_rare_content.py",
+      "sha256": "0915b1930ed943073cedb9c1e2689dd2272fde9f2814dcc05ad3d9d514f40c5f",
+      "bytes": 5829
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate.py",
+      "sha256": "f54700152b3345d05576a3f28aed5578670b558d0cd4bee0b0e45aa6f700ffe5",
+      "bytes": 2306
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate/__init__.py",
+      "sha256": "378f0aaf4cfb83eb2149a99acc89a5fb0ff59341373fde50b9dadbaf05f045a2",
+      "bytes": 224
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate/authors.py",
+      "sha256": "a3dbdbd4f32c0ee99703770c532e208170e958b2e8e835d242846ae960d5354d",
+      "bytes": 1489
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate/fid.py",
+      "sha256": "599dbd6fe2ce885d0d3ccc880a7458e767640924c73fe3ff5061eee48964af39",
+      "bytes": 2757
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate/ocr.py",
+      "sha256": "55ff26b0c1b74d436dbbefb5d8c8f533917e9e15e6a6eed02e629e0a5a0845cf",
+      "bytes": 2567
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate/page.py",
+      "sha256": "2ebe52acd89c8faf104423ec877e5ceee47834148ca6426a1740c1ccf7f9e44b",
+      "bytes": 1898
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate/text.py",
+      "sha256": "a78ec636d6ebd80d206b8bf40c3dba12e624b33aa39246802a068b6abebd4a2e",
+      "bytes": 801
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate/util.py",
+      "sha256": "42aa9289dbcb1624f0ea65b3c2cf4ee36e7ee3cdc5aad04e715250e117b43fe2",
+      "bytes": 376
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate/writer.py",
+      "sha256": "7ee02d09c20dc4de229730577b24415892976618a3b3e4fdb7ebfd6128e7af52",
+      "bytes": 12562
+    },
+    {
+      "path": "hand_writting/VATr-pp/generate_vietnamese.py",
+      "sha256": "a65d0802799e923fc83aee2fd7f5c4fe7bacb9976bd5fdd1da88a7ab9efe6290",
+      "bytes": 5091
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/BigGAN_layers.py",
+      "sha256": "65b18c83db250313c9be87712ce9c594c40b6bb0e54c24b08a94abe15b755a56",
+      "bytes": 18604
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/BigGAN_networks.py",
+      "sha256": "1a7b38460dbc70f0a56c6ce5082543d92420bf0887583d07994b4485fa04c73e",
+      "bytes": 18831
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/OCR_network.py",
+      "sha256": "0e2074455dcbda4b7459e41acef387db72feacb9bdfb7eb85cc2e63548a79fb0",
+      "bytes": 7395
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/__init__.py",
+      "sha256": "b00d20dcabcdc5501c47cfa8ce28d79dad5bb75da2e73a229505bb8d2043a4e6",
+      "bytes": 2965
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/blocks.py",
+      "sha256": "c52dd1190c2e44bb0903e7e343f16511cab168b4caa8ec733b60cf6818630537",
+      "bytes": 6811
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/config.py",
+      "sha256": "7329e896ef9b600c3d08649d33ca1c6a44eccaacf91a30fe9dc02a56c3a4e2ad",
+      "bytes": 111
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/inception.py",
+      "sha256": "79d5b4b4019351d6e4dc622b1fd9e4d4e79f94b159fdc251b49b9e3d03ba0a82",
+      "bytes": 11623
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/model.py",
+      "sha256": "65f388d5823d956dadae7b81d7ae95547e75ebec85ad0e2d66c595439340ed45",
+      "bytes": 32127
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/networks.py",
+      "sha256": "bc9c5e1e6b33cb2cf86841b2c0ba9894d121f1ab0a974c3c4d5ef8d393b33355",
+      "bytes": 4730
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/positional_encodings.py",
+      "sha256": "14fa818b31ee4fde9ee00a081e821de6393ac008d96e7d0810bd457d87ba42f7",
+      "bytes": 9755
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/sync_batchnorm/__init__.py",
+      "sha256": "0701e2062245ab6c90b3df6934a21be5c942b44b13c2ebb70695433599af7a15",
+      "bytes": 449
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/sync_batchnorm/batchnorm.py",
+      "sha256": "508690ea7b9e2b4c249b9efa56ec669b110298ce814d1c3ebdaa6e580f2d9741",
+      "bytes": 14882
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/sync_batchnorm/batchnorm_reimpl.py",
+      "sha256": "02c57365a2f00d07a692f5aa39d815f1fa3c70b805f247cf3514be635b177631",
+      "bytes": 2383
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/sync_batchnorm/comm.py",
+      "sha256": "9d2e776a0398e5ac29ce13d43b7475300f70f409e56f3c38428029000557a57a",
+      "bytes": 4449
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/sync_batchnorm/replicate.py",
+      "sha256": "4498b873404fce05202d4f891262e249a95733816d3877e3aee3d2401138a6af",
+      "bytes": 3226
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/sync_batchnorm/unittest.py",
+      "sha256": "7f0fdfb71efe0458707a66525e932af4cd58d2c65e8cab42b26ded60a451abb2",
+      "bytes": 746
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/transformer.py",
+      "sha256": "b02d8ac43806cba8654dcf91690b3b723e0a58c7187e8743b819357b7c7cc4da",
+      "bytes": 11950
+    },
+    {
+      "path": "hand_writting/VATr-pp/models/unifont_module.py",
+      "sha256": "e4567d4d4bfa8ee2e9a0585f326f5e8e8da6f9c64fc82faf0dfb41b8da079af3",
+      "bytes": 2341
+    },
+    {
+      "path": "hand_writting/VATr-pp/repro/__init__.py",
+      "sha256": "d9558af859fafd3a384b0b7e53bf1d5cf5569826e75884eb3a44c843a162e60d",
+      "bytes": 79
+    },
+    {
+      "path": "hand_writting/VATr-pp/repro/configure.py",
+      "sha256": "7fe897c0ee49c96a1a8ac7c637c85dad24e31ed6e39cfb6cad192938b4cca819",
+      "bytes": 1701
+    },
+    {
+      "path": "hand_writting/VATr-pp/repro/fetch.py",
+      "sha256": "eac3f5e7162c240db42368a18bdb9659ae08ad52b5260acb38396f832cd318ac",
+      "bytes": 5437
+    },
+    {
+      "path": "hand_writting/VATr-pp/repro/paths.py",
+      "sha256": "361c459495f9b8aef7a45dacabc9bf6ecdc55f1a4a2869e41348faf865b72345",
+      "bytes": 2037
+    },
+    {
+      "path": "hand_writting/VATr-pp/repro/run.py",
+      "sha256": "a309d5205a165a2f23cb93c2a40c62817b115de331e9ab073ce341b6fd61c42f",
+      "bytes": 1863
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/__init__.py",
+      "sha256": "15dd5950af1734e521aabcbab4c2184429c6bbb6654a3197e8fdae9441f4eb9e",
+      "bytes": 81
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/__init__.py",
+      "sha256": "df9119eb6a5143ca2753b9c56102dbb86920c3fc49215b58b6b0c10089267bc9",
+      "bytes": 75
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/aggregate_audit.py",
+      "sha256": "d44735eb57a601ef00aca5f0fa4f9988e101c88e9c4153189595f0b1dbb95965",
+      "bytes": 1917
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/collection.py",
+      "sha256": "cafd75f4c83b857682bcd782b2a03e993dec7517b4d13fb2a5a88428698765ed",
+      "bytes": 2357
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/compare.py",
+      "sha256": "0575fc6572252e685e25b045297ded9388e147235edb87330e01e28bd4b14019",
+      "bytes": 3819
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/data.py",
+      "sha256": "28c7aa26260525d8277c45909b2fb6fe8ba225fccad69779bd24c513f4655106",
+      "bytes": 5228
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/discriminator.py",
+      "sha256": "ca07a4daff33854081651319b42751d627cf27d5e5558f70ae711f5fff5389da",
+      "bytes": 1534
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/evaluate.py",
+      "sha256": "81d3252196026999facc686cd9abab5d2a5e17d24ada9a9bab0cb4fe6459d601",
+      "bytes": 5739
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/models.py",
+      "sha256": "f50f4a444126f7c1ec483d7634ff4232e0b2c2a34b22a433e0b8124e57ddc52a",
+      "bytes": 4040
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/panels.py",
+      "sha256": "3b859362c928afff4b82bb29c10b42a8e2c4ab52c6bfe2bed7255790376bc790",
+      "bytes": 2181
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/prepare.py",
+      "sha256": "969c0941fea67bf34734757dc923cfaa90741a62e91526b1bebcbac214591c3e",
+      "bytes": 6483
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/protocol.py",
+      "sha256": "adc1c3a608f2c777fe385b32e43dd7e89bf7d8e26e0421cdc8de175c7ddef92e",
+      "bytes": 10447
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/recognizer.py",
+      "sha256": "e752dd6c4eb7f92b6f7c74841c4eda7d30986f9b1d7de8efdffd8088063b78da",
+      "bytes": 5464
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/render_prompts.py",
+      "sha256": "8e34353d6a2c67e285c453be7514289cc1c0ba32ee0b6a77c47fb7ef65e872a1",
+      "bytes": 4408
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/report.py",
+      "sha256": "7886367e5468b12e9ecbe14aa4b89fb606abb8e5c9856e40dac0ecc49e76f7ba",
+      "bytes": 8424
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/suite.py",
+      "sha256": "63a6939d48bb7a9d67434263e4787cbf51487e84733641b179af2b4001dab0ca",
+      "bytes": 4479
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/train.py",
+      "sha256": "425907c8fe657f2bfd3ebd7c1c82eb558eca1052b32c0edc35dca70ffee3d28b",
+      "bytes": 16382
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/train_recognizer.py",
+      "sha256": "9f91ccca34cfbca486fcc0cf9b0486b158b0d1303be139169cd937f85bec9dac",
+      "bytes": 8107
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/longtail/transcribe.py",
+      "sha256": "775b7d74420ac2247fe3dd8a8dc1027b320d3ffbd0a04f754a0ea2e70924a319",
+      "bytes": 3793
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/vietcompose/__init__.py",
+      "sha256": "3e0066097ae6991157faa38a9e01d685de85f6c9f04ed6593072bf75e01302ca",
+      "bytes": 79
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/vietcompose/losses.py",
+      "sha256": "9e10964e37f86e9486629cc41886153562f1b5ab2398071f90e788677f6b6e16",
+      "bytes": 2073
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/vietcompose/model.py",
+      "sha256": "228f38968b7436d501a426371c227c083b9baec06197c88a5fb0d576620d93e1",
+      "bytes": 4550
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/vietcompose/orthography.py",
+      "sha256": "368f393e4d8fcc3ebed1568a056eac6ceb6940d9094eaea69a38a8c56c102922",
+      "bytes": 3507
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/vietcompose/prepare_protocol.py",
+      "sha256": "94a6af5125dc5ccea55992ec96deaceb18db593a665c7f05380f7b8ae182a945",
+      "bytes": 4061
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/vietcompose/renderer.py",
+      "sha256": "6505a3daf373e5a045b87ae9be04558ec35d67fca7501cec1bb460f22c03beba",
+      "bytes": 5574
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/vietcompose/run_pilot.py",
+      "sha256": "d954695469a3f877ca25f2b31ffb68a576046abeba4b7686c69e6af496a5ffcb",
+      "bytes": 3532
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/vietcompose/synthetic_smoke.py",
+      "sha256": "70f0b7c2d95b27e4cec70aac0720e7c4056f18944b0a6eb2b433c324e2932cd2",
+      "bytes": 4038
+    },
+    {
+      "path": "hand_writting/VATr-pp/research/vietcompose/train_pilot.py",
+      "sha256": "f632d50b09f074d04b443613e9c85004edd554327df27abc33a402640e3d3d67",
+      "bytes": 9187
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/continue_vietnamese_if_improved.py",
+      "sha256": "45e20a62c35d26187417e51f5067050b2c430267b2b2bbdd21cbab0e78f25660",
+      "bytes": 5728
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/infer_uppercase_comparison.py",
+      "sha256": "c044c02e51cbfded33ab0721e7bb7f05ce8fa8575a09302b9330c7f28524078b",
+      "bytes": 6578
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/prepare_vietnamese.py",
+      "sha256": "d684ce5f3548ba508166d4b70647f1fd7ceb62f2b8945024cb1ad8c3c3d8b1fc",
+      "bytes": 10898
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/report_component_250k.py",
+      "sha256": "7e11b49310c1a8de65b4d33162f89e408395eee24ec1d67826025253086957bb",
+      "bytes": 4969
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/report_pretrained_longtail.py",
+      "sha256": "96efc3943840f20ccf2b5381c411fdc7df34aed99a265a8be05542a32e925045",
+      "bytes": 8128
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/resume_component_250k.py",
+      "sha256": "ec04a31478be0f973963612e3518a318da93ea71620e7952d9868775386b309e",
+      "bytes": 6890
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/resume_vietnamese_200k.py",
+      "sha256": "e3481a4d3f46163bfb05dbd1da55f9882a28b8969e83258f4afb3eef067ebaa6",
+      "bytes": 3395
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/run_pretrained_longtail_pilot.py",
+      "sha256": "3ab58bd0b4f6b70195526822ff91e3e38c71128a62277cae8213920aca8f642f",
+      "bytes": 6974
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/run_rare_hat_content_pilot.py",
+      "sha256": "e7486281970868e45234db2e69e05694f133c61b59373abc05511b95e0c44115",
+      "bytes": 3253
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/run_vietnamese_ablations.py",
+      "sha256": "226ba7f7036addb9a90b8f92acc097a0e00007fffd851f6f05c6a0b43d07f97b",
+      "bytes": 4250
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/run_visual_quality_pilot.py",
+      "sha256": "e2d370c666457c2105405972f6342b7ca5fac7d421bbb33f90b8d4250cc4d35d",
+      "bytes": 3727
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/start_vietnamese_finetune.py",
+      "sha256": "d31474f667911273b9a0693bd809d5baced94921e50b8ea5be6b3519b23e6d26",
+      "bytes": 3169
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/vietnamese_training_status.py",
+      "sha256": "e1273e90a808f9782ab28ecec00d1744b0c812dffea387ec6c781860d848e4a3",
+      "bytes": 2764
+    },
+    {
+      "path": "hand_writting/VATr-pp/scripts/watch_component_250k_report.py",
+      "sha256": "32055f79299d056d6074058761416d8eb5e559227fd93d2486ef02226e2fee77",
+      "bytes": 1480
+    },
+    {
+      "path": "hand_writting/VATr-pp/tests/test_longtail.py",
+      "sha256": "48c3815005e302110f81ce84a8d40d39883fc44c1da3ade6c9821d71ee45ebc7",
+      "bytes": 15573
+    },
+    {
+      "path": "hand_writting/VATr-pp/tests/test_pretrained_longtail.py",
+      "sha256": "a4d1afa66d5dc091688419896701fca12527c588ddbfe8e6afd9183fa16873a6",
+      "bytes": 1489
+    },
+    {
+      "path": "hand_writting/VATr-pp/tests/test_repro.py",
+      "sha256": "1db8b15d22f8e21581b4e3267f16221ea62c28edd81603580b0884c104998787",
+      "bytes": 5066
+    },
+    {
+      "path": "hand_writting/VATr-pp/tests/test_vietcompose.py",
+      "sha256": "6ecbb8b4bb0291226c6a67641fd9e563df6bcb9433191dbfd6e9e5a52c09a6a1",
+      "bytes": 5287
+    },
+    {
+      "path": "hand_writting/VATr-pp/tests/test_vietnamese.py",
+      "sha256": "8e02d8729c577b1c5e73034de78f97f9d82750c71f91b54387725f424f3798ae",
+      "bytes": 3640
+    },
+    {
+      "path": "hand_writting/VATr-pp/tests/test_vietnamese_experiments.py",
+      "sha256": "f461ebf5a6406b82222252890d83a69085914d519831aebbe01e40e27feb3633",
+      "bytes": 2077
+    },
+    {
+      "path": "hand_writting/VATr-pp/tests/test_vietnamese_rare_content.py",
+      "sha256": "17c73cdce2098efab4d508ad6cffdc0550ab3ccc0e4219ab6c395185bd009521",
+      "bytes": 1902
+    },
+    {
+      "path": "hand_writting/VATr-pp/tests/test_vietnamese_visual.py",
+      "sha256": "e38635a1d050c8c264de576fbba8ae02b83925db0121676c19b3b0cf7d0b4f2f",
+      "bytes": 1724
+    },
+    {
+      "path": "hand_writting/VATr-pp/train.py",
+      "sha256": "777c726bf6895a7411c6bbfa0cf62bdfcd190cd7260796d37dd6556a176215bb",
+      "bytes": 7258
+    },
+    {
+      "path": "hand_writting/VATr-pp/train_vietnamese.py",
+      "sha256": "706c4ab847342dc8a4a3470b4fb315415b6479d3d8f14ee02eb343e5c6b963c1",
+      "bytes": 36153
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/__init__.py",
+      "sha256": "7611916cc78ddba4f45651069b6d51a57878b0ce249ad6cffc9e75d62ac23106",
+      "bytes": 83
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/augmentations.py",
+      "sha256": "a8deb9b99e6734bc867650ddfbecfc9c2d7313ff243f8332322d75486c07438c",
+      "bytes": 10113
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/loading.py",
+      "sha256": "b89f20dd3d001b004bdee08e117780e088f67a8f840faabd0068db8804e32758",
+      "bytes": 1827
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/misc.py",
+      "sha256": "2833cce507be6ab9f06a1f4e40c8e83bb8e6f15126a07381b333800ecf3ed8b1",
+      "bytes": 20583
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/text.py",
+      "sha256": "9f44336a72562d560dad12d2d9c786857e504609bd622a4150e1ef65deedef12",
+      "bytes": 6419
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/util.py",
+      "sha256": "c8658f172c1774df7db9010d17ecf99fed371f2695f633dbb51871dc8ca91989",
+      "bytes": 10984
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/vietnamese_benchmark.py",
+      "sha256": "55463d0d6f133136396e7a079bb28351c08d2217ab7e8c6459fbfb415053a0af",
+      "bytes": 7361
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/vietnamese_longtail.py",
+      "sha256": "f353627c00e3108330e3f2ffcff423c2ec5d8469f79224d0e8f9edb8e13bdc41",
+      "bytes": 1773
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/vietnamese_visual.py",
+      "sha256": "9537749d8f6b29c6571b40ae88584d09684f24541994cf9118ddbf2fd17ffab4",
+      "bytes": 5883
+    },
+    {
+      "path": "hand_writting/VATr-pp/util/vision.py",
+      "sha256": "b1cb4adaa281da276a2fced09ca5c96e6c393dd4d7244f7bdd84b5ebeecbfe11",
+      "bytes": 4475
+    },
+    {
+      "path": "hand_writting/VATr/data/create_data.py",
+      "sha256": "06af5d100aae0f915559dc80b12abe2c5e0494271f8d9f62f72c5bb28a6a0da1",
+      "bytes": 381
+    },
+    {
+      "path": "hand_writting/VATr/data/dataset.py",
+      "sha256": "07e1a1828b5922fa2cd4111b5b5900b12b94501267ba8893310c8d1b673c6829",
+      "bytes": 18913
+    },
+    {
+      "path": "hand_writting/VATr/data/prepare_data.py",
+      "sha256": "d7d1e62c44760042a16160fbe1e62787391a99b0b6e824617fc1ebbedc2f7bd7",
+      "bytes": 17314
+    },
+    {
+      "path": "hand_writting/VATr/generate_fakes.py",
+      "sha256": "3bf140c56b7b6ac42796d5ab2703bff7c0e9b1db65e953b5376dc38de4ab7411",
+      "bytes": 7124
+    },
+    {
+      "path": "hand_writting/VATr/generator.py",
+      "sha256": "76636607fe862ee471a384293a5d5bde5c75e58e31d2dc605d69ea4c9178d6a7",
+      "bytes": 5186
+    },
+    {
+      "path": "hand_writting/VATr/models/BigGAN_layers.py",
+      "sha256": "65b18c83db250313c9be87712ce9c594c40b6bb0e54c24b08a94abe15b755a56",
+      "bytes": 18604
+    },
+    {
+      "path": "hand_writting/VATr/models/BigGAN_networks.py",
+      "sha256": "2a38748ff675c53b727b7892bf4b44d91af69c6b870528291264b10a75eb442b",
+      "bytes": 41420
+    },
+    {
+      "path": "hand_writting/VATr/models/OCR_network.py",
+      "sha256": "bd21235adb36a75afe5ca5b83b408fa8484532dfd229b5e1a3c6bbc40ad3d005",
+      "bytes": 12921
+    },
+    {
+      "path": "hand_writting/VATr/models/__init__.py",
+      "sha256": "b00d20dcabcdc5501c47cfa8ce28d79dad5bb75da2e73a229505bb8d2043a4e6",
+      "bytes": 2965
+    },
+    {
+      "path": "hand_writting/VATr/models/blocks.py",
+      "sha256": "c52dd1190c2e44bb0903e7e343f16511cab168b4caa8ec733b60cf6818630537",
+      "bytes": 6811
+    },
+    {
+      "path": "hand_writting/VATr/models/inception.py",
+      "sha256": "2abc82f1dc3ff4e2ce254fab38d6475fb6206a11466bd8bf18aa35b1e0b3dbaf",
+      "bytes": 13840
+    },
+    {
+      "path": "hand_writting/VATr/models/model.py",
+      "sha256": "448c673c767284b4739ca711a8a917bf19984e99ea37f88cee411d9588d60027",
+      "bytes": 48160
+    },
+    {
+      "path": "hand_writting/VATr/models/networks.py",
+      "sha256": "bc9c5e1e6b33cb2cf86841b2c0ba9894d121f1ab0a974c3c4d5ef8d393b33355",
+      "bytes": 4730
+    },
+    {
+      "path": "hand_writting/VATr/models/positional_encodings.py",
+      "sha256": "14fa818b31ee4fde9ee00a081e821de6393ac008d96e7d0810bd457d87ba42f7",
+      "bytes": 9755
+    },
+    {
+      "path": "hand_writting/VATr/models/sync_batchnorm/__init__.py",
+      "sha256": "0701e2062245ab6c90b3df6934a21be5c942b44b13c2ebb70695433599af7a15",
+      "bytes": 449
+    },
+    {
+      "path": "hand_writting/VATr/models/sync_batchnorm/batchnorm.py",
+      "sha256": "508690ea7b9e2b4c249b9efa56ec669b110298ce814d1c3ebdaa6e580f2d9741",
+      "bytes": 14882
+    },
+    {
+      "path": "hand_writting/VATr/models/sync_batchnorm/batchnorm_reimpl.py",
+      "sha256": "02c57365a2f00d07a692f5aa39d815f1fa3c70b805f247cf3514be635b177631",
+      "bytes": 2383
+    },
+    {
+      "path": "hand_writting/VATr/models/sync_batchnorm/comm.py",
+      "sha256": "9d2e776a0398e5ac29ce13d43b7475300f70f409e56f3c38428029000557a57a",
+      "bytes": 4449
+    },
+    {
+      "path": "hand_writting/VATr/models/sync_batchnorm/replicate.py",
+      "sha256": "4498b873404fce05202d4f891262e249a95733816d3877e3aee3d2401138a6af",
+      "bytes": 3226
+    },
+    {
+      "path": "hand_writting/VATr/models/sync_batchnorm/unittest.py",
+      "sha256": "7f0fdfb71efe0458707a66525e932af4cd58d2c65e8cab42b26ded60a451abb2",
+      "bytes": 746
+    },
+    {
+      "path": "hand_writting/VATr/models/transformer.py",
+      "sha256": "b02d8ac43806cba8654dcf91690b3b723e0a58c7187e8743b819357b7c7cc4da",
+      "bytes": 11950
+    },
+    {
+      "path": "hand_writting/VATr/models/unifont_module.py",
+      "sha256": "0a918f6338a471c7ca13362cea46c9cfc9b6fdd243543de847ea4fc9dc5767f6",
+      "bytes": 1586
+    },
+    {
+      "path": "hand_writting/VATr/models/unifont_symbol.py",
+      "sha256": "54f1e1656411422b4e11252d3419606fdc60018516dcddf2a54adabdfc471b1d",
+      "bytes": 11188
+    },
+    {
+      "path": "hand_writting/VATr/train.py",
+      "sha256": "79337ee0feb94c2db36f3b18daedc3b563012882232b9fd71b873b3fbe4ef840",
+      "bytes": 9697
+    },
+    {
+      "path": "hand_writting/VATr/util/__init__.py",
+      "sha256": "7611916cc78ddba4f45651069b6d51a57878b0ce249ad6cffc9e75d62ac23106",
+      "bytes": 83
+    },
+    {
+      "path": "hand_writting/VATr/util/html.py",
+      "sha256": "67fc18779468246bfc955f0081c6f5e2f05b3d0be2c4079d28e7f191bce62851",
+      "bytes": 3223
+    },
+    {
+      "path": "hand_writting/VATr/util/misc.py",
+      "sha256": "ad2651eadab70b8c384674165910e6af15cd270ff391b4ad23de3b7d1e53389d",
+      "bytes": 15140
+    },
+    {
+      "path": "hand_writting/VATr/util/util.py",
+      "sha256": "8ecf7de11f764341a9f65025b5b440605519fc26cdcaceb38511219202344aa4",
+      "bytes": 11310
+    },
+    {
+      "path": "hand_writting/VATr/util/visualizer.py",
+      "sha256": "b8416dedc99aa7de4077a2fbc0041f1ec2132fce9134a0cb8788230524bdae50",
+      "bytes": 10706
+    }
+  ]
+}

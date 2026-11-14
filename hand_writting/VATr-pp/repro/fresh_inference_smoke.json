@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "setup": "Fresh source copy, published input bundle, generator-only artifact, relocated glyph path, CPU inference.",
+  "text": "NGUYỄN",
+  "image_width": 96,
+  "image_height": 32,
+  "hdf5_access": "Explicitly forbidden via test guard; inference succeeded without reading any training/test HDF5.",
+  "quality_claim": false,
+  "note": "Engineering smoke using synthetic style images; not a handwriting quality benchmark."
+}

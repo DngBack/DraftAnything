@@ -1,0 +1,508 @@
+{
+  "samples": 100,
+  "cer": 0.1525,
+  "exact": 0.48,
+  "predictions_containing_Ễ": 66,
+  "rows": [
+    {
+      "index": 109652,
+      "reference": "NHIỄM",
+      "prediction": "NHIỀN"
+    },
+    {
+      "index": 110107,
+      "reference": "KỄNH",
+      "prediction": "kỄNH"
+    },
+    {
+      "index": 110153,
+      "reference": "TIỄU",
+      "prediction": "TIỄU"
+    },
+    {
+      "index": 110294,
+      "reference": "Ễnh",
+      "prediction": "ẫnh"
+    },
+    {
+      "index": 110950,
+      "reference": "KHỄNH",
+      "prediction": "KHỄNH"
+    },
+    {
+      "index": 111328,
+      "reference": "Ễnh",
+      "prediction": "Ễnh"
+    },
+    {
+      "index": 111640,
+      "reference": "VIỄN",
+      "prediction": "vỄN"
+    },
+    {
+      "index": 112210,
+      "reference": "ĐỄ",
+      "prediction": "ĐỄ"
+    },
+    {
+      "index": 112234,
+      "reference": "NGHIỄM",
+      "prediction": "NGHIỄM"
+    },
+    {
+      "index": 113425,
+      "reference": "LIỄM",
+      "prediction": "LỄM"
+    },
+    {
+      "index": 114080,
+      "reference": "NHỄ",
+      "prediction": "NHỀ"
+    },
+    {
+      "index": 114718,
+      "reference": "TỄNH",
+      "prediction": "TỄNH"
+    },
+    {
+      "index": 114809,
+      "reference": "NHỄ",
+      "prediction": "NHỀ"
+    },
+    {
+      "index": 116020,
+      "reference": "DIỄN",
+      "prediction": "DIỄN"
+    },
+    {
+      "index": 117157,
+      "reference": "NGHỄ",
+      "prediction": "NGHỄ"
+    },
+    {
+      "index": 117660,
+      "reference": "VIỄN",
+      "prediction": "VIỄỀN"
+    },
+    {
+      "index": 117720,
+      "reference": "HUYỄN",
+      "prediction": "HUYỄN"
+    },
+    {
+      "index": 117755,
+      "reference": "DIỄU",
+      "prediction": "DIỀU"
+    },
+    {
+      "index": 117788,
+      "reference": "SỄ",
+      "prediction": "sỄ"
+    },
+    {
+      "index": 117963,
+      "reference": "NHUYỄN",
+      "prediction": "NHUYỀN"
+    },
+    {
+      "index": 118061,
+      "reference": "MIỄN",
+      "prediction": "MIỀN"
+    },
+    {
+      "index": 118093,
+      "reference": "KHIỄNG",
+      "prediction": "KHiIỄNG"
+    },
+    {
+      "index": 118277,
+      "reference": "DIỄU",
+      "prediction": "DIếU"
+    },
+    {
+      "index": 118438,
+      "reference": "DIỄN",
+      "prediction": "PIỄN"
+    },
+    {
+      "index": 119423,
+      "reference": "LIỄN",
+      "prediction": "LỄN"
+    },
+    {
+      "index": 120080,
+      "reference": "HỄ",
+      "prediction": "HỄ"
+    },
+    {
+      "index": 121652,
+      "reference": "ỄNG",
+      "prediction": "NG"
+    },
+    {
+      "index": 122529,
+      "reference": "GHỄNH",
+      "prediction": "GHỀNH"
+    },
+    {
+      "index": 123127,
+      "reference": "VIỄN",
+      "prediction": "VIỄN"
+    },
+    {
+      "index": 123128,
+      "reference": "ĐỄ",
+      "prediction": "ĐỄ"
+    },
+    {
+      "index": 123192,
+      "reference": "MiỄU",
+      "prediction": "MIỄU"
+    },
+    {
+      "index": 124499,
+      "reference": "CHỄM",
+      "prediction": "CHỄM"
+    },
+    {
+      "index": 125726,
+      "reference": "BỄ",
+      "prediction": "ĐỄ"
+    },
+    {
+      "index": 127261,
+      "reference": "NGHỄNH",
+      "prediction": "NGHỄNH"
+    },
+    {
+      "index": 128340,
+      "reference": "NHIỄU",
+      "prediction": "NHIỄU"
+    },
+    {
+      "index": 128383,
+      "reference": "DIỄM",
+      "prediction": "DỄM"
+    },
+    {
+      "index": 128737,
+      "reference": "PHỄU",
+      "prediction": "PHỀU"
+    },
+    {
+      "index": 129416,
+      "reference": "KHIỄNG",
+      "prediction": "KHIỄNG"
+    },
+    {
+      "index": 129736,
+      "reference": "NGHIỄM",
+      "prediction": "NGHIỄM"
+    },
+    {
+      "index": 130175,
+      "reference": "TIỄU",
+      "prediction": "TIỀU"
+    },
+    {
+      "index": 130193,
+      "reference": "TIỄN",
+      "prediction": "TIỄN"
+    },
+    {
+      "index": 130673,
+      "reference": "DIỄM",
+      "prediction": "DIỄM"
+    },
+    {
+      "index": 130803,
+      "reference": "KIỄNG",
+      "prediction": "KỄNG"
+    },
+    {
+      "index": 131139,
+      "reference": "LIỄU",
+      "prediction": "LIỀU"
+    },
+    {
+      "index": 131558,
+      "reference": "RỄ",
+      "prediction": "RỄ"
+    },
+    {
+      "index": 131577,
+      "reference": "RỄ",
+      "prediction": "RỄ"
+    },
+    {
+      "index": 132148,
+      "reference": "NHUYỄN",
+      "prediction": "NUYỀN"
+    },
+    {
+      "index": 132295,
+      "reference": "KHIỄNG",
+      "prediction": "KHIỀNG"
+    },
+    {
+      "index": 132430,
+      "reference": "HUYỄN",
+      "prediction": "HUUỂN"
+    },
+    {
+      "index": 133234,
+      "reference": "BỄ",
+      "prediction": "BỀ"
+    },
+    {
+      "index": 133890,
+      "reference": "TIỄN",
+      "prediction": "TIỄN"
+    },
+    {
+      "index": 133910,
+      "reference": "MIỄN",
+      "prediction": "MIỄN"
+    },
+    {
+      "index": 133976,
+      "reference": "LỄU",
+      "prediction": "LỄU"
+    },
+    {
+      "index": 136011,
+      "reference": "LỄ",
+      "prediction": "LỄ"
+    },
+    {
+      "index": 137655,
+      "reference": "KỄNH",
+      "prediction": "ỄNH"
+    },
+    {
+      "index": 137683,
+      "reference": "SIỄN",
+      "prediction": "SIỄN"
+    },
+    {
+      "index": 137920,
+      "reference": "TRỄ",
+      "prediction": "TRỄ"
+    },
+    {
+      "index": 138254,
+      "reference": "KỄNH",
+      "prediction": "KỀNH"
+    },
+    {
+      "index": 139470,
+      "reference": "NIỄNG",
+      "prediction": "NIỄNG"
+    },
+    {
+      "index": 140177,
+      "reference": "CHỄNH",
+      "prediction": "CHỂN"
+    },
+    {
+      "index": 140722,
+      "reference": "NHIỄN",
+      "prediction": "NHỂN"
+    },
+    {
+      "index": 141175,
+      "reference": "KIỄNG",
+      "prediction": "KIỄNG"
+    },
+    {
+      "index": 142791,
+      "reference": "BỄ",
+      "prediction": "BỀ"
+    },
+    {
+      "index": 142986,
+      "reference": "HỄ",
+      "prediction": "HỄ"
+    },
+    {
+      "index": 143111,
+      "reference": "CHỄNH",
+      "prediction": "CHẼNH"
+    },
+    {
+      "index": 143281,
+      "reference": "NGHỄ",
+      "prediction": "NGHỀ"
+    },
+    {
+      "index": 143762,
+      "reference": "DIỄM",
+      "prediction": "DIỄN"
+    },
+    {
+      "index": 144002,
+      "reference": "VIỄN",
+      "prediction": "VIỂN"
+    },
+    {
+      "index": 144044,
+      "reference": "HỄ",
+      "prediction": "HỀ"
+    },
+    {
+      "index": 144323,
+      "reference": "SIỄN",
+      "prediction": "SIỄN"
+    },
+    {
+      "index": 144382,
+      "reference": "NHIỄM",
+      "prediction": "NHỄM"
+    },
+    {
+      "index": 146453,
+      "reference": "CHỄNH",
+      "prediction": "CHỀNH"
+    },
+    {
+      "index": 146923,
+      "reference": "DỄ",
+      "prediction": "DỄ"
+    },
+    {
+      "index": 147996,
+      "reference": "DIỄN",
+      "prediction": "DIỄN"
+    },
+    {
+      "index": 148437,
+      "reference": "NGHỄU",
+      "prediction": "NGHỀU"
+    },
+    {
+      "index": 148465,
+      "reference": "RIỄU",
+      "prediction": "RIỀU"
+    },
+    {
+      "index": 149202,
+      "reference": "KHIỄNG",
+      "prediction": "KHỄNG"
+    },
+    {
+      "index": 149593,
+      "reference": "ỄNH",
+      "prediction": "ỄNH"
+    },
+    {
+      "index": 149792,
+      "reference": "TRỄ",
+      "prediction": "TRỄ"
+    },
+    {
+      "index": 150093,
+      "reference": "SUYỄN",
+      "prediction": "SUỄN"
+    },
+    {
+      "index": 150360,
+      "reference": "NHIỄM",
+      "prediction": "NHIỀN"
+    },
+    {
+      "index": 150576,
+      "reference": "SỄ",
+      "prediction": "SỄ"
+    },
+    {
+      "index": 150598,
+      "reference": "NGHỄ",
+      "prediction": "NGHỀ"
+    },
+    {
+      "index": 151174,
+      "reference": "NIỄNG",
+      "prediction": "NIỄNG"
+    },
+    {
+      "index": 151228,
+      "reference": "LIỄM",
+      "prediction": "LỀM"
+    },
+    {
+      "index": 152889,
+      "reference": "RIỄU",
+      "prediction": "RIỄU"
+    },
+    {
+      "index": 153023,
+      "reference": "DIỄU",
+      "prediction": "DIỄU"
+    },
+    {
+      "index": 153924,
+      "reference": "ĐUỄNH",
+      "prediction": "ĐUỄNH"
+    },
+    {
+      "index": 153948,
+      "reference": "LỄ",
+      "prediction": "LỄ"
+    },
+    {
+      "index": 155019,
+      "reference": "LỄU",
+      "prediction": "LỀU"
+    },
+    {
+      "index": 155190,
+      "reference": "TRỄ",
+      "prediction": "TRỄ"
+    },
+    {
+      "index": 155647,
+      "reference": "TỄ",
+      "prediction": "TỄ"
+    },
+    {
+      "index": 156078,
+      "reference": "HỄ",
+      "prediction": "HỄ"
+    },
+    {
+      "index": 157586,
+      "reference": "KHIỄNG",
+      "prediction": "RHỄNG"
+    },
+    {
+      "index": 158134,
+      "reference": "NIỄNG",
+      "prediction": "NIỀNG"
+    },
+    {
+      "index": 160472,
+      "reference": "ĐỄNH",
+      "prediction": "ĐỄNH"
+    },
+    {
+      "index": 160563,
+      "reference": "TRỄ",
+      "prediction": "TRỄ"
+    },
+    {
+      "index": 208919,
+      "reference": "NGUYỄN",
+      "prediction": "NGUYỄN"
+    },
+    {
+      "index": 212428,
+      "reference": "NGUYỄN",
+      "prediction": "NGUYĨN"
+    },
+    {
+      "index": 212461,
+      "reference": "NGUYỄN",
+      "prediction": "NGUYỄN"
+    }
+  ]
+}

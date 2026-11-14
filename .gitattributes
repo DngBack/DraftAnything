@@ -1,0 +1,7 @@
+# Keep reproducibility metadata/code line endings stable across platforms.
+hand_writting/** text=auto eol=lf
+hand_writting/**/*.png binary
+hand_writting/**/*.jpg binary
+hand_writting/**/*.jpeg binary
+hand_writting/**/*.pdf binary
+hand_writting/**/*.pickle binary
