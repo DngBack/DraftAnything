@@ -1,22 +1,22 @@
 # Tiếp tục component sampling đến 250.000 steps
 
-Trạng thái: **running**. Nguồn **176,500**, mục tiêu **250,000** tổng outer steps. Benchmark mới nhất đã hoàn thành: **200,000**.
+Trạng thái: **completed**. Nguồn **176,500**, mục tiêu **250,000** tổng outer steps. Benchmark mới nhất đã hoàn thành: **250,000**.
 
 Fine-tune native VATr++ với component-aware transcript sampling. Giữ nguyên kiến trúc, G/D/writer/OCR, Adam và LR từ nguồn; batch/support 8/15, OCR frozen, không thêm auxiliary loss.
 
 | Mốc | CER ↓ | CER bỏ dấu ↓ | Exact ↑ |
 |---|---:|---:|---:|
 | Nguồn 176500 | 12.69% | 8.65% | 65.00% |
-| Mới nhất 200000 | 16.32% | 12.46% | 56.50% |
+| Mới nhất 250000 | 16.26% | 10.58% | 56.33% |
 
 | Prompt | Exact nguồn | Exact mới nhất | CER mới nhất |
 |---|---:|---:|---:|
-| Tiếng | 24/30 | 12/30 | 20.67% |
-| Việt | 30/30 | 22/30 | 7.50% |
-| mã | 11/30 | 5/30 | 41.67% |
-| mạ | 12/30 | 7/30 | 38.33% |
-| NGUYỄN | 29/30 | 18/30 | 7.78% |
-| Ắ | 0/30 | 0/30 | 103.33% |
+| Tiếng | 24/30 | 17/30 | 9.33% |
+| Việt | 30/30 | 30/30 | 0.00% |
+| mã | 11/30 | 7/30 | 45.00% |
+| mạ | 12/30 | 13/30 | 28.33% |
+| NGUYỄN | 29/30 | 5/30 | 18.89% |
+| Ắ | 0/30 | 0/30 | 100.00% |
 | Ễ | 0/30 | 0/30 | 100.00% |
 | Ỡ | 0/30 | 0/30 | 100.00% |
 | Ự | 0/30 | 0/30 | 100.00% |
@@ -27,7 +27,7 @@ Panel cố định 600 mẫu / 30 writer. Đây là OCR supervisor proxy, không
 
 Best đang giữ: bước 188000, CER riêng 13.63%, rolling CER 13.65% trên cửa sổ 3 mốc.
 
-[Panel nguồn](/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/component_continuation_250k_v1/expanded/benchmark_176500.png) · [Panel mới nhất](/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/component_continuation_250k_v1/expanded/benchmark_200000.png)
+[Panel nguồn](component_250k_assets/benchmark_176500.png) · [Panel mới nhất](component_250k_assets/benchmark_250000.png)
 
 - Trạng thái: `/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/component_continuation_250k_v1/status.json`.
 - Log: `/home/bachdx2/DraftAnything/hand_writting/VATr-pp/runs/component_continuation_250k_v1/train.log`.

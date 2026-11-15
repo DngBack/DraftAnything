@@ -114,6 +114,12 @@
       "title": "Giải thích chi tiết thuật toán bổ sung và các ý tưởng nghiên cứu VATr++ tiếng Việt",
       "previous_path": null,
       "path": "acl_longtail/261114_report_07_Giai_thich_chi_tiet_thuat_toan_bo_sung_va_y_tuong.md"
+    },
+    {
+      "date_code": "261115",
+      "report_number": 1,
+      "title": "Tổng hợp kết quả VATr++ tiếng Việt sau 250.000 steps",
+      "path": "acl_longtail/261115_report_01_Tong_hop_ket_qua_sau_250k.md"
     }
   ]
 }

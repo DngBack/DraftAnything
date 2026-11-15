@@ -1,0 +1,3244 @@
+{
+  "step": 250000,
+  "samples": 600,
+  "guidance_ocr_cer": 0.16257309941520467,
+  "guidance_ocr_cer_without_diacritics": 0.10584795321637427,
+  "exact_transcript_rate": 0.5633333333333334,
+  "warning": "Fixed warmup OCR is also the content supervisor; this is not an independent quality metric.",
+  "predictions": [
+    {
+      "writer": 35,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 35,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 35,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 35,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 35,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 35,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 35,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 35,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 35,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 35,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 35,
+      "reference": "NGUYỄN",
+      "prediction": "NGUVỄN"
+    },
+    {
+      "writer": 35,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 35,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 35,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 35,
+      "reference": "học",
+      "prediction": "hạ"
+    },
+    {
+      "writer": 35,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 35,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 35,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 35,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 35,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 38,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 38,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 38,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 38,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 38,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 38,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 38,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 38,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 38,
+      "reference": "mã",
+      "prediction": "mã"
+    },
+    {
+      "writer": 38,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 38,
+      "reference": "NGUYỄN",
+      "prediction": "NGVỄN"
+    },
+    {
+      "writer": 38,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 38,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 38,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 38,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 38,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 38,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 38,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 38,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 38,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 41,
+      "reference": "Tiếng",
+      "prediction": "Tiếnng"
+    },
+    {
+      "writer": 41,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 41,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 41,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 41,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 41,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 41,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 41,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 41,
+      "reference": "mã",
+      "prediction": "mã"
+    },
+    {
+      "writer": 41,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 41,
+      "reference": "NGUYỄN",
+      "prediction": "NGUVỄN"
+    },
+    {
+      "writer": 41,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 41,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 41,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 41,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 41,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 41,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 41,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 41,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 41,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 43,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 43,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 43,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 43,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 43,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 43,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 43,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 43,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 43,
+      "reference": "mã",
+      "prediction": "má"
+    },
+    {
+      "writer": 43,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 43,
+      "reference": "NGUYỄN",
+      "prediction": "NGUVỄN"
+    },
+    {
+      "writer": 43,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 43,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 43,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 43,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 43,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 43,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 43,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 43,
+      "reference": "Ỡ",
+      "prediction": "đ"
+    },
+    {
+      "writer": 43,
+      "reference": "Ự",
+      "prediction": ""
+    },
+    {
+      "writer": 58,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 58,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 58,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 58,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 58,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 58,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 58,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 58,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 58,
+      "reference": "mã",
+      "prediction": "mã"
+    },
+    {
+      "writer": 58,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 58,
+      "reference": "NGUYỄN",
+      "prediction": "NGUVỄN"
+    },
+    {
+      "writer": 58,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 58,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 58,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 58,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 58,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 58,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 58,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 58,
+      "reference": "Ỡ",
+      "prediction": "đ"
+    },
+    {
+      "writer": 58,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 63,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 63,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 63,
+      "reference": "rất",
+      "prediction": "rãt"
+    },
+    {
+      "writer": 63,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 63,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 63,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 63,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 63,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 63,
+      "reference": "mã",
+      "prediction": "mã"
+    },
+    {
+      "writer": 63,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 63,
+      "reference": "NGUYỄN",
+      "prediction": "NGUVỄN"
+    },
+    {
+      "writer": 63,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 63,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 63,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 63,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 63,
+      "reference": "đường",
+      "prediction": "tường"
+    },
+    {
+      "writer": 63,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 63,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 63,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 63,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 67,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 67,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 67,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 67,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 67,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 67,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 67,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 67,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 67,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 67,
+      "reference": "mạ",
+      "prediction": "mg"
+    },
+    {
+      "writer": 67,
+      "reference": "NGUYỄN",
+      "prediction": "NGUVỄN"
+    },
+    {
+      "writer": 67,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 67,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 67,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 67,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 67,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 67,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 67,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 67,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 67,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 70,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 70,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 70,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 70,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 70,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 70,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 70,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 70,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 70,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 70,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 70,
+      "reference": "NGUYỄN",
+      "prediction": "NGUVỄN"
+    },
+    {
+      "writer": 70,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 70,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 70,
+      "reference": "trường",
+      "prediction": "trương"
+    },
+    {
+      "writer": 70,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 70,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 70,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 70,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 70,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 70,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 86,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 86,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 86,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 86,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 86,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 86,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 86,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 86,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 86,
+      "reference": "mã",
+      "prediction": "mã"
+    },
+    {
+      "writer": 86,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 86,
+      "reference": "NGUYỄN",
+      "prediction": "NGUYỄN"
+    },
+    {
+      "writer": 86,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 86,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 86,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 86,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 86,
+      "reference": "đường",
+      "prediction": "đương"
+    },
+    {
+      "writer": 86,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 86,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 86,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 86,
+      "reference": "Ự",
+      "prediction": ""
+    },
+    {
+      "writer": 89,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 89,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 89,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 89,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 89,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 89,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 89,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 89,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 89,
+      "reference": "mã",
+      "prediction": "mã"
+    },
+    {
+      "writer": 89,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 89,
+      "reference": "NGUYỄN",
+      "prediction": "NGUVẼN"
+    },
+    {
+      "writer": 89,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 89,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 89,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 89,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 89,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 89,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 89,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 89,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 89,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 105,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 105,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 105,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 105,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 105,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 105,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 105,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 105,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 105,
+      "reference": "mã",
+      "prediction": "mã"
+    },
+    {
+      "writer": 105,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 105,
+      "reference": "NGUYỄN",
+      "prediction": "NGUVỄN"
+    },
+    {
+      "writer": 105,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 105,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 105,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 105,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 105,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 105,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 105,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 105,
+      "reference": "Ỡ",
+      "prediction": "đ"
+    },
+    {
+      "writer": 105,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 111,
+      "reference": "Tiếng",
+      "prediction": "tếng"
+    },
+    {
+      "writer": 111,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 111,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 111,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 111,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 111,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 111,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 111,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 111,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 111,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 111,
+      "reference": "NGUYỄN",
+      "prediction": "NGYỄN"
+    },
+    {
+      "writer": 111,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 111,
+      "reference": "người",
+      "prediction": "ngời"
+    },
+    {
+      "writer": 111,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 111,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 111,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 111,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 111,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 111,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 111,
+      "reference": "Ự",
+      "prediction": "v"
+    },
+    {
+      "writer": 113,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 113,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 113,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 113,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 113,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 113,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 113,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 113,
+      "reference": "mả",
+      "prediction": "mà"
+    },
+    {
+      "writer": 113,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 113,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 113,
+      "reference": "NGUYỄN",
+      "prediction": "NGỄN"
+    },
+    {
+      "writer": 113,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 113,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 113,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 113,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 113,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 113,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 113,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 113,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 113,
+      "reference": "Ự",
+      "prediction": "4"
+    },
+    {
+      "writer": 119,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 119,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 119,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 119,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 119,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 119,
+      "reference": "má",
+      "prediction": "mát"
+    },
+    {
+      "writer": 119,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 119,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 119,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 119,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 119,
+      "reference": "NGUYỄN",
+      "prediction": "NGYỄN"
+    },
+    {
+      "writer": 119,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 119,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 119,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 119,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 119,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 119,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 119,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 119,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 119,
+      "reference": "Ự",
+      "prediction": "v"
+    },
+    {
+      "writer": 131,
+      "reference": "Tiếng",
+      "prediction": "Tiểng"
+    },
+    {
+      "writer": 131,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 131,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 131,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 131,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 131,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 131,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 131,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 131,
+      "reference": "mã",
+      "prediction": "tà"
+    },
+    {
+      "writer": 131,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 131,
+      "reference": "NGUYỄN",
+      "prediction": "NGUỄN"
+    },
+    {
+      "writer": 131,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 131,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 131,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 131,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 131,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 131,
+      "reference": "Ắ",
+      "prediction": "t"
+    },
+    {
+      "writer": 131,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 131,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 131,
+      "reference": "Ự",
+      "prediction": ""
+    },
+    {
+      "writer": 133,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 133,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 133,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 133,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 133,
+      "reference": "ma",
+      "prediction": "na"
+    },
+    {
+      "writer": 133,
+      "reference": "má",
+      "prediction": "vát"
+    },
+    {
+      "writer": 133,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 133,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 133,
+      "reference": "mã",
+      "prediction": "xà"
+    },
+    {
+      "writer": 133,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 133,
+      "reference": "NGUYỄN",
+      "prediction": "NGYỄN"
+    },
+    {
+      "writer": 133,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 133,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 133,
+      "reference": "trường",
+      "prediction": "trườàng"
+    },
+    {
+      "writer": 133,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 133,
+      "reference": "đường",
+      "prediction": "đưàng"
+    },
+    {
+      "writer": 133,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 133,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 133,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 133,
+      "reference": "Ự",
+      "prediction": "l"
+    },
+    {
+      "writer": 151,
+      "reference": "Tiếng",
+      "prediction": "tiếng"
+    },
+    {
+      "writer": 151,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 151,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 151,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 151,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 151,
+      "reference": "má",
+      "prediction": "m"
+    },
+    {
+      "writer": 151,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 151,
+      "reference": "mả",
+      "prediction": "mà"
+    },
+    {
+      "writer": 151,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 151,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 151,
+      "reference": "NGUYỄN",
+      "prediction": "NGYỄN"
+    },
+    {
+      "writer": 151,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 151,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 151,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 151,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 151,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 151,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 151,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 151,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 151,
+      "reference": "Ự",
+      "prediction": "V"
+    },
+    {
+      "writer": 155,
+      "reference": "Tiếng",
+      "prediction": "Tiếnng"
+    },
+    {
+      "writer": 155,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 155,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 155,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 155,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 155,
+      "reference": "má",
+      "prediction": "mát"
+    },
+    {
+      "writer": 155,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 155,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 155,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 155,
+      "reference": "mạ",
+      "prediction": "mg"
+    },
+    {
+      "writer": 155,
+      "reference": "NGUYỄN",
+      "prediction": "NGỄN"
+    },
+    {
+      "writer": 155,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 155,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 155,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 155,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 155,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 155,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 155,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 155,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 155,
+      "reference": "Ự",
+      "prediction": "U"
+    },
+    {
+      "writer": 191,
+      "reference": "Tiếng",
+      "prediction": "tiếng"
+    },
+    {
+      "writer": 191,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 191,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 191,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 191,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 191,
+      "reference": "má",
+      "prediction": "ná"
+    },
+    {
+      "writer": 191,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 191,
+      "reference": "mả",
+      "prediction": "mà"
+    },
+    {
+      "writer": 191,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 191,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 191,
+      "reference": "NGUYỄN",
+      "prediction": "NGUYỄN"
+    },
+    {
+      "writer": 191,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 191,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 191,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 191,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 191,
+      "reference": "đường",
+      "prediction": "tường"
+    },
+    {
+      "writer": 191,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 191,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 191,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 191,
+      "reference": "Ự",
+      "prediction": "c"
+    },
+    {
+      "writer": 205,
+      "reference": "Tiếng",
+      "prediction": "Tếng"
+    },
+    {
+      "writer": 205,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 205,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 205,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 205,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 205,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 205,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 205,
+      "reference": "mả",
+      "prediction": "mà"
+    },
+    {
+      "writer": 205,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 205,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 205,
+      "reference": "NGUYỄN",
+      "prediction": "NGỄN"
+    },
+    {
+      "writer": 205,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 205,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 205,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 205,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 205,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 205,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 205,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 205,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 205,
+      "reference": "Ự",
+      "prediction": "4"
+    },
+    {
+      "writer": 215,
+      "reference": "Tiếng",
+      "prediction": "Tiểng"
+    },
+    {
+      "writer": 215,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 215,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 215,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 215,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 215,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 215,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 215,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 215,
+      "reference": "mã",
+      "prediction": "tà"
+    },
+    {
+      "writer": 215,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 215,
+      "reference": "NGUYỄN",
+      "prediction": "NGUYỄN"
+    },
+    {
+      "writer": 215,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 215,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 215,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 215,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 215,
+      "reference": "đường",
+      "prediction": "đưàng"
+    },
+    {
+      "writer": 215,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 215,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 215,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 215,
+      "reference": "Ự",
+      "prediction": ""
+    },
+    {
+      "writer": 222,
+      "reference": "Tiếng",
+      "prediction": "Tếng"
+    },
+    {
+      "writer": 222,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 222,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 222,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 222,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 222,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 222,
+      "reference": "mà",
+      "prediction": "sà"
+    },
+    {
+      "writer": 222,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 222,
+      "reference": "mã",
+      "prediction": "tà"
+    },
+    {
+      "writer": 222,
+      "reference": "mạ",
+      "prediction": "ma"
+    },
+    {
+      "writer": 222,
+      "reference": "NGUYỄN",
+      "prediction": "NGYỄN"
+    },
+    {
+      "writer": 222,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 222,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 222,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 222,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 222,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 222,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 222,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 222,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 222,
+      "reference": "Ự",
+      "prediction": ""
+    },
+    {
+      "writer": 232,
+      "reference": "Tiếng",
+      "prediction": "Tếng"
+    },
+    {
+      "writer": 232,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 232,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 232,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 232,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 232,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 232,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 232,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 232,
+      "reference": "mã",
+      "prediction": "m"
+    },
+    {
+      "writer": 232,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 232,
+      "reference": "NGUYỄN",
+      "prediction": "NGỄN"
+    },
+    {
+      "writer": 232,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 232,
+      "reference": "người",
+      "prediction": "nười"
+    },
+    {
+      "writer": 232,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 232,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 232,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 232,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 232,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 232,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 232,
+      "reference": "Ự",
+      "prediction": "c"
+    },
+    {
+      "writer": 233,
+      "reference": "Tiếng",
+      "prediction": "Tiến"
+    },
+    {
+      "writer": 233,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 233,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 233,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 233,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 233,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 233,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 233,
+      "reference": "mả",
+      "prediction": "mà"
+    },
+    {
+      "writer": 233,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 233,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 233,
+      "reference": "NGUYỄN",
+      "prediction": "NGỄN"
+    },
+    {
+      "writer": 233,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 233,
+      "reference": "người",
+      "prediction": "nười"
+    },
+    {
+      "writer": 233,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 233,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 233,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 233,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 233,
+      "reference": "Ễ",
+      "prediction": ""
+    },
+    {
+      "writer": 233,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 233,
+      "reference": "Ự",
+      "prediction": "v"
+    },
+    {
+      "writer": 234,
+      "reference": "Tiếng",
+      "prediction": "tiếng"
+    },
+    {
+      "writer": 234,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 234,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 234,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 234,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 234,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 234,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 234,
+      "reference": "mả",
+      "prediction": "mà"
+    },
+    {
+      "writer": 234,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 234,
+      "reference": "mạ",
+      "prediction": "mg"
+    },
+    {
+      "writer": 234,
+      "reference": "NGUYỄN",
+      "prediction": "NGUỄN"
+    },
+    {
+      "writer": 234,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 234,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 234,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 234,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 234,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 234,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 234,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 234,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 234,
+      "reference": "Ự",
+      "prediction": "t"
+    },
+    {
+      "writer": 250,
+      "reference": "Tiếng",
+      "prediction": "tiếng"
+    },
+    {
+      "writer": 250,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 250,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 250,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 250,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 250,
+      "reference": "má",
+      "prediction": "má"
+    },
+    {
+      "writer": 250,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 250,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 250,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 250,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 250,
+      "reference": "NGUYỄN",
+      "prediction": "NGUYỄN"
+    },
+    {
+      "writer": 250,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 250,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 250,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 250,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 250,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 250,
+      "reference": "Ắ",
+      "prediction": ""
+    },
+    {
+      "writer": 250,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 250,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 250,
+      "reference": "Ự",
+      "prediction": "C"
+    },
+    {
+      "writer": 257,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 257,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 257,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 257,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 257,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 257,
+      "reference": "má",
+      "prediction": "mát"
+    },
+    {
+      "writer": 257,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 257,
+      "reference": "mả",
+      "prediction": "mả"
+    },
+    {
+      "writer": 257,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 257,
+      "reference": "mạ",
+      "prediction": "mg"
+    },
+    {
+      "writer": 257,
+      "reference": "NGUYỄN",
+      "prediction": "NGUYỄN"
+    },
+    {
+      "writer": 257,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 257,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 257,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 257,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 257,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 257,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 257,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 257,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 257,
+      "reference": "Ự",
+      "prediction": "c"
+    },
+    {
+      "writer": 264,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 264,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 264,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 264,
+      "reference": "đẹp",
+      "prediction": "đọp"
+    },
+    {
+      "writer": 264,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 264,
+      "reference": "má",
+      "prediction": "mát"
+    },
+    {
+      "writer": 264,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 264,
+      "reference": "mả",
+      "prediction": "mà"
+    },
+    {
+      "writer": 264,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 264,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 264,
+      "reference": "NGUYỄN",
+      "prediction": "NGYỄN"
+    },
+    {
+      "writer": 264,
+      "reference": "Ỹ",
+      "prediction": "t"
+    },
+    {
+      "writer": 264,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 264,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 264,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 264,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 264,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 264,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 264,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 264,
+      "reference": "Ự",
+      "prediction": ""
+    },
+    {
+      "writer": 265,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 265,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 265,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 265,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 265,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 265,
+      "reference": "má",
+      "prediction": "mát"
+    },
+    {
+      "writer": 265,
+      "reference": "mà",
+      "prediction": "m"
+    },
+    {
+      "writer": 265,
+      "reference": "mả",
+      "prediction": "mà"
+    },
+    {
+      "writer": 265,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 265,
+      "reference": "mạ",
+      "prediction": "mạ"
+    },
+    {
+      "writer": 265,
+      "reference": "NGUYỄN",
+      "prediction": "NGỄN"
+    },
+    {
+      "writer": 265,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 265,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 265,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 265,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 265,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 265,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 265,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 265,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 265,
+      "reference": "Ự",
+      "prediction": "V"
+    },
+    {
+      "writer": 273,
+      "reference": "Tiếng",
+      "prediction": "Tiếng"
+    },
+    {
+      "writer": 273,
+      "reference": "Việt",
+      "prediction": "Việt"
+    },
+    {
+      "writer": 273,
+      "reference": "rất",
+      "prediction": "rất"
+    },
+    {
+      "writer": 273,
+      "reference": "đẹp",
+      "prediction": "đẹp"
+    },
+    {
+      "writer": 273,
+      "reference": "ma",
+      "prediction": "ma"
+    },
+    {
+      "writer": 273,
+      "reference": "má",
+      "prediction": "mát"
+    },
+    {
+      "writer": 273,
+      "reference": "mà",
+      "prediction": "mà"
+    },
+    {
+      "writer": 273,
+      "reference": "mả",
+      "prediction": "mà"
+    },
+    {
+      "writer": 273,
+      "reference": "mã",
+      "prediction": "mà"
+    },
+    {
+      "writer": 273,
+      "reference": "mạ",
+      "prediction": "mg"
+    },
+    {
+      "writer": 273,
+      "reference": "NGUYỄN",
+      "prediction": "NGỄN"
+    },
+    {
+      "writer": 273,
+      "reference": "Ỹ",
+      "prediction": "Y"
+    },
+    {
+      "writer": 273,
+      "reference": "người",
+      "prediction": "người"
+    },
+    {
+      "writer": 273,
+      "reference": "trường",
+      "prediction": "trường"
+    },
+    {
+      "writer": 273,
+      "reference": "học",
+      "prediction": "học"
+    },
+    {
+      "writer": 273,
+      "reference": "đường",
+      "prediction": "đường"
+    },
+    {
+      "writer": 273,
+      "reference": "Ắ",
+      "prediction": "E"
+    },
+    {
+      "writer": 273,
+      "reference": "Ễ",
+      "prediction": "E"
+    },
+    {
+      "writer": 273,
+      "reference": "Ỡ",
+      "prediction": ""
+    },
+    {
+      "writer": 273,
+      "reference": "Ự",
+      "prediction": "v"
+    }
+  ],
+  "groups": {
+    "uppercase": {
+      "samples": 180,
+      "cer": 0.5575757575757576
+    },
+    "other": {
+      "samples": 420,
+      "cer": 0.06811594202898551
+    }
+  },
+  "per_writer": {
+    "35": {
+      "cer": 0.17543859649122806,
+      "exact_transcript_rate": 0.55
+    },
+    "38": {
+      "cer": 0.14035087719298245,
+      "exact_transcript_rate": 0.65
+    },
+    "41": {
+      "cer": 0.14035087719298245,
+      "exact_transcript_rate": 0.6
+    },
+    "43": {
+      "cer": 0.14035087719298245,
+      "exact_transcript_rate": 0.6
+    },
+    "58": {
+      "cer": 0.12280701754385964,
+      "exact_transcript_rate": 0.65
+    },
+    "63": {
+      "cer": 0.15789473684210525,
+      "exact_transcript_rate": 0.55
+    },
+    "67": {
+      "cer": 0.14035087719298245,
+      "exact_transcript_rate": 0.6
+    },
+    "70": {
+      "cer": 0.14035087719298245,
+      "exact_transcript_rate": 0.6
+    },
+    "86": {
+      "cer": 0.10526315789473684,
+      "exact_transcript_rate": 0.7
+    },
+    "89": {
+      "cer": 0.12280701754385964,
+      "exact_transcript_rate": 0.7
+    },
+    "105": {
+      "cer": 0.12280701754385964,
+      "exact_transcript_rate": 0.65
+    },
+    "111": {
+      "cer": 0.17543859649122806,
+      "exact_transcript_rate": 0.55
+    },
+    "113": {
+      "cer": 0.15789473684210525,
+      "exact_transcript_rate": 0.6
+    },
+    "119": {
+      "cer": 0.14035087719298245,
+      "exact_transcript_rate": 0.6
+    },
+    "131": {
+      "cer": 0.17543859649122806,
+      "exact_transcript_rate": 0.55
+    },
+    "133": {
+      "cer": 0.24561403508771928,
+      "exact_transcript_rate": 0.4
+    },
+    "151": {
+      "cer": 0.17543859649122806,
+      "exact_transcript_rate": 0.5
+    },
+    "155": {
+      "cer": 0.19298245614035087,
+      "exact_transcript_rate": 0.5
+    },
+    "191": {
+      "cer": 0.19298245614035087,
+      "exact_transcript_rate": 0.45
+    },
+    "205": {
+      "cer": 0.17543859649122806,
+      "exact_transcript_rate": 0.55
+    },
+    "215": {
+      "cer": 0.17543859649122806,
+      "exact_transcript_rate": 0.55
+    },
+    "222": {
+      "cer": 0.19298245614035087,
+      "exact_transcript_rate": 0.5
+    },
+    "232": {
+      "cer": 0.17543859649122806,
+      "exact_transcript_rate": 0.55
+    },
+    "233": {
+      "cer": 0.19298245614035087,
+      "exact_transcript_rate": 0.5
+    },
+    "234": {
+      "cer": 0.17543859649122806,
+      "exact_transcript_rate": 0.5
+    },
+    "250": {
+      "cer": 0.12280701754385964,
+      "exact_transcript_rate": 0.65
+    },
+    "257": {
+      "cer": 0.14035087719298245,
+      "exact_transcript_rate": 0.6
+    },
+    "264": {
+      "cer": 0.17543859649122806,
+      "exact_transcript_rate": 0.5
+    },
+    "265": {
+      "cer": 0.19298245614035087,
+      "exact_transcript_rate": 0.5
+    },
+    "273": {
+      "cer": 0.19298245614035087,
+      "exact_transcript_rate": 0.5
+    }
+  },
+  "per_prompt": {
+    "Tiếng": {
+      "samples": 30,
+      "cer": 0.09333333333333334,
+      "exact_transcript_rate": 0.5666666666666667
+    },
+    "Việt": {
+      "samples": 30,
+      "cer": 0.0,
+      "exact_transcript_rate": 1.0
+    },
+    "rất": {
+      "samples": 30,
+      "cer": 0.011111111111111112,
+      "exact_transcript_rate": 0.9666666666666667
+    },
+    "đẹp": {
+      "samples": 30,
+      "cer": 0.011111111111111112,
+      "exact_transcript_rate": 0.9666666666666667
+    },
+    "ma": {
+      "samples": 30,
+      "cer": 0.016666666666666666,
+      "exact_transcript_rate": 0.9666666666666667
+    },
+    "má": {
+      "samples": 30,
+      "cer": 0.16666666666666666,
+      "exact_transcript_rate": 0.7
+    },
+    "mà": {
+      "samples": 30,
+      "cer": 0.03333333333333333,
+      "exact_transcript_rate": 0.9333333333333333
+    },
+    "mả": {
+      "samples": 30,
+      "cer": 0.15,
+      "exact_transcript_rate": 0.7
+    },
+    "mã": {
+      "samples": 30,
+      "cer": 0.45,
+      "exact_transcript_rate": 0.23333333333333334
+    },
+    "mạ": {
+      "samples": 30,
+      "cer": 0.2833333333333333,
+      "exact_transcript_rate": 0.43333333333333335
+    },
+    "NGUYỄN": {
+      "samples": 30,
+      "cer": 0.18888888888888888,
+      "exact_transcript_rate": 0.16666666666666666
+    },
+    "Ỹ": {
+      "samples": 30,
+      "cer": 1.0,
+      "exact_transcript_rate": 0.0
+    },
+    "người": {
+      "samples": 30,
+      "cer": 0.02,
+      "exact_transcript_rate": 0.9
+    },
+    "trường": {
+      "samples": 30,
+      "cer": 0.011111111111111112,
+      "exact_transcript_rate": 0.9333333333333333
+    },
+    "học": {
+      "samples": 30,
+      "cer": 0.022222222222222223,
+      "exact_transcript_rate": 0.9666666666666667
+    },
+    "đường": {
+      "samples": 30,
+      "cer": 0.03333333333333333,
+      "exact_transcript_rate": 0.8333333333333334
+    },
+    "Ắ": {
+      "samples": 30,
+      "cer": 1.0,
+      "exact_transcript_rate": 0.0
+    },
+    "Ễ": {
+      "samples": 30,
+      "cer": 1.0,
+      "exact_transcript_rate": 0.0
+    },
+    "Ỡ": {
+      "samples": 30,
+      "cer": 1.0,
+      "exact_transcript_rate": 0.0
+    },
+    "Ự": {
+      "samples": 30,
+      "cer": 1.0,
+      "exact_transcript_rate": 0.0
+    }
+  }
+}

@@ -18,9 +18,15 @@
 
 [Continuation component đến 250k](acl_longtail/261114_report_05_Continuation_component_den_250k.md) · [Trạng thái nghiên cứu](acl_longtail/STATUS.md).
 
-Report 250k được cập nhật tự động. Việc đổi tên tài liệu không thay đổi tiến trình training.
+Training 250k đã hoàn tất; xem report tổng hợp ngày 15/11/2026 và các artifact benchmark được lưu cùng tài liệu.
 
 ## Report theo ngày
+
+### 15/11/2026
+
+| Số | Report |
+|---:|---|
+| 01 | [Tổng hợp kết quả sau 250.000 steps](acl_longtail/261115_report_01_Tong_hop_ket_qua_sau_250k.md) |
 
 ### 14/11/2026
 

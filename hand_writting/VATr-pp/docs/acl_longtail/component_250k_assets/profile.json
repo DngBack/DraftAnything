@@ -1,0 +1,10 @@
+{
+  "stage": "gan",
+  "completed_step": 250000,
+  "seconds_this_invocation": 25783.080382576998,
+  "torch": "2.9.1+cu128",
+  "device": "cuda",
+  "gpu": "NVIDIA H200",
+  "peak_allocated_bytes": 3564927488,
+  "peak_reserved_bytes": 3716153344
+}
