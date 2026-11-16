@@ -22,6 +22,12 @@ Training 250k đã hoàn tất; xem report tổng hợp ngày 15/11/2026 và cá
 
 ## Report theo ngày
 
+### 16/11/2026
+
+| Số | Report |
+|---:|---|
+| 01 | [Inference few-shot: 12 ảnh, 806 prompt](acl_longtail/261116_report_01_Inference_few_shot_12_anh_806_prompt.md) |
+
 ### 15/11/2026
 
 | Số | Report |

@@ -120,6 +120,12 @@
       "report_number": 1,
       "title": "Tổng hợp kết quả VATr++ tiếng Việt sau 250.000 steps",
       "path": "acl_longtail/261115_report_01_Tong_hop_ket_qua_sau_250k.md"
+    },
+    {
+      "date_code": "261116",
+      "report_number": 1,
+      "title": "Inference few-shot từ 12 ảnh ngoài tập dữ liệu: 806 prompt",
+      "path": "acl_longtail/261116_report_01_Inference_few_shot_12_anh_806_prompt.md"
     }
   ]
 }
