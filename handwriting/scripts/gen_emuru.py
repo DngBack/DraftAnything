@@ -48,11 +48,12 @@ def main():
     ap.add_argument("--shard", type=int, default=0)
     ap.add_argument("--n-shards", type=int, default=1)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--device", default="cuda")
     a = ap.parse_args()
     from transformers import AutoModel
     torch.manual_seed(a.seed)
     model = AutoModel.from_pretrained("blowing-up-groundhogs/emuru", revision=EMURU_REV,
-                                      trust_remote_code=True).cuda().eval()
+                                      trust_remote_code=True).to(a.device).eval()
     man = pd.read_csv("data/manifest.csv", dtype={"writer_id": str})
     man = man[man.quality_flag == "ok"]
     tgt = man[man.split == a.split].iloc[a.shard::a.n_shards]
@@ -67,7 +68,7 @@ def main():
         gen_text = " ".join(written_tokens(line.transcript))
         empty = a.out / f"{line.line_id}.empty"
         if not p.exists() and not empty.exists():
-            img = load_style(sty).cuda()
+            img = load_style(sty).to(a.device)
             px_per_char = img.shape[-1] / max(len(style_text), 1)
             max_tok = int(len(gen_text) * px_per_char * 1.6 / 8) + 32
             with torch.inference_mode():

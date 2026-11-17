@@ -1,0 +1,109 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Biderman et~al.(2023)Biderman, Schoelkopf, Anthony
+  et~al.}]{biderman2023}
+Stella Biderman, Hailey Schoelkopf, Quentin Anthony, et~al. 2023.
+\newblock Pythia: A suite for analyzing large language models across training
+  and scaling.
+\newblock In \emph{Proceedings of ICML}.
+
+\bibitem[{Crump et~al.(2019)Crump, Lai, and Brosowsky}]{crump2019}
+Matthew~JC Crump, Walter Lai, and Nicholaus~P Brosowsky. 2019.
+\newblock Instance theory predicts information theory: Episodic uncertainty as
+  a determinant of keystroke dynamics.
+\newblock \emph{Canadian Journal of Experimental Psychology}, 73(4):203--215.
+
+\bibitem[{Davis et~al.(2020)Davis, Tensmeyer, Price, Wigington, Morse, and
+  Jain}]{davis2020}
+Brian Davis, Chris Tensmeyer, Brian Price, Curtis Wigington, Bryan Morse, and
+  Rajiv Jain. 2020.
+\newblock Text and style conditioned {GAN} for generation of offline
+  handwriting lines.
+\newblock In \emph{Proceedings of BMVC}.
+
+\bibitem[{Demberg et~al.(2012)Demberg, Sayeed, Gorinski, and
+  Engonopoulos}]{demberg2012}
+Vera Demberg, Asad Sayeed, Philip Gorinski, and Nikolaos Engonopoulos. 2012.
+\newblock Syntactic surprisal affects spoken word duration in conversational
+  contexts.
+\newblock In \emph{Proceedings of EMNLP-CoNLL}.
+
+\bibitem[{Fuchs and Krivokapi{\'c}(2016)}]{fuchs2016}
+Susanne Fuchs and Jelena Krivokapi{\'c}. 2016.
+\newblock Prosodic boundaries in writing: Evidence from a keystroke analysis.
+\newblock \emph{Frontiers in Psychology}, 7:1678.
+
+\bibitem[{Hale(2001)}]{hale2001}
+John Hale. 2001.
+\newblock A probabilistic {E}arley parser as a psycholinguistic model.
+\newblock In \emph{Proceedings of NAACL}.
+
+\bibitem[{Holm(1979)}]{holm1979}
+Sture Holm. 1979.
+\newblock A simple sequentially rejective multiple test procedure.
+\newblock \emph{Scandinavian Journal of Statistics}, 6(2):65--70.
+
+\bibitem[{Johansson et~al.(1978)Johansson, Leech, and
+  Goodluck}]{johansson1978lob}
+Stig Johansson, Geoffrey~N Leech, and Helen Goodluck. 1978.
+\newblock \emph{Manual of Information to Accompany the
+  {L}ancaster-{O}slo/{B}ergen Corpus of {B}ritish {E}nglish, for Use with
+  Digital Computers}.
+\newblock Department of English, University of Oslo.
+
+\bibitem[{Kandel and Valdois(2006)}]{kandel2006}
+Sonia Kandel and Sylviane Valdois. 2006.
+\newblock Syllables as functional units in a copying task.
+\newblock \emph{Language and Cognitive Processes}, 21(4):432--452.
+
+\bibitem[{Marti and Bunke(2002)}]{marti2002iam}
+U-V Marti and Horst Bunke. 2002.
+\newblock The {IAM}-database: an {E}nglish sentence database for offline
+  handwriting recognition.
+\newblock \emph{International Journal on Document Analysis and Recognition},
+  5(1):39--46.
+
+\bibitem[{Olive and Kellogg(2002)}]{olive2002}
+Thierry Olive and Ronald~T Kellogg. 2002.
+\newblock Concurrent activation of high- and low-level production processes in
+  written composition.
+\newblock \emph{Memory \& Cognition}, 30(4):594--600.
+
+\bibitem[{Pippi et~al.(2023)Pippi, Cascianelli, and Cucchiara}]{pippi2023}
+Vittorio Pippi, Silvia Cascianelli, and Rita Cucchiara. 2023.
+\newblock Handwritten text generation from visual archetypes.
+\newblock In \emph{Proceedings of CVPR}.
+
+\bibitem[{Pippi et~al.(2025)Pippi, Quattrini, Cascianelli, Tonioni, and
+  Cucchiara}]{pippi2025}
+Vittorio Pippi, Fabio Quattrini, Silvia Cascianelli, Alessio Tonioni, and Rita
+  Cucchiara. 2025.
+\newblock Zero-shot styled text image generation, but make it autoregressive.
+\newblock In \emph{Proceedings of CVPR}.
+
+\bibitem[{Plank(2016)}]{plank2016}
+Barbara Plank. 2016.
+\newblock Keystroke dynamics as signal for shallow syntactic parsing.
+\newblock In \emph{Proceedings of COLING}.
+
+\bibitem[{Qi et~al.(2020)Qi, Zhang, Zhang, Bolton, and Manning}]{qi2020}
+Peng Qi, Yuhao Zhang, Yuhui Zhang, Jason Bolton, and Christopher~D Manning.
+  2020.
+\newblock Stanza: A {P}ython natural language processing toolkit for many human
+  languages.
+\newblock In \emph{Proceedings of ACL: System Demonstrations}.
+
+\bibitem[{Radford et~al.(2019)Radford, Wu, Child, Luan, Amodei, and
+  Sutskever}]{radford2019}
+Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and Ilya
+  Sutskever. 2019.
+\newblock Language models are unsupervised multitask learners.
+\newblock Technical report, OpenAI.
+
+\bibitem[{Smith and Levy(2013)}]{smith2013}
+Nathaniel~J Smith and Roger Levy. 2013.
+\newblock The effect of word predictability on reading time is logarithmic.
+\newblock \emph{Cognition}, 128(3):302--319.
+
+\end{thebibliography}
