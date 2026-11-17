@@ -1,6 +1,6 @@
 """Crop IAM word images (official writer-independent test forms) for the H1 relation-coverage study.
 
-Output: <out>/words/<word_id>.png (height 32, aspect kept, background whitened by IAM gray level)
+Output: <out>/words/<word_id>.png (height --height, default 32, aspect kept, background whitened by IAM gray level)
         <out>/words.csv  (word_id, writer, form, text, width32)
 """
 import argparse
@@ -17,6 +17,9 @@ def main():
     p.add_argument('--iam', type=Path, default=Path('/home/bachdx2/DraftAnything/handwriting/data/iam'))
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--split', default='testset.txt')
+    p.add_argument('--height', type=int, default=32)
+    p.add_argument('--line-height', action='store_true',
+                   help='keep the full line height (word x-range only): consistent scale across words, as in line images')
     a = p.parse_args()
 
     lines = {l.strip() for l in open(a.iam / 'task' / a.split) if l.strip()}
@@ -61,13 +64,13 @@ def main():
             page = cache[line]
             lx, ly, _, _ = line_box[line]
             x0, y0 = max(0, x - lx), max(0, y - ly)
-            crop = page[y0:y0 + h, x0:x0 + w].astype(np.float32)
+            crop = (page[:, x0:x0 + w] if a.line_height else page[y0:y0 + h, x0:x0 + w]).astype(np.float32)
             if crop.size == 0 or crop.shape[0] < 2 or crop.shape[1] < 2:
                 continue
             crop[crop > gray] = 255  # IAM-provided binarisation threshold: whiten background only
             img = Image.fromarray(crop.astype(np.uint8))
-            nw = max(1, round(img.size[0] * 32 / img.size[1]))
-            img = img.resize((nw, 32), Image.BILINEAR)
+            nw = max(1, round(img.size[0] * a.height / img.size[1]))
+            img = img.resize((nw, a.height), Image.BILINEAR)
             img.save(a.out / 'words' / f'{wid}.png')
             rows.append((wid, writer[form], form, text, nw))
     with open(a.out / 'words.csv', 'w', newline='') as f:

@@ -11,7 +11,6 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from models.model import Generator  # noqa: E402
 
 ALPHABET = 'Only thewigsofrcvdampbkuq.A-210xT5\'MDL,RYHJ"ISPWENj&BC93VGFKz();#:!7U64Q8?+*ZX/%'
 SPECIAL = 'ΑαΒβΓγΔδΕεΖζΗηΘθΙιΚκΛλΜμΝνΞξΟοΠπΡρΣσςΤτΥυΦφΧχΨψΩω'
@@ -39,6 +38,7 @@ def load_words(folder):
 
 def load_generator(device, correct_layout=False, query_position=False, add_noise=True):
     from safetensors.torch import load_file
+    from models.model import Generator  # lazy: VATr deps are only needed for VATr generation
     args = SimpleNamespace(alphabet=ALPHABET, special_alphabet=SPECIAL, device=device, glyph_path=str(GLYPHS),
                            query_input='unifont', vocab_size=len(ALPHABET), resolution=16, add_noise=add_noise,
                            imagenet_weights=False, correct_style_layout=correct_layout,
@@ -79,6 +79,19 @@ def generate(g, supports, texts, device, seed):
         x = ((fake[i, 0, :, :len(t) * 16] + 1) / 2).clamp(0, 1).cpu().numpy()
         res.append((x * 255).astype(np.uint8))
     return res
+
+
+def ink_crop(a, thr=200, pad=2):
+    """Trim white columns left/right so models with different margins are compared on ink only."""
+    cols = np.where((a < thr).any(0))[0]
+    if len(cols) == 0:
+        return a
+    return a[:, max(0, cols[0] - pad):cols[-1] + 1 + pad]
+
+
+def to_h32(a):
+    h, w = a.shape
+    return np.array(Image.fromarray(a).resize((max(8, round(w * 32 / h)), 32), Image.BILINEAR))
 
 
 class HWDFeatures:
