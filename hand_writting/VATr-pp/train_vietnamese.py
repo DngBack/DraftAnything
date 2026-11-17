@@ -108,6 +108,15 @@ def trainable(network, enabled):
         p.requires_grad_(enabled)
 
 
+def state_digest(network):
+    """Include parameters and buffers so frozen BatchNorm state is checked too."""
+    digest = hashlib.sha256()
+    for name, value in network.state_dict().items():
+        digest.update(name.encode())
+        digest.update(value.detach().cpu().contiguous().numpy().tobytes())
+    return digest.hexdigest()
+
+
 def step_optimizer(loss, optimizer, parameters):
     if not torch.isfinite(loss):
         raise FloatingPointError(f'Nonfinite loss: {loss.item()}')
@@ -153,7 +162,9 @@ def save_checkpoint(path, networks, optimizers, step, args, manifest, fingerprin
 
 def override_resume_lrs(optimizers, args):
     """Explicit fine-tuning override after restoring Adam moments and step counters."""
-    rates = {'G': [args.encoder_lr, args.lr], 'D': [args.d_lr],
+    mult = getattr(args, 'glyph_encoder_lr_mult', 1.)
+    g_rates = [args.encoder_lr, args.lr] + ([args.lr*mult] if mult != 1. else [])
+    rates = {'G': g_rates, 'D': [args.d_lr],
              'W': [args.writer_lr if args.writer_lr is not None else args.lr], 'R': [args.lr]}
     for key, optimizer in optimizers.items():
         for group, rate in zip(optimizer.param_groups, rates[key], strict=True):
@@ -162,6 +173,15 @@ def override_resume_lrs(optimizers, args):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--glyph-ablation', type=Path, help='Controlled glyph pickle override; data manifest stays unchanged')
+    p.add_argument('--glyph-canvas', type=int, choices=[128], help='Nearest-repeat glyphs onto common capacity grid')
+    p.add_argument('--reset-glyph-projection', action='store_true', help='Fresh seeded projection after strict shared checkpoint load')
+    p.add_argument('--glyph-encoder', choices=['linear', 'cnn'], default='linear', help='Content glyph encoder (plan 261117_plan_03)')
+    p.add_argument('--glyph-init', type=Path, help='Aligned glyph encoder from research/glyph_resolution/align.py')
+    p.add_argument('--glyph-encoder-lr-mult', type=float, default=1., help='LR multiplier for the glyph encoder; 1 keeps one shared G group')
+    p.add_argument('--uppercase-benchmark', action='store_true', help='Uppercase proper-name panel on all development writers (diagnostic only)')
+    p.add_argument('--tf32', action='store_true', help='Allow TF32 matmul/conv on Ampere+ GPUs (speed; changes float32 numerics)')
+    p.add_argument('--trace-training-inputs', action='store_true', help='Hash training supports and record batch indices/text for matched pilots')
     p.add_argument('--manifest', type=Path, default=Path('files/vietnamese/manifest.json'))
     p.add_argument('--stage', choices=['ocr', 'gan'], required=True)
     p.add_argument('--output', type=Path, required=True)
@@ -197,6 +217,12 @@ def main():
     p.add_argument('--generator-checkpoint', type=Path)
     p.add_argument('--encoder-checkpoint', type=Path)
     p.add_argument('--resume', type=Path)
+    p.add_argument('--finetune-from', type=Path, help='Load full native weights, reset Adam/RNG/step, explicitly permit an audited child manifest')
+    p.add_argument('--freeze-writer', action='store_true', help='Skip writer losses and optimizer; keep two G and two D updates')
+    p.add_argument('--include-hat-real', action='store_true', help='Use audited gan_train images; requires frozen writer')
+    p.add_argument('--hat-support', choices=['real-writer', 'self-repeat'], default='real-writer')
+    p.add_argument('--hat-real-fraction', type=float, default=.35)
+    p.add_argument('--verify-frozen-state', action='store_true', help='Hash states before/after training and audit first-step updates')
     p.add_argument('--allow-untrained-ocr', action='store_true', help='Smoke tests only; unsuitable for quality training')
     p.add_argument('--legacy-generator-layout', action='store_true', default=True, help='Keep original layout and no positional queries for English-checkpoint ablation')
     p.add_argument('--adapt-generator-layout', dest='legacy_generator_layout', action='store_false', help='Experimental: correct style tensor ordering and add query position encoding; changes original architecture behavior')
@@ -212,6 +238,28 @@ def main():
     p.add_argument('--crop-discriminator', action='store_true', default=True)
     p.add_argument('--no-crop-discriminator', dest='crop_discriminator', action='store_false')
     args = p.parse_args()
+    if (args.reset_glyph_projection or args.glyph_init) and not (args.finetune_from and args.glyph_ablation and args.glyph_canvas):
+        p.error('reset-glyph-projection/glyph-init require finetune-from, glyph-ablation and glyph-canvas')
+    if args.glyph_ablation and not (args.stage == 'gan' and args.glyph_canvas and (args.reset_glyph_projection or args.glyph_init or args.resume)):
+        p.error('glyph-ablation requires GAN with common canvas and reset, glyph-init or resume')
+    if args.glyph_encoder != 'linear' and not args.glyph_ablation:
+        p.error('glyph-encoder cnn requires glyph-ablation (a new encoder cannot load native weights)')
+    if args.glyph_encoder_lr_mult <= 0:
+        p.error('glyph-encoder-lr-mult must be positive')
+    if args.uppercase_benchmark and not (args.stage == 'gan' and args.benchmark_every):
+        p.error('uppercase-benchmark requires GAN with a nonzero benchmark interval')
+    if args.glyph_canvas and not args.glyph_ablation:
+        p.error('glyph-canvas requires glyph-ablation')
+    if args.finetune_from and (args.resume or args.generator_checkpoint or args.encoder_checkpoint or args.ocr_checkpoint):
+        p.error('finetune-from cannot be combined with other checkpoint inputs')
+    if args.finetune_from and args.stage != 'gan':
+        p.error('finetune-from requires GAN stage')
+    if args.include_hat_real and (args.stage != 'gan' or not args.freeze_writer or args.no_hat):
+        p.error('HAT real images require GAN, frozen writer and HAT enabled')
+    if not 0 < args.hat_real_fraction < 1:
+        p.error('hat-real-fraction must lie in (0, 1)')
+    if args.freeze_writer:
+        args.writer_weight = 0.
     if args.keep_checkpoints < 0 or args.best_window < 1:
         p.error('keep-checkpoints must be nonnegative and best-window positive')
     if args.hat_content_weight < 0 or args.hat_content_every < 1 or args.hat_content_batch_size < 1:
@@ -232,7 +280,7 @@ def main():
         p.error('steps, batch-size and num-examples must be positive')
     if not 0 <= args.hat_fraction <= 1 or not 0 <= args.rare_fraction <= 1:
         p.error('sampling fractions must lie in [0, 1]')
-    if args.stage == 'gan' and not (args.ocr_checkpoint or args.resume or args.allow_untrained_ocr):
+    if args.stage == 'gan' and not (args.ocr_checkpoint or args.resume or args.finetune_from or args.allow_untrained_ocr):
         p.error('GAN requires --ocr-checkpoint from Vietnamese OCR warmup')
     if args.generator_checkpoint and args.encoder_checkpoint:
         p.error('Choose generator-checkpoint or encoder-checkpoint')
@@ -240,6 +288,9 @@ def main():
     if (args.output/'last.pth').exists() and not args.resume:
         raise FileExistsError('Output already has a checkpoint; choose a new directory or use --resume')
     torch.set_num_threads(4)
+    if args.tf32:
+        torch.backends.cuda.matmul.allow_tf32 = True
+        torch.backends.cudnn.allow_tf32 = True
     if args.gpu_memory_gb and args.device.startswith('cuda'):
         allocation_device = torch.device(args.device)
         allocation_index = allocation_device.index if allocation_device.index is not None else torch.cuda.current_device()
@@ -249,6 +300,12 @@ def main():
     manifest = load_manifest(args.manifest)
     fingerprint = hashlib.sha256(args.manifest.read_bytes()).hexdigest()
     cfg = model_args(manifest, args.device, not args.legacy_generator_layout)
+    if args.glyph_ablation:
+        cfg.glyph_path = str(args.glyph_ablation.resolve())
+        cfg.glyph_canvas = args.glyph_canvas
+        cfg.glyph_encoder = args.glyph_encoder
+        args.glyph_sha256 = hashlib.sha256(args.glyph_ablation.read_bytes()).hexdigest()
+    args.glyph_init_sha256 = hashlib.sha256(args.glyph_init.read_bytes()).hexdigest() if args.glyph_init else None
     cfg.correct_style_layout = not args.legacy_generator_layout
     converter = strLabelConverter(manifest['alphabet'])
     ocr = CRNN(cfg).to(args.device)
@@ -262,7 +319,8 @@ def main():
             raise ValueError('--no-hat requires an OCR checkpoint also trained with --no-hat')
         ocr.load_state_dict(checkpoint['model']['R'])
         initialization['ocr'] = {'path': str(args.ocr_checkpoint), 'step': checkpoint['step']}
-    dataset = PackedH5(manifest, include_hat=args.stage == 'ocr' and not args.no_hat, style=args.stage == 'gan', num_examples=args.num_examples)
+    dataset = PackedH5(manifest, include_hat=args.stage == 'ocr' and not args.no_hat, style=args.stage == 'gan', num_examples=args.num_examples,
+                       include_hat_real=args.include_hat_real, hat_support=args.hat_support, hat_real_fraction=args.hat_real_fraction)
     validation = PackedH5(manifest, split='val')
     loader = DataLoader(dataset, batch_size=args.batch_size, sampler=dataset.sampler(), num_workers=args.workers,
                         collate_fn=collate, drop_last=True, pin_memory=args.device.startswith('cuda'))
@@ -286,10 +344,19 @@ def main():
             generator.Feat_Encoder.load_state_dict(state, strict=True)
             initialization['encoder'] = str(args.encoder_checkpoint)
         encoder_params = list(generator.Feat_Encoder.parameters())
-        other_params = [v for k, v in generator.named_parameters() if not k.startswith('Feat_Encoder.')]
-        optimizers = {'G': torch.optim.Adam([{'params': encoder_params, 'lr': args.encoder_lr}, {'params': other_params, 'lr': args.lr}], betas=(0., .999)),
+        separate_glyph = args.glyph_encoder_lr_mult != 1.
+        glyph_params = [v for k, v in generator.named_parameters() if k.startswith('query_embed.')]
+        other_params = [v for k, v in generator.named_parameters() if not k.startswith('Feat_Encoder.')
+                        and not (separate_glyph and k.startswith('query_embed.'))]
+        g_groups = [{'params': encoder_params, 'lr': args.encoder_lr}, {'params': other_params, 'lr': args.lr}]
+        if separate_glyph:
+            g_groups.append({'params': glyph_params, 'lr': args.lr*args.glyph_encoder_lr_mult})
+        optimizers = {'G': torch.optim.Adam(g_groups, betas=(0., .999)),
                       'D': torch.optim.Adam(discriminator.parameters(), lr=args.d_lr, betas=(0., .999)),
                       'W': torch.optim.Adam(writer.parameters(), lr=args.writer_lr if args.writer_lr is not None else args.lr, betas=(0., .999))}
+        if args.freeze_writer:
+            del optimizers['W']
+            trainable(writer, False)
         if not args.freeze_ocr:
             optimizers['R'] = torch.optim.Adam(ocr.parameters(), lr=args.lr)
         trainable(ocr, False)
@@ -297,7 +364,7 @@ def main():
         if args.text_sampler == 'component':
             from util.vietnamese_longtail import ComponentCorpusSampler
             corpus_class = ComponentCorpusSampler
-        real_corpus = corpus_class([dataset.labels[i] for i in dataset.indices], rare_fraction=args.rare_fraction)
+        real_corpus = corpus_class([dataset.labels[i] for i in manifest['indices']['train']], rare_fraction=args.rare_fraction)
         hat_corpus = corpus_class([dataset.labels[i] for i in manifest['indices']['hat_ocr']], rare_fraction=args.rare_fraction)
         if args.text_sampler == 'component':
             (args.output/'text_sampling_exposure.json').write_text(json.dumps({
@@ -307,13 +374,59 @@ def main():
                 'note': 'Analytic probability a transcript draw contains the character; not image supervision or a quality claim.'
             }, ensure_ascii=False, indent=2))
     start = 0
+    if args.finetune_from:
+        state = torch.load(args.finetune_from, map_location='cpu', weights_only=False)
+        if state['stage'] != 'gan' or state['alphabet'] != manifest['alphabet']:
+            raise ValueError('Fine-tune checkpoint stage/charset mismatch')
+        accepted = (fingerprint, manifest.get('parent_manifest_sha256'))
+        if state['manifest_sha256'] not in accepted:
+            raise ValueError('Fine-tune requires same manifest or explicitly audited parent')
+        for key in ('num_examples', 'legacy_generator_layout'):
+            if state['config'][key] != getattr(args, key):
+                raise ValueError('Fine-tune architecture mismatch: '+key)
+        for key, net in networks.items():
+            if key == 'G' and (args.reset_glyph_projection or args.glyph_init):
+                from research.glyph_resolution.initialization import load_shared_generator
+                aligned = torch.load(args.glyph_init, map_location='cpu', weights_only=False) if args.glyph_init else None
+                if aligned is not None:
+                    record = aligned['record']
+                    if record['encoder'] != args.glyph_encoder or record['glyph_sha256'] != args.glyph_sha256 or record['canvas'] != args.glyph_canvas:
+                        raise ValueError('glyph-init encoder/glyph/canvas does not match this run')
+                    if record['source_step'] != state['step']:
+                        raise ValueError('glyph-init was aligned to a different source checkpoint')
+                initialization['glyph_projection'] = load_shared_generator(
+                    net, state['model'][key], args.seed, glyph_init=aligned['state_dict'] if aligned else None)
+                if aligned is not None:
+                    initialization['glyph_projection']['alignment'] = {k: aligned['record'][k] for k in
+                        ('metrics', 'passed', 'gate_exception', 'design_rank', 'encoder_sha256', 'loss')}
+            else:
+                net.load_state_dict(state['model'][key], strict=True)
+        with args.finetune_from.open('rb') as source_handle:
+            parent_sha256 = hashlib.file_digest(source_handle, 'sha256').hexdigest()
+        initialization['finetune'] = {'path': str(args.finetune_from.resolve()), 'sha256': parent_sha256,
+                                      'parent_step': state['step'], 'parent_manifest_sha256': state['manifest_sha256'],
+                                      'policy': 'Strict shared G/D/W/R; glyph encoder reset or aligned init when requested; fresh Adam, CLI seed and local step zero'}
+        del state
+        # Weight-loading and model construction must not define the pilot RNG.
+        seed_all(args.seed)
     if args.resume:
         state = torch.load(args.resume, map_location='cpu', weights_only=False)
+        initialization.update(state['config'].get('initialization', {}))
+        initialization['resume'] = {'path': str(args.resume.resolve()), 'step': state['step']}
         if state['stage'] != args.stage or state['manifest_sha256'] != fingerprint:
             raise ValueError('Resume stage/data manifest mismatch')
         for key in ('num_examples', 'legacy_generator_layout', 'gradient_balance', 'crop_discriminator', 'no_hat', 'freeze_ocr'):
             if state['config'][key] != getattr(args, key):
                 raise ValueError(f'Resume configuration mismatch: {key}')
+        for key, default in [('freeze_writer', False), ('include_hat_real', False), ('hat_support', 'real-writer'), ('hat_real_fraction', .35)]:
+            if state['config'].get(key, default) != getattr(args, key):
+                raise ValueError('Resume configuration mismatch: '+key)
+        for key in ('glyph_canvas', 'glyph_sha256'):
+            if state['config'].get(key) != getattr(args, key, None):
+                raise ValueError('Resume glyph mismatch: '+key)
+        for key, default in [('glyph_encoder', 'linear'), ('glyph_encoder_lr_mult', 1.)]:
+            if state['config'].get(key, default) != getattr(args, key):
+                raise ValueError('Resume glyph mismatch: '+key)
         for k, net in networks.items():
             net.load_state_dict(state['model'][k])
         for k, opt in optimizers.items():
@@ -328,7 +441,14 @@ def main():
     # If no persistent benchmark OCR exists, use the loaded supervisor, never
     # the randomly initialized network from before resume.
     initial_ocr_state = {k: v.detach().cpu().clone() for k, v in ocr.state_dict().items()} if args.stage == 'gan' else None
-    (args.output/'config.json').write_text(json.dumps({**vars(args), 'initialization': initialization, 'manifest_sha256': fingerprint}, default=str, ensure_ascii=False, indent=2), encoding='utf-8')
+    if args.glyph_ablation:
+        from research.glyph_resolution.initialization import projection_stats
+        initialization['glyph_statistics'] = projection_stats(generator)
+        initialization['network_parameters'] = {k: {'total': sum(p.numel() for p in net.parameters()),
+                                                       'trainable_initial': sum(p.numel() for p in net.parameters() if p.requires_grad)}
+                                                for k, net in networks.items()}
+    args.initialization = initialization
+    (args.output/'config.json').write_text(json.dumps({**vars(args), 'manifest_sha256': fingerprint}, default=str, ensure_ascii=False, indent=2), encoding='utf-8')
     rare_content = None
     if args.hat_content_weight:
         from data.vietnamese_rare_content import RareHatContent, rare_reconstruction_loss
@@ -336,6 +456,7 @@ def main():
         (args.output/'hat_content_split.json').write_text(json.dumps({'chars': args.hat_content_chars, 'train_indices': rare_content.train_indices, 'eval_indices': rare_content.eval_indices, 'warning': 'Single-image self-reconstruction. Eval held out from this auxiliary task only, not from prior OCR/corpus training. HAT IDs never supervise the writer head.'}, ensure_ascii=False, indent=2))
     benchmark = None
     expanded = None
+    uppercase = None
     visual = None
     if args.stage == 'gan' and args.benchmark_every:
         from util.vietnamese_benchmark import FixedBenchmark
@@ -354,6 +475,10 @@ def main():
         if args.expanded_benchmark:
             expanded = FixedBenchmark(manifest, args.num_examples, args.output/'expanded', args.device, expanded=True)
             expanded.render(generator, benchmark_ocr, converter, start)
+        if args.uppercase_benchmark:
+            from util.vietnamese_uppercase import UppercaseBenchmark
+            uppercase = UppercaseBenchmark(manifest, args.num_examples, args.output/'uppercase', args.device)
+            uppercase.render(generator, benchmark_ocr, converter, start)
         if rare_content is not None:
             from data.vietnamese_rare_content import evaluate_rare_reconstruction
             evaluate_rare_reconstruction(rare_content, generator, benchmark_ocr, converter, args.output/'rare_content_eval', start, args.num_examples, args.device)
@@ -386,11 +511,20 @@ def main():
     prior_evaluations = [json.loads(path.read_text())['cer'] for path in args.output.glob('validation_*.json')]
     best_cer = min(prior_evaluations, default=float('inf'))
     begun = time.monotonic()
+    verification = None
+    if args.verify_frozen_state and args.stage == 'gan':
+        verification = {'before': {k: state_digest(v) for k, v in networks.items()},
+                        'optimizer_keys': sorted(optimizers), 'first_step_updates': {'G': 0, 'D': 0, 'W': 0, 'R': 0}}
     if args.device.startswith('cuda'):
         torch.cuda.reset_peak_memory_stats()
     for step in range(start+1, args.steps+1):
+        if args.glyph_ablation:
+            from research.glyph_resolution.initialization import seed_stream
+            seed_all(seed_stream(args.seed, step, 'batch'))
+        data_started = time.monotonic()
         batch = next(batches)
         images = batch['img'].to(args.device)
+        data_seconds = time.monotonic()-data_started
         if args.stage == 'ocr':
             loss = ocr_loss(ocr, converter, images, batch['label'], batch['widths'])
             step_optimizer(loss, optimizers['R'], ocr.parameters())
@@ -402,13 +536,17 @@ def main():
             # Regenerate text/fakes per phase, as VATr++ does in self.forward().
             metrics = {}
             generator.train()
+            phase_texts = {}
             for phase in ('G_OCR', 'D_OCR', 'G_W', 'D_W'):
+                if args.glyph_ablation:
+                    seed_all(seed_stream(args.seed, step, phase))
                 texts = [(hat_corpus if random.random() < args.hat_fraction else real_corpus).sample(1)[0] for _ in batch['label']]
+                phase_texts[phase] = texts
                 query, lengths, _ = converter.encode(texts)
                 query = query.to(args.device)
                 is_g = phase.startswith('G')
                 trainable(discriminator, not is_g)
-                trainable(writer, phase == 'D_W')
+                trainable(writer, phase == 'D_W' and not args.freeze_writer)
                 trainable(ocr, phase == 'D_OCR' and not args.freeze_ocr)
                 if is_g:
                     fake = generator.generate(generator.compute_style(style), query)
@@ -420,21 +558,26 @@ def main():
                 if is_g:
                     adversarial = -discriminator(fake).mean()
                     auxiliary = (ocr_loss(ocr, converter, fake, texts, lengths*16) if phase == 'G_OCR'
-                                 else writer(fake, writer_ids))
+                                 else None if args.freeze_writer else writer(fake, writer_ids))
                     weight = torch.tensor(args.ocr_weight if phase == 'G_OCR' else args.writer_weight, device=args.device)
-                    if args.gradient_balance:
+                    if args.gradient_balance and auxiliary is not None:
                         g_adv = torch.autograd.grad(adversarial, fake, retain_graph=True)[0]
                         g_aux = torch.autograd.grad(auxiliary, fake, retain_graph=True)[0]
                         weight = weight * (.7*g_adv.std()/(g_aux.std()+1e-7)).detach().clamp(1e-4, 1000.)
                         metrics[phase+'_image_gradient_adv_std'] = float(g_adv.detach().std())
                         metrics[phase+'_image_gradient_aux_std'] = float(g_aux.detach().std())
-                    loss = adversarial + weight*auxiliary
+                    loss = adversarial if auxiliary is None else adversarial + weight*auxiliary
                     grad_norm = step_optimizer(loss, optimizers['G'], generator.parameters())
                     metrics[phase+'_adversarial'] = float(adversarial.detach())
                     metrics[phase+'_effective_weight'] = float(weight.detach())
                     metrics[phase+'_grad_norm_before_clip'] = grad_norm
                     metrics[phase] = float(loss.detach())
-                    metrics['ocr_fake' if phase == 'G_OCR' else 'writer_fake'] = float(auxiliary.detach())
+                    if auxiliary is not None:
+                        metrics['ocr_fake' if phase == 'G_OCR' else 'writer_fake'] = float(auxiliary.detach())
+                    if verification is not None and step == start+1:
+                        verification['first_step_updates']['G'] += 1
+                        if phase == 'G_OCR':
+                            verification['ocr_loss_has_gradient'] = bool(auxiliary.requires_grad)
                 else:
                     discriminator.update_parameters(step)
                     real_scores, fake_scores = discriminator(images), discriminator(fake)
@@ -442,15 +585,32 @@ def main():
                     metrics[phase+'_real_score'] = float(real_scores.detach().mean())
                     metrics[phase+'_fake_score'] = float(fake_scores.detach().mean())
                     step_optimizer(loss_d, optimizers['D'], discriminator.parameters())
+                    if verification is not None and step == start+1:
+                        verification['first_step_updates']['D'] += 1
                     metrics[phase] = float(loss_d.detach())
                     if phase == 'D_OCR' and not args.freeze_ocr:
                         real_ocr = ocr_loss(ocr, converter, images, batch['label'], batch['widths'])
                         step_optimizer(real_ocr, optimizers['R'], ocr.parameters())
                         metrics['ocr_real'] = float(real_ocr.detach())
-                    if phase == 'D_W':
+                        if verification is not None and step == start+1:
+                            verification['first_step_updates']['R'] += 1
+                    if phase == 'D_W' and not args.freeze_writer:
                         loss_w = writer(images, writer_ids)
                         step_optimizer(loss_w, optimizers['W'], writer.parameters())
                         metrics['writer_real'] = float(loss_w.detach())
+                        if verification is not None and step == start+1:
+                            verification['first_step_updates']['W'] += 1
+            if verification is not None and step == start+1:
+                verification['after_first_step'] = {k: state_digest(v) for k, v in networks.items()}
+                verification['writer_gradient_absent'] = all(p.grad is None for p in writer.parameters())
+                verification['ocr_gradient_absent'] = all(p.grad is None for p in ocr.parameters())
+                if args.freeze_writer:
+                    assert verification['before']['W'] == verification['after_first_step']['W']
+                    assert verification['writer_gradient_absent']
+                if args.freeze_ocr:
+                    assert verification['before']['R'] == verification['after_first_step']['R']
+                assert all(verification['before'][k] != verification['after_first_step'][k] for k in ('G', 'D'))
+                (args.output/'update_verification.json').write_text(json.dumps(verification, indent=2))
         if args.stage == 'gan' and (args.paired_feature_weight or args.paired_pixel_weight) and step % args.paired_every == 0:
             from util.vietnamese_visual import feature_matching_loss, paired_pixel_loss
             trainable(discriminator, False); trainable(writer, False); trainable(ocr, False)
@@ -476,7 +636,15 @@ def main():
                 metrics['hat_content_reconstruction'] = float(auxiliary_loss.detach())
                 metrics['hat_content_grad_norm_before_clip'] = auxiliary_norm
                 metrics['hat_content_reference_mode'] = 'target image as single self-reference; not writer/style transfer'
-        metrics.update(step=step, seconds=time.monotonic()-begun)
+        if args.trace_training_inputs and args.stage == 'gan':
+            trace = {'step': step, 'indices': batch['indices'], 'texts': texts, 'phase_texts': phase_texts,
+                     'support_sha256': hashlib.sha256(style.detach().cpu().contiguous().numpy().tobytes()).hexdigest()}
+            with (args.output/'training_inputs.jsonl').open('a') as f:
+                f.write(json.dumps(trace, ensure_ascii=False)+'\n')
+        metrics.update(step=step, seconds=time.monotonic()-begun, data_seconds=data_seconds)
+        if args.stage == 'gan':
+            metrics['hat_real_in_batch'] = sum(int(dataset.writers[i]) >= 295 for i in batch['indices'])
+            metrics['writer_frozen'] = args.freeze_writer
         if step == start+1 or step % args.log_every == 0:
             if args.stage == 'gan':
                 metrics['effective_learning_rates'] = {k: [g['lr'] for g in opt.param_groups] for k, opt in optimizers.items()}
@@ -509,6 +677,8 @@ def main():
                         save_checkpoint(args.output/'best_focus.pth', networks, optimizers, step, args, manifest, fingerprint)
                         best_focus = focus_cer
                         focus_path.write_text(json.dumps({'step': step, 'focus_cer': focus_cer, 'prompts': focus_prompts, 'overall_cer': result['guidance_ocr_cer'], 'warning': 'Supervisor OCR proxy on genuine development writer references, not independent OCR.'}, ensure_ascii=False, indent=2))
+            if uppercase is not None:
+                uppercase.render(generator, benchmark_ocr, converter, step)
             if rare_content is not None:
                 evaluate_rare_reconstruction(rare_content, generator, benchmark_ocr, converter, args.output/'rare_content_eval', step, args.num_examples, args.device)
             if visual is not None:
@@ -534,6 +704,13 @@ def main():
                 os.link(args.output/'last.pth', numbered)
                 for old in sorted(args.output.glob('checkpoint_*.pth'))[:-args.keep_checkpoints]:
                     old.unlink()
+    if verification is not None:
+        verification['after'] = {k: state_digest(v) for k, v in networks.items()}
+        for key, frozen in [('W', args.freeze_writer), ('R', args.freeze_ocr)]:
+            if frozen:
+                assert verification['before'][key] == verification['after'][key], key+' changed while frozen'
+        verification['completed_steps'] = args.steps-start
+        (args.output/'update_verification.json').write_text(json.dumps(verification, indent=2))
     profile = {'stage': args.stage, 'completed_step': max(start, args.steps), 'seconds_this_invocation': time.monotonic()-begun,
                'torch': torch.__version__, 'device': args.device}
     if args.device.startswith('cuda'):

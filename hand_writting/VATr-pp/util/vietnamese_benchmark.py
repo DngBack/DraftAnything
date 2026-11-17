@@ -10,13 +10,15 @@ from data.vietnamese import PackedH5, to_tensor
 
 
 class FixedBenchmark:
-    def __init__(self, manifest, num_examples, output, device, expanded=False):
+    def __init__(self, manifest, num_examples, output, device, expanded=False, prompts=None):
         self.output, self.device = Path(output), device
         self.output.mkdir(parents=True, exist_ok=True)
         self.alphabet = manifest['alphabet']
         self.prompts = ['Tiếng', 'Việt', 'rất', 'đẹp', 'ma', 'má', 'mà', 'mả', 'mã', 'mạ', 'NGUYỄN', 'Ỹ']
         if expanded:
             self.prompts += ['người', 'trường', 'học', 'đường', 'Ắ', 'Ễ', 'Ỡ', 'Ự']
+        if prompts is not None:
+            self.prompts = list(prompts)
         if set(''.join(self.prompts)) - set(self.alphabet):
             raise ValueError('Benchmark has unsupported characters')
         dataset = PackedH5(manifest, split='val')

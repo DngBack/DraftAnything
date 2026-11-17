@@ -1,3 +1,4 @@
+import math
 import torch.utils.data
 from torch.nn import CTCLoss
 from torch.nn.utils import clip_grad_norm_
@@ -123,7 +124,9 @@ class Generator(nn.Module):
             self.args.alphabet + self.args.special_alphabet,
             input_type=self.args.query_input,
             device=self.args.device,
-            glyph_path=getattr(self.args, 'glyph_path', None)
+            glyph_path=getattr(self.args, 'glyph_path', None),
+            glyph_canvas=getattr(self.args, 'glyph_canvas', None),
+            projection=getattr(self.args, 'glyph_encoder', 'linear')
         )
 
         self.pos_encoder = PositionalEncoding1D(config.tn_hidden_dim)
@@ -337,7 +340,8 @@ class VATr(nn.Module):
             eval_encode_pos = self.eval_encode_pos
 
         text_encode, text_len, _ = self.netconverter.encode(self.args.special_alphabet)
-        symbols = self.netG.query_embed.symbols[text_encode].reshape(-1, 16, 16).cpu().numpy()
+        side = math.isqrt(self.netG.query_embed.symbols.shape[1])
+        symbols = self.netG.query_embed.symbols[text_encode].reshape(-1, side, side).cpu().numpy()
         imgs = [Image.fromarray(s).resize((32, 32), resample=0) for s in symbols]
         special_examples = 1 - np.concatenate([np.array(i) for i in imgs], axis=-1)
 

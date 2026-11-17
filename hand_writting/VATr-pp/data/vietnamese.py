@@ -34,10 +34,18 @@ def load_manifest(path, verify_sources=True):
 
 
 class PackedH5(Dataset):
-    def __init__(self, manifest, split='train', include_hat=False, style=False, num_examples=15, style_width=192):
+    def __init__(self, manifest, split='train', include_hat=False, style=False, num_examples=15, style_width=192,
+                 include_hat_real=False, hat_support='real-writer', hat_real_fraction=.35):
         self.manifest = load_manifest(manifest) if isinstance(manifest, (str, Path)) else manifest
         self.path = self.manifest['source_test' if split == 'test' else 'source_train']
         self.indices = list(self.manifest['indices'][split])
+        if include_hat_real and (not style or split != 'train'):
+            raise ValueError('HAT real images require GAN train mode')
+        if hat_support not in ('real-writer', 'self-repeat') or not 0 < hat_real_fraction < 1:
+            raise ValueError('Invalid HAT support policy or real-image fraction')
+        self.include_hat_real = include_hat_real
+        self.hat_support = hat_support
+        self.hat_real_fraction = hat_real_fraction
         if include_hat:
             if split != 'train' or style:
                 raise ValueError('HAT is only valid for train OCR, never style support')
@@ -59,6 +67,14 @@ class PackedH5(Dataset):
             raise ValueError('Pseudo writers found in style dataset')
         if style and any(len(pool) < 2 for pool in self.pools.values()):
             raise ValueError('Every style writer needs multiple images')
+        # Build genuine support pools before adding pseudo-writer targets.
+        if include_hat_real:
+            merged = self.manifest['indices'].get('gan_train')
+            expected = self.indices + self.manifest['indices']['hat_ocr']
+            if merged != expected or len(set(merged)) != len(merged):
+                raise ValueError('Audited gan_train union required for HAT real images')
+            self.indices = list(merged)
+        self.real_writers = list(self.pools)
 
     def __getstate__(self):
         state = self.__dict__.copy()
@@ -83,13 +99,22 @@ class PackedH5(Dataset):
         if self.style:
             image = image.resize((16*len(text), 32), Image.Resampling.BICUBIC)
         item = {'img': to_tensor(image), 'label': text, 'index': i,
-                'width': image.width, 'writer': self.writer_map[int(self.writers[i])]}
+                'width': image.width, 'writer': self.writer_map.get(int(self.writers[i]), -1)}
         if self.style:
-            pool = self.pools[int(self.writers[i])]
+            is_hat = int(self.writers[i]) >= 295
+            if is_hat and self.hat_support == 'self-repeat':
+                # Explicit single-image reference, not evidence of writer identity.
+                pool = [i]
+            elif is_hat:
+                pool = self.pools[random.choice(self.real_writers)]
+            else:
+                pool = self.pools[int(self.writers[i])]
             # Support does not contain the target image; prefer different transcripts.
             candidates = [j for j in pool if self.labels[j] != text]
             if not candidates:
                 candidates = [j for j in pool if j != i]
+            if not candidates and is_hat and self.hat_support == 'self-repeat':
+                candidates = [i]
             chosen = random.sample(candidates, self.num_examples) if len(candidates) >= self.num_examples else random.choices(candidates, k=self.num_examples)
             samples = []
             for j in chosen:
@@ -111,6 +136,12 @@ class PackedH5(Dataset):
         writer_counts = Counter(int(self.writers[i]) for i in self.indices)
         source_writers = {s: len({int(self.writers[i]) for i, group in zip(self.indices, sources) if group == s}) for s in source_counts}
         weights = [1.0/(writer_counts[int(self.writers[i])]*source_writers[s]) if self.style else 1.0/source_counts[s] for i, s in zip(self.indices, sources)]
+        if self.include_hat_real:
+            # Fixed HAT image mass, then equal source and genuine-writer mass.
+            real_source_count = sum(s != 2 for s in source_counts)
+            weights = [(self.hat_real_fraction/source_counts[2] if s == 2 else
+                        (1-self.hat_real_fraction)/(real_source_count*writer_counts[int(self.writers[i])]*source_writers[s]))
+                       for i, s in zip(self.indices, sources)]
         return WeightedRandomSampler(weights, len(self), replacement=True)
 
 

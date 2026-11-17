@@ -76,6 +76,29 @@ class VietnameseTests(unittest.TestCase):
                 PackedH5(manifest, style=True, include_hat=True)
             self.assertEqual(len(PackedH5(manifest, include_hat=True)), 5)
             self.assertLessEqual(set(CorpusSampler(labels).sample(20)), set(labels))
+            manifest['indices']['gan_train'] = [0, 1, 2, 3, 4]
+            repeated = PackedH5(manifest, style=True, num_examples=15,
+                                include_hat_real=True, hat_support='self-repeat')
+            hat = repeated[4]
+            self.assertEqual(hat['writer'], -1)
+            self.assertEqual(hat['support_indices'], [4]*15)
+            self.assertEqual(tuple(hat['style'].shape), (15, 32, 192))
+            self.assertEqual(len(repeated.writer_map), 2)
+            weights = repeated.sampler().weights
+            self.assertAlmostEqual(float(weights[-1]/weights.sum()), .35)
+            independent = PackedH5(manifest, style=True, num_examples=15,
+                                   include_hat_real=True, hat_support='real-writer')[4]
+            self.assertNotIn(4, independent['support_indices'])
+            self.assertEqual(len(independent['support_indices']), 15)
+            self.assertEqual(len({int(repeated.writers[i]) for i in independent['support_indices']}), 1)
+            manifest['indices']['gan_train'].append(4)
+            with self.assertRaisesRegex(ValueError, 'union'):
+                PackedH5(manifest, style=True, include_hat_real=True)
+            manifest['indices']['train'] = [0, 1]
+            manifest['indices']['gan_train'] = [0, 1, 4]
+            one_source = PackedH5(manifest, style=True, include_hat_real=True)
+            weights = one_source.sampler().weights
+            self.assertAlmostEqual(float(weights[-1]/weights.sum()), .35)
 
 
 if __name__ == '__main__':
