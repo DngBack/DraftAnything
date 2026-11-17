@@ -37,6 +37,8 @@ def main():
     p.add_argument('--run', type=Path, required=True)
     p.add_argument('--wid', required=True)
     p.add_argument('--models', nargs='+', default=['vatr', 'emuru'])
+    p.add_argument('--seen-writers', default=None, help='JSON list/dict of writers in the 339-writer train split')
+    p.add_argument('--out-name', default='two_model_summary.json')
     a = p.parse_args()
     dev = 'cuda'
     rows = load_words(a.data)
@@ -104,25 +106,47 @@ def main():
             continue
         units = [s for s in sups if all((gdir / c / f"{s['word_id']}.png").exists() for c in CONDS)]
         res = {}
-        for c in CONDS:
-            GH, GW = feats([np.array(Image.open(gdir / c / f"{s['word_id']}.png").convert('L')) for s in units])
-            for k, s in enumerate(units):
+        extra = [c for c in ('SELFM',) if (gdir / c).exists()]
+        for c in CONDS + extra:
+            cu = [s for s in units if (gdir / c / f"{s['word_id']}.png").exists()]
+            GH, GW = feats([np.array(Image.open(gdir / c / f"{s['word_id']}.png").convert('L')) for s in cu])
+            for k, s in enumerate(cu):
                 i = ridx[s['word_id']]
                 res[(s['word_id'], c)] = dict(
                     writer=s['writer'],
                     hwd=float((GH[k] - RH[i]).norm()),
                     wid=float(1 - GW[k] @ RW[i]),
                     top1=float(retrieve(GW[k], s['word_id'], s['writer'])))
+        with open(a.run / f'per_unit_{m}.jsonl', 'w') as fh:
+            for (wid_, c), v in res.items():
+                fh.write(json.dumps(dict(word_id=wid_, cond=c, **v)) + '\n')
         out = dict(units=len(units), means={}, contrasts={})
-        for c in CONDS:
-            out['means'][c] = {k: float(np.mean([res[(s['word_id'], c)][k] for s in units])) for k in ('hwd', 'wid', 'top1')}
-        for name, (x, y) in {'join UNC-COV': ('UNC', 'COV'), 'writer OTHER-COV': ('OTHER', 'COV'),
-                             'copy COV-SELF': ('COV', 'SELF')}.items():
+        for c in CONDS + extra:
+            cu = [s for s in units if (s['word_id'], c) in res]
+            out['means'][c] = {k: float(np.mean([res[(s['word_id'], c)][k] for s in cu])) for k in ('hwd', 'wid', 'top1')}
+
+        def contrast(name, x, y, subset):
             for k in ('hwd', 'wid', 'top1'):
                 bw = defaultdict(list)
-                for s in units:
-                    bw[s['writer']].append(res[(s['word_id'], x)][k] - res[(s['word_id'], y)][k])
-                out['contrasts'][f'{name} [{k}]'] = boot(bw)
+                for s in subset:
+                    if (s['word_id'], x) in res and (s['word_id'], y) in res:
+                        bw[s['writer']].append(res[(s['word_id'], x)][k] - res[(s['word_id'], y)][k])
+                if len(bw) >= 3:
+                    out['contrasts'][f'{name} [{k}]'] = boot(bw)
+
+        core = {'join UNC-COV': ('UNC', 'COV'), 'writer OTHER-COV': ('OTHER', 'COV'), 'copy COV-SELF': ('COV', 'SELF')}
+        for name, (x, y) in core.items():
+            contrast(name, x, y, units)
+        if 'SELFM' in extra:  # split the copy effect: same writing session vs the word itself
+            contrast('session COV-SELFM', 'COV', 'SELFM', units)
+            contrast('wordcopy SELFM-SELF', 'SELFM', 'SELF', units)
+        if a.seen_writers:  # writers in the 339-writer training split used by VATr++ / DiffusionPen
+            seen = set(json.load(open(a.seen_writers)))
+            for tag, sub in (('seen', [s for s in units if s['writer'] in seen]),
+                             ('unseen', [s for s in units if s['writer'] not in seen])):
+                out[f'n_{tag}'] = len(sub)
+                for name, (x, y) in core.items():
+                    contrast(f'{name} {tag}-writers', x, y, sub)
         # Emuru line supports cannot always match letter coverage: re-test on units where the UNC line
         # covers every letter of the target (then UNC differs from COV only in join coverage)
         cfile = a.run / f'{m}_conditions.jsonl'
@@ -141,13 +165,13 @@ def main():
             out[f'copy_utilisation_{k}'] = out['contrasts'][f'copy COV-SELF [{k}]'][0] / gap
         summary['models'][m] = out
         print(f'\n=== {m}: {len(units)} (writer, word) units, {len({s["writer"] for s in units})} writers ===')
-        for c in CONDS:
+        for c in out['means']:
             mm = out['means'][c]
             print(f"  {c:5s} hwd {mm['hwd']:.3f}  wid(1-cos) {mm['wid']:.4f}  writer-top1 {mm['top1']:.3f}")
         for k, (e, lo, hi) in out['contrasts'].items():
-            print(f'  {k:28s} {e:+.4f} [{lo:+.4f}, {hi:+.4f}]')
+            print(f'  {k:44s} {e:+.4f} [{lo:+.4f}, {hi:+.4f}]')
         print(f"  copy utilisation: hwd {100 * out['copy_utilisation_hwd']:.1f}%  wid {100 * out['copy_utilisation_wid']:.1f}%")
-    json.dump(summary, open(a.run / 'two_model_summary.json', 'w'), indent=1)
+    json.dump(summary, open(a.run / a.out_name, 'w'), indent=1)
 
 
 if __name__ == '__main__':
