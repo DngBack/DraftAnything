@@ -92,7 +92,7 @@ Rủi ro novelty: InkSpire và CASHG rất gần về cơ chế trộn. Đóng g
 
 | Giai đoạn | Việc | Điều kiện đi tiếp |
 |---|---|---|
-| 0 | Đọc kỹ InkSpire, CASHG, MX-Font++; chốt protocol giữ lại tổ hợp | Không có công trình nào đã làm chuyển giao thành phần cho HTG offline |
+| 0 | Đọc kỹ InkSpire, CASHG, MX-Font++; chốt protocol giữ lại tổ hợp | Không có công trình nào đã làm chuyển giao thành phần cho HTG offline — **Đạt có điều kiện, xem [report_04](261118_report_04_Tong_quan_tai_lieu_va_protocol_giu_lai_to_hop.md)** |
 | 1 | Part tokenizer trên font | Probe phép tính dấu đúng ≥ chuẩn đặt trước; mã dấu mũ/dấu thanh tách cụm |
 | 2 | VAE f=4, 64 px | CER ảnh tái tạo ≈ ảnh thật |
 | 3 | DiT nhỏ chỉ có `g` cùng token ký tự (baseline nội bộ) | Đạt mức IAM gần DiffusionPen |
