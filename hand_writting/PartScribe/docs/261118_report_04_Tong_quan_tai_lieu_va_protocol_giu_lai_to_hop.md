@@ -4,7 +4,7 @@
 - Điều kiện đi tiếp của giai đoạn 0: chưa có công trình nào làm chuyển giao thành phần cho HTG offline, và protocol giữ lại tổ hợp đã được chốt trước khi viết code mô hình.
 - Kết luận: **đạt có điều kiện.** Không tìm thấy công trình nào chiếm trước claim. Còn hai lỗ hổng về nguồn đọc (mục 1.4).
 - Artifact:
-  - [partscribe/holdout_protocol_v1.json](partscribe/holdout_protocol_v1.json), SHA-256 `e4729308e8c068751db64bb9c19da6a70dc7a69d8dc3d9173a7c2144cbe3b12b`;
+  - [partscribe/holdout_protocol_v1.json](holdout_protocol_v1.json), SHA-256 `e4729308e8c068751db64bb9c19da6a70dc7a69d8dc3d9173a7c2144cbe3b12b`;
   - script [scripts/holdout_protocol_stats.py](../scripts/holdout_protocol_stats.py).
 
 ## 1. Tổng quan tài liệu
@@ -46,7 +46,7 @@ Bài đề xuất **về phương pháp** gần nhất là MX-Font++, nhưng đ�
 
 ### 2.1. Tập giữ lại tiếng Việt
 
-Chọn chữ thường có ảnh thật ở val/test, để đo được cả độ giống writer. Mọi dấu thành phần vẫn còn trong train qua ký tự khác. Số liệu dưới đây đếm trực tiếp từ HDF5; `train.h5` và `test.h5` khớp SHA-256 trong [repro/data_fingerprints.json](../repro/data_fingerprints.json).
+Chọn chữ thường có ảnh thật ở val/test, để đo được cả độ giống writer. Mọi dấu thành phần vẫn còn trong train qua ký tự khác. Số liệu dưới đây đếm trực tiếp từ HDF5; `train.h5` và `test.h5` khớp SHA-256 trong [repro/data_fingerprints.json](../../VATr-pp/repro/data_fingerprints.json).
 
 | Loại | Ký tự | Ý nghĩa | Ảnh train bị loại | Val / test còn để đánh giá |
 |---|---|---|---:|---:|
@@ -61,7 +61,7 @@ Chọn chữ thường có ảnh thật ở val/test, để đo được cả đ
 
 **C4, chữ hoa có dấu (42 ký tự, 0 ảnh thật tự nhiên):**
 - Chỉ đo được độ đọc đúng, bằng evaluator độc lập và người đọc.
-- Không đo được độ giống writer, cho đến khi có ảnh thu theo [kế hoạch bổ sung ảnh](261118_report_Do_phu_ky_tu_tieng_Viet_tap_huan_luyen.md#kế-hoạch-bổ-sung-ảnh-thật).
+- Không đo được độ giống writer, cho đến khi có ảnh thu theo [kế hoạch bổ sung ảnh](../../VATr-pp/docs/261118_report_Do_phu_ky_tu_tieng_Viet_tap_huan_luyen.md#kế-hoạch-bổ-sung-ảnh-thật).
 - Ảnh thu mới cho nhóm này phải để riêng cho **đánh giá**, không đưa vào train. Nếu không, C4 mất giá trị zero-image.
 
 ### 2.2. Tập giữ lại IAM

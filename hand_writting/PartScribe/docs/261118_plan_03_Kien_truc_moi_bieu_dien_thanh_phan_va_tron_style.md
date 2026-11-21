@@ -1,7 +1,7 @@
 # Plan: Kiến trúc mới cho HTG, biểu diễn thành phần nét và trộn style hai tầng
 
 - Ngày: 18/11/2026. Trạng thái: đề xuất, chưa triển khai.
-- Kế thừa: [261118_report_02](261118_report_02_Nguyen_nhan_nham_dau_chu_hoa_resolution_hay_kien_thuc_G.md) (lỗi dấu do prior tần suất), [relation_coverage/261118_report_01](relation_coverage/261118_report_01_Tong_hop_ba_mo_hinh_H1_dose_selfm.md) (H1 đã đóng, writer-ID của writer chưa thấy thấp), [261117_plan_03](261117_plan_03_Glyph_128_va_CNN_glyph_encoder.md) (GlyphCNN).
+- Kế thừa: [261118_report_02](../../VATr-pp/docs/261118_report_02_Nguyen_nhan_nham_dau_chu_hoa_resolution_hay_kien_thuc_G.md) (lỗi dấu do prior tần suất), [relation_coverage/261118_report_01](../../VATr-pp/docs/relation_coverage/261118_report_01_Tong_hop_ba_mo_hinh_H1_dose_selfm.md) (H1 đã đóng, writer-ID của writer chưa thấy thấp), [261117_plan_03](../../VATr-pp/docs/261117_plan_03_Glyph_128_va_CNN_glyph_encoder.md) (GlyphCNN).
 - Ràng buộc: đây là kiến trúc mới, không phải bản nâng cấp VATr. Mô hình phải mạnh trên IAM tiếng Anh. Tiếng Việt có dấu chồng là phép thử khó.
 
 ## 1. Chẩn đoán từ bằng chứng đã có
