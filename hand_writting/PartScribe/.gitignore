@@ -1,0 +1,7 @@
+data/fonts/
+data/*.npz
+data/iam64.json
+data/*.pt
+runs/
+__pycache__/
+data/vn/
