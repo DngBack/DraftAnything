@@ -17,7 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from partscribe.datasets import Batcher  # noqa: E402
 from partscribe.generator import Config, PartScribe  # noqa: E402
 from partscribe.runtime import add_data_args, load_split, load_vae  # noqa: E402
-from partscribe.vae import FACTOR  # noqa: E402
+from partscribe.vae import decode_generated  # noqa: E402
 
 
 def main():
@@ -55,10 +55,7 @@ def main():
         b = batcher.collate([i] * len(a.texts), [sup] * len(a.texts))
         z, lat_w = model.sample(a.texts, b['support'].to(dev), b['support_width'].to(dev), vstate['height'],
                                 a.steps, a.w_content, a.w_style, generator=gen, w_mark=a.w_mark)
-        img = vae.from_latent(z).float().clamp(0, 1)
-        # The VAE is only trained on valid columns; blank everything beyond each word's predicted width.
-        valid = torch.arange(img.shape[-1], device=dev)[None] < (lat_w * FACTOR)[:, None]
-        img = img * valid[:, None, None]
+        img, _ = decode_generated(vae, z, lat_w)   # masked beyond the predicted width, edge line removed
         ref = 1 - b['support'][:1, :1].to(dev)                     # one support image of this writer
         W = max(ref.shape[-1], img.shape[-1])
         pad = lambda t: torch.nn.functional.pad(t, (0, W - t.shape[-1]), value=1)

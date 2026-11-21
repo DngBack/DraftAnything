@@ -86,7 +86,7 @@ def load_jobs(a):
 def gen_partscribe(a):
     from partscribe.generator import Config, PartScribe
     from partscribe.runtime import load_vae
-    from partscribe.vae import FACTOR
+    from partscribe.vae import decode_generated
     dev = 'cuda'
     jobs = load_jobs(a)
     clean = load_vn(a.vn_manifest, a.vn_data, 'val', apply_holdout=True)
@@ -111,9 +111,9 @@ def gen_partscribe(a):
         with torch.no_grad():
             z, lat_w = model.sample([j['text'] for j in chunk], torch.stack(sups).to(dev), torch.stack(sws).to(dev),
                                     clean.height, a.steps, a.w_content, a.w_style, generator=g, w_mark=a.w_mark)
-            img = vae.from_latent(z).float().clamp(0, 1)
+            img, wpx = decode_generated(vae, z, lat_w)
         for n, j in enumerate(chunk):
-            w = max(1, int(lat_w[n].item() * FACTOR))
+            w = int(wpx[n])
             ink = img[n, 0, :, :w].cpu().numpy()
             save_png(((1 - ink) * 255).round().astype(np.uint8), dst / j['file'])
         print(f'{a.name}: {b0 + len(chunk)}/{len(jobs)}', flush=True)

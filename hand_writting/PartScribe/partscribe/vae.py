@@ -14,6 +14,38 @@ from .layers import ResBlock
 FACTOR = 4
 
 
+EDGE_COLS = 4
+
+
+def clean_right_edge(ink, width_px):
+    """Remove the decoder's boundary line from generated ink maps, keeping strokes.
+
+    The generator zeroes latent columns beyond the predicted width, but 0 is not the latent
+    of blank paper, so the decoder draws a faint, uniform, full-height line in the last
+    pixel columns. Per-column median ink (0-255, strokes ignored) over val outputs, last 6
+    columns: 3.9 3.1 3.9 4.8 11.2 22.6 (whole image ~1.6); real images and encoder latents
+    do not have it. Cropping is wrong: strokes reach the edge in about half the words.
+    A stroke covers few rows of a column, so the column median is the line itself:
+    subtract it in the last EDGE_COLS columns.
+
+    ink: (B, 1, H, W) in [0, 1], ink = 1. width_px: (B,) valid pixel width per item.
+    """
+    out = ink.clone()
+    for k in range(ink.shape[0]):
+        w = int(width_px[k])
+        a = max(0, w - EDGE_COLS)
+        if w <= a:
+            continue
+        cols = out[k, :, :, a:w]
+        out[k, :, :, a:w] = (cols - cols.median(dim=-2, keepdim=True).values).clamp(min=0)
+    return out
+
+
+def decoded_width(lat_w):
+    """Pixel width of a decoded generator latent of latent width `lat_w`."""
+    return (lat_w * FACTOR).clamp(min=1)
+
+
 class VAE(nn.Module):
     def __init__(self, z_ch=4, ch=(64, 128, 256)):
         super().__init__()
@@ -86,3 +118,14 @@ def recon_losses(rec, x, mu, logvar, width_px, kl_weight=1e-6):
     ml = m[..., ::FACTOR][..., :mu.shape[-1]]
     kl = (0.5 * (mu.pow(2) + logvar.exp() - 1 - logvar) * ml).sum() / (ml.sum() * mu.shape[1] * mu.shape[2])
     return {'l1': l1, 'edge': edge, 'kl': kl * kl_weight}
+
+
+def decode_generated(vae, z, lat_w):
+    """Generator latents -> clean ink maps (B, 1, H, W) and the valid pixel width of each.
+
+    Masks everything beyond the predicted width (the VAE is only trained on valid columns)
+    and removes the boundary line (see clean_right_edge)."""
+    img = vae.from_latent(z).float().clamp(0, 1)
+    wpx = decoded_width(lat_w)
+    img = img * (torch.arange(img.shape[-1], device=img.device)[None] < wpx[:, None])[:, None, None]
+    return clean_right_edge(img, wpx), wpx

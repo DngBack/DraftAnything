@@ -25,7 +25,7 @@ from partscribe.datasets import Batcher  # noqa: E402
 from partscribe.evaluator import Codec, align, load_ocr  # noqa: E402
 from partscribe.generator import Config, PartScribe  # noqa: E402
 from partscribe.runtime import add_data_args, load_split, load_vae  # noqa: E402
-from partscribe.vae import FACTOR  # noqa: E402
+from partscribe.vae import decode_generated  # noqa: E402
 
 FONT = '/opt/conda/fonts/DejaVuSans.ttf'
 
@@ -89,8 +89,8 @@ def main():
             with torch.no_grad():
                 z, lat_w = model.sample([t] * a.n, b['support'].to(dev), b['support_width'].to(dev), vstate['height'],
                                         a.steps, a.w_content, a.w_style, generator=g, w_mark=a.w_mark)
-                img = vae.from_latent(z).float().clamp(0, 1)
-            cands = [img[k, 0, :, :max(1, int(lat_w[k].item() * FACTOR) - 1)].cpu() for k in range(a.n)]  # drop the VAE edge column
+                img, wpx = decode_generated(vae, z, lat_w)
+            cands = [img[k, 0, :, :int(wpx[k])].cpu() for k in range(a.n)]
             x = torch.zeros(a.n, 1, cands[0].shape[0], max(c.shape[-1] for c in cands))
             for k, c in enumerate(cands):
                 x[k, 0, :, :c.shape[-1]] = c

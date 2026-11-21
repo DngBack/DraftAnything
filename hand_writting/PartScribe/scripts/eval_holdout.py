@@ -26,7 +26,7 @@ from partscribe.evaluator import Codec, align, load_ocr, sibling  # noqa: E402
 from partscribe.generator import Config, PartScribe, strip_marks  # noqa: E402
 from partscribe.holdout import held_chars, vn_categories  # noqa: E402
 from partscribe.runtime import VATR, load_vae  # noqa: E402
-from partscribe.vae import FACTOR  # noqa: E402
+from partscribe.vae import decode_generated  # noqa: E402
 
 CATS = {c: k for k, cs in vn_categories().items() for c in cs}
 
@@ -139,9 +139,8 @@ def run(a):
         gen = torch.Generator(device=dev).manual_seed(a.seed + k)
         z, lat_w = model.sample(texts, torch.stack(sups).to(dev), torch.stack(sws).to(dev), full.height,
                                 a.steps, a.w_content, a.w_style, generator=gen, w_mark=a.w_mark)
-        img = vae.from_latent(z).float().clamp(0, 1)
-        img = img * (torch.arange(img.shape[-1], device=dev)[None] < (lat_w * FACTOR)[:, None])[:, None, None]
-        gens = [img[j, 0, :, :int(lat_w[j].item() * FACTOR)].cpu() for j in range(len(chunk))]
+        img, wpx = decode_generated(vae, z, lat_w)
+        gens = [img[j, 0, :, :int(wpx[j])].cpu() for j in range(len(chunk))]
         hyp_gen, hyp_real = ocr_images(ocr, codec, gens, dev), ocr_images(ocr, codec, reals, dev)
         hyp_plain = [None] * len(chunk)
         if a.pairs:
@@ -149,8 +148,8 @@ def run(a):
             zp, lwp = model.sample([strip_marks(t) for t in texts], torch.stack(sups).to(dev), torch.stack(sws).to(dev),
                                    full.height, a.steps, a.w_content, a.w_style, widths_override=lat_w,
                                    generator=gen, w_mark=0.0)
-            ip = vae.from_latent(zp).float().clamp(0, 1)
-            hyp_plain = ocr_images(ocr, codec, [ip[j, 0, :, :int(lwp[j].item() * FACTOR)].cpu() for j in range(len(chunk))], dev)
+            ip, wpp = decode_generated(vae, zp, lwp)
+            hyp_plain = ocr_images(ocr, codec, [ip[j, 0, :, :int(wpp[j])].cpu() for j in range(len(chunk))], dev)
         for m, hg, hr, hp in zip(metas, hyp_gen, hyp_real, hyp_plain):
             records.append({**m, 'hyp_gen': hg, 'hyp_real': hr, 'hyp_plain': hp,
                             'gen': score(m['text'], hg, m['kind'], hp if m['kind'] == 'heldout' else None),
