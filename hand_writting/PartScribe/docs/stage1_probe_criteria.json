@@ -1,0 +1,11 @@
+{
+ "frozen_at": "2026-11-18, before any probe was run on a fully trained tokenizer",
+ "probe_definitions": "partscribe/probes.py (P1 DeepSets/MLP probe, 3 seeds, 40 epochs; P2 mark binding)",
+ "checkpoints": {"slots": "runs/tok_slots_strict/best.pt", "global": "runs/tok_global_strict/best.pt", "pixels": "no checkpoint"},
+ "go_criteria": {
+  "P1": "slots p1.test_heldout.exact >= global p1.test_heldout.exact + 0.10 AND slots p1.test_heldout.exact > pixels p1.test_heldout.exact",
+  "P2": "slots p2.test_heldout.success >= 0.60 AND slots p2.test_heldout.success > slots p2.test_heldout.majority_mark_rate"
+ },
+ "if_P1_fails": "slot tokens give no better decomposition than a global vector: record a null result for the tokenizer; stage 3 char baseline still runs; the parts generator run is kept but reported as not supported by stage 1",
+ "note": "Proposed by Claude, frozen at launch on the user's instruction to run the pipeline; the user may still revise it before reading runs/probes/*.json."
+}

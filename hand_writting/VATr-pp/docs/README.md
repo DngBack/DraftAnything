@@ -22,6 +22,13 @@ Training 250k đã hoàn tất; xem report tổng hợp ngày 15/11/2026 và cá
 
 ## Report theo ngày
 
+### 18/11/2026
+
+| Số | Report |
+|---:|---|
+| 03 | [Plan: Kiến trúc mới, biểu diễn thành phần nét và trộn style hai tầng](../../PartScribe/docs/261118_plan_03_Kien_truc_moi_bieu_dien_thanh_phan_va_tron_style.md) |
+| 04 | [Giai đoạn 0 PartScribe: tổng quan tài liệu và protocol giữ lại tổ hợp](../../PartScribe/docs/261118_report_04_Tong_quan_tai_lieu_va_protocol_giu_lai_to_hop.md) |
+
 ### 16/11/2026
 
 | Số | Report |
