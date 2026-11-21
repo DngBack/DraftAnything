@@ -1,0 +1,149 @@
+{
+ "frozen_utc": "2026-11-21",
+ "decision": "User froze VN v2 at 300k as the reported version.",
+ "checkpoints": {
+  "nfd": {
+   "path": "runs/gen_vn_nfd_v2/snap_300000.pt",
+   "sha256": "6a394937918fc960a0c9b587491b98fd31c1e8cd0f49968c5733ca0f3285d442",
+   "weights": "ema"
+  },
+  "char": {
+   "path": "runs/gen_vn_char_v2/snap_300000.pt",
+   "sha256": "cb072066e61592c2e7b49f9ed13a51b8bcf59e23c165ef64fe534848f878b0b3",
+   "weights": "ema"
+  },
+  "vae": {
+   "path": "runs/vae_vn32/final.pt",
+   "sha256": "7d466ef4249cbfa2eb6f7312b43afc6b9d3aea773b6425eb12deb6c75d05690d"
+  },
+  "local_ocr": {
+   "path": "runs/eval_ocr_vn_local/best.pt",
+   "sha256": "7669043fa33bd7348c822171f1ae72b2246436b79e9843e54d5785ef5978139f"
+  },
+  "eval_ocr": {
+   "path": "runs/eval_ocr_vn/best.pt",
+   "sha256": "336d9d5e3f99877c753a58f26e12b73d5f8c33b5ef0ebe77cf3635575325dc46"
+  }
+ },
+ "training": "pipeline.sh gen_{char,nfd}_v2 (100k->200k from _lt snap_100000) then gen_{char,nfd}_v2_300k (200k->300k, --seed 1, constant LR 1e-4)",
+ "sampling_reported": {
+  "steps": 50,
+  "w_content": 3.0,
+  "w_style": 1.5,
+  "w_mark": 0.0,
+  "note": "default config; not tuned on the evaluation set"
+ },
+ "sampling_showcase": {
+  "w_content": 4.5,
+  "w_style": 1.5,
+  "best_of": 16,
+  "note": "figures only (scripts/showcase.py)"
+ },
+ "heldout_pair_ok_val_300k": {
+  "raw_weights": true,
+  "C1+C2": {
+   "char": 0.0183,
+   "nfd": 0.7927,
+   "diff_ci95": [
+    0.6886,
+    0.8406
+   ]
+  },
+  "C1": 0.8163,
+  "C2": 0.7576,
+  "C3": 0.8947,
+  "control": {
+   "char": 0.9561,
+   "nfd": 0.9561
+  }
+ },
+ "standard_metrics_val": {
+  "setup": "scripts/eval_standard.py, 30 val writers, 2847 words, same 15 supports per model, HWD-repo conventions",
+  "real": {
+   "CER": 0.088,
+   "FID_half_vs_half": 11.863
+  },
+  "partscribe_nfd_300k_mean_sd_3seeds": {
+   "FID": [
+    19.5946,
+    0.1414
+   ],
+   "BFID": [
+    11.201,
+    0.2334
+   ],
+   "KIDx1e3": [
+    6.4322,
+    0.0556
+   ],
+   "HWD": [
+    0.9062,
+    0.0065
+   ],
+   "CER": [
+    0.0313,
+    0.0004
+   ],
+   "word_acc": [
+    0.917,
+    0.0022
+   ]
+  },
+  "partscribe_nfd_200k_mean_sd_3seeds": {
+   "FID": [
+    19.5776,
+    0.0736
+   ],
+   "BFID": [
+    11.2964,
+    0.0782
+   ],
+   "KIDx1e3": [
+    6.5141,
+    0.1021
+   ],
+   "HWD": [
+    0.913,
+    0.007
+   ],
+   "CER": [
+    0.0332,
+    0.0022
+   ],
+   "word_acc": [
+    0.91,
+    0.0056
+   ]
+  },
+  "partscribe_char_300k": {
+   "FID": 19.7247,
+   "BFID": 11.414,
+   "KIDx1e3": 6.4187,
+   "HWD": 0.9,
+   "CER": 0.0325,
+   "word_acc": 0.9157
+  },
+  "vatrpp_vn_175500": {
+   "FID": 38.1325,
+   "BFID": 25.2676,
+   "KIDx1e3": 20.0707,
+   "HWD": 1.7135,
+   "CER": 0.0174,
+   "word_acc": 0.9463
+  },
+  "vatrpp_vn_component_250k": {
+   "FID": 38.4558,
+   "BFID": 20.7696,
+   "KIDx1e3": 21.3586,
+   "HWD": 1.6133,
+   "CER": 0.0118,
+   "word_acc": 0.9642
+  }
+ },
+ "known_limitations": [
+  "dot below on the held-out letter ẹ is mostly missing (C1 0.77-0.82); w_mark guidance does not fix it",
+  "capitalised lowercase names (Ngô Quyền, Trần Hưng Đạo) collapse to one bold style across writers, likely from the style-free HAT content targets",
+  "about 43% of outputs have a faint dark column at the right edge (VAE boundary); left in for all reported metrics",
+  "all numbers are on the val writers (also used for checkpoint choice); the test split is still sealed"
+ ]
+}
