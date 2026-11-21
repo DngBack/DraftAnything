@@ -39,55 +39,11 @@
   "best_of": 16,
   "note": "figures only (scripts/showcase.py)"
  },
- "heldout_pair_ok_val_300k": {
-  "raw_weights": true,
-  "C1+C2": {
-   "char": 0.0183,
-   "nfd": 0.7927,
-   "diff_ci95": [
-    0.6886,
-    0.8406
-   ]
-  },
-  "C1": 0.8163,
-  "C2": 0.7576,
-  "C3": 0.8947,
-  "control": {
-   "char": 0.9561,
-   "nfd": 0.9561
-  }
- },
  "standard_metrics_val": {
   "setup": "scripts/eval_standard.py, 30 val writers, 2847 words, same 15 supports per model, HWD-repo conventions",
   "real": {
    "CER": 0.088,
    "FID_half_vs_half": 11.863
-  },
-  "partscribe_nfd_300k_mean_sd_3seeds": {
-   "FID": [
-    19.5946,
-    0.1414
-   ],
-   "BFID": [
-    11.201,
-    0.2334
-   ],
-   "KIDx1e3": [
-    6.4322,
-    0.0556
-   ],
-   "HWD": [
-    0.9062,
-    0.0065
-   ],
-   "CER": [
-    0.0313,
-    0.0004
-   ],
-   "word_acc": [
-    0.917,
-    0.0022
-   ]
   },
   "partscribe_nfd_200k_mean_sd_3seeds": {
    "FID": [
@@ -115,14 +71,6 @@
     0.0056
    ]
   },
-  "partscribe_char_300k": {
-   "FID": 19.7247,
-   "BFID": 11.414,
-   "KIDx1e3": 6.4187,
-   "HWD": 0.9,
-   "CER": 0.0325,
-   "word_acc": 0.9157
-  },
   "vatrpp_vn_175500": {
    "FID": 38.1325,
    "BFID": 25.2676,
@@ -138,12 +86,160 @@
    "HWD": 1.6133,
    "CER": 0.0118,
    "word_acc": 0.9642
+  },
+  "before_edgefix": {
+   "partscribe_nfd_300k_mean_sd_3seeds": {
+    "FID": [
+     19.5946,
+     0.1414
+    ],
+    "BFID": [
+     11.201,
+     0.2334
+    ],
+    "KIDx1e3": [
+     6.4322,
+     0.0556
+    ],
+    "HWD": [
+     0.9062,
+     0.0065
+    ],
+    "CER": [
+     0.0313,
+     0.0004
+    ],
+    "word_acc": [
+     0.917,
+     0.0022
+    ]
+   },
+   "partscribe_char_300k": {
+    "FID": 19.7247,
+    "BFID": 11.414,
+    "KIDx1e3": 6.4187,
+    "HWD": 0.9,
+    "CER": 0.0325,
+    "word_acc": 0.9157
+   }
+  },
+  "partscribe_nfd_300k_mean_sd_3seeds": {
+   "FID": [
+    16.1283,
+    0.0953
+   ],
+   "BFID": [
+    11.3138,
+    0.2176
+   ],
+   "KIDx1e3": [
+    5.3126,
+    0.0094
+   ],
+   "HWD": [
+    0.8757,
+    0.0064
+   ],
+   "CER": [
+    0.0274,
+    0.0005
+   ],
+   "word_acc": [
+    0.9266,
+    0.0021
+   ]
+  },
+  "partscribe_char_300k": {
+   "FID": 16.2532,
+   "BFID": 11.6218,
+   "KIDx1e3": 5.3532,
+   "HWD": 0.8708,
+   "CER": 0.028,
+   "word_acc": 0.928
+  },
+  "paired_ci95_nfd300k_minus": {
+   "vatrpp_vn_component_250k": {
+    "HWD": [
+     -0.9709,
+     -0.4854
+    ],
+    "CER": [
+     0.0105,
+     0.0221
+    ]
+   },
+   "vatrpp_vn_175500": {
+    "HWD": [
+     -1.0813,
+     -0.5706
+    ],
+    "CER": [
+     0.0048,
+     0.0169
+    ]
+   },
+   "char_300k": {
+    "HWD": [
+     -0.0208,
+     0.037
+    ],
+    "CER": [
+     -0.005,
+     0.0047
+    ]
+   },
+   "nfd_300k_before_edgefix": {
+    "HWD": [
+     -0.0455,
+     -0.015
+    ],
+    "CER": [
+     -0.0055,
+     -0.0011
+    ]
+   }
   }
  },
  "known_limitations": [
   "dot below on the held-out letter ẹ is mostly missing (C1 0.77-0.82); w_mark guidance does not fix it",
   "capitalised lowercase names (Ngô Quyền, Trần Hưng Đạo) collapse to one bold style across writers, likely from the style-free HAT content targets",
-  "about 43% of outputs have a faint dark column at the right edge (VAE boundary); left in for all reported metrics",
   "all numbers are on the val writers (also used for checkpoint choice); the test split is still sealed"
- ]
+ ],
+ "decode": "partscribe.vae.decode_generated: mask beyond the predicted width, then subtract the per-column median in the last 4 columns (removes the decoder boundary line, keeps 97.2% of edge stroke pixels). All reported numbers below use it.",
+ "heldout_pair_ok_val_300k_before_edgefix": {
+  "raw_weights": true,
+  "C1+C2": {
+   "char": 0.0183,
+   "nfd": 0.7927,
+   "diff_ci95": [
+    0.6886,
+    0.8406
+   ]
+  },
+  "C1": 0.8163,
+  "C2": 0.7576,
+  "C3": 0.8947,
+  "control": {
+   "char": 0.9561,
+   "nfd": 0.9561
+  }
+ },
+ "heldout_pair_ok_val_300k": {
+  "raw_weights": true,
+  "C1+C2": {
+   "char": 0.0122,
+   "nfd": 0.8293,
+   "diff_ci95": [
+    0.75,
+    0.8737
+   ]
+  },
+  "C1": 0.8673,
+  "C2": 0.7727,
+  "C3": 0.8947,
+  "control": {
+   "char": 0.9624,
+   "nfd": 0.9671
+  }
+ }
 }

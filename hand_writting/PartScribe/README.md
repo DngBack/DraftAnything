@@ -91,15 +91,17 @@ Checkpoint, SHA-256, cấu hình sinh và toàn bộ số liệu nằm trong [do
 - **Cấu hình sinh để báo cáo:** 50 bước, `w_content` 3, `w_style` 1.5, không dùng `w_mark`. Đây là cấu hình mặc định, không chỉnh theo tập đánh giá.
 - **Hình minh họa** dùng `scripts/showcase.py` với `w_content` 4.5 và chọn 1 mẫu tốt nhất trong 16; không dùng cho số liệu.
 
+Ảnh sinh được giải mã bằng `partscribe.vae.decode_generated`. Hàm này bỏ vạch xám ở mép phải do decoder tạo ra tại ranh giới độ rộng. Tất cả số dưới đây dùng hàm đó; số đo trước khi sửa vẫn nằm trong JSON (`before_edgefix`).
+
 **Ký tự bị giữ lại** (`pair_ok`, 30 writer val, đo bằng LocalOCR):
 
 | Nhóm | char | nfd |
 |---|---|---|
-| C1+C2 | 0,018 | **0,793** (CI chênh +0,69..+0,84) |
-| C1 | | 0,816 |
-| C2 | | 0,758 |
+| C1+C2 | 0,012 | **0,829** (CI chênh +0,75..+0,87) |
+| C1 | | 0,867 |
+| C2 | | 0,773 |
 | C3 | | 0,895 |
-| Đối chứng | 0,956 | 0,956 |
+| Đối chứng | 0,962 | 0,967 |
 
 **Metric chuẩn trên ký tự đã thấy** (`scripts/eval_standard.py`; quy ước của repo HWD; 2.847 từ; mỗi mô hình dùng cùng 15 ảnh mẫu):
 
@@ -107,24 +109,27 @@ Checkpoint, SHA-256, cấu hình sinh và toàn bộ số liệu nằm trong [do
 |---|---|---|---|---|---|
 | VATr++ VN 175,5k | 38,13 | 25,27 | 20,07 | 1,713 | 1,74% |
 | VATr++ VN 250k | 38,46 | 20,77 | 21,36 | 1,613 | 1,18% |
-| PartScribe char 300k | 19,72 | 11,41 | 6,42 | 0,900 | 3,25% |
-| **PartScribe nfd 300k** (3 seed) | **19,59 ± 0,14** | **11,20 ± 0,23** | **6,43 ± 0,06** | **0,906 ± 0,007** | 3,13% ± 0,04 |
+| PartScribe char 300k | 16,25 | 11,62 | 5,35 | 0,871 | 2,80% |
+| **PartScribe nfd 300k** (3 seed) | **16,13 ± 0,10** | **11,31 ± 0,22** | **5,31 ± 0,01** | **0,876 ± 0,006** | 2,74% ± 0,05 |
 | Ảnh thật | 11,9 (nửa so với nửa) | | | | 8,80% |
 
 So với VATr++ 250k (CI theo writer):
-- HWD tốt hơn, chênh −0,93..−0,47.
-- CER kém hơn 1,4..2,5 điểm %. CER của VATr++ còn thấp hơn ảnh thật, nghĩa là chữ sinh ra "sạch quá mức".
+- HWD tốt hơn, chênh −0,97..−0,49.
+- CER kém hơn 1,1..2,2 điểm %. CER của VATr++ còn thấp hơn ảnh thật.
 
 nfd và char ngang nhau trên ký tự đã thấy.
 
-Từ 200k lên 300k:
-- CER giảm 3,32 → 3,13% (CI −0,85..−0,06 điểm %).
-- FID, HWD và `pair_ok` không đổi, nên mô hình đã gần hội tụ.
+Sửa mép, so cùng checkpoint:
+- FID 19,60 → 16,13.
+- HWD 0,906 → 0,876 (CI chênh −0,046..−0,015).
+- CER 3,13 → 2,74%.
+- `pair_ok` 0,793 → 0,829.
+
+Từ 200k lên 300k (trước khi sửa mép): CER giảm 3,32 → 3,13%; FID, HWD và `pair_ok` không đổi.
 
 **Giới hạn đã biết:**
 - Chấm dưới của `ẹ` phần lớn bị mất; `w_mark` không sửa được.
 - Tên riêng viết thường ("Ngô Quyền") ra cùng một kiểu chữ đậm cho mọi người viết, nhiều khả năng do đích HAT không kèm style.
-- Khoảng 43% ảnh có một cột tối mờ ở mép phải (biên VAE).
 - Mọi số liệu đều đo trên tập val; tập test chưa mở.
 - IAM đang tạm dừng.
 
