@@ -5,3 +5,4 @@ data/*.pt
 runs/
 __pycache__/
 data/vn/
+data/pnl32.json

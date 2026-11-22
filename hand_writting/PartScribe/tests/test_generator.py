@@ -12,13 +12,13 @@ sys.path.insert(0, str(ROOT))
 
 from partscribe.charset import ALPHABET  # noqa: E402
 from partscribe.content import ContentEncoder, build_content_table, char_layout, fit_widths  # noqa: E402
-from partscribe.datasets import Batcher, PackedWords  # noqa: E402
+from partscribe.datasets import PNL_FIRST_WRITER, Batcher, PackedWords, concat_words, load_pnl  # noqa: E402
 from partscribe.dit import DiT  # noqa: E402
 from partscribe.generator import Config, PartScribe  # noqa: E402
 from partscribe.holdout import held_chars  # noqa: E402
 from partscribe.layers import Attention, grad_reverse  # noqa: E402
 from partscribe.style import StyleEncoder, supcon_loss  # noqa: E402
-from partscribe.vae import VAE, recon_losses  # noqa: E402
+from partscribe.vae import VAE, clean_right_edge, recon_losses  # noqa: E402
 
 DEV = 'cuda' if torch.cuda.is_available() else 'cpu'
 CHARS = [c for c in ALPHABET if not c.isspace()]
@@ -317,3 +317,57 @@ class TestLongTailSampler(unittest.TestCase):
         from partscribe.datasets import longtail_weights
         texts = ['và', 'Hà', 'NGUYỄN', 'trường', 'Đại', 'học', 'và', 'ẩm', '12', 'ĐẠI']
         np.testing.assert_allclose(longtail_weights(texts), ComponentCorpusSampler(texts).weights)
+
+
+def _pack(n, writer0, h=8, seed=0):
+    rng = np.random.default_rng(seed)
+    widths = rng.integers(5, 12, n)
+    starts = np.concatenate([[0], np.cumsum(widths)[:-1]])
+    pix = rng.integers(0, 255, (h, int(widths.sum())), dtype=np.uint8)
+    return PackedWords(pix, starts, widths, [f'W{k}' for k in range(n)], np.array([writer0 + k % 3 for k in range(n)]),
+                       list(range(n)), 'x')
+
+
+class SupplementaryData(unittest.TestCase):
+    def test_concat_keeps_every_image(self):
+        a, b = _pack(7, 0), _pack(5, PNL_FIRST_WRITER, seed=1)
+        c = concat_words(a, b)
+        self.assertEqual(len(c), 12)
+        for k in range(12):
+            src, j = (a, k) if k < 7 else (b, k - 7)
+            np.testing.assert_array_equal(c.image(k), src.image(j))
+            self.assertEqual(c.texts[k], src.texts[j])
+
+    def test_source_weights(self):
+        a, b = _pack(60, 0), _pack(60, PNL_FIRST_WRITER, seed=1)
+        a.source_of = b.source_of = lambda w: 'PNL' if w >= PNL_FIRST_WRITER else 'VN'
+        c = concat_words(a, b)
+        bt = Batcher(c, lambda t: True, writers_per_batch=8, per_writer=2, n_support=2, support_width=48,
+                     width_multiple=1, source_weights={'PNL': 0.1}, seed=0)
+        self.assertAlmostEqual(dict(zip(bt.sources, bt.source_p))['PNL'], 0.1)
+        it, pnl, tot = iter(bt), 0, 0
+        for _ in range(100):
+            for ix in next(it)['index']:
+                tot += 1
+                pnl += (ix[0] if isinstance(ix, tuple) else ix) >= 60
+        self.assertLess(abs(pnl / tot - 0.1), 0.04)
+
+    @unittest.skipUnless(Path(__file__).resolve().parents[1].joinpath('data/pnl32.npz').exists(), 'data/pnl32.npz')
+    def test_pnl_pack_is_clean(self):
+        npz = Path(__file__).resolve().parents[1] / 'data/pnl32.npz'
+        held = set(held_chars('vn')) | {c.upper() for c in held_chars('vn')}
+        tr, te = load_pnl(npz, 'train'), load_pnl(npz, 'test')
+        self.assertEqual(tr.height, 32)
+        self.assertTrue(set(map(int, tr.writers)).isdisjoint(map(int, te.writers)))
+        for d in (tr, te):
+            self.assertTrue(all(held.isdisjoint(t) for t in d.texts))
+
+
+class EdgeCleanup(unittest.TestCase):
+    def test_removes_uniform_line_keeps_stroke(self):
+        ink = torch.zeros(1, 1, 32, 20)
+        ink[0, 0, :, 18:20] = 0.3          # decoder boundary line: uniform, full height
+        ink[0, 0, 10:13, 16:20] = 1.0      # a stroke reaching the edge
+        out = clean_right_edge(ink, torch.tensor([20]))
+        self.assertLess(out[0, 0, 20:, 18:].max().item(), 1e-6)
+        self.assertGreater(out[0, 0, 10:13, 16:20].min().item(), 0.69)
