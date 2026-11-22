@@ -1,0 +1,9 @@
+{
+ "n_train_images": 96374,
+ "n_train_writers": 265,
+ "n_letters": 142,
+ "upper_accented_seen": 25,
+ "upper_accented_zero_in_vn_train": [],
+ "pnl_train_capitals": 80,
+ "median_letter_count": 616
+}
