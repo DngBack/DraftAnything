@@ -98,6 +98,19 @@ gen_char_v2_300k|gen_nfd_v2_300k)
       --vae runs/vae_vn32/final.pt --out $out --steps 300000 --multiword 0.2 --mark-weight 3 --rare-fraction 0.3 \
       --content-only-per-batch 16 --seed 1 --resume
   ;;
+gen_char_v3|gen_nfd_v3)
+  # 2026-11-21: v3 = the frozen v2 300k model (read-only snap_300000, init only) continued for
+  # 100k steps with the PNL uppercase release added (scripts/prepare_pnl.py -> data/pnl32.npz):
+  # 14 real writers, all 80 protocol-allowed capitals; 5 PNL writers are kept out as the
+  # uppercase test set (C4). PNL gets 15% of the natural writer slots. Everything else = v2.
+  mode=${1#gen_}; mode=${mode%_v3}
+  wait_for data/pnl32.npz
+  run runs/gen_vn_${mode}_v3 $PY scripts/train_generator.py --dataset vn --vn-data $VN --content $mode \
+      --vae runs/vae_vn32/final.pt --out runs/gen_vn_${mode}_v3 --steps 400000 \
+      --multiword 0.2 --mark-weight 3 --rare-fraction 0.3 --content-only-per-batch 16 \
+      --pnl-data data/pnl32.npz --pnl-weight 0.15 --seed 2 \
+      --init-from runs/gen_vn_${mode}_v2/snap_300000.pt --resume
+  ;;
 eval_ocr)
   run runs/eval_ocr_vn $PY scripts/train_evaluator.py --vn-data $VN --out runs/eval_ocr_vn
   ;;

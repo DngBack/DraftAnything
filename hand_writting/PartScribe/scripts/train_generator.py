@@ -20,7 +20,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from partscribe.content import table_digest  # noqa: E402
-from partscribe.datasets import Batcher  # noqa: E402
+from partscribe.datasets import Batcher, concat_words, load_pnl  # noqa: E402
 from partscribe.generator import Config, PartScribe  # noqa: E402
 from partscribe.holdout import PROTOCOL_SHA256  # noqa: E402
 from partscribe.runtime import EMA, add_data_args, load_split, load_vae, write_json  # noqa: E402
@@ -79,6 +79,9 @@ def main():
     ap.add_argument('--mark-weight', type=float, default=0.0, help='extra flow-loss weight on small ink components')
     ap.add_argument('--content-only-per-batch', type=int, default=0,
                     help='VN: HAT2023 words appended to every batch as style-free content targets (VATr-pp HAT task)')
+    ap.add_argument('--pnl-data', type=Path, help='VN: add the PNL uppercase train writers (data/pnl32.npz, scripts/prepare_pnl.py)')
+    ap.add_argument('--pnl-weight', type=float, default=0.15,
+                    help='share of natural writer slots drawn from PNL (the other sources split the rest equally)')
     ap.add_argument('--init-from', type=Path, help='continue from another run checkpoint (model, EMA, optimiser, step)')
     for k, v in Config().__dict__.items():
         if k != 'content':
@@ -98,6 +101,11 @@ def main():
     assert vae.z_ch == cfg.z_ch
     model = PartScribe(cfg, table).to(dev)
     train = load_split(a, 'train' if a.dataset == 'vn' else 'train_val')
+    source_weights = None
+    if a.pnl_data:
+        assert a.dataset == 'vn'
+        train = concat_words(train, load_pnl(a.pnl_data, 'train', not a.no_holdout))
+        source_weights = {'PNL': a.pnl_weight}
     assert train.height == vstate['height'], 'VAE trained at a different height'
     assert (train.height // FACTOR) % cfg.patch_h == 0
     batcher = Batcher(train, model.content.supports, a.writers_per_batch, a.per_writer, a.n_support,
@@ -106,7 +114,7 @@ def main():
                       rare_fraction=a.rare_fraction, component_mix=a.component_mix,
                       multiword=a.multiword, mark_weight=a.mark_weight,
                       content_ds=load_split(a, 'hat_ocr') if a.content_only_per_batch else None,
-                      content_per_batch=a.content_only_per_batch)
+                      content_per_batch=a.content_only_per_batch, source_weights=source_weights)
     batches = prefetch(iter(batcher))
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=0.01, betas=(0.9, 0.99))
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: min(1, (s + 1) / a.warmup))

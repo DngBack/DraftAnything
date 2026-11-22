@@ -35,7 +35,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from partscribe.datasets import fit_width, load_vn, to_ink  # noqa: E402
+from partscribe.datasets import fit_width, load_pnl, load_vn, to_ink  # noqa: E402
 from partscribe.runtime import VATR  # noqa: E402
 
 N_SUP = 15
@@ -48,8 +48,15 @@ def save_png(arr_u8, path):
 
 
 # ---------------------------------------------------------------- jobs
+def eval_pool(a):
+    """Target + support pool: the 30 VN val writers, or the 5 held-out PNL uppercase writers (C4)."""
+    if a.pool == 'pnl_test':
+        return load_pnl(a.pnl_data, 'test')
+    return load_vn(a.vn_manifest, a.vn_data, 'val', apply_holdout=True)
+
+
 def make_jobs(a):
-    clean = load_vn(a.vn_manifest, a.vn_data, 'val', apply_holdout=True)
+    clean = eval_pool(a)
     vatr_alpha = set(json.loads(Path(a.vn_manifest).read_text())['alphabet'])
     from partscribe.evaluator import Codec
     codec = Codec()
@@ -89,7 +96,7 @@ def gen_partscribe(a):
     from partscribe.vae import decode_generated
     dev = 'cuda'
     jobs = load_jobs(a)
-    clean = load_vn(a.vn_manifest, a.vn_data, 'val', apply_holdout=True)
+    clean = eval_pool(a)
     st = torch.load(a.ckpt, map_location='cpu', weights_only=False)
     cfg = Config(**st['meta']['config'])
     model = PartScribe(cfg, None).to(dev).eval()
@@ -133,7 +140,7 @@ def gen_vatr(a):
     from train_vietnamese import model_args, seed_all
     dev = 'cuda'
     jobs = load_jobs(a)
-    clean = load_vn(a.vn_manifest, a.vn_data, 'val', apply_holdout=True)
+    clean = eval_pool(a)
     seed_all(a.seed)
     ck = torch.load(a.ckpt, map_location='cpu', weights_only=False)
     assert ck.get('stage') == 'gan'
@@ -383,6 +390,9 @@ def main():
     ap.add_argument('--vn-data', default=str(ROOT / 'data/vn'))
     ap.add_argument('--vn-manifest', default=str(VATR / 'files/vietnamese/manifest.json'))
     ap.add_argument('--per-writer', type=int, default=100)
+    ap.add_argument('--pool', choices=['vn_val', 'pnl_test'], default='vn_val',
+                    help='pnl_test: uppercase C4 set (5 PNL writers never trained on, scripts/prepare_pnl.py)')
+    ap.add_argument('--pnl-data', default=str(ROOT / 'data/pnl32.npz'))
     ap.add_argument('--seed', type=int, default=0)
     ap.add_argument('--name')
     ap.add_argument('--ckpt', type=Path)

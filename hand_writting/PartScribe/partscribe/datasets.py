@@ -21,6 +21,7 @@ from .holdout import contains_heldout, removed_iam_ids, removed_vn_indices
 
 HAT_FIRST_WRITER = 295   # VATr-pp convention: writer ids >= 295 are HAT pseudo-writers (no style identity)
 VNONDB_LAST_WRITER = 105  # VATr-pp: 0-105 VNOnDB, 106-294 ViHTGen (merged, globally unique writer ids)
+PNL_FIRST_WRITER = 20000  # scripts/prepare_pnl.py: PNL uppercase release, 19 real writers
 
 
 _SHAPES = {'\u0302': 'circumflex', '\u0306': 'breve', '\u031b': 'horn'}
@@ -78,6 +79,8 @@ def longtail_weights(texts, component_mix=0.5, cap=20.):
 
 
 def vn_source(writer):
+    if writer >= PNL_FIRST_WRITER:
+        return 'PNL'
     return 'VNOnDB' if writer <= VNONDB_LAST_WRITER else 'ViHTGen'
 
 
@@ -165,6 +168,40 @@ def load_iam(packed_npz, split, apply_holdout=True):
     return ds
 
 
+def load_pnl(packed_npz, split, apply_holdout=True):
+    """PNL uppercase words packed by scripts/prepare_pnl.py; split = 'train' (14 writers) | 'test' (5 writers).
+
+    Held-out characters were already removed in either case when packing; checked again here."""
+    z = np.load(packed_npz, allow_pickle=False)
+    meta = json.loads(Path(str(packed_npz).replace('.npz', '.json')).read_text())
+    sel = [i for i, sp in enumerate(meta['split']) if sp == split]
+    texts = [meta['text'][i] for i in sel]
+    ds = PackedWords(z['pixels'], z['starts'][sel], z['widths'][sel], texts,
+                     np.array([int(meta['writer'][i]) for i in sel]), [meta['id'][i] for i in sel], f'pnl/{split}', vn_source)
+    if apply_holdout:
+        from .holdout import held_chars
+        held = set(held_chars('vn')) | {c.upper() for c in held_chars('vn')}
+        assert all(held.isdisjoint(t) for t in texts), 'held-out character in PNL'
+    return ds
+
+
+def concat_words(*dss):
+    """One PackedWords over several packs of the same height (writer ids must be disjoint)."""
+    assert len({d.height for d in dss}) == 1
+    pix, starts, off = [], [], 0
+    for d in dss:
+        a = int(d.starts.min()) if len(d) else 0
+        b = int(max(d.starts + d.widths)) if len(d) else 0
+        pix.append(d.pixels[:, a:b])
+        starts.append(d.starts - a + off)
+        off += b - a
+    ws = [set(map(int, d.writers)) for d in dss]
+    assert all(ws[i].isdisjoint(ws[j]) for i in range(len(ws)) for j in range(i + 1, len(ws)))
+    return PackedWords(np.concatenate(pix, axis=1), np.concatenate(starts), np.concatenate([d.widths for d in dss]),
+                       [t for d in dss for t in d.texts], np.concatenate([d.writers for d in dss]),
+                       [i for d in dss for i in d.ids], '+'.join(d.name for d in dss), dss[0].source_of)
+
+
 def to_ink(arr):
     return 1.0 - torch.as_tensor(np.ascontiguousarray(arr), dtype=torch.float32) / 255.0
 
@@ -219,7 +256,7 @@ class Batcher:
     def __init__(self, ds, supports_text, writers_per_batch=16, per_writer=4, n_support=15,
                  max_width=512, support_width=None, width_multiple=8, max_chars=40, seed=0,
                  rare_fraction=0.0, component_mix=0.5, multiword=0.0, mark_weight=0.0,
-                 content_ds=None, content_per_batch=0):
+                 content_ds=None, content_per_batch=0, source_weights=None):
         self.ds, self.rng = ds, random.Random(seed)
         self.content_ds, self.content_per_batch = content_ds, content_per_batch if content_ds is not None else 0
         if self.content_per_batch:
@@ -242,6 +279,13 @@ class Batcher:
         for w in self.writers:
             self.by_source[ds.source_of(w)].append(w)
         self.sources = sorted(self.by_source)
+        # natural slots: source drawn with these weights (default uniform, as in VATr-pp); e.g. PNL gets a
+        # fixed share instead of 1/3 of the slots
+        self.weighted_sources = bool(source_weights)
+        sw = source_weights or {}
+        rest = [s_ for s_ in self.sources if s_ not in sw]
+        left = 1.0 - sum(sw.get(s_, 0.0) for s_ in self.sources)
+        self.source_p = [sw[s_] if s_ in sw else left / len(rest) for s_ in self.sources]
         self.writer_ids = {w: k for k, w in enumerate(sorted(ds.pools))}
         self.rare_fraction = rare_fraction
         self.multiword, self.mark_weight = multiword, mark_weight
@@ -260,7 +304,7 @@ class Batcher:
             for w in ws:
                 ts = self.targets[w]
                 for c in chars:
-                    nat[c] += sum(c in self.ds.texts[i] for i in ts) / len(ts) / len(ws) / len(self.sources)
+                    nat[c] += sum(c in self.ds.texts[i] for i in ts) / len(ts) / len(ws) * self.source_p[self.sources.index(src)]
         out = {}
         for c in chars:
             rare = 0.
@@ -436,7 +480,9 @@ class Batcher:
                     w = int(self.ds.writers[a])
                     items += [a] + self.rng.choices(self.targets[w], cum_weights=self.cum[w], k=self.K - 1)
                 else:
-                    w = self.rng.choice(self.by_source[self.rng.choice(self.sources)])
+                    src = (self.rng.choices(self.sources, weights=self.source_p)[0] if self.weighted_sources
+                           else self.rng.choice(self.sources))   # unweighted: same RNG stream as the v1/v2 runs
+                    w = self.rng.choice(self.by_source[src])
                     items += [self.rng.choice(self.targets[w]) for _ in range(self.K)]
             items = [self._maybe_join(i) for i in items]
             content = self.rng.sample(self.content_targets, self.content_per_batch) if self.content_per_batch else ()

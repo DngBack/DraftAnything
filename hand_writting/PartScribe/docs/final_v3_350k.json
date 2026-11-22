@@ -1,0 +1,200 @@
+{
+ "frozen_utc": "2026-11-21",
+ "decision": "v3 = frozen v2 300k + PNL uppercase train writers (15% of natural writer slots), continued to 400k; 350k chosen as the best checkpoint on val (held-out pair_ok and VN CER on par with v2 and better than v3 400k; uppercase far better than v2).",
+ "checkpoints": {
+  "nfd": {
+   "path": "runs/gen_vn_nfd_v3/snap_350000.pt",
+   "weights": "ema",
+   "sha256": "f3830dc258a0853e8481e53df04d510958462aac51418ca6853ca97f9d06efdc"
+  },
+  "char": {
+   "path": "runs/gen_vn_char_v3/snap_350000.pt",
+   "weights": "ema",
+   "sha256": "819fd211cd16ff448d35f615a42455312f5c3802455ced80ddaeb586b0a51d98"
+  },
+  "vae": "runs/vae_vn32/final.pt",
+  "pnl_data": {
+   "path": "data/pnl32.npz",
+   "built_by": "scripts/prepare_pnl.py",
+   "test_writers": [
+    "NV08",
+    "NV09",
+    "NV14",
+    "NV16",
+    "NV19"
+   ],
+   "sha256": "93833808b9477c6fb7aa576adb519b525f6ad7ee03b468cac6986384f3c521b1"
+  }
+ },
+ "training": "pipeline.sh gen_{char,nfd}_v3: init from v2 snap_300000, --pnl-data data/pnl32.npz --pnl-weight 0.15 --seed 2, constant LR 1e-4, to 400k",
+ "decode": "partscribe.vae.decode_generated (edge line removed); sampling 50 steps, w_content 3, w_style 1.5",
+ "checkpoint_choice_val": {
+  "pair_ok_C1C2_nfd": {
+   "325k": 0.829,
+   "350k": 0.823,
+   "375k": 0.817,
+   "400k": 0.774
+  },
+  "vn_CER_nfd_s0": {
+   "350k": 0.0277,
+   "400k": 0.0322,
+   "paired_ci95_400k_minus_350k": [
+    0.0013,
+    0.0077
+   ]
+  },
+  "uppercase_HWD_nfd": {
+   "325k": 0.7129,
+   "350k": 0.6853,
+   "400k": 0.6195
+  }
+ },
+ "heldout_pair_ok_val": {
+  "v3_350k": {
+   "C1+C2": {
+    "char": 0.0061,
+    "nfd": 0.8232,
+    "diff_ci95": [
+     0.7043,
+     0.8816
+    ]
+   },
+   "C1": 0.8265,
+   "C2": 0.8182,
+   "C3": 0.8421,
+   "control": {
+    "char": 0.9718,
+    "nfd": 0.9734
+   }
+  },
+  "v2_300k_edgefix": {
+   "C1+C2": {
+    "char": 0.0122,
+    "nfd": 0.8293,
+    "diff_ci95": [
+     0.75,
+     0.8737
+    ]
+   },
+   "C1": 0.8673,
+   "C2": 0.7727,
+   "C3": 0.8947,
+   "control": {
+    "char": 0.9624,
+    "nfd": 0.9671
+   }
+  }
+ },
+ "standard_metrics_vn_val": {
+  "nfd_v3_350k": {
+   "FID": 16.4727,
+   "BFID": 11.4684,
+   "KIDx1e3": 5.454,
+   "HWD": 0.8664,
+   "CER": 0.0277,
+   "word_acc": 0.9227
+  },
+  "nfd_v2_300k": {
+   "FID": 16.0691,
+   "BFID": 11.1695,
+   "KIDx1e3": 5.3018,
+   "HWD": 0.8799,
+   "CER": 0.0279,
+   "word_acc": 0.9241
+  },
+  "char_v2_300k": {
+   "FID": 16.2532,
+   "BFID": 11.6218,
+   "KIDx1e3": 5.3532,
+   "HWD": 0.8708,
+   "CER": 0.028,
+   "word_acc": 0.928
+  },
+  "vatrpp_vn_250k": {
+   "FID": 38.4558,
+   "BFID": 20.7696,
+   "KIDx1e3": 21.3586,
+   "HWD": 1.6133,
+   "CER": 0.0118,
+   "word_acc": 0.9642
+  },
+  "vatrpp_vn_175500": {
+   "FID": 38.1325,
+   "BFID": 25.2676,
+   "KIDx1e3": 20.0707,
+   "HWD": 1.7135,
+   "CER": 0.0174,
+   "word_acc": 0.9463
+  },
+  "paired_ci95_nfd_v3_350k_minus_v2_300k": {
+   "HWD": [
+    -0.0319,
+    0.0054
+   ],
+   "CER": [
+    -0.0035,
+    0.003
+   ]
+  }
+ },
+ "uppercase_C4_pnl_test": {
+  "setup": "5 held-out PNL writers, 1653 uppercase words, own-writer supports",
+  "real_CER": 0.1811,
+  "nfd_v3_350k": {
+   "FID": 23.967,
+   "BFID": 11.908,
+   "KIDx1e3": 12.2803,
+   "HWD": 0.6853,
+   "CER": 0.0683,
+   "word_acc": 0.8488
+  },
+  "nfd_v2_300k": {
+   "FID": 27.6041,
+   "BFID": 12.1047,
+   "KIDx1e3": 13.3657,
+   "HWD": 0.8285,
+   "CER": 0.0673,
+   "word_acc": 0.8433
+  },
+  "char_v2_300k": {
+   "FID": 25.9792,
+   "BFID": 11.5916,
+   "KIDx1e3": 12.5541,
+   "HWD": 0.8284,
+   "CER": 0.0814,
+   "word_acc": 0.7998
+  },
+  "nfd_v3_400k": {
+   "FID": 21.7917,
+   "BFID": 10.5092,
+   "KIDx1e3": 9.7627,
+   "HWD": 0.6195,
+   "CER": 0.0646,
+   "word_acc": 0.8518
+  },
+  "vatrpp_vn_250k": {
+   "FID": 35.8155,
+   "BFID": 16.7422,
+   "KIDx1e3": 15.5166,
+   "HWD": 0.9852,
+   "CER": 0.1268,
+   "word_acc": 0.6413
+  },
+  "paired_ci95_nfd_v3_350k_minus_v2_300k": {
+   "HWD": [
+    -0.2135,
+    -0.0729
+   ],
+   "CER": [
+    -0.0053,
+    0.006
+   ]
+  }
+ },
+ "known_limitations": [
+  "dot below on the held-out ẹ still mostly missing",
+  "uppercase style varies less across writers than real uppercase",
+  "char v3 350k not separately scored on std metrics (only char 400k)",
+  "all numbers on val / held-out PNL writers; VN test split still sealed"
+ ]
+}

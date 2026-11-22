@@ -5,6 +5,7 @@ Sinh chữ viết tay có style, với nội dung biểu diễn bằng **thành 
 - Thiết kế: [docs/261118_plan_03](docs/261118_plan_03_Kien_truc_moi_bieu_dien_thanh_phan_va_tron_style.md).
 - Tổng quan tài liệu và protocol giữ lại: [docs/261118_report_04](docs/261118_report_04_Tong_quan_tai_lieu_va_protocol_giu_lai_to_hop.md).
 - Protocol v1: [docs/holdout_protocol_v1.json](docs/holdout_protocol_v1.json). File được khóa bằng SHA-256 trong `partscribe/holdout.py`.
+- **Report tổng hợp đợt thực nghiệm tiếng Việt (18–22/11):** [docs/261122_report_01](docs/261122_report_01_Tong_hop_thuc_nghiem_PartScribe_tieng_Viet.md). **Bản chốt hiện tại: nfd v3 350k** ([docs/final_v3_350k.json](docs/final_v3_350k.json)); mục "Bản chốt: VN v2, 300k" bên dưới là bản trước.
 
 ## Kiến trúc và vị trí trong code
 
