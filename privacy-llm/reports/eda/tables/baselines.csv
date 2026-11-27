@@ -1,0 +1,6 @@
+predictor,keys,accuracy
+always_withhold,-,0.726
+by_field,field,0.7837
+by_scenario,scenario,0.7644
+by_domain_field,domain+field,0.8894
+by_scenario_field,scenario+field,1.0

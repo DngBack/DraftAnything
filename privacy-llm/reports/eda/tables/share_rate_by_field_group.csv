@@ -1,0 +1,8 @@
+field_group,n,n_share,share_rate
+contact,480,220,0.4583
+identity,640,260,0.4062
+health,1120,380,0.3393
+lifestyle,480,120,0.25
+preferences,640,120,0.1875
+sensitive_personal,480,40,0.0833
+government_id,320,0,0.0

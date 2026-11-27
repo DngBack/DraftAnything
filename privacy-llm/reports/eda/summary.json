@@ -1,0 +1,105 @@
+{
+  "overview": {
+    "full": {
+      "records": 4160,
+      "profiles": 20,
+      "domains": 3,
+      "scenarios": 8,
+      "fields": 26,
+      "share": 1140,
+      "withhold": 3020,
+      "share_rate": 0.274,
+      "full_grid": true,
+      "duplicate_keys": 0,
+      "empty_prompts": 4160
+    },
+    "small": {
+      "records": 624,
+      "profiles": 3,
+      "domains": 3,
+      "scenarios": 8,
+      "fields": 26,
+      "share": 171,
+      "withhold": 453,
+      "share_rate": 0.274,
+      "full_grid": true,
+      "duplicate_keys": 0,
+      "empty_prompts": 624
+    },
+    "swap_original": {
+      "records": 312,
+      "profiles": 20,
+      "domains": 3,
+      "scenarios": 8,
+      "fields": 2,
+      "share": 119,
+      "withhold": 193,
+      "share_rate": 0.3814,
+      "full_grid": false,
+      "duplicate_keys": 0,
+      "empty_prompts": 312
+    },
+    "swap_flipped": {
+      "records": 312,
+      "profiles": 20,
+      "domains": 3,
+      "scenarios": 8,
+      "fields": 2,
+      "share": 119,
+      "withhold": 193,
+      "share_rate": 0.3814,
+      "full_grid": false,
+      "duplicate_keys": 0,
+      "empty_prompts": 312
+    }
+  },
+  "mixed_label_cells": 0,
+  "answer_checks": {
+    "shared_ref_equals_profile_value": 1140,
+    "shared_total": 1140,
+    "withheld_ref_is_none_string": 3020,
+    "withheld_total": 3020,
+    "shared_with_empty_answer": 71,
+    "profile_values_equal_none_string": 4
+  },
+  "small_vs_full": {
+    "records": 624,
+    "identical_in_full": 624,
+    "profiles": [
+      "Maya Thompson",
+      "Oscar Torres",
+      "Tomoko Nakamura"
+    ]
+  },
+  "swap": {
+    "records": 312,
+    "same_task_and_label": true,
+    "only_asked_field_changed": true,
+    "answers_swapped_when_shared": true,
+    "original_labels_match_full": true,
+    "fields": {
+      "gender": 19,
+      "phone_number": 20
+    },
+    "profiles_missing": {
+      "gender": [
+        "Kai Nguyen"
+      ]
+    },
+    "share": 119
+  },
+  "baselines": {
+    "always_withhold": 0.726,
+    "by_field": 0.7837,
+    "by_scenario": 0.7644,
+    "by_domain_field": 0.8894,
+    "by_scenario_field": 1.0
+  },
+  "never_shared_fields": [
+    "social_security_number",
+    "driver_licence_number",
+    "religious_beliefs",
+    "sexual_orientation"
+  ],
+  "value_collisions": 1
+}

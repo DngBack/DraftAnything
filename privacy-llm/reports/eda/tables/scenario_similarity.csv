@@ -1,0 +1,9 @@
+scenario,ask_about_vaccines,book_a_table,doctor_appointment,job_interview,movie_ideas,restaurant_ideas,vacation_ideas,visit_social_worker
+ask_about_vaccines,1.0,0.5,0.471,0.444,0.1,0.182,0.167,0.308
+book_a_table,0.5,1.0,0.235,0.8,0.0,0.125,0.111,0.182
+doctor_appointment,0.471,0.235,1.0,0.222,0.053,0.222,0.15,0.444
+job_interview,0.444,0.8,0.222,1.0,0.0,0.111,0.222,0.167
+movie_ideas,0.1,0.0,0.053,0.0,1.0,0.143,0.286,0.091
+restaurant_ideas,0.182,0.125,0.222,0.111,0.143,1.0,0.375,0.077
+vacation_ideas,0.167,0.111,0.15,0.222,0.286,0.375,1.0,0.154
+visit_social_worker,0.308,0.182,0.444,0.167,0.091,0.077,0.154,1.0

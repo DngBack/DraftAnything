@@ -1,0 +1,9 @@
+domain,scenario,n,n_share,share_rate
+health,doctor_appointment,520,340,0.6538
+health,visit_social_worker,520,180,0.3462
+health,ask_about_vaccines,520,160,0.3077
+reccomend,vacation_ideas,520,120,0.2308
+schedule,job_interview,520,100,0.1923
+reccomend,restaurant_ideas,520,100,0.1923
+schedule,book_a_table,520,80,0.1538
+reccomend,movie_ideas,520,60,0.1154

@@ -1,0 +1,27 @@
+field,group,kind,n_distinct,n_empty,n_none_string,example
+name,identity,str,20,0,0,'Maya Thompson'
+age,identity,int,20,0,0,34
+gender,identity,str,3,0,0,'Female'
+ethnicity,identity,str,17,0,0,'African American'
+address,contact,str,20,0,0,"'784 Bow Court, Apt 4C, Charlotte, NC 28202'"
+phone_number,contact,str,20,0,0,'(704) 802-6145'
+email,contact,str,20,0,0,'maya.thompson1989@example.com'
+social_security_number,government_id,str,20,0,0,'235-67-7445'
+driver_licence_number,government_id,str,20,0,0,'T12345678'
+current_physical_health_conditions,health,list,16,4,0,['Hypertension']
+current_mental_health_conditions,health,list,11,7,0,['Anxiety']
+allergies,health,list,17,0,0,['Peanuts']
+smoker,health,bool,2,0,0,False
+family_medical_history,health,list,20,0,0,"['Diabetes', 'Heart Disease']"
+current_medications,health,list,18,3,0,['Lisinopril']
+disabilities,health,list,1,20,0,[]
+average_exercise_hours_per_week,lifestyle,int,7,0,0,4
+diet_type,lifestyle,str,11,0,0,'Pescatarian'
+pet_ownership,lifestyle,list,15,0,0,['Cat']
+relationship_status,sensitive_personal,str,7,0,0,'Married'
+religious_beliefs,sensitive_personal,str,14,0,4,'Christian'
+sexual_orientation,sensitive_personal,str,5,0,0,'Heterosexual'
+preferred_movie_genres,preferences,list,20,0,0,"['Drama', 'Comedy', 'Sci-Fi']"
+vacation_preferences,preferences,list,20,0,0,"['Beach', 'Cultural Tours']"
+favorite_food,preferences,str,20,0,0,'Sushi'
+favorite_hobbies,preferences,list,20,0,0,"['Photography', 'Hiking', 'Reading']"
