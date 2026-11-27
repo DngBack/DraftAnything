@@ -1,0 +1,5 @@
+# Raw data is re-downloadable from a pinned HF revision (see data/raw/MANIFEST.json).
+data/raw/*.json
+!data/raw/MANIFEST.json
+data/raw/*.part
+__pycache__/

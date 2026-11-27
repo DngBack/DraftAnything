@@ -1,0 +1,26 @@
+{
+  "repo_id": "parameterlab/leaky_thoughts",
+  "revision": "f1d8f27376eb0854ec5b476e88b942d0060eee62",
+  "files": {
+    "full": {
+      "file": "airgapagent-r.json",
+      "bytes": 7885173,
+      "sha256": "117a76be7caa1e0cde682a0f594fb70af8c6e6859041bc8a5b39c48b22bdf3e3"
+    },
+    "small": {
+      "file": "airgapagent-r-small.json",
+      "bytes": 1177362,
+      "sha256": "c1ea3f039e0a9569609437d31b9b495e3d932a601c94f6fbb1aa302427e49238"
+    },
+    "swap_original": {
+      "file": "airgapagent-r-ablation-swap-original.json",
+      "bytes": 487395,
+      "sha256": "6e9c87f354147134f1acb251ddec9ce5df0ae42ea6e90ac802d14fbfa3bbc44e"
+    },
+    "swap_flipped": {
+      "file": "airgapagent-r-ablation-swap-flipped.json",
+      "bytes": 487175,
+      "sha256": "a7abe442ebce3158c84f0e5a59bcd8b17a4ee496ef60d6c9313ae011b92e32d4"
+    }
+  }
+}
